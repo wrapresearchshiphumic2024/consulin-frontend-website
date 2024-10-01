@@ -22,10 +22,12 @@ const config: Config = {
   			},
   			primary: {
   				DEFAULT: 'hsl(var(--primary))',
+				custom_primary: '#27374D',
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
   				DEFAULT: 'hsl(var(--secondary))',
+				custom_secondary: '#F5F5F7',
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {
@@ -34,6 +36,7 @@ const config: Config = {
   			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
+				  custom_accent: '#F28D35',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {

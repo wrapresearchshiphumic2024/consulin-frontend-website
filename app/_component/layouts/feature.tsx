@@ -1,4 +1,3 @@
-import Image from "next/image";
 import CardFeature, { CardFeatureProps } from "../ui/card-feature";
 import { Button } from "@/components/ui/button";
 

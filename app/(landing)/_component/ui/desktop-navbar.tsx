@@ -17,7 +17,7 @@ export function DesktopNavbar({ links }: DesktopNavbarProps) {
       sections.forEach((section) => {
         const element = document.getElementById(section);
         if (element) {
-          const { top, bottom } = element.getBoundingClientRect();
+          const { top } = element.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
 
           // Menambahkan sedikit toleransi (misal 50px)

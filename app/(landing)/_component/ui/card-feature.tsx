@@ -17,7 +17,7 @@ export default function CardFeature({ icon, title }: CardFeatureProps) {
         />
       </div>
       <center className="mt-4">
-        <h3 className="text-secondary-custom_secondary">{title}</h3>
+        <h3 className="text-secondary-custom_secondary font-bold">{title}</h3>
       </center>
     </div>
   );

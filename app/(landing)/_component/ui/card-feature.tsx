@@ -13,7 +13,7 @@ export default function CardFeature({ icon, title }: CardFeatureProps) {
           height="0"
           sizes="100vw"
           className="w-full "
-          alt="logo consulin"
+          alt={title}
         />
       </div>
       <center className="mt-4">

@@ -12,7 +12,7 @@ export default function About() {
                 height="0"
                 sizes="100vw"
                 className="w-full h-auto"
-                alt=""
+                alt="Logo Consulin Dark"
               />
             </div>
           </div>

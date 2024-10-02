@@ -26,7 +26,7 @@ export default function Main() {
                 height="0"
                 sizes="100vw"
                 className="w-full h-auto"
-                alt=""
+                alt="Consulin Dark"
               />
             </div>
             <p>
@@ -46,7 +46,7 @@ export default function Main() {
                 height="0"
                 sizes="100vw"
                 className="w-full h-auto"
-                alt=""
+                alt="Psychologist Asset"
               />
             </div>
           </div>

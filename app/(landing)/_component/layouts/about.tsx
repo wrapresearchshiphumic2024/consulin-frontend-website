@@ -3,7 +3,7 @@ export default function About() {
   return (
     <section className="pt-[100px]" id="about">
       <div className="container mx-auto px-5 md:px-24 z-10 ">
-        <div className="flex md:justify-center justify-center md:h-[500px] lg:mt-0 mt-32  flex-col-reverse lg:flex-row ">
+        <div className="flex md:justify-center justify-center md:h-[500px] lg:mt-0   flex-col-reverse lg:flex-row ">
           <div className="flex flex-1 justify-center">
             <div className="overflow-hidden w-[200px] md:w-[300px]  ">
               <Image
@@ -20,7 +20,7 @@ export default function About() {
             className={` text-primary-custom_primary lg:text-end pt-[50px] ml-0 md:ml-10 flex-1 text-center `}
           >
             <div className="relative">
-              <h1 className=" md:text-[64px] text-4xl	font-bold z-10 mb-10">
+              <h1 className=" lg:text-[45px] text-4xl	font-bold z-10 mb-10">
                 ABOUT CONSULIN
               </h1>
               <div

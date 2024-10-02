@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 // import localFont from "next/font/local";
 import "./globals.css";
 import { Poppins } from "next/font/google";
-import Navbar from "./_component/layouts/navbar";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -32,10 +31,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${poppins.variable} scroll-smooth`}>
-      <body className={`bg-secondary-custom_secondary`}>
-        <Navbar />
-        {children}
-      </body>
+      <body className={`bg-secondary-custom_secondary`}>{children}</body>
     </html>
   );
 }

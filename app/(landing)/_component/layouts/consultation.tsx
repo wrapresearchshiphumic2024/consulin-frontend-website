@@ -27,7 +27,7 @@ export default function Consultation() {
                 height="0"
                 sizes="100vw"
                 className="w-full h-auto"
-                alt=""
+                alt="Psychologist Assets"
               />
             </div>
           </div>

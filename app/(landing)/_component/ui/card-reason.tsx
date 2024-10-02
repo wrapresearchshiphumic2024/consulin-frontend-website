@@ -19,7 +19,7 @@ export default function CardReason({
             height="0"
             sizes="100vw"
             className="w-full "
-            alt="logo consulin"
+            alt={title}
           />
         </div>
 

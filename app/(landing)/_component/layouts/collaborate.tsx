@@ -12,7 +12,7 @@ export default function Collaborate() {
             height="0"
             sizes="100vw"
             className="w-full h-auto"
-            alt=""
+            alt="Collab Vector"
           />
         </div>
         <h1 className=" lg:text-[45px] text-2xl font-bold my-10 text-center  ">
@@ -32,7 +32,7 @@ export default function Collaborate() {
             height="0"
             sizes="100vw"
             className="w-full h-auto"
-            alt=""
+            alt="Group 52"
           />
         </div>
       </div>

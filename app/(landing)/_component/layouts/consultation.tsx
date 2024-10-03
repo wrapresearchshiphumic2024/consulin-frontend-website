@@ -5,9 +5,9 @@ export default function Consultation() {
   return (
     <div className="bg-primary-custom_primary mt-20">
       <section className="container mx-auto px-5 z-10  md:px-24 md:pt-12">
-        <div className="flex md:justify-between justify-center items-center flex-col lg:flex-row py-10">
+        <div className="flex md:justify-between justify-center items-center flex-col-reverse lg:flex-row py-10">
           <div className={`text-secondary-custom_secondary flex-1`}>
-            <h1 className="md:text-[45px] text-2xl font-bold z-10 mb-10">
+            <h1 className="md:text-[45px] text-2xl font-bold z-10 mb-10 leading-snug">
               Consultation with an Expert and Licensed Psychologist
             </h1>
             <p>

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LinkProps } from "../layouts/navbar";
 interface DesktopNavbarProps {
-  links: LinkProps[]; // Menggunakan prop yang benar
+  links: LinkProps[];
 }
 export default function HamburgerNavbar({ links }: DesktopNavbarProps) {
   const [isOpen, setOpen] = useState(false);
@@ -21,7 +21,6 @@ export default function HamburgerNavbar({ links }: DesktopNavbarProps) {
           const { top, bottom } = element.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
 
-          // Menambahkan sedikit toleransi (misal 50px)
           if (top < viewportHeight / 2 && bottom > viewportHeight / 2) {
             setActiveId(section);
           }

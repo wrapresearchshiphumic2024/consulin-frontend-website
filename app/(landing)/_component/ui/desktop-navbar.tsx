@@ -17,11 +17,10 @@ export function DesktopNavbar({ links }: DesktopNavbarProps) {
       sections.forEach((section) => {
         const element = document.getElementById(section);
         if (element) {
-          const { top } = element.getBoundingClientRect();
+          const { top, bottom } = element.getBoundingClientRect();
           const viewportHeight = window.innerHeight;
 
-          // Menambahkan sedikit toleransi (misal 50px)
-          if (top < viewportHeight) {
+          if (top < viewportHeight / 2 && bottom > viewportHeight / 2) {
             setActiveId(section);
           }
         }
@@ -76,7 +75,7 @@ export function DesktopNavbar({ links }: DesktopNavbarProps) {
           href={link.href}
           className={cn(
             "transition-all",
-            activeId === link.id.toLowerCase() && "font-bold"
+            activeId === link.id.toLowerCase() && "font-semibold"
           )}
         >
           {link.title}

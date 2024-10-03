@@ -1,4 +1,3 @@
-import Script from "next/script";
 import Navbar from "./_component/layouts/navbar";
 
 export default function LandingLayout({

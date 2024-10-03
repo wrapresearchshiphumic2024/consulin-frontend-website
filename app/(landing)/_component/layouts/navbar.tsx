@@ -48,10 +48,10 @@ export default function Navbar() {
           />
         </div>
         <div
-          className={` lg:flex gap-5 text-secondary-custom_secondary items-center hidden`}
+          className={` lg:flex gap-10 text-secondary-custom_secondary items-center hidden`}
         >
           <DesktopNavbar links={links} />
-          <Link href="/ninjas">
+          <Link href="/login">
             <Button
               className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
             >

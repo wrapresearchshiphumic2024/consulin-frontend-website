@@ -10,8 +10,8 @@ export default function CardReason({
   description,
 }: CardReasonProps) {
   return (
-    <div className="flex gap-4 items-center ">
-      <div className="relative flex justify-center items-center bg-primary-custom_primary w-[100px] h-[100px] md:h-[130px]  md:w-[300px] rounded-[24px]">
+    <div className="flex gap-4 items-center flex-col md:flex-row ">
+      <div className="relative flex justify-center items-center  bg-primary-custom_primary w-[100px] h-[100px] md:h-[130px]  md:w-[300px] rounded-[24px]">
         <div className="overflow-hidden w-[20px] md:w-[50px] ">
           <Image
             src={icon}
@@ -28,8 +28,8 @@ export default function CardReason({
         ></div>
       </div>
       <div>
-        <h2 className="text-2xl font-bold">{title}</h2>
-        <p>{description}</p>
+        <h2 className="text-2xl font-bold text-center md:text-left">{title}</h2>
+        <p className="text-center md:text-left">{description}</p>
       </div>
     </div>
   );

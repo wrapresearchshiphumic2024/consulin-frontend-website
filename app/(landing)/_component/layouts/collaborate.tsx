@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Collaborate() {
   return (
@@ -21,11 +22,13 @@ export default function Collaborate() {
         <p className="text-center">
           Consulin supports your mental health journey
         </p>
-        <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
-          Join Now
-        </Button>
+        <Link href={"/register-psycholog"}>
+          <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
+            Join Now
+          </Button>
+        </Link>
 
-        <div className=" absolute md:top-96 top-72 overflow-hidden  w-auto lg:w-[900px]   mt-10">
+        <div className=" absolute md:top-96 top-72 overflow-hidden  w-auto lg:w-[900px]  mt-10 -z-10">
           <Image
             src={"/assets/icons/Group 52.png"}
             width="0"

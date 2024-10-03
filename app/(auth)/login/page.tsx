@@ -11,12 +11,12 @@ export default function Login() {
       </center>
       <div className="mt-10 w-full">
         <FormLogin />
-        <center>
+        <div className="flex justify-center flex-wrap items-center gap-1 mt-5">
           <p className="text-netral-primary ">Dont have an account? </p>
           <Link href={"/register"}>
             <p className="text-[#2785FF] font-bold">Create account</p>
           </Link>
-        </center>
+        </div>
       </div>
     </TemplateAuth>
   );

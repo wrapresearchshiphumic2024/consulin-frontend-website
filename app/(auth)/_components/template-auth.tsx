@@ -9,7 +9,7 @@ export default function TemplateAuth({
   return (
     <>
       <div className=" flex lg:flex-row flex-col-reverse shadow-2xl p-4 rounded-3xl ">
-        <div className="hidden flex-1 bg-gradient-to-r from-[#EBEBEB] rounded-3xl lg:flex items-center justify-center p-5">
+        <div className="hidden flex-1 bg-gradient-to-r from-[#EBEBEB] rounded-3xl xl:flex items-center justify-center p-5">
           <div className="overflow-hidden w-[350px]">
             <Image
               src={image}

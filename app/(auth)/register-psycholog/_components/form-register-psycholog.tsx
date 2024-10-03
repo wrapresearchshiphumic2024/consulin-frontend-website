@@ -42,6 +42,7 @@ import { formRegisterSchema } from "@/helpers/validations/validation-auth";
 import { PasswordInput } from "@/components/ui/password-input";
 
 import ButtonStep from "./button-step";
+import FileUploadCustom from "@/components/ui/file-upload-custom";
 interface page {
   number: number;
   status: boolean;
@@ -85,10 +86,18 @@ const work_experience = [
   },
 ];
 const dropzone = {
+  accept: {
+    "image/*": [".jpg", ".jpeg", ".png"],
+    "application/pdf": [".pdf"],
+  },
   maxFiles: 1,
   maxSize: 4 * 1024 * 1024,
 } satisfies DropzoneOptions;
 const dropzone_serticate = {
+  accept: {
+    "image/*": [".jpg", ".jpeg", ".png"],
+    "application/pdf": [".pdf"],
+  },
   maxFiles: 5,
   maxSize: 4 * 1024 * 1024,
   multiple: true,
@@ -418,6 +427,7 @@ export default function FormRegisterPsycholog() {
                         <FormControl>
                           <Input
                             placeholder="Graduation Year"
+                            type="number"
                             {...field}
                             className="border-primary-custom_primary border-2 placeholder:text-primary-custom_primary-foreground"
                           />
@@ -472,30 +482,14 @@ export default function FormRegisterPsycholog() {
                     name="sertificate"
                     render={({ field }) => (
                       <FormItem>
-                        <FileUploader
+                        <FileUploadCustom
                           value={field.value}
                           onValueChange={field.onChange}
                           dropzoneOptions={dropzone_serticate}
-                          className="relative rounded-lg outline-primary-custom_primary p-3  outline outline-2"
-                        >
-                          <FileInput className="  outline-dashed outline-2 rounded-md ">
-                            <div className="flex items-center justify-center flex-col pt-3 pb-4 w-full ">
-                              <FileSvgDrawer title="Upload sertificate (optional)" />
-                            </div>
-                          </FileInput>
-                          {field.value && field.value.length > 0 && (
-                            <FileUploaderContent>
-                              {field.value.map((file, i) => (
-                                <FileUploaderItem key={i} index={i}>
-                                  <Paperclip className="h-4 w-4 stroke-current" />
-                                  <span className="truncate w-[100px] md:w-[300px] overflow-hidden">
-                                    {file.name}
-                                  </span>
-                                </FileUploaderItem>
-                              ))}
-                            </FileUploaderContent>
-                          )}
-                        </FileUploader>
+                          placeholder="Upload sertificate (optional)"
+                          reSelect={false}
+                        />
+
                         {field.value.length > 6 && (
                           <p className="text-red-500 text-sm">diisi</p>
                         )}
@@ -607,29 +601,13 @@ export default function FormRegisterPsycholog() {
                     name="cv"
                     render={({ field }) => (
                       <FormItem>
-                        <FileUploader
+                        <FileUploadCustom
                           value={field.value}
                           onValueChange={field.onChange}
                           dropzoneOptions={dropzone}
+                          placeholder="Upload CV"
                           reSelect={true}
-                          className="relative rounded-lg outline-primary-custom_primary p-3  outline outline-2"
-                        >
-                          <FileInput className="  outline-dashed outline-2 rounded-md ">
-                            <div className="flex items-center justify-center flex-col pt-3 pb-4 w-full ">
-                              <FileSvgDrawer title="Upload Cv" />
-                            </div>
-                          </FileInput>
-                          {field.value && field.value.length > 0 && (
-                            <FileUploaderContent>
-                              {field.value.map((file, i) => (
-                                <FileUploaderItem key={i} index={i}>
-                                  <Paperclip className="h-4 w-4 stroke-current" />
-                                  <span>{file.name}</span>
-                                </FileUploaderItem>
-                              ))}
-                            </FileUploaderContent>
-                          )}
-                        </FileUploader>
+                        />
                         {field.value.length < 1 && (
                           <p className="text-red-500 text-sm">diisi</p>
                         )}
@@ -643,29 +621,13 @@ export default function FormRegisterPsycholog() {
                     name="practice_license"
                     render={({ field }) => (
                       <FormItem>
-                        <FileUploader
+                        <FileUploadCustom
                           value={field.value}
                           onValueChange={field.onChange}
                           dropzoneOptions={dropzone}
+                          placeholder="Upload Practice License"
                           reSelect={true}
-                          className="relative rounded-lg outline-primary-custom_primary p-3  outline outline-2"
-                        >
-                          <FileInput className=" outline-dashed outline-2 rounded-md ">
-                            <div className="flex items-center justify-center flex-col pt-3 pb-4 w-full  ">
-                              <FileSvgDrawer title="Upload Cv" />
-                            </div>
-                          </FileInput>
-                          {field.value && field.value.length > 0 && (
-                            <FileUploaderContent>
-                              {field.value.map((file, i) => (
-                                <FileUploaderItem key={i} index={i}>
-                                  <Paperclip className="h-4 w-4 stroke-current" />
-                                  <span>{file.name}</span>
-                                </FileUploaderItem>
-                              ))}
-                            </FileUploaderContent>
-                          )}
-                        </FileUploader>
+                        />
                         {field.value.length < 1 && (
                           <p className="text-red-500 text-sm">diisi</p>
                         )}

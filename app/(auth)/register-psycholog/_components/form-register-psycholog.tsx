@@ -28,15 +28,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowDown2, Paperclip } from "iconsax-react";
-import {
-  FileInput,
-  FileUploader,
-  FileUploaderContent,
-  FileUploaderItem,
-} from "@/components/ui/extension/file-upload";
-
-import FileSvgDrawer from "@/components/ui/file-svg-drawer";
 
 import { formRegisterSchema } from "@/helpers/validations/validation-auth";
 import { PasswordInput } from "@/components/ui/password-input";
@@ -136,6 +127,7 @@ export default function FormRegisterPsycholog() {
       sertificate: [],
       profesional_identification_number: "",
       spesialization: [],
+      work_experience: "",
       cv: [],
       practice_license: [],
     },
@@ -210,7 +202,7 @@ export default function FormRegisterPsycholog() {
 
   return (
     <>
-      <div className="absolute z-10 top-[-50px] left-0 right-0 flex justify-center items-center gap-2">
+      <div className="absolute z-10 top-[-70px] left-0 right-0 flex justify-center items-center gap-2">
         <ButtonStep
           currentPage={currentPage}
           pageIndex={0}
@@ -309,6 +301,7 @@ export default function FormRegisterPsycholog() {
                         <FormControl>
                           <Input
                             placeholder="Phone Number"
+                            type="number"
                             {...field}
                             className="border-primary-custom_primary border-2 placeholder:text-primary-custom_primary-foreground"
                           />
@@ -453,9 +446,6 @@ export default function FormRegisterPsycholog() {
                                 placeholder="Languages Master"
                                 className="placeholder:text-primary-custom_primary-foreground"
                               />
-                              <div className="mr-2">
-                                <ArrowDown2 size={20} />
-                              </div>
                             </div>
                           </MultiSelectorTrigger>
                           <MultiSelectorContent>
@@ -536,9 +526,6 @@ export default function FormRegisterPsycholog() {
                                 placeholder="Spesialization"
                                 className="placeholder:text-primary-custom_primary-foreground"
                               />
-                              <div className="mr-2">
-                                <ArrowDown2 size={20} />
-                              </div>
                             </div>
                           </MultiSelectorTrigger>
                           <MultiSelectorContent>
@@ -574,7 +561,7 @@ export default function FormRegisterPsycholog() {
                             <SelectTrigger className="border-primary-custom_primary border-2 ">
                               <SelectValue
                                 placeholder="Work Experience"
-                                className="placeholder:text-primary-custom_primary-foreground"
+                                className="placeholder:text-primary-custom_primary"
                               />
                             </SelectTrigger>
                           </FormControl>
@@ -609,7 +596,7 @@ export default function FormRegisterPsycholog() {
                           reSelect={true}
                         />
                         {field.value.length < 1 && (
-                          <p className="text-red-500 text-sm">diisi</p>
+                          <p className="text-red-500 text-sm">CV is required</p>
                         )}
                       </FormItem>
                     )}
@@ -629,7 +616,9 @@ export default function FormRegisterPsycholog() {
                           reSelect={true}
                         />
                         {field.value.length < 1 && (
-                          <p className="text-red-500 text-sm">diisi</p>
+                          <p className="text-red-500 text-sm">
+                            Practice License is required
+                          </p>
                         )}
                       </FormItem>
                     )}

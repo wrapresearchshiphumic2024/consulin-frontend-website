@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
 import { Command as CommandPrimitive } from "cmdk";
+import { ArrowDown2 } from "iconsax-react";
+
 import { X as RemoveIcon, Check } from "lucide-react";
 import React, {
   KeyboardEvent,
@@ -230,7 +232,7 @@ const MultiSelectorTrigger = forwardRef<
     <div
       ref={ref}
       className={cn(
-        "flex flex-wrap gap-1 p-1 py-2 ring-1 ring-muted rounded-lg bg-background ",
+        "flex flex-wrap gap-1 p-1 py-2 ring-1 ring-muted rounded-lg bg-secondary-custom_secondary ",
         {
           "ring-1 focus-within:ring-ring": activeIndex === -1,
         },
@@ -282,22 +284,27 @@ const MultiSelectorInput = forwardRef<
   } = useMultiSelect();
 
   return (
-    <CommandPrimitive.Input
-      {...props}
-      tabIndex={0}
-      ref={inputRef}
-      value={inputValue}
-      onValueChange={activeIndex === -1 ? setInputValue : undefined}
-      onSelect={handleSelect}
-      onBlur={() => setOpen(false)}
-      onFocus={() => setOpen(true)}
-      onClick={() => setActiveIndex(-1)}
-      className={cn(
-        "ml-2 bg-transparent outline-none placeholder:text-muted-foreground flex-1 text-sm",
-        className,
-        activeIndex !== -1 && "caret-transparent"
-      )}
-    />
+    <>
+      <CommandPrimitive.Input
+        {...props}
+        tabIndex={0}
+        ref={inputRef}
+        value={inputValue}
+        onValueChange={activeIndex === -1 ? setInputValue : undefined}
+        onSelect={handleSelect}
+        onBlur={() => setOpen(false)}
+        onFocus={() => setOpen(true)}
+        onClick={() => setActiveIndex(-1)}
+        className={cn(
+          "ml-2 bg-transparent outline-none placeholder:text-muted-foreground flex-1 text-sm z-10",
+          className,
+          activeIndex !== -1 && "caret-transparent"
+        )}
+      />
+      <div className="absolute mr-2 z-0 right-[31px] ">
+        <ArrowDown2 size={20} />
+      </div>
+    </>
   );
 });
 

@@ -8,7 +8,7 @@ export default function TemplateAuth({
 }) {
   return (
     <>
-      <div className=" flex lg:flex-row flex-col-reverse shadow-2xl p-4 rounded-3xl ">
+      <div className="flex lg:flex-row flex-col-reverse shadow-2xl drop-shadow-xl p-4 rounded-3xl z-10 ">
         <div className="hidden flex-1 bg-gradient-to-r from-[#EBEBEB] rounded-3xl xl:flex items-center justify-center p-5">
           <div className="overflow-hidden w-[350px]">
             <Image
@@ -22,7 +22,7 @@ export default function TemplateAuth({
           </div>
         </div>
 
-        <div className="flex flex-1 justify-center items-center flex-col p-4">
+        <div className="flex flex-1 justify-center items-center flex-col p-2">
           {children}
         </div>
       </div>

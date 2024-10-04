@@ -6,7 +6,7 @@ export default function AuthLayout({
   return (
     <>
       <section className="relative flex flex-col justify-center items-center container min-h-screen mx-auto md:px-24 py-20 bg-secondary-custom_secondary">
-        <div className="relative w-full lg:px-52 z-10 px-3">{children}</div>
+        <div className=" w-full lg:px-52 z-10 px-3">{children}</div>
       </section>
     </>
   );

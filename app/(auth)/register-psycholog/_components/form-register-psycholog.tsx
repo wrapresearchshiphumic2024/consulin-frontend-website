@@ -744,7 +744,10 @@ export default function FormRegisterPsycholog() {
                           <AlertDialogAction type="submit" disabled={!isAgree}>
                             Agree
                           </AlertDialogAction>
-                          <AlertDialogCancel className="m-0">
+                          <AlertDialogCancel
+                            className="m-0"
+                            onClick={() => setAgree(false)}
+                          >
                             Cancel
                           </AlertDialogCancel>
                         </div>

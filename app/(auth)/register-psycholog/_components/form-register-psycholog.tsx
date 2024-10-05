@@ -28,21 +28,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { ArrowDown2, Paperclip } from "iconsax-react";
-import {
-  FileInput,
-  FileUploader,
-  FileUploaderContent,
-  FileUploaderItem,
-} from "@/components/ui/extension/file-upload";
-
-import FileSvgDrawer from "@/components/ui/file-svg-drawer";
 
 import { formRegisterSchema } from "@/helpers/validations/validation-auth";
 import { PasswordInput } from "@/components/ui/password-input";
 
 import ButtonStep from "./button-step";
 import FileUploadCustom from "@/components/ui/file-upload-custom";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
+import { Checkbox } from "@/components/ui/checkbox";
+import { ScrollArea } from "@/components/ui/scroll-area";
+
 interface page {
   number: number;
   status: boolean;
@@ -105,6 +110,7 @@ const dropzone_serticate = {
 
 export default function FormRegisterPsycholog() {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isAgree, setAgree] = useState(false);
   const [page, setPage] = useState<page[]>([
     {
       number: 0,
@@ -136,6 +142,7 @@ export default function FormRegisterPsycholog() {
       sertificate: [],
       profesional_identification_number: "",
       spesialization: [],
+      work_experience: "",
       cv: [],
       practice_license: [],
     },
@@ -210,7 +217,7 @@ export default function FormRegisterPsycholog() {
 
   return (
     <>
-      <div className="absolute z-10 top-[-50px] left-0 right-0 flex justify-center items-center gap-2">
+      <div className="absolute z-10 top-[-70px] left-0 right-0 flex justify-center items-center gap-2">
         <ButtonStep
           currentPage={currentPage}
           pageIndex={0}
@@ -309,6 +316,7 @@ export default function FormRegisterPsycholog() {
                         <FormControl>
                           <Input
                             placeholder="Phone Number"
+                            type="number"
                             {...field}
                             className="border-primary-custom_primary border-2 placeholder:text-primary-custom_primary-foreground"
                           />
@@ -453,9 +461,6 @@ export default function FormRegisterPsycholog() {
                                 placeholder="Languages Master"
                                 className="placeholder:text-primary-custom_primary-foreground"
                               />
-                              <div className="mr-2">
-                                <ArrowDown2 size={20} />
-                              </div>
                             </div>
                           </MultiSelectorTrigger>
                           <MultiSelectorContent>
@@ -536,9 +541,6 @@ export default function FormRegisterPsycholog() {
                                 placeholder="Spesialization"
                                 className="placeholder:text-primary-custom_primary-foreground"
                               />
-                              <div className="mr-2">
-                                <ArrowDown2 size={20} />
-                              </div>
                             </div>
                           </MultiSelectorTrigger>
                           <MultiSelectorContent>
@@ -574,7 +576,7 @@ export default function FormRegisterPsycholog() {
                             <SelectTrigger className="border-primary-custom_primary border-2 ">
                               <SelectValue
                                 placeholder="Work Experience"
-                                className="placeholder:text-primary-custom_primary-foreground"
+                                className="placeholder:text-primary-custom_primary"
                               />
                             </SelectTrigger>
                           </FormControl>
@@ -609,7 +611,7 @@ export default function FormRegisterPsycholog() {
                           reSelect={true}
                         />
                         {field.value.length < 1 && (
-                          <p className="text-red-500 text-sm">diisi</p>
+                          <p className="text-red-500 text-sm">CV is required</p>
                         )}
                       </FormItem>
                     )}
@@ -629,7 +631,9 @@ export default function FormRegisterPsycholog() {
                           reSelect={true}
                         />
                         {field.value.length < 1 && (
-                          <p className="text-red-500 text-sm">diisi</p>
+                          <p className="text-red-500 text-sm">
+                            Practice License is required
+                          </p>
                         )}
                       </FormItem>
                     )}
@@ -647,12 +651,110 @@ export default function FormRegisterPsycholog() {
                   Next
                 </Button>
               ) : (
-                <Button
-                  type="submit"
-                  className="w-full bg-primary-custom_primary"
-                >
-                  Submit
-                </Button>
+                // <Button
+                //   type="submit"
+                //   className="w-full bg-primary-custom_primary"
+                // >
+                //   Submit
+                // </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger
+                    className="w-full"
+                    disabled={
+                      !form.formState.isValid ||
+                      form.getValues("cv").length < 1 ||
+                      form.getValues("practice_license").length < 1
+                    }
+                  >
+                    <Button
+                      type="submit"
+                      className="w-full bg-primary-custom_primary"
+                      disabled={
+                        form.getValues("cv").length < 1 ||
+                        form.getValues("practice_license").length < 1
+                      }
+                    >
+                      Submit
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle className="text-center">
+                        Terms Of Service
+                      </AlertDialogTitle>
+                      <AlertDialogDescription className="text-left">
+                        <ScrollArea className="h-80 w-full ">
+                          These Terms and Conditions govern the use of
+                          psychology consultation services through the Consulin
+                          platform. “Consulin” is a mental health platform that
+                          provides consultation services between patients and
+                          professional psychologists who are registered and have
+                          a valid license to practice. All information provided
+                          during registration, including work experience and
+                          certifications, must be accurate and verifiable.
+                          Consulin reserves the right to refuse or terminate the
+                          membership of psychologists who provide false
+                          information. Psychologists are required to provide
+                          consultation services with high standards of
+                          professionalism in accordance with applicable
+                          psychological ethics and maintain the confidentiality
+                          of patient information. They are not allowed to
+                          provide medical diagnosis or treatment without valid
+                          authorization. All consultation sessions must be
+                          conducted according to an agreed schedule, whether
+                          online or face-to-face, and psychologists must
+                          maintain professional communication with patients.
+                          Consulin is not liable for any losses arising from
+                          consultations between psychologists and patients. In
+                          the event of a dispute, Consulin will serve as a
+                          mediator. Consulin also reserves the right to suspend
+                          or terminate a psychologist's account if there is a
+                          violation of these Terms and Conditions. Changes to
+                          the Terms and Conditions may be made at any time, by
+                          notification via email or the platform, and
+                          psychologists who continue to use the platform are
+                          deemed to have agreed to such changes. By registering,
+                          psychologists agree to comply with Consulin's Privacy
+                          Policy regarding the use and storage of patient
+                          personal data. All data must be stored securely and
+                          may not be shared with unauthorized third parties.
+                          These Terms and Conditions are subject to the
+                          applicable laws of Indonesia, and any disputes will be
+                          resolved through appropriate legal channels.
+                        </ScrollArea>
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <div>
+                        <div className="flex items-center space-x-2 mb-4">
+                          <Checkbox
+                            id="terms"
+                            onCheckedChange={(checked) => {
+                              setAgree(!!checked);
+                            }}
+                          />
+                          <label
+                            htmlFor="terms"
+                            className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                          >
+                            Accept terms and conditions
+                          </label>
+                        </div>
+                        <div className="flex gap-2 items-center">
+                          <AlertDialogAction type="submit" disabled={!isAgree}>
+                            Agree
+                          </AlertDialogAction>
+                          <AlertDialogCancel
+                            className="m-0"
+                            onClick={() => setAgree(false)}
+                          >
+                            Cancel
+                          </AlertDialogCancel>
+                        </div>
+                      </div>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
               )}
             </div>
           </div>

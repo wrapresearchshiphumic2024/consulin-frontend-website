@@ -8,7 +8,9 @@ export default function Main() {
         id="home"
       >
         <div className="flex lg:justify-between justify-center min-h-screen  items-center flex-col lg:flex-row ">
-          <div className={`text-primary-custom_primary flex-1 `}>
+          <div
+            className={`flex flex-col justify-center text-primary-custom_primary md:flex-1 `}
+          >
             <div className="flex items-center gap-3 mb-3">
               <div
                 className={`md:w-[50px] md:h-[50px] w-[30px] h-[30px] bg-accent-custom_accent flex justify-center items-center rounded-3xl `}
@@ -34,12 +36,14 @@ export default function Main() {
               psychologists and get an AI-powered assessment of your stress,
               anxiety, and depression.
             </p>
-            <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
-              Free Consultation
-            </Button>
+            <div>
+              <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
+                Free Consultation
+              </Button>
+            </div>
           </div>
-          <div className="flex flex-1 justify-center items-center">
-            <div className="overflow-hidden w-[300px]  lg:w-[400px]  md:rounded-[100px] rounded-[50px]  ">
+          <div className="flex md:flex-1 justify-center items-center">
+            <div className="overflow-hidden w-[300px]  lg:w-[300px]  md:rounded-[100px] rounded-[50px]  ">
               <Image
                 src={"/assets/images/Psychologist Asset.png"}
                 width="0"

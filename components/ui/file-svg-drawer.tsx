@@ -18,7 +18,7 @@ export default function FileSvgDrawer({ title }: { title: string }) {
         />
       </svg>
       <center>
-        <p className="mb-1 text-sm text-gray-500 dark:text-gray-400">
+        <p className=" text-sm text-gray-500 dark:text-gray-400 mt-1">
           Drag & Drop to {title}
         </p>
         <p>or</p>

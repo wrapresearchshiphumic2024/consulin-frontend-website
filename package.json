@@ -26,6 +26,7 @@
     "consulin-frontend-website": "file:",
     "hamburger-react": "^2.5.1",
     "iconsax-react": "^0.0.8",
+    "idb": "^8.0.0",
     "lucide-react": "^0.446.0",
     "next": "14.2.13",
     "next-themes": "^0.3.0",

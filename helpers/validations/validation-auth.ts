@@ -73,8 +73,7 @@ export const formRegisterSchema = z
               message: "CV size must be less than 4MB",
             }
           )
-      )
-      .max(1, { message: "Only one CV file is allowed" }),
+      ).nonempty({ message: "CV is required" }),
     practice_license: z
       .array(
         z
@@ -86,7 +85,7 @@ export const formRegisterSchema = z
             }
           )
       )
-      .max(1, { message: "Only one practice license file is allowed" }),
+      .nonempty({ message: "Practice license is required" }),
   })
   .refine((data) => {
     

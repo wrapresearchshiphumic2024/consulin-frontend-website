@@ -22,7 +22,7 @@ export default function Collaborate() {
         <p className="text-center">
           Consulin supports your mental health journey
         </p>
-        <Link href={"/register-psycholog"}>
+        <Link href={"/signup-psycholog"}>
           <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
             Join Now
           </Button>

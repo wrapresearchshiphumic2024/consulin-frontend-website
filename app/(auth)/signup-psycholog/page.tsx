@@ -1,6 +1,6 @@
 import Link from "next/link";
 import TemplateAuth from "../_components/template-auth";
-import FormRegisterPsycholog from "./_components/form-register-psycholog";
+import FormSignUpPsycholog from "./_components/form-signup-psycholog";
 
 export default function RegisterPsycholog() {
   return (
@@ -11,10 +11,10 @@ export default function RegisterPsycholog() {
           <p>Enter details to create your psycholog account</p>
         </center>
         <div className="mt-10 w-full">
-          <FormRegisterPsycholog />
+          <FormSignUpPsycholog />
           <div className="flex justify-center flex-wrap items-center gap-1 mt-5">
             <p className="text-netral-primary ">Already have an account?</p>
-            <Link href={"/login"}>
+            <Link href={"/signin"}>
               <p className="text-[#2785FF] font-bold">Sign in now</p>
             </Link>
           </div>

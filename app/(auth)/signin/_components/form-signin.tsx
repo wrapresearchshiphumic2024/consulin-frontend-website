@@ -15,7 +15,7 @@ import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { formLoginSchema } from "@/helpers/validations/validation-auth";
 
-export default function FormRegisterPsycholog() {
+export default function FormSignIn() {
   const form = useForm<z.infer<typeof formLoginSchema>>({
     resolver: zodResolver(formLoginSchema),
     defaultValues: {

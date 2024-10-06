@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${poppins.variable} scroll-smooth `}>
       <body
-        className={`relative bg-secondary-custom_secondary overflow-x-hidden `}
+        className={` bg-secondary-custom_secondary overflow-x-hidden w-screen`}
       >
         {children}
         <Toaster />

@@ -3,19 +3,19 @@ import CardReason, { CardReasonProps } from "../ui/card-reason";
 const reasons: CardReasonProps[] = [
   {
     icon: "/assets/icons/Mental Icon.png",
-    title: "Mental WELLBEING",
+    title: "MENTAL WELLBEING",
     description:
       "Get support to manage stress, anxiety and other emotional challenges",
   },
   {
     icon: "/assets/icons/Happy Icon.png",
-    title: "Balanced Mood",
+    title: "BALANCED MOOD",
     description:
       "Get support to manage stress, anxiety and other emotional challenges",
   },
   {
-    icon: "/assets/icons/Mental Icon.png",
-    title: "Self-Discovery",
+    icon: "/assets/icons/self discovery.png",
+    title: "SELF-DISCOVERY",
     description:
       "Get support to manage stress, anxiety and other emotional challenges",
   },
@@ -23,7 +23,7 @@ const reasons: CardReasonProps[] = [
 export default function Reason() {
   return (
     <section className="container mx-auto px-5 md:px-24 z-10 ">
-      <div className=" flex pt-[100px]  lg:mt-0  text-primary-custom_primary flex-col ">
+      <div className=" flex pt-[100px]  lg:mt-0  text-netral-primary flex-col ">
         <center>
           <h1 className=" lg:text-[44px] text-4xl font-bold  md:mb-10">
             WHY CHOOSE US?

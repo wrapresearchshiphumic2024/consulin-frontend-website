@@ -16,7 +16,7 @@ export default function Collaborate() {
             alt="Collab Vector"
           />
         </div>
-        <h1 className=" lg:text-[45px] text-2xl font-bold my-10 text-center  ">
+        <h1 className=" lg:text-[45px] text-2xl font-bold my-10 text-center text-netral-primary ">
           COLLABORATE WITH US
         </h1>
         <p className="text-center">

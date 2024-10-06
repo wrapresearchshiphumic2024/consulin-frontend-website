@@ -19,8 +19,8 @@ export default function About() {
           <div
             className={` text-primary-custom_primary lg:text-end pt-[50px] ml-0 md:ml-10 flex-1 text-center `}
           >
-            <div className="relative ">
-              <h1 className=" lg:text-[45px] text-4xl	font-bold z-10 mb-10">
+            <div className="relative  text-netral-primary">
+              <h1 className=" lg:text-[45px] text-4xl	font-bold z-10 mb-10 ">
                 ABOUT CONSULIN
               </h1>
               <div
@@ -28,7 +28,7 @@ export default function About() {
               ></div>
             </div>
 
-            <p>
+            <p className="text-primary-custom_primary">
               Consulin is a mental health platform that provides quick and easy
               access to professional psychologists. Our mission is to help you
               maintain emotional balance and well-being through a modern

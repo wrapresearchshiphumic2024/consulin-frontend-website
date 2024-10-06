@@ -27,7 +27,7 @@ export default function CardReason({
           className={`absoute md:w-[50px] md:h-[50px] w-[30px] h-[30px]   bg-accent-custom_accent flex justify-center items-center rounded-3xl absolute md:top-[-20px] top-[-10px] right-[-20px] z-[-1] `}
         ></div>
       </div>
-      <div>
+      <div className="text-netral-primary">
         <h2 className="text-2xl font-bold text-center md:text-left">{title}</h2>
         <p className="text-center md:text-left">{description}</p>
       </div>

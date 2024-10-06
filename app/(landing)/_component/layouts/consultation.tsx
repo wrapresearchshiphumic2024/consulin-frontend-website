@@ -16,7 +16,7 @@ export default function Consultation() {
               experienced in providing mental health consultation services.
             </p>
             <Button className="bg-secondary-custom_secondary text-primary-custom_primary rounded-3xl mt-4">
-              Free Consultation
+              Consultation Now
             </Button>
           </div>
           <div className="flex flex-1 justify-center items-center">

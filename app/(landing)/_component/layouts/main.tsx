@@ -7,7 +7,7 @@ export default function Main() {
         className="container mx-auto px-5 z-10 pt-32 md:px-24 lg:pt-12"
         id="home"
       >
-        <div className="flex lg:justify-between justify-center min-h-screen  items-center flex-col lg:flex-row ">
+        <div className="flex lg:justify-between justify-center lg:min-h-screen  items-center flex-col lg:flex-row ">
           <div
             className={`flex flex-col justify-center text-primary-custom_primary md:flex-1 `}
           >
@@ -43,7 +43,7 @@ export default function Main() {
             </div>
           </div>
           <div className="flex md:flex-1 justify-center items-center">
-            <div className="overflow-hidden w-[300px]  lg:w-[300px]  md:rounded-[100px] rounded-[50px]  ">
+            <div className="overflow-hidden w-[300px]  lg:w-[400px]  md:rounded-[100px] rounded-[50px] lg:p-0 p-10  ">
               <Image
                 src={"/assets/images/Psychologist Asset.png"}
                 width="0"

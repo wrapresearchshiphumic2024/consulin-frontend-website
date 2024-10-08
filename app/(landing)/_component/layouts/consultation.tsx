@@ -20,7 +20,7 @@ export default function Consultation() {
             </Button>
           </div>
           <div className="flex flex-1 justify-center items-center">
-            <div className="overflow-hidden w-[200px] md:w-[400px] mt-10 md:mt-0">
+            <div className="overflow-hidden w-[200px]  md:w-[400px] mb-10 lg:mb-0">
               <Image
                 src={"/assets/images/Psychologist Assets.png"}
                 width="0"

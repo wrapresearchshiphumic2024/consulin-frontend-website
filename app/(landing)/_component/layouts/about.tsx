@@ -24,7 +24,7 @@ export default function About() {
                 ABOUT CONSULIN
               </h1>
               <div
-                className={`w-[50px] h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-3xl absolute top-[-20px] right-[-20px] z-[-1] `}
+                className={`w-[50px] h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-3xl absolute top-[-20px] md:right-[-20px]  z-[-1] `}
               ></div>
             </div>
 

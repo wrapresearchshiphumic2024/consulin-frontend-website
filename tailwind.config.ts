@@ -40,9 +40,9 @@ const config: Config = {
   			},
   			accent: {
   				DEFAULT: 'hsl(var(--accent))',
-				  custom_accent: '#F28D35',
+				custom_accent: '#F28D35',
   				foreground: 'hsl(var(--accent-foreground))'
-  			},
+  			},	
   			destructive: {
   				DEFAULT: 'hsl(var(--destructive))',
   				foreground: 'hsl(var(--destructive-foreground))'

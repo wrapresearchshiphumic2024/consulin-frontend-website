@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function BackButton() {
   return (
-    <div className="absolute lg:top-[-70px] lg:left-[-300px] top-[-70px] left-0  flex items-center gap-3 z-40">
+    <div className="absolute lg:top-[-70px] lg:left-[-300px] top-[-70px] left-0  lg:flex items-center gap-3 z-40 hidden ">
       <Link href="/" className="z-20">
         <Button className="bg-primary-custom_primary text-secondary-custom_secondary rounded-3xl w-[50px] h-[50px]">
           <ArrowLeft2 />

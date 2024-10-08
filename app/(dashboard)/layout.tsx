@@ -1,7 +1,7 @@
-import DashboardLayoutTemplate from "./_components/dahsboard-layout-template";
+import DashboardLayoutTemplate from "./_components/dashboard-layout-template";
 
 export default function DashboardLayout({
-  children, // will be a page or nested layout
+  children,
 }: {
   children: React.ReactNode;
 }) {

@@ -55,7 +55,7 @@ export default function Navbar() {
             <Button
               className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
             >
-              Login
+              Sign In
             </Button>
           </Link>
         </div>

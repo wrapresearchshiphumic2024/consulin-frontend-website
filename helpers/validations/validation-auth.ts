@@ -110,3 +110,5 @@ export const formLoginSchema = z.object({
   .regex(/[A-Z]/, { message: "Password must contain at least one uppercase letter" })
   .regex(/\d/, { message: "Password must contain at least one number" }),
 });
+
+export const formForgotPasswordSchema = z.object({  email: z.string().email(),});

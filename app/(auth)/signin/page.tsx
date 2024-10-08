@@ -8,7 +8,7 @@ export default function Login() {
     <TemplateAuth image="/assets/images/amico2.png">
       <center className="text-netral-primary ">
         <h2 className="font-bold text-3xl">Sign In</h2>
-        <p>Enter details to create your psycholog account</p>
+        <p>Enter your details to sign in as a Psychologist or Patient</p>
       </center>
       <div className="mt-10 w-full">
         <FormSignIn />

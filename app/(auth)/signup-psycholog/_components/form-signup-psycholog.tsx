@@ -75,6 +75,8 @@ export default function FormSignUpPsycholog() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isAgree, setAgree] = useState(false);
 
+  const savedData = localStorage.getItem("registerData");
+  const parsedData = savedData ? JSON.parse(savedData) : {};
   const [page, setPage] = useState<page[]>([
     {
       number: 0,
@@ -93,29 +95,31 @@ export default function FormSignUpPsycholog() {
   const form = useForm<Inputs>({
     resolver: zodResolver(formRegisterSchema),
     defaultValues: {
-      first_name: "",
-      last_name: "",
-      gender: "",
-      email: "",
-      phone_number: "",
-      password: "",
-      confirm_password: "",
-      degree: "",
-      university: "",
-      major: "",
-      graduation_year: "",
-      language: [],
-      sertificate: [],
-      profesional_identification_number: "",
-      spesialization: [],
-      work_experience: "",
-      cv: [],
-      practice_license: [],
+      first_name: parsedData.first_name || "",
+      last_name: parsedData.last_name || "",
+      gender: parsedData.gender || "",
+      email: parsedData.email || "",
+      phone_number: parsedData.phone_number || "",
+      password: parsedData.password || "",
+      confirm_password: parsedData.confirm_password || "",
+      degree: parsedData.degree || "",
+      university: parsedData.university || "",
+      major: parsedData.major || "",
+      graduation_year: parsedData.graduation_year || "",
+      language: parsedData.language || [],
+      sertificate: parsedData.sertificate || [],
+      profesional_identification_number:
+        parsedData.profesional_identification_number || "",
+      spesialization: parsedData.spesialization || [],
+      work_experience: parsedData.work_experience || "",
+      cv: parsedData.cv || [],
+      practice_license: parsedData.practice_license || [],
     },
   });
 
   useEffect(() => {
     const savedData = localStorage.getItem("registerData");
+
     if (savedData) {
       const parsedData = JSON.parse(savedData);
       Object.keys(parsedData).forEach((key) => {
@@ -132,6 +136,7 @@ export default function FormSignUpPsycholog() {
       localStorage.setItem("registerData", JSON.stringify(filteredData));
     }
   }, [form.watch()]);
+
   type FieldName = keyof Inputs;
   async function onSubmit(values: Inputs) {
     const fields = steps[currentPage]?.fields;

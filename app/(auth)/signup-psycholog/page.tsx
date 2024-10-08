@@ -1,6 +1,12 @@
 import Link from "next/link";
 import TemplateAuth from "../_components/template-auth";
-import FormSignUpPsycholog from "./_components/form-signup-psycholog";
+import dynamic from "next/dynamic";
+const FormSignUpPsycholog = dynamic(
+  () => import("./_components/form-signup-psycholog"),
+  {
+    ssr: false,
+  }
+);
 
 export default function RegisterPsycholog() {
   return (

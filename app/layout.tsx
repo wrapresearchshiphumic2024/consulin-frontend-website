@@ -31,11 +31,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html
-      lang="en"
-      className={`${poppins.variable} scroll-smooth overflow-x-hidden`}
-    >
-      <body className={`bg-secondary-custom_secondary`}>
+    <html lang="en" className={`${poppins.variable} scroll-smooth`}>
+      <body className={` bg-secondary-custom_secondary `}>
         {children}
         <Toaster />
       </body>

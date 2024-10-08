@@ -121,9 +121,11 @@ export default function FormSignUpPsycholog() {
   }, [form.setValue]);
   useEffect(() => {
     const formData = form.watch();
-    if (Object.keys(formData).length > 0) {
-      localStorage.setItem("registerData", JSON.stringify(formData));
-      console.log(formData);
+    const { cv, practice_license, sertificate, ...filteredData } = formData;
+
+    if (Object.keys(filteredData).length > 0) {
+      localStorage.setItem("registerData", JSON.stringify(filteredData));
+      console.log(filteredData);
     }
   }, [form.watch()]);
   type FieldName = keyof Inputs;

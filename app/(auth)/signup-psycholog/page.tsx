@@ -12,12 +12,14 @@ export default function RegisterPsycholog() {
         </center>
         <div className="mt-10 w-full">
           <FormSignUpPsycholog />
-          <div className="flex justify-center flex-wrap items-center gap-1 mt-5">
-            <p className="text-netral-primary ">Already have an account?</p>
-            <Link href={"/signin"}>
-              <p className="text-[#2785FF] font-bold">Sign in now</p>
-            </Link>
-          </div>
+          <center className="mt-2">
+            <p className="text-netral-primary text-sm">
+              Are you a psychologist? Sign up as a Psychologist
+              <Link href={"/signup"}>
+                <span className="text-[#2785FF] font-bold"> Here</span>
+              </Link>
+            </p>
+          </center>
         </div>
       </TemplateAuth>
     </>

@@ -12,8 +12,8 @@ export default function Login() {
       </center>
       <div className="mt-10 w-full">
         <FormSignIn />
-        <center className="mt-5">
-          <p className="text-netral-primary ">
+        <center className="mt-2">
+          <p className="text-netral-primary text-sm">
             Create an account as
             <Link href={"/signup-psycholog"}>
               <span className="text-[#2785FF] font-bold"> Pyscholog </span>

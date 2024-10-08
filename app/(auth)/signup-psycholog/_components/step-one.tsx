@@ -7,6 +7,21 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+const gender = [
+  {
+    name: "Male",
+  },
+  {
+    name: "Female",
+  },
+];
 export default function StepOne() {
   const form = useFormContext();
   return (
@@ -46,6 +61,40 @@ export default function StepOne() {
 
               <FormMessage />
             </FormItem>
+          )}
+        />
+      </div>
+      <div className="col-span-2">
+        <FormField
+          control={form.control}
+          name="gender"
+          render={({ field }) => (
+            <>
+              <FormItem>
+                <Select
+                  onValueChange={field.onChange}
+                  defaultValue={field.value}
+                >
+                  <FormControl>
+                    <SelectTrigger className="border-primary-custom_primary border-2 ">
+                      <SelectValue
+                        placeholder="Gender"
+                        className="placeholder:text-primary-custom_primary"
+                      />
+                    </SelectTrigger>
+                  </FormControl>
+                  <SelectContent>
+                    {gender.map((gender) => (
+                      <SelectItem key={gender.name} value={gender.name}>
+                        {gender.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+
+                <FormMessage />
+              </FormItem>
+            </>
           )}
         />
       </div>

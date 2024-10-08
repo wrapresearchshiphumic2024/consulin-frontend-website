@@ -38,6 +38,7 @@ const steps = [
     fields: [
       "first_name",
       "last_name",
+      "gender",
       "email",
       "phone_number",
       "password",
@@ -72,6 +73,8 @@ type Inputs = z.infer<typeof formRegisterSchema>;
 export default function FormSignUpPsycholog() {
   const [currentPage, setCurrentPage] = useState(0);
   const [isAgree, setAgree] = useState(false);
+  const savedData = localStorage.getItem("registerData");
+  const parsedData = savedData ? JSON.parse(savedData) : {};
   const [page, setPage] = useState<page[]>([
     {
       number: 0,
@@ -90,42 +93,44 @@ export default function FormSignUpPsycholog() {
   const form = useForm<Inputs>({
     resolver: zodResolver(formRegisterSchema),
     defaultValues: {
-      first_name: "",
-      last_name: "",
-      email: "",
-      phone_number: "",
-      password: "",
-      confirm_password: "",
-      degree: "",
-      university: "",
-      major: "",
-      graduation_year: "",
-      language: [],
-      sertificate: [],
-      profesional_identification_number: "",
-      spesialization: [],
-      work_experience: "",
-      cv: [],
-      practice_license: [],
+      first_name: parsedData.first_name || "",
+      last_name: parsedData.last_name || "",
+      gender: parsedData.gender || "",
+      email: parsedData.email || "",
+      phone_number: parsedData.phone_number || "",
+      password: parsedData.password || "",
+      confirm_password: parsedData.confirm_password || "",
+      degree: parsedData.degree || "",
+      university: parsedData.university || "",
+      major: parsedData.major || "",
+      graduation_year: parsedData.graduation_year || "",
+      language: parsedData.language || [],
+      sertificate: parsedData.sertificate || [],
+      profesional_identification_number:
+        parsedData.profesional_identification_number || "",
+      spesialization: parsedData.spesialization || [],
+      work_experience: parsedData.work_experience || "",
+      cv: parsedData.cv || [],
+      practice_license: parsedData.practice_license || [],
     },
   });
 
-  useEffect(() => {
-    const savedData = localStorage.getItem("registerData");
-    if (savedData) {
-      const parsedData = JSON.parse(savedData);
-      Object.keys(parsedData).forEach((key) => {
-        form.setValue(key as keyof Inputs, parsedData[key]); // Gunakan type assertion di sini
-      });
-    }
-  }, [form.setValue]);
+  // useEffect(() => {
+  //   const savedData = localStorage.getItem("registerData");
+  //   if (savedData) {
+  //     const parsedData = JSON.parse(savedData);
+  //     Object.keys(parsedData).forEach((key) => {
+  //       form.setValue(key as keyof Inputs, parsedData[key]);
+  //     });
+  //   }
+  // }, [form.setValue]);
+
   useEffect(() => {
     const formData = form.watch();
     const { cv, practice_license, sertificate, ...filteredData } = formData;
 
     if (Object.keys(filteredData).length > 0) {
       localStorage.setItem("registerData", JSON.stringify(filteredData));
-      console.log(filteredData);
     }
   }, [form.watch()]);
   type FieldName = keyof Inputs;
@@ -162,6 +167,9 @@ export default function FormSignUpPsycholog() {
       setCurrentPage((step) => step + 1);
       return;
     }
+  }
+  function previousPage() {
+    setCurrentPage((step) => step - 1);
   }
 
   async function onClickPage(number: number) {
@@ -239,16 +247,18 @@ export default function FormSignUpPsycholog() {
                           certifications, must be accurate and verifiable.
                           Consulin reserves the right to refuse or terminate the
                           membership of psychologists who provide false
-                          information. Psychologists are required to provide
-                          consultation services with high standards of
-                          professionalism in accordance with applicable
-                          psychological ethics and maintain the confidentiality
-                          of patient information. They are not allowed to
-                          provide medical diagnosis or treatment without valid
-                          authorization. All consultation sessions must be
-                          conducted according to an agreed schedule, whether
-                          online or face-to-face, and psychologists must
-                          maintain professional communication with patients.
+                          information. <br /> <br />
+                          Psychologists are required to provide consultation
+                          services with high standards of professionalism in
+                          accordance with applicable psychological ethics and
+                          maintain the confidentiality of patient information.
+                          They are not allowed to provide medical diagnosis or
+                          treatment without valid authorization. All
+                          consultation sessions must be conducted according to
+                          an agreed schedule, whether online or face-to-face,
+                          and psychologists must maintain professional
+                          communication with patients.
+                          <br /> <br />
                           Consulin is not liable for any losses arising from
                           consultations between psychologists and patients. In
                           the event of a dispute, Consulin will serve as a
@@ -258,14 +268,15 @@ export default function FormSignUpPsycholog() {
                           the Terms and Conditions may be made at any time, by
                           notification via email or the platform, and
                           psychologists who continue to use the platform are
-                          deemed to have agreed to such changes. By registering,
-                          psychologists agree to comply with Consulin's Privacy
-                          Policy regarding the use and storage of patient
-                          personal data. All data must be stored securely and
-                          may not be shared with unauthorized third parties.
-                          These Terms and Conditions are subject to the
-                          applicable laws of Indonesia, and any disputes will be
-                          resolved through appropriate legal channels.
+                          deemed to have agreed to such changes. <br /> <br />
+                          By registering, psychologists agree to comply with
+                          Consulin's Privacy Policy regarding the use and
+                          storage of patient personal data. All data must be
+                          stored securely and may not be shared with
+                          unauthorized third parties. These Terms and Conditions
+                          are subject to the applicable laws of Indonesia, and
+                          any disputes will be resolved through appropriate
+                          legal channels.
                         </ScrollArea>
                       </AlertDialogDescription>
                     </AlertDialogHeader>
@@ -300,6 +311,14 @@ export default function FormSignUpPsycholog() {
                     </AlertDialogFooter>
                   </AlertDialogContent>
                 </AlertDialog>
+              )}
+              {currentPage > 0 && (
+                <Button
+                  onClick={previousPage}
+                  className="w-full bg-secondary-custom_secondary mt-2 border-primary-custom_primary text-primary-custom_primary border-2 hover:text-secondary-custom_secondary"
+                >
+                  Back
+                </Button>
               )}
             </div>
           </div>

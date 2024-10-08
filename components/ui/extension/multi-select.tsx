@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/command";
 import { cn } from "@/lib/utils";
 import { Command as CommandPrimitive } from "cmdk";
-import { ArrowDown2 } from "iconsax-react";
+import { ArrowDown2, ArrowLeft2 } from "iconsax-react";
 
 import { X as RemoveIcon, Check } from "lucide-react";
 import React, {
@@ -20,6 +20,7 @@ import React, {
   useContext,
   useState,
 } from "react";
+import { Checkbox } from "../checkbox";
 
 interface MultiSelectorProps
   extends React.ComponentPropsWithoutRef<typeof CommandPrimitive> {
@@ -280,6 +281,7 @@ const MultiSelectorInput = forwardRef<
     activeIndex,
     setActiveIndex,
     handleSelect,
+    open,
     ref: inputRef,
   } = useMultiSelect();
 
@@ -302,7 +304,7 @@ const MultiSelectorInput = forwardRef<
         )}
       />
       <div className="absolute mr-2 z-0 right-[31px] ">
-        <ArrowDown2 size={20} />
+        {open ? <ArrowLeft2 size={20} /> : <ArrowDown2 size={20} />}
       </div>
     </>
   );
@@ -369,15 +371,17 @@ const MultiSelectorItem = forwardRef<
         setInputValue("");
       }}
       className={cn(
-        "rounded-md cursor-pointer px-2 py-1 transition-colors flex justify-between ",
+        "rounded-md cursor-pointer px-2 py-1 transition-colors flex gap-2 items-center  ",
         className,
         isIncluded && "opacity-50 cursor-default",
         props.disabled && "opacity-50 cursor-not-allowed"
       )}
       onMouseDown={mousePreventDefault}
     >
+      <div className="w-[15px] h-[15px] border-primary-custom_primary text-primary-custom_primary border-2 flex justify-center items-center rounded-sm">
+        {isIncluded && <Check className="h-5 w-5" />}
+      </div>
       {children}
-      {isIncluded && <Check className="h-4 w-4" />}
     </CommandItem>
   );
 });

@@ -10,6 +10,10 @@ export const formRegisterSchema = z
       .string()
       .min(2, { message: "Last name is required" })
       .max(50, { message: "Last name cannot exceed 50 characters" }),
+    gender: z
+      .string()
+      .min(2, { message: "Gender is required" }),
+     
     email: z
       .string()
       .email({ message: "Please provide a valid email address" }),

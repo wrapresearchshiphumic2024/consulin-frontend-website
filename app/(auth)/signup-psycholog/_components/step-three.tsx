@@ -127,7 +127,7 @@ export default function StepThree() {
           name="work_experience"
           render={({ field }) => (
             <FormItem>
-              <Select onValueChange={field.onChange} defaultValue={field.value}>
+              <Select onValueChange={field.onChange} value={field.value}>
                 <FormControl>
                   <SelectTrigger className="border-primary-custom_primary border-2 ">
                     <SelectValue

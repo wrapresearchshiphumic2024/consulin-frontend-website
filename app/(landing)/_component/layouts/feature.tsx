@@ -41,7 +41,7 @@ export default function Feature() {
           <div className="text-netral-primary lg:text-end md:pt-[50px] pt-[100px]  ml-0 lg:ml-10 flex-1 text-center mb-10 md:mb-0">
             <h1 className=" relative lg:text-[45px] text-4xl font-bold z-10 mb-10 ">
               MAIN FEATURES
-              <div className="w-[30px] h-[30px] bg-accent-custom_accent flex justify-center items-center rounded-3xl absolute top-[-15px] left-[280px] z-[-1]"></div>
+              <div className="w-[30px] h-[30px] bg-accent-custom_accent flex justify-center items-center rounded-3xl absolute top-[-15px] md:left-[280px] z-[-1]"></div>
             </h1>
 
             <p className="z-10">

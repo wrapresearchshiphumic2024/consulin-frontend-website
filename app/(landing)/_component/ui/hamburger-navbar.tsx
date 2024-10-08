@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LinkProps } from "../layouts/navbar";
+import { Button } from "@/components/ui/button";
 interface DesktopNavbarProps {
   links: LinkProps[];
 }
@@ -52,6 +53,13 @@ export default function HamburgerNavbar({ links }: DesktopNavbarProps) {
               {link.title}
             </Link>
           ))}
+          <Link href="/signin">
+            <Button
+              className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+            >
+              Sign In
+            </Button>
+          </Link>
         </div>
       )}
     </>

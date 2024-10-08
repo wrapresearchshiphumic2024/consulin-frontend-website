@@ -14,6 +14,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { formLoginSchema } from "@/helpers/validations/validation-auth";
+import { Checkbox } from "@/components/ui/checkbox";
+import Link from "next/link";
 
 export default function FormSignIn() {
   const form = useForm<z.infer<typeof formLoginSchema>>({
@@ -76,7 +78,15 @@ export default function FormSignIn() {
                 )}
               />
             </div>
-
+            <div className="col-span-2 flex justify-between items-center flex-wrap text-sm text-netral-primary font-semibold">
+              <div className="flex items-center gap-2 ">
+                <Checkbox /> <p>Remember me</p>
+              </div>
+              <Link href="/forgot-password">
+                <p>Forgot Password?</p>
+              </Link>
+            </div>
+            <div></div>
             <div className="col-span-2">
               <Button
                 type="submit"

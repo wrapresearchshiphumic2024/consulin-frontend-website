@@ -1,0 +1,49 @@
+"use client";
+import { cn } from "@/lib/utils";
+import { Home, Package, ShoppingCart } from "lucide-react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+export default function SidebarDesktop() {
+  const pathname = usePathname();
+  return (
+    <>
+      <Link
+        href="/dashboard"
+        className={cn(
+          pathname === "/dashboard"
+            ? "bg-secondary-custom_secondary/[.08]"
+            : "",
+          "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all hover:font-semibold"
+        )}
+      >
+        <Home className="h-4 w-4" />
+        Home
+      </Link>
+      <Link
+        href="/dashboard/approve-psyghologst"
+        className={cn(
+          pathname === "/dashboard/approve-psyghologst"
+            ? "bg-secondary-custom_secondary/[.08]"
+            : "",
+          "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all   hover:font-semibold"
+        )}
+      >
+        <ShoppingCart className="h-4 w-4" />
+        Approve Psyghologst
+      </Link>
+      <Link
+        href="/dashboard#"
+        className={cn(
+          pathname === "/dashboar#"
+            ? "bg-secondary-custom_secondary/[.08]"
+            : "",
+          "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all  hover:font-semibold"
+        )}
+      >
+        <Package className="h-4 w-4" />
+        List Psyghologst
+      </Link>
+    </>
+  );
+}

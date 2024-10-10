@@ -19,6 +19,7 @@ import Link from "next/link";
 
 export default function FormSignIn() {
   const form = useForm<z.infer<typeof formLoginSchema>>({
+    mode: "all",
     resolver: zodResolver(formLoginSchema),
     defaultValues: {
       email: "",

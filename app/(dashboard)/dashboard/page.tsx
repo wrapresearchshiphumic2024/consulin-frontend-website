@@ -1,4 +1,8 @@
+import IconPsychology from "@/components/icons/icon-psychology";
 import CardDashboard from "./_components/card-dashboard";
+import IconPatient from "@/components/icons/icon-patient";
+import IconConsultation from "@/components/icons/icon-consultation";
+import IconCompletion from "@/components/icons/icon-completion";
 
 export default function Dashboard() {
   return (
@@ -14,7 +18,7 @@ export default function Dashboard() {
             label="Total Psychologists"
             total="10.1k"
             status="Psychologists"
-            icon={<p>coba</p>}
+            icon={<IconPsychology className="md:w-24 md:h-24 w-12 h-12" />}
           />
         </div>
 
@@ -29,7 +33,9 @@ export default function Dashboard() {
                 total="400"
                 status="Psychologists"
                 background="bg-[#DDE7F9]"
-                icon={<p>coba</p>}
+                icon={
+                  <IconConsultation className="md:w-16 md:h-16 w-12 h-12" />
+                }
                 styleLabel="md:text-xl"
                 styleTotal="md:text-3xl"
                 styleStatus="md:text-xl"
@@ -39,7 +45,7 @@ export default function Dashboard() {
                 total="200.2k"
                 status="Psychologists"
                 background="bg-[#DDE7F9]"
-                icon={<p>coba</p>}
+                icon={<IconCompletion className="md:w-16 md:h-16 w-12 h-12" />}
                 styleLabel="md:text-xl"
                 styleTotal="md:text-3xl"
                 styleStatus="md:text-xl"
@@ -48,13 +54,14 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {/* Elemen Ketiga (Menjadi Elemen Kedua di Mobile) */}
         <div className="order-2 lg:order-3">
           <CardDashboard
             label="Total Patient"
             total="120.1k"
             status="Patient"
-            icon={<p>coba</p>}
+            icon={
+              <IconPatient className="md:w-24 md:h-24 w-12 h-12 text-primary-custom_primary" />
+            }
           />
         </div>
       </div>

@@ -9,7 +9,7 @@ export default function TemplateAuth({
 }) {
   return (
     <>
-      <div className=" flex lg:flex-row flex-col-reverse shadow-2xl drop-shadow-xl p-4 rounded-3xl bg-secondary-custom_secondary">
+      <div className="relative flex lg:flex-row flex-col-reverse shadow-2xl drop-shadow-xl p-4 rounded-3xl bg-secondary-custom_secondary">
         <BackButton />
 
         <div className="hidden flex-1 bg-gradient-to-r from-[#EBEBEB] rounded-3xl xl:flex items-center justify-center p-5 z-30 ">

@@ -17,6 +17,7 @@ import { formForgotPasswordSchema } from "@/helpers/validations/validation-auth"
 
 export default function FormForgotPassword() {
   const form = useForm<z.infer<typeof formForgotPasswordSchema>>({
+    mode: "all",
     resolver: zodResolver(formForgotPasswordSchema),
     defaultValues: {
       email: "",

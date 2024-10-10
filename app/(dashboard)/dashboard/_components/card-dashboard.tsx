@@ -23,7 +23,7 @@ export default function CardDashboard({
     <div
       className={cn(
         background ? background : "bg-secondary-custom_secondary ",
-        "rounded-3xl md:p-10 p-5 flex justify-between items-center h-full"
+        "rounded-3xl md:p-10 p-5 flex justify-between items-center h-full gap-2"
       )}
     >
       <div className="flex flex-col md:h-4/5 md:justify-between ">

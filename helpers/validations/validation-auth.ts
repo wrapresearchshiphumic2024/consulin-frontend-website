@@ -103,7 +103,7 @@ export const formRegisterSchema = z
   });
 
 export const formLoginSchema = z.object({
-  email: z.string().email(),
+  email: z.string().email("Please provide a valid email address"),
   password: z
   .string()
   .min(8, { message: "Password must be at least 8 characters" })
@@ -111,4 +111,4 @@ export const formLoginSchema = z.object({
   .regex(/\d/, { message: "Password must contain at least one number" }),
 });
 
-export const formForgotPasswordSchema = z.object({  email: z.string().email(),});
+export const formForgotPasswordSchema = z.object({  email: z.string().email("Please provide a valid email address"),});

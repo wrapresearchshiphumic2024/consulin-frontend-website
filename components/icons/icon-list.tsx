@@ -11,8 +11,8 @@ export default function IconList({ className }: { className?: string }) {
       <path
         d="M17 1H1M12 6H1M6 11H1"
         stroke="#F5F5F7"
-        stroke-width="1.5"
-        stroke-linecap="round"
+        strokeWidth="1.5"
+        strokeLinecap="round"
       />
     </svg>
   );

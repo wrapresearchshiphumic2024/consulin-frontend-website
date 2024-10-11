@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils"; // Pastikan Anda memiliki utilitas cn
-import { Home, Package, ShoppingCart, Users, LineChart } from "lucide-react";
+import { Home, Package, ShoppingCart } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

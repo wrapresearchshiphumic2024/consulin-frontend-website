@@ -1,7 +1,7 @@
 import Navbar from "./_component/layouts/navbar";
 
 export default function LandingLayout({
-  children, // will be a page or nested layout
+  children,
 }: {
   children: React.ReactNode;
 }) {

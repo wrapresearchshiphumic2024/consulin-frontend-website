@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import Image from "next/image";
 export default function Main() {
   return (
-    <div className="bg-slate-200">
+    <div>
       <section
         className="container mx-auto px-5 z-10 pt-32 md:px-24 lg:pt-12"
         id="home"

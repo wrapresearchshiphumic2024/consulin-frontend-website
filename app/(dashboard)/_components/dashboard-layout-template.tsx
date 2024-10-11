@@ -1,18 +1,9 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { CircleUser, Home, Menu, PanelLeft, ShoppingCart } from "lucide-react";
+import { Menu, PanelLeft, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useState } from "react";
@@ -22,10 +13,14 @@ export default function DashboardLayoutTemplate({
   children,
   sidebarDesktopChildren,
   sidebarMobileChildren,
+  sidebarDesktopBottomChildren,
+  sidebarMobileBottomChildren,
 }: {
   children: React.ReactNode;
   sidebarDesktopChildren: React.ReactNode;
   sidebarMobileChildren: React.ReactNode;
+  sidebarDesktopBottomChildren: React.ReactNode;
+  sidebarMobileBottomChildren: React.ReactNode;
 }) {
   const [isOpen, setOpen] = useState(true);
   function Opened() {
@@ -76,13 +71,7 @@ export default function DashboardLayoutTemplate({
           <div className="mt-auto p-4 absolute bottom-0 flex-1 right-0 left-0 ">
             <div className="border-t-2 pt-4 ">
               <nav className="grid items-start text-sm font-medium gap-3">
-                <Link
-                  href="#"
-                  className="flex items-center gap-3 rounded-lg px-3 py-2 text-secondary-custom_secondary transition-all hover:text-primary"
-                >
-                  <ShoppingCart className="h-4 w-4" />
-                  Sign Out
-                </Link>
+                {sidebarDesktopBottomChildren}
               </nav>
             </div>
           </div>
@@ -124,36 +113,14 @@ export default function DashboardLayoutTemplate({
                 </Link>
                 {sidebarMobileChildren}
               </nav>
-              <div className="mt-auto">
+              <div className="mt-auto border-t-2 pt-4 ">
                 <nav className="grid gap-2 text-lg font-medium ">
-                  <Link
-                    href="#"
-                    className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:text-foreground"
-                  >
-                    <ShoppingCart className="h-5 w-5" />
-                    Sign Out
-                  </Link>
+                  {sidebarMobileBottomChildren}
                 </nav>
               </div>
             </SheetContent>
           </Sheet>
           <div className="w-full flex-1"></div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="rounded-full ">
-                <CircleUser className="h-5 w-5" />
-                <span className="sr-only">Toggle user menu</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuItem>Support</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
         </header>
 
         <main className=" p-4  lg:p-6 lg:px-10 h-full">{children}</main>

@@ -2,7 +2,7 @@
 import IconList from "@/components/icons/icon-list";
 import IconPsychology from "@/components/icons/icon-psychology";
 import { cn } from "@/lib/utils";
-import { Home, Package, ShoppingCart } from "lucide-react";
+import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 

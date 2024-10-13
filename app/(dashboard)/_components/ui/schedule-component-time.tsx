@@ -46,8 +46,8 @@ export default function ScheduleComponentTime({
 
   return (
     <div>
-      <h3>Choose {isSingleSelect ? "a time slot" : "time slots"}:</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:w-[450px] w-full">
+      <h3>Set Available Time Slots: </h3>
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:w-[450px] w-full mt-5">
         {days.map((item) => (
           <div
             key={item.value}
@@ -62,15 +62,6 @@ export default function ScheduleComponentTime({
             <p>{item.label}</p>
           </div>
         ))}
-      </div>
-      <div className="flex items-center space-x-2 mt-4">
-        <Checkbox id="terms" />
-        <label
-          htmlFor="terms"
-          className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-        >
-          Repeat in every week
-        </label>
       </div>
     </div>
   );

@@ -47,7 +47,7 @@ export const columns: ColumnDef<Appointment_history>[] = [
           className="text-netral-primary"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
-          Patient Name
+          Date
           <ArrowUpDown className="ml-2 h-4 w-4" />
         </Button>
       );

@@ -75,8 +75,11 @@ export default function FormSchedule() {
             />
           </div>
 
-          <Button type="submit" className="w-full bg-primary-custom_primary">
-            Sign In
+          <Button type="submit" className=" bg-green-500 mr-3">
+            Save
+          </Button>
+          <Button type="button" className=" bg-red-500">
+            Cancel
           </Button>
         </form>
       </Form>

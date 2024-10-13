@@ -37,9 +37,9 @@ export default function SidebarDesktopPsychologist() {
         Scheduled Appointment
       </Link>
       <Link
-        href="/dashboard-psychologist/manage-shedule"
+        href="/dashboard-psychologist/manage-schedule"
         className={cn(
-          pathname === "/dashboard-psychologist/manage-shedule"
+          pathname === "/dashboard-psychologist/manage-schedule"
             ? "bg-secondary-custom_secondary/[.08]"
             : "",
           "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all  hover:font-semibold"

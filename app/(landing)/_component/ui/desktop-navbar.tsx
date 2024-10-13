@@ -12,7 +12,14 @@ export function DesktopNavbar({ links }: DesktopNavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "features", "collaborate"];
+      const sections = [
+        "home",
+        "about",
+        "features",
+        "collaborate",
+        "faq",
+        "contact",
+      ];
 
       sections.forEach((section) => {
         const element = document.getElementById(section);

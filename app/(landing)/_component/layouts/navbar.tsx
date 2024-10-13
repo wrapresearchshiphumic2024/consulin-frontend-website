@@ -32,6 +32,16 @@ const links: LinkProps[] = [
     title: "Collaborate",
     id: "collaborate",
   },
+  {
+    href: "#faq",
+    title: "FAQ",
+    id: "faq",
+  },
+  {
+    href: "#contact",
+    title: "Contact",
+    id: "faq",
+  },
 ];
 export default function Navbar() {
   return (
@@ -48,7 +58,7 @@ export default function Navbar() {
           />
         </div>
         <div
-          className={` lg:flex gap-10 text-secondary-custom_secondary items-center hidden`}
+          className={` xl:flex gap-5 text-secondary-custom_secondary items-center hidden`}
         >
           <DesktopNavbar links={links} />
           <Link href="/signin">
@@ -58,8 +68,15 @@ export default function Navbar() {
               Sign In
             </Button>
           </Link>
+          <Link href="/signup">
+            <Button
+              className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+            >
+              Sign Up
+            </Button>
+          </Link>
         </div>
-        <div className="lg:hidden ">
+        <div className="xl:hidden ">
           <HamburgerNavbar links={links} />
         </div>
       </div>

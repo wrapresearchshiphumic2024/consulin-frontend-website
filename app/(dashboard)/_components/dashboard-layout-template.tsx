@@ -122,8 +122,9 @@ export default function DashboardLayoutTemplate({
           </Sheet>
           <div className="w-full flex-1"></div>
         </header>
-
-        <main className=" p-4  lg:p-6 lg:px-10 h-full">{children}</main>
+        <main className=" p-4  lg:p-6 lg:px-10 h-full w-full overflow-hidden">
+          {children}
+        </main>
       </div>
     </div>
   );

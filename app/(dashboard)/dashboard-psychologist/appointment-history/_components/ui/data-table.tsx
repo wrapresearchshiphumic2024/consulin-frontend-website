@@ -35,60 +35,61 @@ export function DataTable<TData, TValue>({
   const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
     []
   );
+  const [globalFilter, setGlobalFilter] = React.useState<any>([]);
   const table = useReactTable({
     data,
     columns,
     columnResizeMode: "onChange",
     columnResizeDirection: "rtl",
+    globalFilterFn: "includesString",
     getPaginationRowModel: getPaginationRowModel(),
     getCoreRowModel: getCoreRowModel(),
     onSortingChange: setSorting,
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: setColumnFilters,
     getFilteredRowModel: getFilteredRowModel(),
+    onGlobalFilterChange: setGlobalFilter,
     state: {
       sorting,
       columnFilters,
+      globalFilter,
     },
   });
 
   return (
     <div className="w-full text-netral-primary">
-      <div className="flex items-center py-4 gap-10">
-        <h3 className="text-lg font-semibold ">List Of Appointment History</h3>
+      <div className="flex items-center py-4 gap-10 ">
+        <h3 className="text-lg font-semibold flex-none">
+          List Of Appointment History
+        </h3>
         <Input
           placeholder="Filter by patient name"
-          value={
-            (table.getColumn("patient_name")?.getFilterValue() as string) ?? ""
-          }
-          onChange={(event) =>
-            table.getColumn("patient_name")?.setFilterValue(event.target.value)
-          }
-          className="w-full"
+          className="rounded-2xl"
+          onChange={(e) => table.setGlobalFilter(String(e.target.value))}
         />
       </div>
-      <div>
-        <Table>
+
+      {/* Pembungkus tabel dengan overflow-auto */}
+      <div className="overflow-auto">
+        <Table className="w-full table-auto">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
-                {headerGroup.headers.map((header) => {
-                  return (
-                    <TableHead key={header.id}>
-                      {header.isPlaceholder
-                        ? null
-                        : flexRender(
-                            header.column.columnDef.header,
-                            header.getContext()
-                          )}
-                    </TableHead>
-                  );
-                })}
+                {headerGroup.headers.map((header) => (
+                  <TableHead key={header.id}>
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext()
+                        )}
+                  </TableHead>
+                ))}
               </TableRow>
             ))}
           </TableHeader>
-          <TableBody className="overflow-y-auto ">
-            {table.getRowModel().rows?.length ? (
+          <TableBody>
+            {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -117,6 +118,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
+
       <div className="flex items-center justify-end space-x-2 py-4">
         <Button
           variant="outline"

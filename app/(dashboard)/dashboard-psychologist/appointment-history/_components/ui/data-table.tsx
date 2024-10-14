@@ -58,20 +58,20 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="w-full text-netral-primary">
-      <div className="flex items-center py-4 gap-10 ">
-        <h3 className="text-lg font-semibold flex-none">
+      <div className="flex items-start md:items-center justify-center py-4 gap-3 md:flex-row flex-col">
+        <h3 className="text-lg font-semibold md:flex-none ">
           List Of Appointment History
         </h3>
         <Input
           placeholder="Filter by patient name"
-          className="rounded-2xl"
+          className="rounded-2xl w-full "
           onChange={(e) => table.setGlobalFilter(String(e.target.value))}
         />
       </div>
 
       {/* Pembungkus tabel dengan overflow-auto */}
-      <div className="overflow-auto">
-        <Table className="w-full table-auto">
+      <div className="overflow-x-auto">
+        <Table className=" w-full table-auto">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>

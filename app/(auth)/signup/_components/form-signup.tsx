@@ -201,14 +201,17 @@ export default function FormSignUp() {
                         className="border-primary-custom_primary border-2 placeholder:text-primary-custom_primary-foreground"
                       />
                     </FormControl>
-                  <FormMessage />
-                </FormItem>
+                    <FormMessage />
+                  </FormItem>
                 )}
               />
             </div>
             <div className="col-span-2">
-              <Button type="submit" className="w-full bg-primary-custom_primary">
-                Sign Up
+              <Button
+                type="submit"
+                className="w-full bg-primary-custom_primary"
+              >
+                Create Account
               </Button>
               <Link href="/">
                 <Button

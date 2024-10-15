@@ -111,4 +111,31 @@ export const formLoginSchema = z.object({
   .regex(/\d/, { message: "Password must contain at least one number" }),
 });
 
+export const formSignUpSchema = z.object({
+  first_name: z
+  .string()
+  .min(1, { message: "First name is required" })
+  .max(50, { message: "First name cannot exceed 50 characters" }),
+  last_name: z
+  .string()
+  .min(2, { message: "Last name is required" })
+  .max(50, { message: "Last name cannot exceed 50 characters" }),
+  phone_number: z
+      .string()
+      .min(10, { message: "Phone number must be at least 10 characters" })
+      .max(15, { message: "Phone number cannot exceed 15 characters" }),
+  email: z.string().email("Please provide a valid email address"),
+  gender: z
+      .string()
+      .min(2, { message: "Gender is required" }),
+  password: z
+  .string()
+  .min(8, { message: "Password must be at least 8 characters" })
+  .regex(/[A-Z]/, { message: "Password must contain at least one uppercase letter" })
+  .regex(/\d/, { message: "Password must contain at least one number" }),
+  confirm_password: z
+      .string()
+      .min(8, { message: "Confirm password must be at least 6 characters" }),
+});
+
 export const formForgotPasswordSchema = z.object({  email: z.string().email("Please provide a valid email address"),});

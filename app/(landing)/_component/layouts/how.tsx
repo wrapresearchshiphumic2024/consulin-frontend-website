@@ -11,7 +11,7 @@ export default function How() {
                                 HOW IT WORKS
                             </h1>
                             <div
-                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[-40px] left-[300px] sm:left-[100px] z-[-1]"
+                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[-30px] left-[320px] z-[-1]"
                             ></div>
                         </center>
                     </div>
@@ -20,7 +20,7 @@ export default function How() {
                 {/* Section 1 */}
                 <div className="flex md:justify-center justify-center md:h-[400px] lg:mt-0 flex-col lg:flex-row">
                     <div className="flex flex-1 justify-center order-1 lg:order-1">
-                        <div className="lg:flex lg:justify-start lg:items-center text-primary-custom_primary lg:text-start pt-[50px] ml-0 md:ml-10">
+                        <div className="relative lg:flex lg:justify-start lg:items-center text-primary-custom_primary lg:text-start pt-[50px] ml-0 md:ml-10">
                             <div className="overflow-hidden w-[300px] lg:w-[400px] md:rounded-[100px] rounded-[50px]">
                                 <div className="flex pt-[50px]">
                                     <Image
@@ -33,6 +33,9 @@ export default function How() {
                                     />
                                 </div>
                             </div>
+                            <div
+                                className=" w-[25px] h-[25px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[450px] left-[410px] z-[-10]"
+                            ></div>
                         </div>
                     </div>
                     <div className="text-color-custom_accent lg:text-left pt-[50px] ml-0 flex-1 text-center order-2 lg:order-2">
@@ -45,16 +48,8 @@ export default function How() {
                             </p>
                         </div>
                     </div>
-                    <div className="relative">
-                        <div
-                            className="w-[30px] sm:w-[20px] h-[30px] sm:h-[20px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[450px] sm:top-[400px] left-[-550px] sm:left-[-300px] z-[-10]"
-                        ></div>
-                    </div>
-                </div>
-                <div className="absolute">
-                    <div
-                        className="w-[35px] sm:w-[25px] h-[35px] sm:h-[25px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[100px] left-[600px] sm:left-[300px] z-[-10]"
-                    ></div>
+                    
+                    
                 </div>
                 {/* Arrow */}
                 <div className="flex md:justify-center justify-center pt-[100px] pb-[100px]">
@@ -72,19 +67,17 @@ export default function How() {
                 <div className="container mx-auto px-5 md:px-24 z-10">
                     <div className="flex md:justify-center justify-center md:h-[400px] lg:mt-[50px] flex-col lg:flex-row">
                         <div className="text-color-custom_accent lg:text-left pt-[50px] ml-0 flex-1 text-center order-2 lg:order-1">
-                            <div className="text-center lg:text-left lg:ml-10 gap-2 md:mt-20 mt-10 flex-col xl:flex-row text-[#1E0342]">
+                            <div className="relative text-center lg:text-left lg:ml-10 gap-2 md:mt-20 mt-10 flex-col xl:flex-row text-[#1E0342]">
                                 <h2 className="font-bold lg:text-[30px]">
                                     Get matched to the best therapist for you
                                 </h2>
                                 <p className="z-10 text-lg">
                                     Answer a few questions to find a credentialed therapist who fits your needs and preferences. Tap into the largest network of credentialed providers.
                                 </p>
-                            </div>
-                        </div>
-                        <div className="absolute">
                             <div
-                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[50px] sm:top-[30px] left-[700px] sm:left-[400px] z-[-10]"
+                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[-150px] left-[900px] z-[-10]"
                             ></div>
+                            </div>
                         </div>
                         <div className="flex flex-1 justify-center order-1 lg:order-2">
                             <div className="lg:flex lg:justify-start lg:items-center text-primary-custom_primary lg:text-start pt-[50px] ml-0 md:ml-10">
@@ -102,9 +95,9 @@ export default function How() {
                                 </div>
                             </div>
                         </div>
-                        <div className="absolute">
+                        <div className="relative">
                             <div
-                                className="w-[40px] sm:w-[30px] h-[40px] sm:h-[30px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[500px] sm:top-[450px] left-[50px] sm:left-[30px] z-[-10]"
+                                className="w-[40px] sm:w-[30px] h-[40px] sm:h-[30px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[500px] left-[500px]  z-[-10]"
                             ></div>
                         </div>
                     </div>
@@ -151,14 +144,14 @@ export default function How() {
                                 </p>
                             </div>  
                         </div>
-                        <div className="absolute">
+                        <div className="relative">
                             <div
-                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[50px] sm:top-[30px] left-[100px] sm:left-[60px] z-[-10]"
+                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[50px] left-[350px] z-[-10]"
                             ></div>
                         </div>
-                        <div className="absolute">
+                        <div className="relative">
                             <div
-                                className="w-[30px] sm:w-[20px] h-[30px] sm:h-[20px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[490px] sm:top-[450px] left-[-450px] sm:left-[-300px] z-[-10]"
+                                className="w-[30px] sm:w-[20px] h-[30px] sm:h-[20px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[490px] left-[150px] z-[-10]"
                             ></div>
                         </div>
                     </div>
@@ -205,9 +198,9 @@ export default function How() {
                                 </div>
                             </div>
                         </div>
-                        <div className="absolute">
+                        <div className="relative">
                             <div
-                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[50px] sm:top-[30px] left-[500px] sm:left-[300px] z-[-10]"
+                                className="w-[60px] sm:w-[50px] h-[60px] sm:h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-full absolute top-[50px] left-[900px] z-[-10]"
                             ></div>
                         </div>
                     </div>

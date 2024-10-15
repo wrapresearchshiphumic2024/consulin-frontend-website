@@ -67,6 +67,13 @@ export default function HamburgerNavbar({ links }: DesktopNavbarProps) {
               Sign In
             </Button>
           </Link>
+          <Link href="/signup">
+            <Button
+              className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+            >
+              Sign Up
+            </Button>
+          </Link>
         </div>
       )}
     </>

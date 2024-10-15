@@ -1,4 +1,6 @@
 "use client";
+import IconList from "@/components/icons/icon-list";
+import IconPsychology from "@/components/icons/icon-psychology";
 import { cn } from "@/lib/utils"; // Pastikan Anda memiliki utilitas cn
 import { Home, Package, ShoppingCart } from "lucide-react";
 import Link from "next/link";
@@ -30,7 +32,7 @@ export default function SidebarMobile() {
           "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:font-semibold transition-all"
         )}
       >
-        <ShoppingCart className="h-5 w-5" />
+        <IconPsychology className="h-5 w-5" />
         Approve Psyghologst
       </Link>
       <Link
@@ -40,8 +42,8 @@ export default function SidebarMobile() {
           "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary  hover:font-semibold  transition-all"
         )}
       >
-        <Package className="h-5 w-5" />
-        Products
+        <IconList className="h-5 w-5" />
+        List Psyghologst
       </Link>
     </>
   );

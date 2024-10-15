@@ -5,27 +5,27 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-export default function SidebarMobilePsychologistBottom() {
+export default function SidebarDesktopPatientBottom() {
   const pathname = usePathname();
   return (
     <>
       <Link
-        href="/dashboard-psychologist/settings"
+        href="/dashboard-patient/settings"
         className={cn(
-          pathname === "/dashboard-psychologist/settings"
+          pathname === "/dashboard-patient/settings"
             ? "bg-secondary-custom_secondary/[.08]"
             : "",
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:font-semibold transition-all "
+          "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all hover:font-semibold"
         )}
       >
-        <IconSetting className="h-5 w-5" />
+        <IconSetting className="h-4 w-4" />
         Setting
       </Link>
       <Link
         href="#"
-        className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:text-foreground"
+        className="flex items-center gap-3 rounded-lg px-3 py-2 text-secondary-custom_secondary transition-all hover:text-primary"
       >
-        <IconSignOut className="h-5 w-5" />
+        <IconSignOut className="h-4 w-4" />
         Sign Out
       </Link>
     </>

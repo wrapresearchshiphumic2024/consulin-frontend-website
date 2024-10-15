@@ -10,8 +10,10 @@ export default function AppointmentHistory() {
         <p>Tracking and Managing Your Consultation Sessions</p>
       </div>
 
-      <div className="bg-secondary-custom_secondary p-5 mt-10 rounded-3xl w-full overflow-hidden">
-        <TableAppointmentHistory />
+      <div className="bg-secondary-custom_secondary p-5 mt-10 rounded-3xl w-full">
+        <div className="overflow-auto">
+          <TableAppointmentHistory />
+        </div>
       </div>
     </>
   );

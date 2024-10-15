@@ -40,7 +40,7 @@ const links: LinkProps[] = [
   {
     href: "#contact",
     title: "Contact",
-    id: "faq",
+    id: "contact",
   },
 ];
 export default function Navbar() {

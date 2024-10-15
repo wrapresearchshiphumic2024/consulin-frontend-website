@@ -1,15 +1,15 @@
 "use client";
 
-import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 
+// Time slots dengan objek `start` dan `end`
 const days = [
-  { label: "09.00-10.00", value: "09.00-10.00" },
-  { label: "11.00-12.00", value: "11.00-12.00" },
-  { label: "13.00-14.00", value: "13.00-14.00" },
-  { label: "14.00-15.00", value: "14.00-15.00" },
-  { label: "15.00-16.00", value: "15.00-16.00" },
-  { label: "16.00-17.00", value: "16.00-17.00" },
+  { label: "09.00-10.00", value: { start: "09.00", end: "10.00" } },
+  { label: "11.00-12.00", value: { start: "11.00", end: "12.00" } },
+  { label: "13.00-14.00", value: { start: "13.00", end: "14.00" } },
+  { label: "14.00-15.00", value: { start: "14.00", end: "15.00" } },
+  { label: "15.00-16.00", value: { start: "15.00", end: "16.00" } },
+  { label: "16.00-17.00", value: { start: "16.00", end: "17.00" } },
 ];
 
 export default function ScheduleComponentTime({
@@ -17,40 +17,55 @@ export default function ScheduleComponentTime({
   onChange,
   isSingleSelect = false,
 }: {
-  value: string[] | string;
-  onChange: (days: string[] | string) => void;
+  value: { start: string; end: string }[] | { start: string; end: string };
+  onChange: (
+    days: { start: string; end: string }[] | { start: string; end: string }
+  ) => void;
   isSingleSelect?: boolean;
 }) {
-  const handleSelectDay = (selectedDay: string) => {
+  const handleSelectDay = (selectedDay: { start: string; end: string }) => {
     if (isSingleSelect) {
       if (value === selectedDay) {
-        onChange("");
+        onChange({ start: "", end: "" });
       } else {
         onChange(selectedDay);
       }
     } else {
       const selectedDays = Array.isArray(value) ? value : [];
-      if (selectedDays.includes(selectedDay)) {
-        onChange(selectedDays.filter((day) => day !== selectedDay));
+      if (
+        selectedDays.some(
+          (day) =>
+            day.start === selectedDay.start && day.end === selectedDay.end
+        )
+      ) {
+        onChange(
+          selectedDays.filter(
+            (day) =>
+              day.start !== selectedDay.start && day.end !== selectedDay.end
+          )
+        );
       } else {
         onChange([...selectedDays, selectedDay]);
       }
     }
   };
 
-  const isSelected = (itemValue: string) => {
+  const isSelected = (itemValue: { start: string; end: string }) => {
     return isSingleSelect
       ? value === itemValue
-      : (value as string[]).includes(itemValue);
+      : Array.isArray(value) &&
+          value.some(
+            (day) => day.start === itemValue.start && day.end === itemValue.end
+          );
   };
 
   return (
     <div>
-      <h3>Set Available Time Slots: </h3>
+      <h3>Set Available Time Slots:</h3>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:w-[450px] w-full mt-5">
         {days.map((item) => (
           <div
-            key={item.value}
+            key={item.value.start}
             className={cn(
               isSelected(item.value)
                 ? "bg-[#27374D] text-white"

@@ -79,7 +79,7 @@ export default function DashboardLayoutTemplate({
       </div>
 
       <div className="flex flex-col">
-        <header className="flex h-14 items-center gap-4 px-4 lg:h-[60px] lg:px-6 ">
+        <header className="flex h-14 items-center gap-4 px-4  lg:px-6 ">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -122,7 +122,7 @@ export default function DashboardLayoutTemplate({
           </Sheet>
           <div className="w-full flex-1"></div>
         </header>
-        <main className=" p-4  lg:p-6 lg:px-10 h-full w-full overflow-hidden">
+        <main className=" px-5 lg:px-10 h-full w-full overflow-hidden">
           {children}
         </main>
       </div>

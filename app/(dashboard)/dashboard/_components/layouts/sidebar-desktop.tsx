@@ -35,9 +35,9 @@ export default function SidebarDesktop() {
         Approve Psyghologst
       </Link>
       <Link
-        href="/dashboard#"
+        href="/dashboard/list"
         className={cn(
-          pathname === "/dashboar#"
+          pathname === "/dashboar/List"
             ? "bg-secondary-custom_secondary/[.08]"
             : "",
           "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all  hover:font-semibold"

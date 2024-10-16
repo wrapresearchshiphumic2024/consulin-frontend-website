@@ -36,7 +36,7 @@ export default function SidebarMobile() {
         Approve Psyghologst
       </Link>
       <Link
-        href="#"
+        href="/dashboard/list"
         className={cn(
           pathname === "/products" ? "bg-secondary-custom_secondary/[.08]" : "",
           "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary  hover:font-semibold  transition-all"

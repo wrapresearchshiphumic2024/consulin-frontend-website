@@ -11,7 +11,7 @@ export default function AppointmentHistory() {
       </div>
 
       <div className="bg-secondary-custom_secondary p-5 mt-10 rounded-3xl w-full">
-        <div className="overflow-auto">
+        <div className="w-72 sm:w-96 md:w-full overflow-auto">
           <TableAppointmentHistory />
         </div>
       </div>

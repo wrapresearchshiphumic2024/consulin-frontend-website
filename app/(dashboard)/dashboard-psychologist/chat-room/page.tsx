@@ -30,6 +30,7 @@ export default function Home() {
         apiKey={apiKey}
         createToken={createToken}
         userId={userId}
+        userId2="Patient_17fd95c7-eb1b-4140-9dcf-4d52f0560ec9"
         userName={userName}
         image={"https://github.com/shadcn.png"}
       />

@@ -21,12 +21,14 @@ export default function App({
   apiKey,
   createToken,
   userId,
+  userId2,
   userName,
   image,
 }: {
   apiKey: string;
   createToken: (userId: string) => Promise<string>;
   userId: string;
+  userId2: string;
   userName: string;
   image: string;
 }) {
@@ -96,7 +98,12 @@ export default function App({
 
   if (!client) return <div>Setting up client & connection</div>;
   return (
-    <Chat client={client}>
+    <Chat
+      client={client}
+      // customClasses={{
+      //   channelList: "hidden",
+      // }}
+    >
       <ChannelList
         sort={sort}
         options={options}

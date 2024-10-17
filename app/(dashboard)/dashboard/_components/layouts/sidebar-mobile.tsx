@@ -1,50 +1,52 @@
 "use client";
 import IconList from "@/components/icons/icon-list";
 import IconPsychology from "@/components/icons/icon-psychology";
-import { cn } from "@/lib/utils"; // Pastikan Anda memiliki utilitas cn
-import { Home, Package, ShoppingCart } from "lucide-react";
+import { SheetClose } from "@/components/ui/sheet";
+import { cn } from "@/lib/utils";
+import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function SidebarMobile() {
   const pathname = usePathname();
 
+  // Data sidebar items dengan komponen ikon langsung
+  const sidebarItems = [
+    {
+      href: "/dashboard",
+      label: "Dashboard",
+      icon: <Home className="h-5 w-5" />,
+    },
+    {
+      href: "/dashboard/approve-psychologist",
+      label: "Approve Psychologist",
+      icon: <IconPsychology className="h-5 w-5" color="#F5F5F7" />,
+    },
+    {
+      href: "/dashboard/list-psychologist",
+      label: "List Psychologist",
+      icon: <IconList className="h-5 w-5" />,
+    },
+  ];
+
   return (
     <>
-      <Link
-        href="/dashboard"
-        className={cn(
-          pathname === "/dashboard"
-            ? "bg-secondary-custom_secondary/[.08]"
-            : "",
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:font-semibold transition-all "
-        )}
-      >
-        <Home className="h-5 w-5" />
-        Dashboard
-      </Link>
-      <Link
-        href="/dashboard/approve-psyghologst"
-        className={cn(
-          pathname === "/dashboard/approve-psyghologst"
-            ? "bg-secondary-custom_secondary/[.08]"
-            : "",
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:font-semibold transition-all"
-        )}
-      >
-        <IconPsychology className="h-5 w-5" />
-        Approve Psyghologst
-      </Link>
-      <Link
-        href="#"
-        className={cn(
-          pathname === "/products" ? "bg-secondary-custom_secondary/[.08]" : "",
-          "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary  hover:font-semibold  transition-all"
-        )}
-      >
-        <IconList className="h-5 w-5" />
-        List Psyghologst
-      </Link>
+      {sidebarItems.map((item, index) => (
+        <SheetClose asChild key={index}>
+          <Link
+            href={item.href}
+            className={cn(
+              pathname === item.href
+                ? "bg-secondary-custom_secondary/[.08]"
+                : "",
+              "mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:font-semibold transition-all"
+            )}
+          >
+            {item.icon}
+            {item.label}
+          </Link>
+        </SheetClose>
+      ))}
     </>
   );
 }

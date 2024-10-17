@@ -25,11 +25,12 @@ export default function Home() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex h-[650px]">
       <App
         apiKey={apiKey}
         createToken={createToken}
         userId={userId}
+        userId2="Psycholog_f989c982-fb97-4d63-939d-e445b81e9d66"
         userName={userName}
         image={
           "https://media.istockphoto.com/id/2155498773/id/foto/wanita-percaya-diri-berjalan-dengan-koper-merah-di-lingkungan-perkotaan-modern.jpg?s=2048x2048&w=is&k=20&c=v5ZXzWRBGbXJl2XnYAPSVYW3h9Fk4z-0Hy39GhZZIUg="

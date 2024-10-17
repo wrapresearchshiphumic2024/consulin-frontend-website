@@ -2,13 +2,14 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { JitsiMeeting } from "@jitsi/react-sdk";
-export default function SearchBar() {
-  const searchParams = useSearchParams();
-
-  const roomname = searchParams.get("room_id");
+export default function JitsiClient() {
   const router = useRouter();
   // URL -> `/dashboard?search=my-project`
   // `search` -> 'my-project'
+  const searchParams = useSearchParams();
+
+  const roomname = searchParams.get("room_id");
+
   return (
     <>
       <JitsiMeeting

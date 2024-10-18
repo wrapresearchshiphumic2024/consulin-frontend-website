@@ -25,7 +25,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex h-[650px]  w-full p-5">
       <App
         apiKey={apiKey}
         createToken={createToken}

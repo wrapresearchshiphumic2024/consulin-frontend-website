@@ -71,7 +71,7 @@ export default function List() {
         {psychologists.map((psychologist) => (
           <Card
             key={psychologist.id}
-            className="p-6 rounded-[30px] shadow-lg bg-white flex flex-col items-center w-full"
+            className="p-6 rounded-[30px] shadow-none  bg-[#FCFCFC] flex flex-col items-center w-full"
           >
             <Image
               src={psychologist.imageUrl}

@@ -1,8 +1,11 @@
 "use client";
 
+import IconArrowDown from "@/components/icons/icon-arrow-down";
+import IconArrowUp from "@/components/icons/icon-arrow-up";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { ColumnDef } from "@tanstack/react-table";
+import { ArrowDown2, ArrowDown3, ArrowLeft2, ArrowLeft3 } from "iconsax-react";
 import { ArrowUpDown } from "lucide-react";
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -28,12 +31,11 @@ export const columns: ColumnDef<Appointment_history>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          className="text-netral-primary"
+          className="text-netral-primary bg-[#DDE7F9] hover:bg-[#DDE7F9] focus:bg-[#DDE7F9] active:bg-[#DDE7F9] flex gap-2"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Patient Name
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          {column.getIsSorted() === "asc" ? <IconArrowUp /> : <IconArrowDown />}
         </Button>
       );
     },
@@ -43,12 +45,11 @@ export const columns: ColumnDef<Appointment_history>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          className="text-netral-primary"
+          className="text-netral-primary bg-[#DDE7F9] hover:bg-[#DDE7F9] focus:bg-[#DDE7F9] active:bg-[#DDE7F9]  flex gap-2"
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Date
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          {column.getIsSorted() === "asc" ? <IconArrowUp /> : <IconArrowDown />}
         </Button>
       );
     },
@@ -58,12 +59,11 @@ export const columns: ColumnDef<Appointment_history>[] = [
     header: ({ column }) => {
       return (
         <Button
-          variant="ghost"
-          className="text-netral-primary"
+          className="text-netral-primary bg-[#DDE7F9] hover:bg-[#DDE7F9] focus:bg-[#DDE7F9] active:bg-[#DDE7F9]  flex gap-2 "
           onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
         >
           Status
-          <ArrowUpDown className="ml-2 h-4 w-4" />
+          {column.getIsSorted() === "asc" ? <IconArrowUp /> : <IconArrowDown />}
         </Button>
       );
     },

@@ -21,6 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Search } from "lucide-react";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
@@ -62,11 +63,14 @@ export function DataTable<TData, TValue>({
         <h3 className="text-lg font-semibold md:flex-none ">
           List Of Appointment History
         </h3>
-        <Input
-          placeholder="Filter by patient name"
-          className="rounded-2xl w-full "
-          onChange={(e) => table.setGlobalFilter(String(e.target.value))}
-        />
+        <div className="relative w-full">
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10 w-5 h-5" />
+          <Input
+            placeholder="Filter by patient name "
+            className=" pl-10 rounded-2xl w-full mr-2  border-black "
+            onChange={(e) => table.setGlobalFilter(String(e.target.value))}
+          />
+        </div>
       </div>
 
       {/* Pembungkus tabel dengan overflow-auto */}
@@ -76,7 +80,7 @@ export function DataTable<TData, TValue>({
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} className="py-3">
                     {header.isPlaceholder
                       ? null
                       : flexRender(

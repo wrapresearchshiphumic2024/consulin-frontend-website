@@ -8,14 +8,14 @@ export default function SignUp() {
       <TemplateAuth image="/assets/images/amico.png">
         <center className="text-netral-primary ">
           <h2 className="font-bold text-3xl">Sign Up</h2>
-          <p>Enter details to create your psycholog account</p>
+          <p>Enter details to create your account</p>
         </center>
         <div className="mt-10 w-full">
           <FormSignUp />
           <center className="mt-2">
             <p className="text-netral-primary text-sm">
               Are you a psychologist? Sign up as a Psychologist
-              <Link href={"/signup"}>
+              <Link href={"/signup-psycholog"}>
                 <span className="text-[#2785FF] font-bold"> Here</span>
               </Link>
             </p>

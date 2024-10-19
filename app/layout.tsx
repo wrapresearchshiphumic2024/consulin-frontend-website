@@ -35,7 +35,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} scroll-smooth`}>
       <body className={` bg-secondary-custom_secondary `}>
         {children}
-        <Toaster />
+        <Toaster richColors/>
       </body>
     </html>
   );

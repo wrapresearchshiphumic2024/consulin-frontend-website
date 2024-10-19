@@ -7,7 +7,6 @@ import { Calendar } from "iconsax-react";
 import { Home } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-
 export default function SidebarDesktopPsychologist() {
   const pathname = usePathname();
   return (
@@ -25,9 +24,9 @@ export default function SidebarDesktopPsychologist() {
         Home
       </Link>
       <Link
-        href="/dashboard-psychologist/scheduled-appointment"
+        href="/dashboard-psychologist/Scheduled-Appointment"
         className={cn(
-          pathname === "/dashboard-psychologist/scheduled-appointment"
+          pathname === "/dashboard-psychologist/Scheduled-Appointment"
             ? "bg-secondary-custom_secondary/[.08]"
             : "",
           "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all   hover:font-semibold"

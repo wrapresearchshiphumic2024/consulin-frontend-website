@@ -40,7 +40,7 @@ export default function Footer() {
             </p>
 
             {/* Sign In / Sign Up Buttons */}
-            <div className="mt-4 flex space-x-2">
+            <div className="mt-4 mb-4 flex space-x-2">
               <Button className="bg-white text-[#1E3A5F] px-4 py-2 rounded-full font-semibold">
                 Sign In
               </Button>

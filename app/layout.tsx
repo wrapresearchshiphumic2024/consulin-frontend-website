@@ -3,7 +3,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Poppins } from "next/font/google";
 import { Toaster } from "@/components/ui/sonner";
-import "stream-chat-react/dist/css/v2/index.css";
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -35,7 +34,7 @@ export default function RootLayout({
     <html lang="en" className={`${poppins.variable} scroll-smooth`}>
       <body className={` bg-secondary-custom_secondary `}>
         {children}
-        <Toaster />
+        <Toaster richColors/>
       </body>
     </html>
   );

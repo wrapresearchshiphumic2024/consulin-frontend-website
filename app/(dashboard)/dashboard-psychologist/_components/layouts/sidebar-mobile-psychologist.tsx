@@ -20,7 +20,7 @@ export default function SidebarMobilePsychologist() {
       icon: <Home className="h-5 w-5" />,
     },
     {
-      href: "/dashboard-psychologist/scheduled-appointment",
+      href: "/dashboard-psychologist/Scheduled-Appointment",
       label: "Scheduled Appointment",
       icon: <IconPsychology className="h-4 w-4" color="#F5F5F7" />,
     },

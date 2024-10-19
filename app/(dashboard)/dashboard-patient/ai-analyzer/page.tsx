@@ -13,10 +13,10 @@ export default function AiAnalyzer() {
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>
             <h3 className="text-2xl font-semibold text-netral-primary">
-              Your Appointment
+              Health Mental Analyzer
             </h3>
           </center>
-          <div className="flex flex-col gap-2 mt-5">
+          <div className="flex flex-col gap-2 mt-5 lg:h-96 ">
             <FormAiAnalyzer />
           </div>
         </div>
@@ -24,7 +24,7 @@ export default function AiAnalyzer() {
         <div className="bg-secondary-custom_secondary p-5 rounded-2xl flex-1 w-full ">
           <center>
             <h3 className="text-2xl font-semibold text-netral-primary">
-              Appointment History
+              Analysis Results
             </h3>
           </center>
           <div className="flex flex-col flex-1 p-3 md:p-10">

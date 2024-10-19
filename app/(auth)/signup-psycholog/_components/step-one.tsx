@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { ArrowDown2 } from "iconsax-react";
 const gender = [
   {
     name: "Male",
@@ -82,6 +83,7 @@ export default function StepOne() {
                         placeholder="Gender"
                         className="placeholder:text-primary-custom_primary"
                       />
+                       <ArrowDown2 className="h-5 w-5"/>
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>

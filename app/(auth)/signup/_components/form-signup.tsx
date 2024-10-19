@@ -21,6 +21,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { formSignUpSchema } from "@/helpers/validations/validation-auth";
+import { ArrowDown } from "lucide-react";
+import { ArrowDown2 } from "iconsax-react";
 const gender = [
   {
     name: "Male",
@@ -112,7 +114,8 @@ export default function FormSignUp() {
                             <SelectValue
                               placeholder="Gender"
                               className="placeholder:text-primary-custom_primary"
-                            />
+                              />
+                              <ArrowDown2 className="h-5 w-5"/>
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>

@@ -20,7 +20,6 @@ import React, {
   useContext,
   useState,
 } from "react";
-import { Checkbox } from "../checkbox";
 
 interface MultiSelectorProps
   extends React.ComponentPropsWithoutRef<typeof CommandPrimitive> {

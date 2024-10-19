@@ -13,8 +13,9 @@ import {
   Window,
   useCreateChatClient,
 } from "stream-chat-react";
-import "stream-chat-react/dist/css/v2/index.css";
+
 import { ChannelSort } from "stream-chat";
+
 // import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
 export default function App({

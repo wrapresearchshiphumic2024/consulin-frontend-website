@@ -18,12 +18,12 @@ export default function SidebarMobile() {
       icon: <Home className="h-5 w-5" />,
     },
     {
-      href: "/dashboard/approve-psychologist",
+      href: "/dashboard/approve-psychologst",
       label: "Approve Psychologist",
       icon: <IconPsychology className="h-5 w-5" color="#F5F5F7" />,
     },
     {
-      href: "/dashboard/list-psychologist",
+      href: "/dashboard/list-psychologst",
       label: "List Psychologist",
       icon: <IconList className="h-5 w-5" />,
     },

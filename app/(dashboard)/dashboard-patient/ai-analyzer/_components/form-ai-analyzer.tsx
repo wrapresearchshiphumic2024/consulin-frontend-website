@@ -30,16 +30,19 @@ export function FormAiAnalyzer() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className=" space-y-6">
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        className=" space-y-6 h-full"
+      >
         <FormField
           control={form.control}
           name="ai_analyzer"
           render={({ field }) => (
-            <FormItem>
+            <FormItem className="h-full">
               <FormControl>
                 <Textarea
                   placeholder="Tell us about your current mental state..."
-                  className="resize-none w-full h-72"
+                  className=" w-full  resize-none"
                   {...field}
                 />
               </FormControl>

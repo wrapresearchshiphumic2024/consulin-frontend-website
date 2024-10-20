@@ -1,12 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import FormChooseDate from "./_components/form-choose-date";
 export default function DetailPsycholog() {
   return (
-    <div className="p-6">
-      <h1 className="text-3xl font-bold text-left text-[#1E0342] mb-2">
+    <>
+      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Detail Psikologist
-      </h1>
-      <p className="text-left text-[#1E034280] mb-8">
+      </h2>
+      <p className="text-left text-[#1E034280] mb-8 mt-3">
         View psychologist details on this page
       </p>
       <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center">
@@ -38,13 +39,16 @@ export default function DetailPsycholog() {
         </Card>
         <div className="flex flex-col space-y-6 w-full lg:w-2/3">
           <Card className="p-6 rounded-[30px] shadow-lg bg-white text-[#1E0342] space-y-[5px]">
-            <h2 className="text-xl font-semibold text-[#1E0342]">
-              Available Date
-            </h2>
+            <FormChooseDate />
           </Card>
-          <Card className="p-6 rounded-[30px] shadow-lg bg-white text-[#1E0342] space-y-[5px]"></Card>
+          <Card className="p-6 rounded-[30px] shadow-lg bg-white text-[#1E0342] space-y-[5px]">
+            <h2 className="text-2xl font-semibold text-[#1E0342]">Note</h2>
+            Be sure to check the cancellation and reschedule policy before
+            booking. If you have any further questions, feel free to contact the
+            psychologist through the contact information provided.
+          </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 }

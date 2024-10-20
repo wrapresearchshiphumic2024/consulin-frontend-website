@@ -79,7 +79,7 @@ export default function Psychologist() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Psychologist
       </h2>
-      <p className="text-left text-netral-primary mb-8">
+      <p className="text-left text-netral-primary mb-8 mt-3">
         Explore and book an appointment with a psychologist to get the support
         you need.
       </p>
@@ -87,7 +87,7 @@ export default function Psychologist() {
         {psychologists.map((psychologist) => (
           <Card
             key={psychologist.id}
-            className=" rounded-[30px] shadow-none  bg-[#FCFCFC] flex flex-col items-center w-full justify-between"
+            className=" rounded-[30px] shadow-none  bg-[#FCFCFC] flex flex-col items-center w-full justify-center pb-10"
           >
             <div
               className={cn(
@@ -117,7 +117,7 @@ export default function Psychologist() {
                 <p className="">Experience: {psychologist.experience}</p>
               </div>
             </div>
-            <div className="w-full p-6 mt-auto flex justify-center">
+            <div className="w-full mt-auto flex justify-center">
               <Link href="/dashboard-patient/detail-psychologst">
                 <Button
                   className="bg-primary-custom_primary text-white px-24 py-2 rounded w-full"

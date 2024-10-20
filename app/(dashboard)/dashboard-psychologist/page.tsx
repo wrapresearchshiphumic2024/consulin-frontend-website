@@ -4,6 +4,8 @@ import CardDashboard from "../_components/ui/card-dashboard";
 import IconPatient from "@/components/icons/icon-patient";
 import NotificationCard from "./_components/notification";
 import IconConsultation from "@/components/icons/icon-consultation";
+import Link from "next/link";
+
 const notifications = [
   {
     name: "Maria Jhonson",
@@ -61,13 +63,15 @@ export default function DashboardPsychologist() {
             </center>
             <div className="flex flex-col gap-4 mt-5">
               {notifications.map(({ name, time, status }, index) => (
-                <NotificationCard
-                  key={index}
-                  name={name}
-                  time={time}
-                  status={status}
-                  background="bg-[#DDE7F9]"
-                />
+                <Link href="/dashboard-psychologist/detail-patient">
+                  <NotificationCard
+                    key={index}
+                    name={name}
+                    time={time}
+                    status={status}
+                    background="bg-[#DDE7F9]"
+                  />
+                </Link>
               ))}
             </div>
           </div>

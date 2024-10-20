@@ -1,7 +1,7 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { Menu, PanelLeft, ShoppingCart } from "lucide-react";
+import { Menu, PanelLeft, PanelRight, ShoppingCart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
@@ -47,7 +47,7 @@ export default function DashboardLayoutTemplate({
             onClick={Opened}
             size={"icon"}
           >
-            <PanelLeft className="text-secondary-custom_secondary  " />
+            <PanelRight className="text-secondary-custom_secondary w-5 h-5 " />
           </Button>
           <div className="flex h-14 items-center lg:h-[60px] md:p-12">
             <Link href="/" className="font-semibold">
@@ -79,7 +79,7 @@ export default function DashboardLayoutTemplate({
       </div>
 
       <div className="flex flex-col">
-        <header className="flex h-14 items-center gap-4 px-4  lg:px-6 ">
+        <header className="md:hidden flex h-14 items-center gap-4 px-4  lg:px-6  ">
           <Sheet>
             <SheetTrigger asChild>
               <Button
@@ -120,9 +120,8 @@ export default function DashboardLayoutTemplate({
               </div>
             </SheetContent>
           </Sheet>
-          <div className="w-full flex-1"></div>
         </header>
-        <main className=" px-5 lg:px-10 h-full w-full overflow-hidden">
+        <main className=" px-5 lg:p-10 h-full w-full overflow-hidden">
           {children}
         </main>
       </div>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import NotificationCard from "./_components/notification";
 
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -30,13 +31,13 @@ const notifications = [
   },
 ];
 
-export default function DashboardPatient() {
+export default function DetailAppointment() {
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Hello, Welcome To Consulin!
       </h2>
-      <p>Have a good day!</p>
+      <p className="mt-3">Have a good day!</p>
       <div className="flex gap-5 flex-col lg:flex-row mt-10">
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>
@@ -49,13 +50,15 @@ export default function DashboardPatient() {
               <div className="p-2">
                 {notifications.map(({ name, time, status }, index) => (
                   <>
-                    <NotificationCard
-                      key={index}
-                      name={name}
-                      time={time}
-                      status={status}
-                      background="bg-[#DDE7F9]"
-                    />
+                    <Link href="/dashboard-patient/detail-appointment">
+                      <NotificationCard
+                        key={index}
+                        name={name}
+                        time={time}
+                        status={status}
+                        background="bg-[#DDE7F9]"
+                      />
+                    </Link>
                     <br />
                   </>
                 ))}

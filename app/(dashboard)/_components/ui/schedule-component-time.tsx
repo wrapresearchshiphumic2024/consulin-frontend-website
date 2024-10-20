@@ -17,21 +17,24 @@ export default function ScheduleComponentTime({
   onChange,
   isSingleSelect = false,
 }: {
-  value: { start: string; end: string }[] | { start: string; end: string };
-  onChange: (
-    days: { start: string; end: string }[] | { start: string; end: string }
-  ) => void;
+  value: { start: string; end: string }[];
+  onChange: (days: { start: string; end: string }[]) => void;
   isSingleSelect?: boolean;
 }) {
   const handleSelectDay = (selectedDay: { start: string; end: string }) => {
+    const selectedDays = Array.isArray(value) ? value : [];
+
     if (isSingleSelect) {
-      if (value === selectedDay) {
-        onChange({ start: "", end: "" });
+      if (
+        selectedDays.length > 0 &&
+        selectedDays[0].start === selectedDay.start &&
+        selectedDays[0].end === selectedDay.end
+      ) {
+        onChange([]); // Batalkan jika waktu yang sama dipilih lagi
       } else {
-        onChange(selectedDay);
+        onChange([selectedDay]); // Ganti dengan waktu yang baru
       }
     } else {
-      const selectedDays = Array.isArray(value) ? value : [];
       if (
         selectedDays.some(
           (day) =>
@@ -52,7 +55,9 @@ export default function ScheduleComponentTime({
 
   const isSelected = (itemValue: { start: string; end: string }) => {
     return isSingleSelect
-      ? value === itemValue
+      ? value.length > 0 &&
+          value[0].start === itemValue.start &&
+          value[0].end === itemValue.end
       : Array.isArray(value) &&
           value.some(
             (day) => day.start === itemValue.start && day.end === itemValue.end
@@ -62,7 +67,7 @@ export default function ScheduleComponentTime({
   return (
     <div>
       <h3>Set Available Time Slots:</h3>
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:w-[450px] w-full mt-5">
+      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:w-[450px] w-full mt-5">
         {days.map((item) => (
           <div
             key={item.value.start}

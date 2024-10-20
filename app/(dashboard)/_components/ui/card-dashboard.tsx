@@ -30,7 +30,7 @@ export default function CardDashboard({
         <h3 className={cn(" text-xl md:text-2xl", styleLabel)}>{label}</h3>
         <p
           className={cn(
-            "text-xl md:text-2xl font-bold text-primary-custom_primary",
+            "text-xl lg:text-5xl md:text-3xl font-bold text-primary-custom_primary my-0 md:my-2",
             styleTotal
           )}
         >

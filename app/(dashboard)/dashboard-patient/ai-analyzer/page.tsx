@@ -6,9 +6,11 @@ export default function AiAnalyzer() {
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Hello, Welcome To Consulin!
+        AI Analyzer
       </h2>
-      <p>Have a good day!</p>
+      <p className="mt-3">
+        Share your concerns, AI will analyse your mental state
+      </p>
       <div className="flex gap-5 flex-col lg:flex-row mt-10">
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>

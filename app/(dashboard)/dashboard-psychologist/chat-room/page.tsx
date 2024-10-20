@@ -25,15 +25,21 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-[650px]  w-full p-5">
-      <App
-        apiKey={apiKey}
-        createToken={createToken}
-        userId={userId}
-        userId2="Patient_17fd95c7-eb1b-4140-9dcf-4d52f0560ec9"
-        userName={userName}
-        image={"https://github.com/shadcn.png"}
-      />
-    </div>
+    <>
+      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
+        Chatroom
+      </h2>
+      <p className="mt-3">Chat with patients during appointments</p>
+      <div className="flex h-[530px]  bg-white w-full p-5  rounded-3xl mt-5">
+        <App
+          apiKey={apiKey}
+          createToken={createToken}
+          userId={userId}
+          userId2="Patient_17fd95c7-eb1b-4140-9dcf-4d52f0560ec9"
+          userName={userName}
+          image={"https://github.com/shadcn.png"}
+        />
+      </div>
+    </>
   );
 }

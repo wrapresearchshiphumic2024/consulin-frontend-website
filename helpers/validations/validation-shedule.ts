@@ -14,9 +14,15 @@ export const formScheduleSchema = z
 
   export const formChooseDateSchema = z
   .object({
-    schedule_date: z
-      .array(z.string())
-      .nonempty({ message: "Please select at least one date" }),
+    schedule_date: z.date({
+      required_error: "A date of schedule is required.",
+    }),
+    schedule_time: z
+    .array(z.object({
+      start: z.string(),
+      end: z.string(),
+    }))
+    .nonempty({ message: "Please select at least one time" }),
 
   });
  

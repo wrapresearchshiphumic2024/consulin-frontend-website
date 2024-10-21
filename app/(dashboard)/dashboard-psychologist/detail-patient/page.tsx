@@ -17,9 +17,7 @@ export default function DetailSc() {
       </p>
 
       <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-between">
-        {/* Left Column (Ongoing Card and AI Analysis Card) */}
         <div className="flex flex-col w-full lg:w-[500px] space-y-4 mb-6 lg:mb-0">
-          {/* Ongoing Card */}
           <Card className="flex flex-col rounded-[30px] shadow-lg bg-white w-full">
             <div className="w-full bg-[#28A745] rounded-t-[30px] text-white text-center py-2 font-bold">
               Ongoing

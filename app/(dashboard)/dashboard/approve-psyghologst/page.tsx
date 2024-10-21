@@ -72,10 +72,10 @@ export default function ApprovePsychologist() {
   ];
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
+      <h2 className="text-[#1E0342] text-4xl md:text-5xl font-bold mb-3">
         Approve Psychologist
       </h2>
-      <p> Review and manage psychologist who just registered</p>
+      <p className="text-[#1E034280] font-semibold"> Review and manage psychologist who just registered</p>
 
       <div className="grid sm:grid-cols-2  xl:grid-cols-3 gap-3 mt-10">
         {psychologists.map((psychologist) => (
@@ -91,8 +91,8 @@ export default function ApprovePsychologist() {
               sizes="100vw"
               className="rounded-full w-24 h-24 mb-4"
             />
-            <div className="text-left w-full mb-4 px-4 text-[#27374D]">
-              <h2 className="text-xl font-semibold text-center mb-2">
+            <div className="text-left w-full mb-4 px-4 text-[#27374D] space-y-3">
+              <h2 className="text-xl font-semibold text-center mb-5">
                 {psychologist.name}
               </h2>
               <p className="">SSP ID: {psychologist.sspId}</p>
@@ -102,44 +102,63 @@ export default function ApprovePsychologist() {
               <p className="">Specialist: {psychologist.specialist}</p>
               <p className="">Experience: {psychologist.experience}</p>
             </div>
-            <div className="flex justify-center gap-2 w-full px-4 flex-wrap">
+            <div className="flex justify-center gap-2 w-full px-4 flex-wrap mt-5 space-x-3">
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button className="bg-green-500 text-white px-4 py-2 rounded">
+                  <Button className="bg-green-500 text-white px-4 py-2 rounded-lg">
                     Accept
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Approve Confirmation</AlertDialogTitle>
-                    <AlertDialogDescription>
+                    <AlertDialogTitle className="text-[#27374D] font-semibold">Approve Confirmation</AlertDialogTitle>
+                    <AlertDialogDescription className="text-[#27374D]">
                       Are you sure you want to approve this psychologist?
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <Button className="bg-green-500 text-white px-6 py-2 rounded-full">
+                      <AlertDialogTrigger asChild >
+                        <AlertDialog>
+                      <AlertDialogTrigger asChild >
+                        <Button className="bg-green-500 text-white px-6 py-2 rounded-lg">
                           Confirm
                         </Button>
                       </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
-                          <AlertDialogTitle>
+                          <AlertDialogTitle className="text-[#27374D] font-semibold">
                             Consulin Notification
                           </AlertDialogTitle>
-                          <AlertDialogDescription>
+                          <AlertDialogDescription className="text-[#27374D]">
                             Psychologist successfully approved!
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                           <Link href="/dashboard">
-                            <AlertDialogAction>Close</AlertDialogAction>
+                            <AlertDialogAction className="bg-[#1E0342]">Close</AlertDialogAction>
                           </Link>
                         </AlertDialogFooter>
                       </AlertDialogContent>
                     </AlertDialog>
-                    <AlertDialogAction className="bg-white text-black px-6 py-2 rounded-full">
+                      </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle className="text-[#27374D] font-semibold">
+                            Consulin Notification
+                          </AlertDialogTitle>
+                          <AlertDialogDescription className="text-[#27374D]">
+                            Psychologist successfully approved!
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <Link href="/dashboard">
+                            <AlertDialogAction className="bg-[#1E0342]">Close</AlertDialogAction>
+                          </Link>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                    <AlertDialogAction className="bg-white text-black px-6 py-2 rounded-lg">
                       Cancel
                     </AlertDialogAction>
                   </AlertDialogFooter>
@@ -147,24 +166,44 @@ export default function ApprovePsychologist() {
               </AlertDialog>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                  <Button className="bg-red-500 text-white px-4 py-2 rounded">
+                  <Button className="bg-red-500 text-white px-4 py-2 rounded-lg">
                     Reject
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle>Consulin Notification</AlertDialogTitle>
-                    <AlertDialogDescription>
-                      Psychologist successfully rejected!
+                    <AlertDialogTitle className="text-[#27374D] font-semibold">Reject Confirmation</AlertDialogTitle>
+                    <AlertDialogDescription className="text-[#27374D]">
+                    Are you sure you want to reject this psychologist?
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                    <AlertDialogCancel>Close</AlertDialogCancel>
+                  <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button className="bg-[#DC3545] rounded-lg">
+                    Confirm
+                    </Button>
+                    </AlertDialogTrigger>
+                      <AlertDialogContent>
+                        <AlertDialogHeader>
+                          <AlertDialogTitle className="text-[#27374D] font-semibold">Consulin Notification</AlertDialogTitle>
+                          <AlertDialogDescription className="text-[#27374D]">
+                          Psychologist successfully rejected!
+                          </AlertDialogDescription>
+                        </AlertDialogHeader>
+                        <AlertDialogFooter>
+                          <Link href="/dashboard">
+                          <AlertDialogAction className="bg-[#1E0342] rounded-lg">Close</AlertDialogAction>
+                          </Link>
+                        </AlertDialogFooter>
+                      </AlertDialogContent>
+                    </AlertDialog>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
                   </AlertDialogFooter>
                 </AlertDialogContent>
               </AlertDialog>
               <Link href="/dashboard/detail-approve">
-                <Button className="bg-gray-700 text-white px-4 py-2 rounded">
+                <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg">
                   Detail
                 </Button>
               </Link>

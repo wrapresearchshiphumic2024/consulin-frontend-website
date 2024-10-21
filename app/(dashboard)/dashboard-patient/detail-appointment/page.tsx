@@ -1,6 +1,16 @@
+import { createToken } from "@/actions/chat-token";
 import { Card } from "@/components/ui/card";
+import App from "../../_components/layouts/chat";
 
 export default function DetailAppointment() {
+  const apiKey = process.env.API_KEY;
+
+  const userId = "Patient_17fd95c7-eb1b-4140-9dcf-4d52f0560ec9";
+  const userName = "Patient";
+
+  if (!apiKey) {
+    return <div>Error: API key not found.</div>;
+  }
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -40,8 +50,18 @@ export default function DetailAppointment() {
 
         {/* Right Column (Chat Section) */}
         <div className="lg:col-span-2">
-          <div className="p-4 md:p-6 rounded-[30px]  bg-white w-full">
-            <p>Chat section content here</p>
+          <div className="p-4 md:p-6 rounded-[30px]  bg-white w-full h-[530px]">
+            <App
+              apiKey={apiKey}
+              createToken={createToken}
+              userId={userId}
+              channelId="messaging:!members--4fb2ZwmLHa98rIcxEwXmqgYOdJcOrwQyKWEumQGy3E"
+              userName={userName}
+              channelList={true}
+              image={
+                "https://media.istockphoto.com/id/2155498773/id/foto/wanita-percaya-diri-berjalan-dengan-koper-merah-di-lingkungan-perkotaan-modern.jpg?s=2048x2048&w=is&k=20&c=v5ZXzWRBGbXJl2XnYAPSVYW3h9Fk4z-0Hy39GhZZIUg="
+              }
+            />
           </div>
         </div>
       </div>

@@ -61,7 +61,7 @@ export default function List() {
   ];
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
+      <h2 className="text-[#1E0342] text-4xl md:text-5xl font-semibold mb-3">
         List Psychologist
       </h2>
       <p className="text-left text-[#1E034280] mb-8">
@@ -82,19 +82,19 @@ export default function List() {
               className="rounded-full w-24 h-24 mb-4"
             />
             <div className="text-left w-full mb-4 px-4 text-[#27374D] space-y-2">
-              <h2 className="text-xl font-semibold text-center mb-2">
+              <h2 className="text-xl font-bold text-center mb-[30px]">
                 {psychologist.name}
               </h2>
               <p className="">SSP ID: {psychologist.sspId}</p>
-              <p className="leading-tight break-words">
+              <p className="leading-tight break-words ">
                 Degree: {psychologist.degree}
               </p>
               <p className="">Specialist: {psychologist.specialist}</p>
               <p className="">Experience: {psychologist.experience}</p>
             </div>
-            <div className="w-full px-4 mt-auto flex justify-start">
+            <div className="w-full px-4 mt-auto flex justify-center">
               <Link href="/dashboard/detail-list">
-                <Button className="bg-gray-700 text-white px-4 py-2 rounded">
+                <Button className="bg-gray-700 justify-center text-white px-4 py-2 rounded-md w-[200px]">
                   Detail
                 </Button>
               </Link>

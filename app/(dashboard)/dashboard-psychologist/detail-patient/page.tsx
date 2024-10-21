@@ -4,6 +4,7 @@ import { Card } from "@/components/ui/card";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import Link from "next/link";
 import { toast } from "sonner";
+import ChatOne from "./_components/chat-one";
 
 export default function DetailSc() {
   return (
@@ -82,8 +83,8 @@ export default function DetailSc() {
 
         {/* Right Column (Chat Section) */}
         <div className="flex flex-col space-y-6 w-full lg:w-2/3">
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white">
-            <p>Chat section content here</p>
+          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white ">
+            <ChatOne />
           </Card>
         </div>
       </div>

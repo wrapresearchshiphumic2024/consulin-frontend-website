@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect } from "react";
+import { useCallback } from "react";
 import {
   Channel,
   ChannelHeader,
@@ -9,7 +9,6 @@ import {
   DefaultStreamChatGenerics,
   MessageInput,
   MessageList,
-  Thread,
   Window,
   useCreateChatClient,
 } from "stream-chat-react";
@@ -22,15 +21,17 @@ export default function App({
   apiKey,
   createToken,
   userId,
-  userId2,
+  channelId,
   userName,
+  channelList = false,
   image,
 }: {
   apiKey: string;
   createToken: (userId: string) => Promise<string>;
   userId: string;
-  userId2: string;
+  channelId?: string;
   userName: string;
+  channelList?: boolean;
   image: string;
 }) {
   const tokenProvider = useCallback(async () => {
@@ -48,19 +49,27 @@ export default function App({
   });
 
   const sort: ChannelSort<DefaultStreamChatGenerics> = { last_message_at: -1 };
-  const filters = {
-    type: "messaging",
-    members: { $in: [userId] },
-  };
+
+  const filters = channelId
+    ? {
+        type: "messaging",
+        cid: { $in: [channelId] },
+      }
+    : {
+        type: "messaging",
+        members: { $in: [userId] },
+      };
+
   const options = {
     limit: 10,
   };
+
   // Fungsi untuk membuat channel privat dengan 2 anggota
   const createPrivateChannel = async () => {
     const channel = client?.channel("messaging", {
       members: [
         "Psycholog_f989c982-fb97-4d63-939d-e445b81e9d66",
-        "Patient_17fd95c7-eb1b-4140-9dcf-4d52f0560ec9",
+        "patient2_0a8fce02-6442-4341-abbd-b51fe7d46519",
       ],
       created_by_id: userId,
     });
@@ -68,42 +77,13 @@ export default function App({
     await channel?.create();
   };
 
-  useEffect(() => {
-    if (client) {
-      createPrivateChannel();
-    }
-  }, [client]);
-
-  // function CustomChannelHeader(props: ChannelHeaderProps) {
-  //   // Mengambil informasi channel dan state dari context Stream
-  //   const { channel } = useChannelStateContext();
-
-  //   // Mendapatkan informasi tentang user pertama di channel (misalnya untuk 1-1 chat)
-  //   const member = channel.data || {};
-
-  //   return (
-  //     <div className="flex items-center p-4 border-b border-gray-300">
-  //       {/* Avatar pengguna */}
-  //       <Avatar>
-  //         <AvatarImage src={props.image} alt="@shadcn" />
-  //         <AvatarFallback>CN</AvatarFallback>
-  //       </Avatar>
-  //       {/* Informasi user */}
-  //       <div className="flex items-center">
-  //         <span className="font-bold mr-2">{props.title}</span>
-  //         {/* Indikator Online */}
-  //       </div>
-  //     </div>
-  //   );
-  // }
-
   if (!client) return <div>Setting up client & connection</div>;
   return (
     <Chat
       client={client}
-      // customClasses={{
-      //   channelList: "hidden",
-      // }}
+      customClasses={{
+        channelList: channelList ? "hidden" : "",
+      }}
     >
       <ChannelList
         sort={sort}
@@ -117,7 +97,6 @@ export default function App({
           <MessageList />
           <MessageInput />
         </Window>
-        <Thread />
       </Channel>
     </Chat>
   );

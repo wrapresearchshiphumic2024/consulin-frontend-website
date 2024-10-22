@@ -27,6 +27,7 @@ import { register } from "@/actions/auth/register";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
+import { Loader2 } from "lucide-react";
 
 const gender = [
   {
@@ -241,8 +242,12 @@ export default function FormSignUp() {
             <div className="col-span-2">
               <Button
                 type="submit"
+                disabled={pending}
                 className="w-full bg-primary-custom_primary"
               >
+                {pending ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
                 Create Account
               </Button>
               <Link href="/">

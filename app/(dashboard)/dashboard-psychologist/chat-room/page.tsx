@@ -16,7 +16,9 @@ export default function Home() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Chatroom
       </h2>
-      <p className="mt-3">Chat with patients during appointments</p>
+      <p className="mt-3 text-netral-primary font-medium">
+        Chat with patients during appointments
+      </p>
       <div className="flex h-[530px]  bg-white w-full p-5  rounded-3xl mt-5">
         <App
           apiKey={apiKey}

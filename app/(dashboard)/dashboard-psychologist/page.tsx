@@ -40,7 +40,7 @@ export default function DashboardPsychologist() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Hello, Consulin Psikologist!
       </h2>
-      <p>Have a good day!</p>
+      <p className="mt-3 text-netral-primary font-medium">Have a good day!</p>
 
       <div className="grid md:grid-cols-2 grid-rows-3 gap-4 mt-10">
         <div className="order-1 lg:order-1">

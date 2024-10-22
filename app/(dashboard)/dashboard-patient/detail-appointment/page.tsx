@@ -16,7 +16,7 @@ export default function DetailAppointment() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Detail Patient
       </h2>
-      <p className="text-left text-[#1E034280] mb-8 mt-3">
+      <p className="mt-3 text-netral-primary font-medium">
         View appointment details on this page and chat with psychologist
       </p>
 

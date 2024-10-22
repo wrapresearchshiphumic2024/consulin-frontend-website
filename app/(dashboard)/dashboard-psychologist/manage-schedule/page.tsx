@@ -15,7 +15,9 @@ export default function ManageSchedulePsycholog() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Manage Schedule
       </h2>
-      <p>Set your availability for patients to book appointments</p>
+      <p className="mt-3 text-netral-primary font-medium">
+        Set your availability for patients to book appointments
+      </p>
       <div className="flex gap-5 flex-col lg:flex-row mt-10">
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>

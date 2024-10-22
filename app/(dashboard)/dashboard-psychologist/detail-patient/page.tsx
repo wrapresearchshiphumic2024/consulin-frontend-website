@@ -8,12 +8,12 @@ import ChatOne from "./_components/chat-one";
 
 export default function DetailSc() {
   return (
-    <div className="p-4 md:p-6 lg:p-8">
+    <>
       <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-left mb-2 lg:mb-4 text-[#27374D]">
-        Detail Patient
+        Patient Complaint
       </h1>
-      <p className="text-left text-gray-600 mb-6 lg:mb-8">
-        View patient details on this page
+      <p className="mt-3 text-netral-primary font-medium">
+        View patient complaint on this page
       </p>
 
       <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-between">
@@ -86,6 +86,6 @@ export default function DetailSc() {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 }

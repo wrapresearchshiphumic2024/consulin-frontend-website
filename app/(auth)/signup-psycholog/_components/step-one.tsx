@@ -31,7 +31,7 @@ export default function StepOne() {
       <div>
         <FormField
           control={form.control}
-          name="first_name"
+          name="firstname"
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -50,7 +50,7 @@ export default function StepOne() {
       <div>
         <FormField
           control={form.control}
-          name="last_name"
+          name="lastname"
           render={({ field }) => (
             <FormItem>
               <FormControl>
@@ -83,7 +83,7 @@ export default function StepOne() {
                         placeholder="Gender"
                         className="placeholder:text-primary-custom_primary"
                       />
-                       <ArrowDown2 className="h-5 w-5"/>
+                      <ArrowDown2 className="h-5 w-5" />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>

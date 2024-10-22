@@ -75,7 +75,9 @@ export default function ApprovePsychologist() {
       <h2 className="text-[#1E0342] text-4xl md:text-5xl font-bold mb-3">
         Approve Psychologist
       </h2>
-      <p className="text-[#1E034280] font-semibold"> Review and manage psychologist who just registered</p>
+      <p className="mt-3 text-netral-primary font-medium">
+        Review and manage psychologist who just registered
+      </p>
 
       <div className="grid sm:grid-cols-2  xl:grid-cols-3 gap-3 mt-10">
         {psychologists.map((psychologist) => (
@@ -111,19 +113,40 @@ export default function ApprovePsychologist() {
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle className="text-[#27374D] font-semibold">Approve Confirmation</AlertDialogTitle>
+                    <AlertDialogTitle className="text-[#27374D] font-semibold">
+                      Approve Confirmation
+                    </AlertDialogTitle>
                     <AlertDialogDescription className="text-[#27374D]">
                       Are you sure you want to approve this psychologist?
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialog>
-                      <AlertDialogTrigger asChild >
+                      <AlertDialogTrigger asChild>
                         <AlertDialog>
-                      <AlertDialogTrigger asChild >
-                        <Button className="bg-green-500 text-white px-6 py-2 rounded-lg">
-                          Confirm
-                        </Button>
+                          <AlertDialogTrigger asChild>
+                            <Button className="bg-green-500 text-white px-6 py-2 rounded-lg">
+                              Confirm
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle className="text-[#27374D] font-semibold">
+                                Consulin Notification
+                              </AlertDialogTitle>
+                              <AlertDialogDescription className="text-[#27374D]">
+                                Psychologist successfully approved!
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <Link href="/dashboard">
+                                <AlertDialogAction className="bg-[#1E0342]">
+                                  Close
+                                </AlertDialogAction>
+                              </Link>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
                       </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
@@ -136,24 +159,9 @@ export default function ApprovePsychologist() {
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                           <Link href="/dashboard">
-                            <AlertDialogAction className="bg-[#1E0342]">Close</AlertDialogAction>
-                          </Link>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle className="text-[#27374D] font-semibold">
-                            Consulin Notification
-                          </AlertDialogTitle>
-                          <AlertDialogDescription className="text-[#27374D]">
-                            Psychologist successfully approved!
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <Link href="/dashboard">
-                            <AlertDialogAction className="bg-[#1E0342]">Close</AlertDialogAction>
+                            <AlertDialogAction className="bg-[#1E0342]">
+                              Close
+                            </AlertDialogAction>
                           </Link>
                         </AlertDialogFooter>
                       </AlertDialogContent>
@@ -172,28 +180,34 @@ export default function ApprovePsychologist() {
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle className="text-[#27374D] font-semibold">Reject Confirmation</AlertDialogTitle>
+                    <AlertDialogTitle className="text-[#27374D] font-semibold">
+                      Reject Confirmation
+                    </AlertDialogTitle>
                     <AlertDialogDescription className="text-[#27374D]">
-                    Are you sure you want to reject this psychologist?
+                      Are you sure you want to reject this psychologist?
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                  <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button className="bg-[#DC3545] rounded-lg">
-                    Confirm
-                    </Button>
-                    </AlertDialogTrigger>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button className="bg-[#DC3545] rounded-lg">
+                          Confirm
+                        </Button>
+                      </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
-                          <AlertDialogTitle className="text-[#27374D] font-semibold">Consulin Notification</AlertDialogTitle>
+                          <AlertDialogTitle className="text-[#27374D] font-semibold">
+                            Consulin Notification
+                          </AlertDialogTitle>
                           <AlertDialogDescription className="text-[#27374D]">
-                          Psychologist successfully rejected!
+                            Psychologist successfully rejected!
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                           <Link href="/dashboard">
-                          <AlertDialogAction className="bg-[#1E0342] rounded-lg">Close</AlertDialogAction>
+                            <AlertDialogAction className="bg-[#1E0342] rounded-lg">
+                              Close
+                            </AlertDialogAction>
                           </Link>
                         </AlertDialogFooter>
                       </AlertDialogContent>

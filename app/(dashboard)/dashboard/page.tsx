@@ -10,7 +10,7 @@ export default function Dashboard() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Hello, Consulin Admins!
       </h2>
-      <p>Have a good day!</p>
+      <p className="mt-3 text-netral-primary  font-medium ">Have a good day!</p>
 
       <div className="grid md:grid-cols-2 grid-rows-2 gap-4 mt-10 ">
         <div className="order-1 lg:order-1">

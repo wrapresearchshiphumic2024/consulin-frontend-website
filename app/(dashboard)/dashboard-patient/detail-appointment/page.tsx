@@ -1,5 +1,5 @@
 import { createToken } from "@/actions/chat-token";
-import { Card } from "@/components/ui/card";
+
 import App from "../../_components/layouts/chat";
 
 export default function DetailAppointment() {

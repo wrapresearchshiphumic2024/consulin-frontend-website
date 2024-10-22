@@ -83,8 +83,8 @@ export default function FormSignUpPsycholog() {
     mode: "all",
     resolver: zodResolver(formRegisterSchema),
     defaultValues: {
-      first_name: parsedData.first_name || "",
-      last_name: parsedData.last_name || "",
+      firstname: parsedData.firstname || "",
+      lastname: parsedData.lastname || "",
       gender: parsedData.gender || "",
       email: parsedData.email || "",
       phone_number: parsedData.phone_number || "",

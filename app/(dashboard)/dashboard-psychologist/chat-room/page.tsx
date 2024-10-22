@@ -1,5 +1,5 @@
-import App from "../../_components/layouts/chat";
 import { createToken } from "@/actions/chat-token";
+import App from "../../_components/layouts/chat";
 
 export default function Home() {
   const apiKey = process.env.API_KEY;

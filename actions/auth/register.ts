@@ -3,7 +3,7 @@
 import { formSignUpSchema } from "@/helpers/validations/validation-auth";
 
 export async function register(data: FormData) {
-
+    await new Promise((resolve) => setTimeout(resolve, 1000));
     const formData = Object.fromEntries(data.entries());
 
     const validatedFields = formSignUpSchema.safeParse(formData);

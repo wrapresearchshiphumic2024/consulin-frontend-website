@@ -63,11 +63,9 @@ export default function Faq() {
                       Can an AI assessment replace a psychologist's diagnosis?
                     </AccordionTrigger>
                     <AccordionContent>
-                      Our AI technology analyzes your answers to several
-                      questions related to your mental state. The results of
-                      this initial assessment are used to provide a snapshot of
-                      your mental health, and help us match you with the right
-                      psychologist.
+                    No, an AI assessment is not intended to replace a psychologist's diagnosis. 
+                    It serves as a preliminary evaluation to help guide you towards the right professional support. 
+                    A licensed psychologist will conduct a comprehensive assessment and provide an accurate diagnosis.
                     </AccordionContent>
                   </AccordionItem>
                 </div>
@@ -77,7 +75,7 @@ export default function Faq() {
                       Is there a consultation fee at Consulin?
                     </AccordionTrigger>
                     <AccordionContent>
-                      Yes. It adheres to the WAI-ARIA design pattern.
+                    No, all services on Consulin are free of charge. We aim to provide accessible mental health support to everyone.
                     </AccordionContent>
                   </AccordionItem>
                 </div>
@@ -87,7 +85,8 @@ export default function Faq() {
                       Can I choose my own psychologist?
                     </AccordionTrigger>
                     <AccordionContent>
-                      Yes. It adheres to the WAI-ARIA design pattern.
+                    Yes, you can choose your own psychologist from our list of qualified professionals. 
+                    You can review their profiles, specializations, and experience before making your selection.
                     </AccordionContent>
                   </AccordionItem>
                 </div>
@@ -97,7 +96,9 @@ export default function Faq() {
                       Is Consulin available 24/7?
                     </AccordionTrigger>
                     <AccordionContent>
-                      Yes. It adheres to the WAI-ARIA design pattern.
+                    Yes, Consulin is available 24/7, especially for our AI Analyzer feature, which allows you to assess your mental health at any time. 
+                    However, please note that consultations with psychologists are scheduled according to their availability. 
+                    You can book an appointment based on the times set by the psychologists on our platform.
                     </AccordionContent>
                   </AccordionItem>
                 </div>
@@ -107,7 +108,7 @@ export default function Faq() {
                       Can I use Consulin on a mobile device?
                     </AccordionTrigger>
                     <AccordionContent>
-                      Yes. It adheres to the WAI-ARIA design pattern.
+                    Yes, Consulin is available 24/7, allowing you to access mental health support and resources at any time that suits you.
                     </AccordionContent>
                   </AccordionItem>
                 </div>

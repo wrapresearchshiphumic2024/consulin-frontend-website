@@ -2,11 +2,11 @@ import { z } from "zod";
 
 export const formRegisterSchema = z
   .object({
-    first_name: z
+    firstname: z
       .string()
       .min(1, { message: "First name is required" })
       .max(50, { message: "First name cannot exceed 50 characters" }),
-    last_name: z
+    lastname: z
       .string()
       .min(2, { message: "Last name is required" })
       .max(50, { message: "Last name cannot exceed 50 characters" }),
@@ -112,11 +112,11 @@ export const formLoginSchema = z.object({
 });
 
 export const formSignUpSchema = z.object({
-  first_name: z
+  firstname: z
   .string()
   .min(1, { message: "First name is required" })
   .max(50, { message: "First name cannot exceed 50 characters" }),
-  last_name: z
+  lastname: z
   .string()
   .min(2, { message: "Last name is required" })
   .max(50, { message: "Last name cannot exceed 50 characters" }),

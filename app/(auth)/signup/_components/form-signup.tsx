@@ -21,24 +21,33 @@ import {
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { formSignUpSchema } from "@/helpers/validations/validation-auth";
-import { ArrowDown } from "lucide-react";
+import { useTransition } from "react";
 import { ArrowDown2 } from "iconsax-react";
+import { register } from "@/actions/auth/register";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
+import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
+
 const gender = [
   {
     name: "Male",
+    value: "male",
   },
   {
     name: "Female",
+    value: "female",
   },
 ];
 
 export default function FormSignUp() {
+  const [pending, startTransaction] = useTransition();
+  const router = useRouter();
   const form = useForm<z.infer<typeof formSignUpSchema>>({
     mode: "all",
     resolver: zodResolver(formSignUpSchema),
     defaultValues: {
-      first_name: "",
-      last_name: "",
+      firstname: "",
+      lastname: "",
       gender: "",
       phone_number: "",
       email: "",
@@ -49,7 +58,27 @@ export default function FormSignUp() {
   });
 
   async function onSubmit(values: z.infer<typeof formSignUpSchema>) {
-    console.log(values);
+    const formData = new FormData();
+    formData.append("firstname", values.firstname);
+    formData.append("lastname", values.lastname);
+    formData.append("gender", values.gender);
+    formData.append("phone_number", values.phone_number);
+    formData.append("email", values.email);
+    formData.append("password", values.password);
+    formData.append("confirm_password", values.confirm_password);
+
+    startTransaction(async () => {
+      const { errors, success } = await register(formData);
+
+      if (errors) {
+        toast.custom((t) => <ToastFailed label={errors as string} t={t} />);
+      } else {
+        toast.custom((t) => (
+          <ToastSuccess label="Account created successfully" t={t} />
+        ));
+        router.push("/signin");
+      }
+    });
   }
 
   return (
@@ -64,7 +93,7 @@ export default function FormSignUp() {
               <div className="w-1/2">
                 <FormField
                   control={form.control}
-                  name="first_name"
+                  name="firstname"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
@@ -82,7 +111,7 @@ export default function FormSignUp() {
               <div className="w-1/2">
                 <FormField
                   control={form.control}
-                  name="last_name"
+                  name="lastname"
                   render={({ field }) => (
                     <FormItem>
                       <FormControl>
@@ -114,13 +143,13 @@ export default function FormSignUp() {
                             <SelectValue
                               placeholder="Gender"
                               className="placeholder:text-primary-custom_primary"
-                              />
-                              <ArrowDown2 className="h-5 w-5"/>
+                            />
+                            <ArrowDown2 className="h-5 w-5" />
                           </SelectTrigger>
                         </FormControl>
                         <SelectContent>
                           {gender.map((gender) => (
-                            <SelectItem key={gender.name} value={gender.name}>
+                            <SelectItem key={gender.name} value={gender.value}>
                               {gender.name}
                             </SelectItem>
                           ))}

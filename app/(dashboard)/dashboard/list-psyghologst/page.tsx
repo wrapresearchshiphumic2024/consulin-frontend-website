@@ -61,10 +61,10 @@ export default function List() {
   ];
   return (
     <>
-      <h2 className="text-[#1E0342] text-4xl md:text-5xl font-semibold mb-3">
+      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         List Psychologist
       </h2>
-      <p className="text-left text-[#1E034280] mb-8">
+      <p className="mt-3 text-netral-primary  font-medium ">
         List of Active Psychologists in Consulin
       </p>
       <div className="grid sm:grid-cols-2  xl:grid-cols-3 gap-3 mt-10">

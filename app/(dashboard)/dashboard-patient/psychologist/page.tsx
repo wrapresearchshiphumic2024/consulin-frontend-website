@@ -79,7 +79,7 @@ export default function Psychologist() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Psychologist
       </h2>
-      <p className="text-left text-netral-primary mb-8 mt-3">
+      <p className="mt-3 text-netral-primary font-medium">
         Explore and book an appointment with a psychologist to get the support
         you need.
       </p>

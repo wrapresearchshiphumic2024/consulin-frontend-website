@@ -7,7 +7,7 @@ export default function DetailPsycholog() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Detail Psikologist
       </h2>
-      <p className="text-left text-[#1E034280] mb-8 mt-3">
+      <p className="mt-3 text-netral-primary font-medium">
         View psychologist details on this page
       </p>
       <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center">

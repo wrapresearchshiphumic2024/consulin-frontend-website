@@ -71,7 +71,7 @@ export default function ScheduledApp() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Scheduled Appointment
       </h2>
-      <p className="text-[#1E034280]">
+      <p className="mt-3 text-netral-primary font-medium">
         Manage patient appointments, complete or decline consultations, and view
         patient details.
       </p>

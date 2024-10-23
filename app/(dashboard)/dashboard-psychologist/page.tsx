@@ -10,7 +10,7 @@ const notifications = [
   {
     name: "Maria Jhonson",
     time: "12 Oct 2024, 10:00",
-    status: "ongoing",
+    status: "On-going",
   },
   {
     name: "John Doe",

@@ -4,8 +4,8 @@ import App from "@/app/(dashboard)/_components/layouts/chat";
 export default function Home() {
   const apiKey = process.env.API_KEY;
 
-  const userId = "patient2_0a8fce02-6442-4341-abbd-b51fe7d46519";
-  const userName = "patient2";
+  const userId = "Patient_17fd95c7-eb1b-4140-9dcf-4d52f0560ec9";
+  const userName = "Patient";
 
   if (!apiKey) {
     return <div>Error: API key not found.</div>;

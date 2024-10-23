@@ -1,6 +1,7 @@
 "use client";
+import SignOut from "@/app/(dashboard)/_components/ui/signout";
 import IconSetting from "@/components/icons/icon-setting";
-import IconSignOut from "@/components/icons/icon-signout";
+
 import { SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -24,13 +25,7 @@ export default function SidebarMobilePsychologistBottom() {
           Setting
         </Link>
       </SheetClose>
-      <Link
-        href="#"
-        className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:text-foreground"
-      >
-        <IconSignOut className="h-5 w-5" />
-        Sign Out
-      </Link>
+      <SignOut />
     </>
   );
 }

@@ -20,7 +20,7 @@ export default function DetailAppointment() {
         View appointment details on this page and chat with psychologist
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
         {/* Left Column (Ongoing Card and AI Analysis Card) */}
         <div className="space-y-4 col-span-1">
           {/* Ongoing Card */}

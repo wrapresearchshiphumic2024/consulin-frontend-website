@@ -3,8 +3,11 @@ import CardDashboard from "../_components/ui/card-dashboard";
 import IconPatient from "@/components/icons/icon-patient";
 import IconConsultation from "@/components/icons/icon-consultation";
 import IconCompletion from "@/components/icons/icon-completion";
+import { auth } from "@/auth";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const session = await auth();
+
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">

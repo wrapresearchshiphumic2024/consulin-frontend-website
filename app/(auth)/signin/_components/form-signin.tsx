@@ -16,8 +16,15 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { formLoginSchema } from "@/helpers/validations/validation-auth";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import { useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { loginAction } from "@/actions/auth/login";
+import { toast } from "sonner";
+import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 
 export default function FormSignIn() {
+  const [pending, startTransaction] = useTransition();
+  const router = useRouter();
   const form = useForm<z.infer<typeof formLoginSchema>>({
     mode: "all",
     resolver: zodResolver(formLoginSchema),
@@ -29,7 +36,23 @@ export default function FormSignIn() {
   });
 
   async function onSubmit(values: z.infer<typeof formLoginSchema>) {
-    console.log(values);
+    const formData = new FormData();
+    formData.append("email", values.email);
+    formData.append("password", values.password);
+
+    startTransaction(async () => {
+      const { errors, success } = await loginAction(formData);
+      console.log("errors", errors);
+      console.log("success", success);
+      if (errors) {
+        toast.custom((t) => <ToastFailed label={errors as string} t={t} />);
+      } else {
+        toast.custom((t) => (
+          <ToastSuccess label="Account created successfully" t={t} />
+        ));
+        router.push("/signin");
+      }
+    });
   }
 
   return (

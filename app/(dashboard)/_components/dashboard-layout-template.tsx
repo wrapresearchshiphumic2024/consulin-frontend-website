@@ -121,7 +121,7 @@ export default function DashboardLayoutTemplate({
             </SheetContent>
           </Sheet>
         </header>
-        <main className=" px-5 lg:p-10 h-full w-full overflow-hidden">
+        <main className=" px-5 md:p-5 lg:p-10 h-full w-full overflow-hidden">
           {children}
         </main>
       </div>

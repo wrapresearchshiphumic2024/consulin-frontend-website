@@ -15,8 +15,17 @@ import {
 import { formScheduleSchema } from "@/helpers/validations/validation-shedule";
 import ScheduleComponentDay from "@/app/(dashboard)/_components/ui/schedule-component-day";
 import ScheduleComponentTime from "@/app/(dashboard)/_components/ui/schedule-component-time";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner";
+import { ToastSuccess } from "@/components/ui/toast-custom";
 
-export default function FormSchedule() {
+export default function FormSchedule({
+  disabled = false,
+}: {
+  disabled?: boolean;
+}) {
+  const router = useRouter();
   const form = useForm<z.infer<typeof formScheduleSchema>>({
     mode: "all",
     resolver: zodResolver(formScheduleSchema),
@@ -29,6 +38,10 @@ export default function FormSchedule() {
 
   async function onSubmit(values: z.infer<typeof formScheduleSchema>) {
     console.log(values);
+    toast.custom((t) => (
+      <ToastSuccess label={"Schedule successfully update"} t={t} />
+    ));
+    router.push("/dashboard-psychologist/manage-schedule");
   }
 
   return (
@@ -48,6 +61,7 @@ export default function FormSchedule() {
                     <ScheduleComponentDay
                       value={field.value}
                       onChange={field.onChange}
+                      disabled={disabled}
                     />
                   </FormControl>
 
@@ -66,6 +80,7 @@ export default function FormSchedule() {
                     <ScheduleComponentTime
                       value={field.value}
                       onChange={field.onChange}
+                      disabled={disabled}
                     />
                   </FormControl>
 
@@ -74,13 +89,27 @@ export default function FormSchedule() {
               )}
             />
           </div>
-
-          <Button type="submit" className=" bg-green-500 mr-3">
-            Save
-          </Button>
-          <Button type="button" className=" bg-red-500">
-            Cancel
-          </Button>
+          {disabled ? (
+            <Link
+              href={"/dashboard-psychologist/manage-schedule/edit-schedule"}
+            >
+              <Button
+                type="button"
+                className=" bg-primary-custom_primary mr-3 mt-10"
+              >
+                Edit
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <Button type="submit" className=" bg-green-500 mr-3">
+                Save
+              </Button>
+              <Button type="button" variant={"destructive"} className=" mr-3">
+                Cancel
+              </Button>
+            </>
+          )}
         </form>
       </Form>
     </>

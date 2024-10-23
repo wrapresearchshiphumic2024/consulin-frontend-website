@@ -33,7 +33,7 @@ export default function Complaint() {
         View patient complaint on this page
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
         {complaints.map((complaint, index) => (
           <Card key={index} className="p-6 rounded-[30px] shadow-md bg-white">
             <h2 className="text-[#27374D] font-semibold mb-2">

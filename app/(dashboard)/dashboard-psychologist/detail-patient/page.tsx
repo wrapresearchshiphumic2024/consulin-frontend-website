@@ -59,7 +59,7 @@ export default function DetailSc() {
 
         {/* Right Column: Chat Section */}
         <div className="col-span-2">
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full">
+          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full  h-[530px]">
             <ChatOne />
           </Card>
         </div>

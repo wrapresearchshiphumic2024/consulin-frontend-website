@@ -10,7 +10,7 @@ export default function DetailPsycholog() {
       <p className="mt-3 text-netral-primary font-medium">
         View psychologist details on this page
       </p>
-      <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center">
+      <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center ">
         <Card className="flex flex-col items-center  rounded-[30px] shadow-lg  mb-6  lg:mb-0 w-full lg:w-1/3 ">
           <div
             className={cn(

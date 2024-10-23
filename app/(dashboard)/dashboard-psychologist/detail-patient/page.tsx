@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import Link from "next/link";
-import { toast } from "sonner";
 import ChatOne from "./_components/chat-one";
 
 export default function DetailSc() {

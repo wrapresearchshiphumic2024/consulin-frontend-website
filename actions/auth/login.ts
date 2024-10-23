@@ -3,7 +3,7 @@ import { signIn } from "@/auth";
 import { formLoginSchema } from "@/helpers/validations/validation-auth";
 export async function loginAction(data: FormData) {
     try {
-        await new Promise((resolve) => setTimeout(resolve, 1000));
+        await new Promise((resolve) => setTimeout(resolve, 500));
         const formData = Object.fromEntries(data);
         const validatedFields = formLoginSchema.safeParse(formData);
         

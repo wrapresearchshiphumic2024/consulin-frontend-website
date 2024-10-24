@@ -14,13 +14,13 @@ export async function middleware(req: NextRequest) {
     const isPatientDashboard = pathname.startsWith("/dashboard-patient");
     const isPsychologistDashboard = pathname.startsWith("/dashboard-psychologist");
 
-    // Jika user belum login dan mengakses halaman selain /signin, redirect ke /signin
-    if (!session?.user && !isSignInPage) {
+    // Jika user belum login dan mengakses halaman selain /signin, /signup, atau /signup-psycholog, redirect ke /signin
+    if (!session?.user && !isSignInPage && !isSignUpPage && !isSignUpPsychologPage) {
         return NextResponse.redirect(new URL("/signin", req.url));
     }
 
     // Jika user sudah login dan berada di halaman /signin, /signup, atau /signup-psycholog, redirect ke dashboard sesuai role
-    if ((isSignInPage || isSignUpPage || isSignUpPsychologPage) && session?.user) {
+    if (session?.user && (isSignInPage || isSignUpPage || isSignUpPsychologPage)) {
         if (session.user.role === "admin") {
             return NextResponse.redirect(new URL("/dashboard", req.url));
         } else if (session.user.role === "patient") {

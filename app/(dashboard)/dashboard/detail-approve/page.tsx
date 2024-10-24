@@ -16,14 +16,15 @@ import Link from "next/link";
 
 export default function DetailApp() {
   return (
-    <div className="p-4 md:p-6">
-      <h1 className="text-xl md:text-4xl lg:text-5xl font-bold text-left mb-3 text-[#1E0342]">
+    <>
+      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Detail Applicant Psychologist
-      </h1>
-      <p className="text-left text-[#1E0342] mb-6 md:mb-8">
+      </h2>
+      <p className="mt-3 text-netral-primary  font-medium ">
         View applicant psychologist details on this page
       </p>
-      <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center">
+
+      <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center mt-10">
         <div className="flex flex-col w-full lg:w-[500px] space-y-1 mb-10 lg:mb-0">
           <Card className="flex flex-col items-center p-4 md:p-6 rounded-[30px] h-auto md:h-[400px] shadow-lg bg-white mb-6 w-full">
             <Image
@@ -65,25 +66,46 @@ export default function DetailApp() {
               {/* Accept Button */}
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                <Button className="bg-green-500 text-white px-4 py-2 rounded-lg w-full sm:w-[200px]">
+                  <Button className="bg-green-500 text-white px-4 py-2 rounded-lg w-full sm:w-[200px]">
                     Accept
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle className="text-[#27374D] font-semibold">Approve Confirmation</AlertDialogTitle>
+                    <AlertDialogTitle className="text-[#27374D] font-semibold">
+                      Approve Confirmation
+                    </AlertDialogTitle>
                     <AlertDialogDescription className="text-[#27374D]">
                       Are you sure you want to approve this psychologist?
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
                     <AlertDialog>
-                      <AlertDialogTrigger asChild >
+                      <AlertDialogTrigger asChild>
                         <AlertDialog>
-                      <AlertDialogTrigger asChild >
-                        <Button className="bg-green-500 text-white px-6 py-2 rounded-lg">
-                          Confirm
-                        </Button>
+                          <AlertDialogTrigger asChild>
+                            <Button className="bg-green-500 text-white px-6 py-2 rounded-lg">
+                              Confirm
+                            </Button>
+                          </AlertDialogTrigger>
+                          <AlertDialogContent>
+                            <AlertDialogHeader>
+                              <AlertDialogTitle className="text-[#27374D] font-semibold">
+                                Consulin Notification
+                              </AlertDialogTitle>
+                              <AlertDialogDescription className="text-[#27374D]">
+                                Psychologist successfully approved!
+                              </AlertDialogDescription>
+                            </AlertDialogHeader>
+                            <AlertDialogFooter>
+                              <Link href="/dashboard">
+                                <AlertDialogAction className="bg-[#1E0342]">
+                                  Close
+                                </AlertDialogAction>
+                              </Link>
+                            </AlertDialogFooter>
+                          </AlertDialogContent>
+                        </AlertDialog>
                       </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
@@ -96,24 +118,9 @@ export default function DetailApp() {
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                           <Link href="/dashboard">
-                            <AlertDialogAction className="bg-[#1E0342]">Close</AlertDialogAction>
-                          </Link>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle className="text-[#27374D] font-semibold">
-                            Consulin Notification
-                          </AlertDialogTitle>
-                          <AlertDialogDescription className="text-[#27374D]">
-                            Psychologist successfully approved!
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <Link href="/dashboard">
-                            <AlertDialogAction className="bg-[#1E0342]">Close</AlertDialogAction>
+                            <AlertDialogAction className="bg-[#1E0342]">
+                              Close
+                            </AlertDialogAction>
                           </Link>
                         </AlertDialogFooter>
                       </AlertDialogContent>
@@ -126,34 +133,40 @@ export default function DetailApp() {
               </AlertDialog>
               <AlertDialog>
                 <AlertDialogTrigger asChild>
-                <Button className="bg-red-500 text-white px-4 py-2 rounded-lg w-full sm:w-[200px]">
+                  <Button className="bg-red-500 text-white px-4 py-2 rounded-lg w-full sm:w-[200px]">
                     Reject
                   </Button>
                 </AlertDialogTrigger>
                 <AlertDialogContent>
                   <AlertDialogHeader>
-                    <AlertDialogTitle className="text-[#27374D] font-semibold">Reject Confirmation</AlertDialogTitle>
+                    <AlertDialogTitle className="text-[#27374D] font-semibold">
+                      Reject Confirmation
+                    </AlertDialogTitle>
                     <AlertDialogDescription className="text-[#27374D]">
-                    Are you sure you want to reject this psychologist?
+                      Are you sure you want to reject this psychologist?
                     </AlertDialogDescription>
                   </AlertDialogHeader>
                   <AlertDialogFooter>
-                  <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button className="bg-[#DC3545] rounded-lg">
-                    Confirm
-                    </Button>
-                    </AlertDialogTrigger>
+                    <AlertDialog>
+                      <AlertDialogTrigger asChild>
+                        <Button className="bg-[#DC3545] rounded-lg">
+                          Confirm
+                        </Button>
+                      </AlertDialogTrigger>
                       <AlertDialogContent>
                         <AlertDialogHeader>
-                          <AlertDialogTitle className="text-[#27374D] font-semibold">Consulin Notification</AlertDialogTitle>
+                          <AlertDialogTitle className="text-[#27374D] font-semibold">
+                            Consulin Notification
+                          </AlertDialogTitle>
                           <AlertDialogDescription className="text-[#27374D]">
-                          Psychologist successfully rejected!
+                            Psychologist successfully rejected!
                           </AlertDialogDescription>
                         </AlertDialogHeader>
                         <AlertDialogFooter>
                           <Link href="/dashboard">
-                          <AlertDialogAction className="bg-[#1E0342] rounded-lg">Close</AlertDialogAction>
+                            <AlertDialogAction className="bg-[#1E0342] rounded-lg">
+                              Close
+                            </AlertDialogAction>
                           </Link>
                         </AlertDialogFooter>
                       </AlertDialogContent>
@@ -208,6 +221,6 @@ export default function DetailApp() {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   );
 }

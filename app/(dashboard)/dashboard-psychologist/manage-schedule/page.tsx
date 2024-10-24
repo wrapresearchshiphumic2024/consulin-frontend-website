@@ -2,6 +2,8 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import FormSchedule from "./_components/form-shedule";
 
 import ScheduleCard from "../../_components/ui/schedule-card";
+import { Switch } from "@/components/ui/switch";
+import { Label } from "@/components/ui/label";
 const schedules = [
   { day: "Every Monday", status: "Scheduled", time: "09:00 - 12:00" },
   { day: "Every Tuesday", status: "Scheduled", time: "10:00 - 11:00" },
@@ -15,15 +17,23 @@ export default function ManageSchedulePsycholog() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Manage Schedule
       </h2>
-      <p>Set your availability for patients to book appointments</p>
-      <div className="flex gap-5 flex-col lg:flex-row mt-10">
+      <p className="mt-3 text-netral-primary font-medium">
+        Set your availability for patients to book appointments
+      </p>
+      <div className="flex items-center my-3 justify-end ">
+        <div className="flex items-center bg-secondary-custom_secondary rounded-full p-3 gap-3 ">
+          <Label htmlFor="appointment">Open for Appointments</Label>
+          <Switch id="appointment" />
+        </div>
+      </div>
+      <div className="flex gap-5 flex-col lg:flex-row ">
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>
             <h3 className="text-2xl font-semibold text-netral-primary">
               Set Consultations Schedule
             </h3>
           </center>
-          <FormSchedule />
+          <FormSchedule disabled={true} />
         </div>
 
         <div className="bg-secondary-custom_secondary p-5 rounded-2xl flex-1 lg:flex-none w-full lg:w-1/3">

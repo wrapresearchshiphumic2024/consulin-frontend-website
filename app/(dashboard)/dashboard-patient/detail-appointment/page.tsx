@@ -1,5 +1,5 @@
 import { createToken } from "@/actions/chat-token";
-import { Card } from "@/components/ui/card";
+
 import App from "../../_components/layouts/chat";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -14,6 +14,7 @@ export default function DetailAppointment() {
     return <div>Error: API key not found.</div>;
   }
   return (
+<<<<<<< HEAD
     <> 
     <div className="flex items-center mb-5 gap-3">
       <Link href="/dashboard-patient">
@@ -36,6 +37,18 @@ export default function DetailAppointment() {
       </div>
     </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+=======
+    <>
+      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
+        Detail Patient
+      </h2>
+      <p className="mt-3 text-netral-primary font-medium">
+        View appointment details on this page and chat with psychologist
+      </p>
+
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mt-5">
+        {/* Left Column (Ongoing Card and AI Analysis Card) */}
+>>>>>>> 407d4264fad6f71c3cdb60fe41f93ff98c2829f0
         <div className="space-y-4 col-span-1">
         <div className="flex flex-col rounded-[30px] bg-white w-full shadow-lg">
           <div className="w-full bg-[#28A745] rounded-t-[30px] text-white text-center py-3 font-bold text-lg">

@@ -16,12 +16,16 @@ export default function ScheduleComponentTime({
   value = [],
   onChange,
   isSingleSelect = false,
+  disabled = false, // Properti untuk menentukan apakah semua slot waktu dinonaktifkan
 }: {
   value: { start: string; end: string }[];
   onChange: (days: { start: string; end: string }[]) => void;
   isSingleSelect?: boolean;
+  disabled?: boolean; // Menambahkan properti disabled
 }) {
   const handleSelectDay = (selectedDay: { start: string; end: string }) => {
+    if (disabled) return; // Cegah aksi jika disabled bernilai true
+
     const selectedDays = Array.isArray(value) ? value : [];
 
     if (isSingleSelect) {
@@ -75,9 +79,10 @@ export default function ScheduleComponentTime({
               isSelected(item.value)
                 ? "bg-[#27374D] text-white"
                 : "bg-[#27374D]/10 text-netral-primary",
-              "w-full h-12 flex items-center justify-center rounded-xl shadow-md cursor-pointer px-3 hover:border-netral-primary hover:border-2"
+              disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer", // Indikasi visual jika disabled
+              "w-full h-12 flex items-center justify-center rounded-xl shadow-md px-3 hover:border-netral-primary hover:border-2"
             )}
-            onClick={() => handleSelectDay(item.value)}
+            onClick={() => !disabled && handleSelectDay(item.value)} // Mencegah klik jika disabled
           >
             <p>{item.label}</p>
           </div>

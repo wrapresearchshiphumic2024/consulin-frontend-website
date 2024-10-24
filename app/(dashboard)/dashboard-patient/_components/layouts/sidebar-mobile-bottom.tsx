@@ -1,6 +1,7 @@
 "use client";
+import SignOut from "@/app/(dashboard)/_components/ui/signout";
 import IconSetting from "@/components/icons/icon-setting";
-import IconSignOut from "@/components/icons/icon-signout";
+
 import { SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -35,6 +36,7 @@ export default function SidebarMobilePatientBottom() {
         </Link>
       </SheetClose>
 
+<<<<<<< HEAD
       <AlertDialog>
       <AlertDialogTrigger className="flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:text-foreground mx-[-0.65rem]">
         <IconSignOut className="h-4 w-4" />
@@ -60,6 +62,9 @@ export default function SidebarMobilePatientBottom() {
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
+=======
+      <SignOut />
+>>>>>>> 407d4264fad6f71c3cdb60fe41f93ff98c2829f0
     </>
   );
 }

@@ -77,9 +77,11 @@ export default function ScheduledApp() {
 
   const getRedirectUrl = (status) => {
     if (status === "Ongoing") return "/dashboard-psychologist/detail-patient";
-    if (status === "Waiting") return "/dashboard-psychologist/detail-wait-patient";
-    if (status === "Canceled") return "/dashboard-psychologist/detail-cancel-patient";
-    return "/dashboard-psychologist/detail-patient"; 
+    if (status === "Waiting")
+      return "/dashboard-psychologist/detail-wait-patient";
+    if (status === "Canceled")
+      return "/dashboard-psychologist/detail-cancel-patient";
+    return "/dashboard-psychologist/detail-patient";
   };
 
   return (
@@ -104,7 +106,7 @@ export default function ScheduledApp() {
                   ? "bg-[#28A745]"
                   : psychologist.status === "Waiting"
                   ? "bg-[#272C4D]"
-                  : "bg-[#DC3545]" 
+                  : "bg-[#DC3545]"
               }`}
             >
               {psychologist.status}
@@ -138,17 +140,23 @@ export default function ScheduledApp() {
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Confirmation of Consultation Session</AlertDialogTitle>
+                      <AlertDialogTitle>
+                        Confirmation of Consultation Session
+                      </AlertDialogTitle>
                       <AlertDialogDescription>
-                        Are you sure you want to complete this session? Once the session is completed, 
-                        you cannot change or cancel this action.
+                        Are you sure you want to complete this session? Once the
+                        session is completed, you cannot change or cancel this
+                        action.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                       <AlertDialogAction
                         onClick={() =>
                           toast.custom((t) => (
-                            <ToastSuccess label="Schedule Successfully created" t={t} />
+                            <ToastSuccess
+                              label="Schedule Successfully created"
+                              t={t}
+                            />
                           ))
                         }
                         className="bg-[#28A745] text-white px-4 py-2 rounded-full"

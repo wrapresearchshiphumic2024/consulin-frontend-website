@@ -16,8 +16,16 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { formLoginSchema } from "@/helpers/validations/validation-auth";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
+import { useTransition } from "react";
+import { useRouter } from "next/navigation";
+import { loginAction } from "@/actions/auth/login";
+import { toast } from "sonner";
+import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
+import { Loader2 } from "lucide-react";
 
 export default function FormSignIn() {
+  const [pending, startTransaction] = useTransition();
+  const router = useRouter();
   const form = useForm<z.infer<typeof formLoginSchema>>({
     mode: "all",
     resolver: zodResolver(formLoginSchema),
@@ -29,7 +37,26 @@ export default function FormSignIn() {
   });
 
   async function onSubmit(values: z.infer<typeof formLoginSchema>) {
-    console.log(values);
+    const formData = new FormData();
+    formData.append("email", values.email);
+    formData.append("password", values.password);
+
+    startTransaction(async () => {
+      const result = await loginAction(formData);
+
+      if ("error" in result) {
+        toast.custom((t) => (
+          <ToastFailed label={result.error as string} t={t} />
+        ));
+      } else if ("errors" in result) {
+        console.log(result.errors);
+      } else if ("success" in result) {
+        toast.custom((t) => (
+          <ToastSuccess label={result.success as string} t={t} />
+        ));
+        router.push("/dashboard");
+      }
+    });
   }
 
   return (
@@ -91,9 +118,13 @@ export default function FormSignIn() {
             <div className="col-span-2">
               <Button
                 type="submit"
+                disabled={pending}
                 className="w-full bg-primary-custom_primary"
               >
-                Sign In
+                {pending ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
+                Sign in
               </Button>
             </div>
           </div>

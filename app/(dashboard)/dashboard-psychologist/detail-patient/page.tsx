@@ -1,29 +1,18 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import Link from "next/link";
-import { toast } from "sonner";
 import ChatOne from "./_components/chat-one";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+
 import Image from "next/image";
+import ButtonDetailPatient from "./_components/button-detail-patient";
+
 export default function DetailSc() {
   return (
     <div className="p-4 md:p-6 lg:p-8">
       <div className="flex items-center mb-6">
         <Link href="/dashboard-psychologist/Scheduled-Appointment">
           <Button className="p-2 rounded-full bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
-          <Image
+            <Image
               src="/assets/icons/back.png"
               alt="Back"
               width={10}
@@ -42,100 +31,28 @@ export default function DetailSc() {
         </div>
       </div>
 
-      <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-between">
-        <div className="flex flex-col w-full lg:w-[500px] space-y-4 mb-6 lg:mb-0">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-5">
+        <div className="space-y-4 col-span-1">
           <Card className="flex flex-col rounded-[30px] shadow-lg bg-white w-full">
             <div className="w-full bg-[#28A745] rounded-t-[30px] text-white text-center py-2 font-bold">
               Ongoing
             </div>
             <div className="flex flex-col p-4 space-y-3">
-              <p className="text-[#1E0342] font-semibold">Name: Maria Johnson</p>
-              <p className="text-[#1E0342] font-semibold">Gender: Woman</p>
-              <p className="text-[#1E0342] font-semibold">Email: marjo.@woho.id</p>
-              <p className="text-[#1E0342] font-semibold">Phone: 0812-3456-7890</p>
-              <p className="text-[#1E0342] font-semibold">
-                Day & Time: 14 Oct 2024, 10:00
-              </p>
+              <p className="text-gray-900">Name: Maria Johnson</p>
+              <p className="text-gray-900">Gender: Woman</p>
+              <p className="text-gray-900">Email: marjo.@woho.id</p>
+              <p className="text-gray-900">Phone: 0812-3456-7890</p>
+              <p className="text-gray-900">Day & Time: 14 Oct 2024, 10:00</p>
 
               <div className="flex flex-row space-x-2 mt-4">
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button className="bg-green-500 text-white py-3 rounded-lg w-full">
-                      Done
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>
-                        Confirmation of Consultation Session
-                      </AlertDialogTitle>
-                      <AlertDialogDescription>
-                        Are you sure you want to complete this session? Once the
-                        session is completed, you cannot change or cancel this action.
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogAction
-                        onClick={() =>
-                          toast.custom((t) => (
-                            <ToastSuccess label="Schedule Successfully created" t={t} />
-                          ))
-                        }
-                        className="bg-[#28A745]"
-                      >
-                        Confirm
-                      </AlertDialogAction>
-                      <AlertDialogCancel className="bg-[#DC3545] text-white">
-                        Cancel
-                      </AlertDialogCancel>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
-
-                <AlertDialog>
-                  <AlertDialogTrigger asChild>
-                    <Button className="bg-red-500 text-white py-3 rounded-lg w-full">
-                      Cancel
-                    </Button>
-                  </AlertDialogTrigger>
-                  <AlertDialogContent>
-                    <AlertDialogHeader>
-                      <AlertDialogTitle>Cancel Session</AlertDialogTitle>
-                      <AlertDialogDescription>
-                        Are you sure you want to cancel this session?
-                        <br />
-                        Please provide the reason for cancellation below:
-                        <br />
-                        <br />
-                        <textarea
-                          placeholder="Enter your cancellation reason here..."
-                          className="w-full h-32 p-4 bg-[#E9ECEF] text-gray-500 rounded-xl outline-none resize-none"
-                        />
-                      </AlertDialogDescription>
-                    </AlertDialogHeader>
-                    <AlertDialogFooter>
-                      <AlertDialogAction
-                        onClick={() =>
-                          toast.custom((t) => (
-                            <ToastFailed label="Session Cancelled" t={t} />
-                          ))
-                        }
-                        className="bg-[#28A745]"
-                      >
-                        Confirm
-                      </AlertDialogAction>
-                      <AlertDialogCancel className="bg-[#DC3545] text-white">
-                        Cancel
-                      </AlertDialogCancel>
-                    </AlertDialogFooter>
-                  </AlertDialogContent>
-                </AlertDialog>
+                <ButtonDetailPatient />
               </div>
             </div>
           </Card>
 
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full space-y-3">
-            <h3 className="font-bold text-[#1E0342] text-lg md:text-xl mb-4">
+          {/* AI Analysis Results Card */}
+          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full">
+            <h3 className="font-bold text-[#27374D] text-lg md:text-xl mb-4">
               AI Analysis Results
             </h3>
             <p className="text-[#1E0342] font-semibold">
@@ -158,8 +75,9 @@ export default function DetailSc() {
           </div>
         </div>
 
+        {/* Right Column (Chat Section) */}
         <div className="flex flex-col space-y-6 w-full lg:w-2/3">
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white">
+          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white ">
             <ChatOne />
           </Card>
         </div>

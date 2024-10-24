@@ -3,14 +3,17 @@ import CardDashboard from "../_components/ui/card-dashboard";
 import IconPatient from "@/components/icons/icon-patient";
 import IconConsultation from "@/components/icons/icon-consultation";
 import IconCompletion from "@/components/icons/icon-completion";
+import { auth } from "@/auth";
 
-export default function Dashboard() {
+export default async function Dashboard() {
+  const session = await auth();
+  console.log(session);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Hello, Consulin Admins!
       </h2>
-      <p>Have a good day!</p>
+      <p className="mt-3 text-netral-primary  font-medium ">Have a good day!</p>
 
       <div className="grid md:grid-cols-2 grid-rows-2 gap-4 mt-10 ">
         <div className="order-1 lg:order-1">

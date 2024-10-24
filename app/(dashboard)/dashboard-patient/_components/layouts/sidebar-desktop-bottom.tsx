@@ -1,6 +1,7 @@
 "use client";
+import SignOut from "@/app/(dashboard)/_components/ui/signout";
 import IconSetting from "@/components/icons/icon-setting";
-import IconSignOut from "@/components/icons/icon-signout";
+
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -31,6 +32,7 @@ export default function SidebarDesktopPatientBottom() {
         <IconSetting className="h-4 w-4" />
         Setting
       </Link>
+<<<<<<< HEAD
       <>
       <AlertDialog>
         <AlertDialogTrigger className="flex items-center gap-3 rounded-lg px-3 py-2 text-secondary-custom_secondary transition-all hover:text-primary">
@@ -58,6 +60,9 @@ export default function SidebarDesktopPatientBottom() {
         </AlertDialogContent>
       </AlertDialog>
     </>
+=======
+      <SignOut />
+>>>>>>> 407d4264fad6f71c3cdb60fe41f93ff98c2829f0
     </>
   );
 }

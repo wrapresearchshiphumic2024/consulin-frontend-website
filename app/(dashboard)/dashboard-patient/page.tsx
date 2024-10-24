@@ -8,8 +8,12 @@ export default function DetailAppointment() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Hello, Welcome To Consulin!
       </h2>
+<<<<<<< HEAD
       <p className="mt-3">Have a good day!</p>
 
+=======
+      <p className="mt-3 text-netral-primary font-medium">Have a good day!</p>
+>>>>>>> 407d4264fad6f71c3cdb60fe41f93ff98c2829f0
       <div className="flex gap-5 flex-col lg:flex-row mt-10">
         {/* Your Appointment Section */}
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">

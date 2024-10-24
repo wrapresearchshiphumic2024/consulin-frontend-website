@@ -51,14 +51,12 @@ export default function Complaint() {
         View all patient complaint on this page
       </p>
 
-      {/* Complaint Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {complaints.map((complaint, index) => (
           <Card key={index} className="p-6 rounded-[30px] shadow-md bg-white">
             <h2 className="text-[#27374D] font-semibold mb-2">
               {complaint.date}
             </h2>
-            <hr className="border-gray-300 mb-4 w-[120px]" />
             <p className="text-gray-700">{complaint.content}</p>
           </Card>
         ))}

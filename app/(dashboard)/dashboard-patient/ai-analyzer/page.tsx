@@ -9,7 +9,7 @@ export default function AiAnalyzer() {
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         AI Analyzer
       </h2>
-      <p className="mt-3">
+      <p className="mt-3 text-netral-primary font-medium">
         Share your concerns, AI will analyse your mental state
       </p>
 

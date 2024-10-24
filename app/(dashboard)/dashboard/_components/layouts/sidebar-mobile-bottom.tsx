@@ -1,9 +1,9 @@
-import SignOut from "@/app/(dashboard)/_components/ui/signout";
+import SignOutMobile from "@/app/(dashboard)/_components/ui/signout-mobile";
 
 export default function SidebarMobileBottom() {
   return (
     <>
-      <SignOut />
+      <SignOutMobile />
     </>
   );
 }

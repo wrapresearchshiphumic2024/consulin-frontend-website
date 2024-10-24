@@ -9,7 +9,7 @@ export default function DetailCancel() {
     <>
       <div className="flex mb-6">
         <Link href="/dashboard-psychologist/Scheduled-Appointment">
-          <Button className="p-2 rounded-full bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
+          <Button className="p-2 rounded-full bg-secondary-custom_secondary hover:bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
             <Image
               src="/assets/icons/back.png"
               alt="Back"

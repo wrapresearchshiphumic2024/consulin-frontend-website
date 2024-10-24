@@ -7,7 +7,7 @@ export default function DetailCancel() {
       {/* Back Button and Title */}
       <div className="flex  mb-5 gap-3">
         <Link href="/dashboard-patient">
-          <button className="p-2 rounded-full bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
+          <button className="p-2 rounded-full bg-secondary-custom_secondary hover:bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
             <Image
               src="/assets/icons/back.png"
               alt="Back"

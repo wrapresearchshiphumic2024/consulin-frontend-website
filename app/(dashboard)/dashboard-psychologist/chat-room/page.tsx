@@ -19,7 +19,7 @@ export default function Home() {
       <p className="mt-3 text-netral-primary font-medium">
         Chat with patients during appointments
       </p>
-      <div className="flex h-[530px]  bg-white w-full p-5  rounded-3xl mt-5">
+      <div className="flex  h-[530px] flex-col md:flex-row bg-white w-full p-5  rounded-3xl mt-5">
         <App
           apiKey={apiKey}
           createToken={createToken}

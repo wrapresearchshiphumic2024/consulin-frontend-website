@@ -1,22 +1,13 @@
 "use client";
-import SignOut from "@/app/(dashboard)/_components/ui/signout";
+
 import IconSetting from "@/components/icons/icon-setting";
 
 import { SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog";
+
+import SignOutMobile from "@/app/(dashboard)/_components/ui/signout-mobile";
 export default function SidebarMobilePatientBottom() {
   const pathname = usePathname();
   return (
@@ -36,7 +27,7 @@ export default function SidebarMobilePatientBottom() {
         </Link>
       </SheetClose>
 
-      <SignOut />
+      <SignOutMobile />
     </>
   );
 }

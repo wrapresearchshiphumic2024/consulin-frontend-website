@@ -14,10 +14,10 @@ import {
 import { logout } from "@/actions/auth/logout";
 import { toast } from "sonner";
 import { ToastSuccess } from "@/components/ui/toast-custom";
-export default function SignOut() {
+export default function SignOutMobile() {
   return (
     <AlertDialog>
-      <AlertDialogTrigger className="flex items-center gap-3  px-3 py-2 text-secondary-custom_secondary transition-all  hover:font-semibold  ">
+      <AlertDialogTrigger className="mx-[-0.65rem] flex items-center gap-4 rounded-xl px-3 py-2 text-secondary-custom_secondary hover:font-semibold transition-all ">
         <IconSignOut className="h-4 w-4" />
         Sign Out
       </AlertDialogTrigger>

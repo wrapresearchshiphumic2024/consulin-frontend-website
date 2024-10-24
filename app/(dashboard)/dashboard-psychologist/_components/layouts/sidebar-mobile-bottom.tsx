@@ -1,5 +1,6 @@
 "use client";
-import SignOut from "@/app/(dashboard)/_components/ui/signout";
+
+import SignOutMobile from "@/app/(dashboard)/_components/ui/signout-mobile";
 import IconSetting from "@/components/icons/icon-setting";
 
 import { SheetClose } from "@/components/ui/sheet";
@@ -25,7 +26,7 @@ export default function SidebarMobilePsychologistBottom() {
           Setting
         </Link>
       </SheetClose>
-      <SignOut />
+      <SignOutMobile />
     </>
   );
 }

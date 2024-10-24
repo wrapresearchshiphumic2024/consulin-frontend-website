@@ -1,8 +1,10 @@
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import { auth } from "@/auth";
 
-export default function Footer() {
+export default async function Footer() {
+  const session = await auth();
   return (
     <div
       className="bg-primary-custom_primary mt-[50px] pt-[20px] rounded-t-[50px]"
@@ -41,12 +43,32 @@ export default function Footer() {
 
             {/* Sign In / Sign Up Buttons */}
             <div className="mt-4 mb-4 flex space-x-2">
-              <Button className="bg-white text-[#1E3A5F] px-4 py-2 rounded-full font-semibold">
-                Sign In
-              </Button>
-              <Button className="bg-white text-[#1E3A5F] px-4 py-2 rounded-full font-semibold">
-                Sign Up
-              </Button>
+              {session?.user ? (
+                <Link href="/dashboard">
+                  <Button
+                    className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+                  >
+                    Dashboard
+                  </Button>
+                </Link>
+              ) : (
+                <>
+                  <Link href="/signin">
+                    <Button
+                      className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+                    >
+                      Sign In
+                    </Button>
+                  </Link>
+                  <Link href="/signup">
+                    <Button
+                      className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+                    >
+                      Sign Up
+                    </Button>
+                  </Link>
+                </>
+              )}
             </div>
           </div>
         </div>

@@ -58,7 +58,7 @@ export default function FormChooseDate() {
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[280px] justify-start text-left font-normal mt-2",
+                              "w-[280px] justify-start text-left font-normal mt-2 items-center flex gap-2",
                               !field.value && "text-muted-foreground"
                             )}
                           >

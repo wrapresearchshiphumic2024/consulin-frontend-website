@@ -79,25 +79,28 @@ export default function App({
 
   if (!client) return <div>Setting up client & connection</div>;
   return (
-    <Chat
-      client={client}
-      customClasses={{
-        channelList: channelList ? "hidden" : "",
-      }}
-    >
-      <ChannelList
-        sort={sort}
-        options={options}
-        filters={filters}
-        showChannelSearch
-      />
-      <Channel>
-        <Window>
-          <ChannelHeader />
-          <MessageList />
-          <MessageInput />
-        </Window>
-      </Channel>
-    </Chat>
+    <>
+      <Chat
+        client={client}
+        customClasses={{
+          channelList: channelList ? "hidden" : "",
+        }}
+      >
+        <ChannelList
+          sort={sort}
+          options={options}
+          filters={filters}
+          showChannelSearch
+        />
+
+        <Channel>
+          <Window>
+            <ChannelHeader />
+            <MessageList />
+            <MessageInput />
+          </Window>
+        </Channel>
+      </Chat>
+    </>
   );
 }

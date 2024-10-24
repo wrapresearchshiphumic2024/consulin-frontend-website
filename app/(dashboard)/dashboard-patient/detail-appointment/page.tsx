@@ -18,7 +18,7 @@ export default function DetailAppointment() {
     <>
       <div className="flex mb-5 gap-3">
         <Link href="/dashboard-patient">
-          <Button className="p-2 rounded-[100px] bg-secondary-custom_secondary shadow-md h-[35px] w-[35px] flex items-center justify-center">
+          <Button className="p-2 rounded-[100px] bg-secondary-custom_secondary hover:bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
             <Image
               src="/assets/icons/back.png"
               alt="Back"

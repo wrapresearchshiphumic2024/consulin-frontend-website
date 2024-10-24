@@ -12,7 +12,7 @@ export default function DetailSc() {
     <>
       <div className="flex ">
         <Link href="/dashboard-psychologist/scheduled-appointment">
-          <Button className="p-2 rounded-full bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
+          <Button className="p-2 rounded-full bg-secondary-custom_secondary hover:bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
             <Image
               src="/assets/icons/back.png"
               alt="Back"

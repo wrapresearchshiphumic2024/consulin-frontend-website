@@ -7,9 +7,9 @@ import FormChooseDate from "./_components/form-choose-date";
 export default function DetailPsycholog() {
   return (
     <>
-      <div className="flex items-center mb-5 gap-3">
+      <div className="flex mb-5 gap-3">
         <Link href="/dashboard-patient/psychologist">
-          <Button className="p-2 rounded-[100px] bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
+          <Button className="p-2 rounded-[100px] bg-secondary-custom_secondary hover:bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center ">
             <Image
               src="/assets/icons/back.png"
               alt="Back"

@@ -7,7 +7,7 @@ export default function About() {
           <div className="flex flex-1 justify-center">
             <div className="overflow-hidden w-[200px] md:w-[300px]  ">
               <Image
-                src={"/assets/images/Logo2.png"}
+                src={"/assets/images/logo2.png"}
                 width="0"
                 height="0"
                 sizes="100vw"

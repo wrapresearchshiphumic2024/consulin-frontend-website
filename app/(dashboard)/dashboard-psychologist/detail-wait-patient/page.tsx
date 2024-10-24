@@ -9,8 +9,8 @@ export default function DetailWait() {
     <div className="p-4 md:p-6 lg:p-8">
       <div className="flex items-center mb-6">
         <Link href="/dashboard-psychologist/Scheduled-Appointment">
-          <Button className="p-2 rounded-full bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
-          <Image
+          <Button className="p-2 rounded-full bg-secondary-custom_secondary hover:bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
+            <Image
               src="/assets/icons/back.png"
               alt="Back"
               width={10}
@@ -36,10 +36,16 @@ export default function DetailWait() {
               Waiting
             </div>
             <div className="flex flex-col p-4 space-y-3">
-              <p className="text-[#1E0342] font-semibold">Name: Maria Johnson</p>
+              <p className="text-[#1E0342] font-semibold">
+                Name: Maria Johnson
+              </p>
               <p className="text-[#1E0342] font-semibold">Gender: Woman</p>
-              <p className="text-[#1E0342] font-semibold">Email: marjo.@woho.id</p>
-              <p className="text-[#1E0342] font-semibold">Phone: 0812-3456-7890</p>
+              <p className="text-[#1E0342] font-semibold">
+                Email: marjo.@woho.id
+              </p>
+              <p className="text-[#1E0342] font-semibold">
+                Phone: 0812-3456-7890
+              </p>
               <p className="text-[#1E0342] font-semibold">
                 Day & Time: 14 Oct 2024, 10:00
               </p>

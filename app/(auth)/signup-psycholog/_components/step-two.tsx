@@ -152,20 +152,18 @@ export default function StepTwo() {
       <div className="col-span-2">
         <FormField
           control={form.control}
-          name="sertificate"
+          name="certificate"
           render={({ field }) => (
             <FormItem>
               <FileUploadCustom
                 value={field.value}
                 onValueChange={field.onChange}
                 dropzoneOptions={dropzone_serticate}
-                placeholder="Upload sertificate (optional)"
+                placeholder="Upload certificate"
                 reSelect={false}
               />
 
-              {field.value.length > 6 && (
-                <p className="text-red-500 text-sm">diisi</p>
-              )}
+              <FormMessage />
             </FormItem>
           )}
         />

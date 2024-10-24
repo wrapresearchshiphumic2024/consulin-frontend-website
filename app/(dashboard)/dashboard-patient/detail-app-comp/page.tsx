@@ -29,7 +29,7 @@ export default function DetailComp() {
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
         <div className="bg-white rounded-2xl shadow-lg">
           <div className="w-full bg-[#1E0342] pt-4 rounded-t-2xl text-white text-center py-2 font-bold text-lg h-[60px]">
-            Canceled
+            Complete
           </div>
           <div className="flex flex-col items-center mt-4 ">
             <Image

@@ -5,11 +5,6 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
     secret: process.env.AUTH_SECRET,
     session:{strategy: "jwt"},
     ...authConfig, callbacks: {
-      // authorized({ request, auth }) {
-      //   const { pathname } = request.nextUrl
-      //   if (pathname === "/middleware-example") return !!auth
-      //   return true
-      // },
       async jwt({ token,user}) {
         if (user) {
             token.user = user

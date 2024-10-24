@@ -1,5 +1,5 @@
+"use client";
 import IconSignOut from "@/components/icons/icon-signout";
-import Link from "next/link";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -11,6 +11,9 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { logout } from "@/actions/auth/logout";
+import { toast } from "sonner";
+import { ToastSuccess } from "@/components/ui/toast-custom";
 export default function SignOut() {
   return (
     <AlertDialog>
@@ -27,11 +30,22 @@ export default function SignOut() {
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter className="gap-2">
-          <Link href="/">
-            <AlertDialogAction className="bg-red-500 text-white px-6 py-2 rounded-full w-full">
+          <form
+            action={async () => {
+              await logout();
+              toast.custom((t) => (
+                <ToastSuccess label="Sign out successfully" t={t} />
+              ));
+            }}
+          >
+            <AlertDialogAction
+              className="bg-red-500 text-white px-6 py-2 rounded-full w-full"
+              type="submit"
+            >
               Sign Out
             </AlertDialogAction>
-          </Link>
+          </form>
+
           <AlertDialogCancel className="bg-white text-black px-6 py-2 rounded-full">
             Cancel
           </AlertDialogCancel>

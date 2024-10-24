@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useTransition } from "react";
 
 import { formRegisterSchema } from "@/helpers/validations/validation-auth";
 
@@ -14,6 +14,10 @@ import StepTwo from "./step-two";
 import StepThree from "./step-three";
 import StepNavigation from "./step-navigation";
 import TermsOfServiceDialog from "./ui/term-of-service-dialog";
+import { registerPsycholog } from "@/actions/auth/register";
+import { toast } from "sonner";
+import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
+import { useRouter } from "next/navigation";
 
 interface page {
   number: number;
@@ -37,7 +41,14 @@ const steps = [
   {
     id: "Step 2",
     name: "Education Information",
-    fields: ["degree", "university", "major", "graduation_year", "language"],
+    fields: [
+      "degree",
+      "university",
+      "major",
+      "graduation_year",
+      "language",
+      "certificate",
+    ],
   },
   {
     id: "Step 3",
@@ -51,6 +62,7 @@ const steps = [
     ],
   },
 ];
+
 const buttonSteps = [
   { label: "1", page: 0 },
   { label: "2", page: 1 },
@@ -61,22 +73,14 @@ type Inputs = z.infer<typeof formRegisterSchema>;
 
 export default function FormSignUpPsycholog() {
   const [currentPage, setCurrentPage] = useState(0);
-
+  const [pending, startTransaction] = useTransition();
+  const router = useRouter();
   const savedData = localStorage.getItem("registerData");
   const parsedData = savedData ? JSON.parse(savedData) : {};
   const [page, setPage] = useState<page[]>([
-    {
-      number: 0,
-      status: false,
-    },
-    {
-      number: 1,
-      status: false,
-    },
-    {
-      number: 2,
-      status: false,
-    },
+    { number: 0, status: false },
+    { number: 1, status: false },
+    { number: 2, status: false },
   ]);
 
   const form = useForm<Inputs>({
@@ -95,7 +99,7 @@ export default function FormSignUpPsycholog() {
       major: parsedData.major || "",
       graduation_year: parsedData.graduation_year || "",
       language: parsedData.language || [],
-      sertificate: parsedData.sertificate || [],
+      certificate: parsedData.certificate || [],
       profesional_identification_number:
         parsedData.profesional_identification_number || "",
       spesialization: parsedData.spesialization || [],
@@ -118,7 +122,7 @@ export default function FormSignUpPsycholog() {
 
   useEffect(() => {
     const formData = form.watch();
-    const { cv, practice_license, sertificate, ...filteredData } = formData;
+    const { cv, practice_license, certificate, ...filteredData } = formData;
 
     if (Object.keys(filteredData).length > 0) {
       localStorage.setItem("registerData", JSON.stringify(filteredData));
@@ -126,19 +130,70 @@ export default function FormSignUpPsycholog() {
   }, [form.watch()]);
 
   type FieldName = keyof Inputs;
+
   async function onSubmit(values: Inputs) {
-    // const isValid = await isValidFormPage();
+    const isValid = await isValidFormPage();
+    console.log("sebelum form data", values);
+    if (!isValid) {
+      return;
+    }
 
-    // if (!isValid) {
-    //   return;
-    // }
-    // localStorage.removeItem("registerData");
+    const formData = new FormData();
 
-    // form.reset();
-    // setCurrentPage(0);
-    console.log(values);
-    console.log("submitted");
+    // Menambahkan field ke FormData
+    formData.append("firstname", values.firstname);
+    formData.append("lastname", values.lastname);
+    formData.append("gender", values.gender);
+    formData.append("email", values.email);
+    formData.append("phone_number", values.phone_number);
+    formData.append("password", values.password);
+    formData.append("degree", values.degree);
+    formData.append("graduation_year", values.graduation_year);
+    formData.append("major", values.major);
+    formData.append("university", values.university);
+    formData.append(
+      "profesional_identification_number",
+      values.profesional_identification_number
+    );
+    formData.append("work_experience", values.work_experience);
+
+    values.language.forEach((lang) => formData.append("language[]", lang));
+    values.spesialization.forEach((spec) =>
+      formData.append("specialization[]", spec)
+    );
+
+    // Menambahkan file ke FormData
+    if (Array.isArray(values.cv)) {
+      values.cv.forEach((file) => formData.append("cv[]", file));
+    }
+    if (Array.isArray(values.practice_license)) {
+      values.practice_license.forEach((file) =>
+        formData.append("practice_license[]", file)
+      );
+    }
+    if (Array.isArray(values.certificate)) {
+      values.certificate.forEach((file) =>
+        formData.append("certification[]", file)
+      );
+    }
+
+    startTransaction(async () => {
+      const { errors } = await registerPsycholog(formData);
+
+      if (errors) {
+        toast.custom((t) => <ToastFailed label={errors as string} t={t} />);
+      } else {
+        localStorage.removeItem("registerData");
+        toast.custom((t) => (
+          <ToastSuccess label="Account created successfully" t={t} />
+        ));
+        form.reset();
+        localStorage.removeItem("registerData");
+        router.push("/dashboard");
+      }
+    });
   }
+
   async function isValidFormPage() {
     const fields = steps[currentPage]?.fields;
     const isValid = await form.trigger(fields as FieldName[], {
@@ -146,6 +201,7 @@ export default function FormSignUpPsycholog() {
     });
     return isValid;
   }
+
   async function onNextPage() {
     const isValid = await isValidFormPage();
     if (!isValid) {
@@ -159,6 +215,7 @@ export default function FormSignUpPsycholog() {
     setCurrentPage((step) => step + 1);
     return;
   }
+
   function previousPage() {
     setCurrentPage((step) => step - 1);
   }
@@ -204,7 +261,7 @@ export default function FormSignUpPsycholog() {
                   Next
                 </Button>
               ) : (
-                <TermsOfServiceDialog onSubmit={onSubmit} />
+                <TermsOfServiceDialog onSubmit={onSubmit} pending={pending} />
               )}
               {currentPage > 0 && (
                 <Button

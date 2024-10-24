@@ -45,9 +45,9 @@ export default function How() {
           </div>
         </div>
         {/* Arrow */}
-        <div className="flex md:justify-center justify-center pt-[100px] pb-[100px]">
+        <div className="flex md:justify-center justify-center pt-[100px] pb-[100px] animate-bounce">
           <Image
-            src="/assets/icons/arrow 2.png"
+            src="/assets/icons/Arrow baru.png"
             sizes="100vw"
             width={20}
             height={20}
@@ -94,9 +94,9 @@ export default function How() {
         </div>
 
         {/* Arrow */}
-        <div className="flex md:justify-center justify-center pt-[100px] pb-[100px] sm:pt-[50px] sm:pb-[50px]">
+        <div className="flex md:justify-center justify-center pt-[100px] pb-[100px] sm:pt-[50px] sm:pb-[50px] animate-bounce">
           <Image
-            src="/assets/icons/arrow 2.png"
+            src="/assets/icons/Arrow baru.png"
             sizes="100vw"
             width={20}
             height={20}
@@ -145,9 +145,9 @@ export default function How() {
         </div>
 
         {/* Arrow */}
-        <div className="flex md:justify-center justify-center pt-[100px] pb-[100px] sm:pt-[50px] sm:pb-[50px]">
+        <div className="flex md:justify-center justify-center pt-[100px] pb-[100px] sm:pt-[50px] sm:pb-[50px] animate-bounce">
           <Image
-            src="/assets/icons/arrow 2.png"
+            src="/assets/icons/Arrow baru.png"
             sizes="100vw"
             width={20}
             height={20}
@@ -174,7 +174,7 @@ export default function How() {
             <div className="flex flex-1 justify-center order-1 lg:order-2 relative">
               <div className="lg:flex lg:justify-start lg:items-center text-primary-custom_primary lg:text-start pt-[50px] ml-0 md:ml-10">
                 <div className="overflow-hidden w-[300px] lg:w-[400px]">
-                  <div className="flex pt-[50px]">
+                  <div className="flex pt-[50px] ">
                     <Image
                       src="/assets/images/empat4.png"
                       sizes="100vw"

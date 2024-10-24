@@ -1,5 +1,5 @@
 import Navbar from "./_component/layouts/navbar";
-
+import { SessionProvider } from "next-auth/react";
 export default function LandingLayout({
   children,
 }: {
@@ -7,8 +7,10 @@ export default function LandingLayout({
 }) {
   return (
     <>
-      <Navbar />
-      {children}
+      <SessionProvider>
+        <Navbar />
+        {children}
+      </SessionProvider>
     </>
   );
 }

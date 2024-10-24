@@ -5,12 +5,14 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { LinkProps } from "../layouts/navbar";
 import { Button } from "@/components/ui/button";
+import { useSession } from "next-auth/react";
 interface DesktopNavbarProps {
   links: LinkProps[];
 }
 export default function HamburgerNavbar({ links }: DesktopNavbarProps) {
   const [isOpen, setOpen] = useState(false);
   const [activeId, setActiveId] = useState("home");
+  const { data: session } = useSession();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,20 +62,32 @@ export default function HamburgerNavbar({ links }: DesktopNavbarProps) {
               {link.title}
             </Link>
           ))}
-          <Link href="/signin">
-            <Button
-              className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
-            >
-              Sign In
-            </Button>
-          </Link>
-          <Link href="/signup">
-            <Button
-              className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
-            >
-              Sign Up
-            </Button>
-          </Link>
+          {session?.user ? (
+            <Link href="/dashboard">
+              <Button
+                className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+              >
+                Dashboard
+              </Button>
+            </Link>
+          ) : (
+            <>
+              <Link href="/signin">
+                <Button
+                  className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+                >
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/signup">
+                <Button
+                  className={`bg-secondary-custom_secondary text-black hover:bg-secondary-custom_secondary rounded-3xl`}
+                >
+                  Sign Up
+                </Button>
+              </Link>
+            </>
+          )}
         </div>
       )}
     </>

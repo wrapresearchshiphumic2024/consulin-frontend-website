@@ -7,7 +7,7 @@ export default function About() {
           <div className="flex flex-1 justify-center">
             <div className="overflow-hidden w-[200px] md:w-[300px]  ">
               <Image
-                src={"/assets/images/Logo.png"}
+                src={"/assets/images/Logo2.png"}
                 width="0"
                 height="0"
                 sizes="100vw"
@@ -41,8 +41,8 @@ export default function About() {
               access to professional psychologists. Our mission is to help you
               maintain emotional balance and well-being through a modern
               approach that incorporates Artificial Intelligence (AI). With AI
-              technology, Consulife offers an initial mental health assessment to
-              help you understand your condition before connecting with a
+              technology, Consulife offers an initial mental health assessment
+              to help you understand your condition before connecting with a
               psychologist. We believe that everyone deserves the right mental
               health support, anytime and anywhere.
             </p>

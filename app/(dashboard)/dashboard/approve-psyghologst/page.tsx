@@ -72,7 +72,7 @@ export default function ApprovePsychologist() {
   ];
   return (
     <>
-      <h2 className="text-[#1E0342] text-4xl md:text-5xl font-bold mb-3">
+      <h2 className="text-[#1E0342] text-3xl md:text-5xl  font-bold mb-3">
         Approve Psychologist
       </h2>
       <p className="mt-3 text-netral-primary font-medium">

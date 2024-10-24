@@ -1,6 +1,6 @@
 "use client";
 import IconChatroom from "@/components/icons/icon-chatroom";
-import IconList from "@/components/icons/icon-list";
+
 import IconPsychology from "@/components/icons/icon-psychology";
 import { SheetClose } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
@@ -20,7 +20,7 @@ export default function SidebarMobilePatient() {
       icon: <Home className="h-5 w-5" />,
     },
     {
-      href: "/dashboard-patient/scheduled-appointment",
+      href: "/dashboard-patient/psychologist",
       label: "Psychologist",
       icon: <IconPsychology className="h-4 w-4" color="#F5F5F7" />,
     },

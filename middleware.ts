@@ -8,6 +8,8 @@ export async function middleware(req: NextRequest) {
 
     // Halaman yang tidak perlu dicek untuk redirect (hindari loop)
     const isSignInPage = pathname === "/signin";
+    const isSignUpPage = pathname === "/signup";
+    const isSignUpPsychologPage = pathname === "/signup-psycholog";
     const isAdminDashboard = pathname === "/dashboard"; // Pengecekan khusus untuk "/dashboard" saja
     const isPatientDashboard = pathname.startsWith("/dashboard-patient");
     const isPsychologistDashboard = pathname.startsWith("/dashboard-psychologist");
@@ -17,8 +19,8 @@ export async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL("/signin", req.url));
     }
 
-    // Jika user sudah login dan berada di halaman /signin, redirect ke dashboard sesuai role
-    if (isSignInPage && session?.user) {
+    // Jika user sudah login dan berada di halaman /signin, /signup, atau /signup-psycholog, redirect ke dashboard sesuai role
+    if ((isSignInPage || isSignUpPage || isSignUpPsychologPage) && session?.user) {
         if (session.user.role === "admin") {
             return NextResponse.redirect(new URL("/dashboard", req.url));
         } else if (session.user.role === "patient") {
@@ -51,10 +53,11 @@ export async function middleware(req: NextRequest) {
     return NextResponse.next();
 }
 
-
 export const config = {
   matcher: [
     "/signin", 
+    "/signup", 
+    "/signup-psycholog", 
     "/dashboard", 
     "/dashboard-patient/:path*", 
     "/dashboard-psychologist/:path*"

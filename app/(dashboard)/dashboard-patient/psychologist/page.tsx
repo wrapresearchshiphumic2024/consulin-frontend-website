@@ -3,6 +3,17 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
+import IconGender from "@/components/icons/icon-gender";
 
 export default function Psychologist() {
   const psychologists = [
@@ -83,7 +94,27 @@ export default function Psychologist() {
         Explore and book an appointment with a psychologist to get the support
         you need.
       </p>
-      <div className="grid sm:grid-cols-2  xl:grid-cols-3 gap-3 mt-10">
+      <div className="mt-10">
+        <Select>
+          <SelectTrigger className="w-[140px] bg-[#272C4D] text-secondary-custom_secondary justify-start gap-2 py-5 rounded-lg">
+            <IconGender className="mr-2" />
+            <SelectValue placeholder="Gender" />
+          </SelectTrigger>
+          <SelectContent className="w-[140px]">
+            <SelectGroup className="text-center px-2">
+              <SelectItem value="apple" className="border-b-2">
+                Relevance
+              </SelectItem>
+              <SelectItem value="banana" className="border-b-2">
+                Male
+              </SelectItem>
+              <SelectItem value="blueberry">Female</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+      </div>
+
+      <div className="grid sm:grid-cols-2  xl:grid-cols-3 gap-3 mt-3">
         {psychologists.map((psychologist) => (
           <Card
             key={psychologist.id}

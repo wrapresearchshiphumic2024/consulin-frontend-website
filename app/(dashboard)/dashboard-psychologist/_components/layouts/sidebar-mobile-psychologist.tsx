@@ -16,7 +16,7 @@ export default function SidebarMobilePsychologist() {
   const sidebarItems = [
     {
       href: "/dashboard-psychologist",
-      label: "Dashboard",
+      label: "Home",
       icon: <Home className="h-5 w-5" />,
     },
     {

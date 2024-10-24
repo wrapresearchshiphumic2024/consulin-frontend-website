@@ -7,11 +7,19 @@ export default function About() {
           <div className="flex flex-1 justify-center">
             <div className="overflow-hidden w-[200px] md:w-[300px]  ">
               <Image
-                src={"/assets/images/Logo Consulin Dark.png"}
+                src={"/assets/images/Logo.png"}
                 width="0"
                 height="0"
                 sizes="100vw"
                 className="w-full h-auto"
+                alt="Logo Consulin Dark"
+              />
+              <Image
+                src={"/assets/images/ConsulifeLP1.png"}
+                width="0"
+                height="0"
+                sizes="100vw"
+                className="w-full h-auto mt-[10px]"
                 alt="Logo Consulin Dark"
               />
             </div>
@@ -21,7 +29,7 @@ export default function About() {
           >
             <div className="relative  text-netral-primary">
               <h1 className=" lg:text-[45px] text-4xl	font-bold z-10 mb-10 ">
-                ABOUT CONSULIN
+                ABOUT CONSULIFE
               </h1>
               <div
                 className={`w-[50px] h-[50px] bg-accent-custom_accent flex justify-center items-center rounded-3xl absolute top-[-20px] md:right-[-20px]  z-[-1] `}
@@ -29,11 +37,11 @@ export default function About() {
             </div>
 
             <p className="text-primary-custom_primary">
-              Consulin is a mental health platform that provides quick and easy
+              Consulife is a mental health platform that provides quick and easy
               access to professional psychologists. Our mission is to help you
               maintain emotional balance and well-being through a modern
               approach that incorporates Artificial Intelligence (AI). With AI
-              technology, Consulin offers an initial mental health assessment to
+              technology, Consulife offers an initial mental health assessment to
               help you understand your condition before connecting with a
               psychologist. We believe that everyone deserves the right mental
               health support, anytime and anywhere.

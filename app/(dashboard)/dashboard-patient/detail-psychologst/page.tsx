@@ -1,15 +1,30 @@
 import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 import FormChooseDate from "./_components/form-choose-date";
 export default function DetailPsycholog() {
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Detail Psikologist
-      </h2>
-      <p className="text-left text-[#1E034280] mb-8 mt-3">
-        View psychologist details on this page
-      </p>
+      <div className="flex items-center mb-5 gap-3">
+        <Link href="/dashboard-patient/psychologist">
+            <Button className="p-2 rounded-[100px] bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
+              <Image
+                src="/assets/icons/back.png"
+                alt="Back"
+                width={10}
+                height={10}
+              />
+            </Button>
+          </Link>
+        <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
+          Detail Psikologist
+        </h2>
+        <p className="text-left text-[#1E034280] mb-8 mt-3">
+          View psychologist details on this page
+        </p>
+      </div>
       <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center">
         <Card className="flex flex-col items-center  rounded-[30px] shadow-lg  mb-6  lg:mb-0 w-full lg:w-1/3 ">
           <div

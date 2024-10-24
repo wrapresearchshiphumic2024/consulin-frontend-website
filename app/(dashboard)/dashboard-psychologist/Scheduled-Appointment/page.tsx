@@ -4,8 +4,17 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
 import { Toaster, toast } from "sonner";
-
-import { X } from "lucide-react";
+import {
+  AlertDialog,
+  AlertDialogAction,
+  AlertDialogCancel,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogTrigger,
+} from "@/components/ui/alert-dialog";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 
 export default function ScheduledApp() {
@@ -31,7 +40,7 @@ export default function ScheduledApp() {
     {
       id: 3,
       name: "Anna Bella",
-      status: "Waiting",
+      status: "Canceled",
       gender: "Female",
       phone: "0812-6543-2189",
       dateTime: "13 Oct 2024, 08:00",
@@ -66,12 +75,19 @@ export default function ScheduledApp() {
     },
   ];
 
+  const getRedirectUrl = (status) => {
+    if (status === "Ongoing") return "/dashboard-psychologist/detail-patient";
+    if (status === "Waiting") return "/dashboard-psychologist/detail-wait-patient";
+    if (status === "Canceled") return "/dashboard-psychologist/detail-cancel-patient";
+    return "/dashboard-psychologist/detail-patient"; 
+  };
+
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
+      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold mb-[10px]">
         Scheduled Appointment
       </h2>
-      <p className="text-[#1E034280]">
+      <p className="text-[#1E034280] font-semibold">
         Manage patient appointments, complete or decline consultations, and view
         patient details.
       </p>
@@ -82,16 +98,18 @@ export default function ScheduledApp() {
             key={psychologist.id}
             className="rounded-[30px] shadow-lg bg-[#FCFCFC] w-full"
           >
-            {/* Card Header */}
             <div
               className={`rounded-t-[20px] p-3 text-white text-center font-bold ${
                 psychologist.status === "Ongoing"
                   ? "bg-[#28A745]"
-                  : "bg-[#272C4D]"
+                  : psychologist.status === "Waiting"
+                  ? "bg-[#272C4D]"
+                  : "bg-[#DC3545]" 
               }`}
             >
               {psychologist.status}
             </div>
+
             <div className="p-5">
               <div className="flex flex-col items-center mt-4">
                 <Image
@@ -110,34 +128,80 @@ export default function ScheduledApp() {
                   <p>Day & Time: {psychologist.dateTime}</p>
                 </div>
               </div>
+
               <div className="flex justify-center gap-2 w-full px-4 flex-wrap mt-6">
-                <Button
-                  onClick={() =>
-                    toast.custom((t) => (
-                      <ToastSuccess
-                        label="Schedule Successfully created"
-                        t={t}
-                      />
-                    ))
-                  }
-                  className="bg-green-500 text-white px-4 py-2 rounded"
-                >
-                  Done
-                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button className="bg-[#28A745] text-white py-2 px-4 rounded-lg shadow-md">
+                      Done
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Confirmation of Consultation Session</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Are you sure you want to complete this session? Once the session is completed, 
+                        you cannot change or cancel this action.
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogAction
+                        onClick={() =>
+                          toast.custom((t) => (
+                            <ToastSuccess label="Schedule Successfully created" t={t} />
+                          ))
+                        }
+                        className="bg-[#28A745] text-white px-4 py-2 rounded-full"
+                      >
+                        Confirm
+                      </AlertDialogAction>
+                      <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-full">
+                        Cancel
+                      </AlertDialogCancel>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
 
-                <Button
-                  onClick={() =>
-                    toast.custom((t) => (
-                      <ToastFailed label="Session Cancelled" t={t} />
-                    ))
-                  }
-                  className="bg-[#DC3545] text-white px-4 py-2 rounded"
-                >
-                  Reject
-                </Button>
+                <AlertDialog>
+                  <AlertDialogTrigger asChild>
+                    <Button className="bg-[#DC3545] text-white py-2 px-4 rounded-lg shadow-md">
+                      Cancel
+                    </Button>
+                  </AlertDialogTrigger>
+                  <AlertDialogContent>
+                    <AlertDialogHeader>
+                      <AlertDialogTitle>Cancel Session</AlertDialogTitle>
+                      <AlertDialogDescription>
+                        Are you sure you want to cancel this session? <br />
+                        Please provide the reason for cancellation below:
+                        <br />
+                        <br />
+                        <textarea
+                          placeholder="Enter your cancellation reason here..."
+                          className="w-full h-32 p-4 bg-[#E9ECEF] text-gray-500 rounded-xl outline-none resize-none"
+                        />
+                      </AlertDialogDescription>
+                    </AlertDialogHeader>
+                    <AlertDialogFooter>
+                      <AlertDialogAction
+                        onClick={() =>
+                          toast.custom((t) => (
+                            <ToastFailed label="Session Cancelled" t={t} />
+                          ))
+                        }
+                        className="bg-[#28A745] text-white px-4 py-2 rounded-full"
+                      >
+                        Confirm
+                      </AlertDialogAction>
+                      <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-full">
+                        Cancel
+                      </AlertDialogCancel>
+                    </AlertDialogFooter>
+                  </AlertDialogContent>
+                </AlertDialog>
 
-                <Link href="/dashboard-psychologist/detail-patient">
-                  <Button className="bg-gray-700 text-white px-4 py-2 rounded">
+                <Link href={getRedirectUrl(psychologist.status)}>
+                  <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg">
                     Detail
                   </Button>
                 </Link>

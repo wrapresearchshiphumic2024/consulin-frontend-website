@@ -21,13 +21,13 @@ export default function Footer() {
                 height={30} // Set appropriate width and height
                 className="h-8 w-auto"
               />
-              <h2 className="ml-2 text-lg font-bold">CONSULIN</h2>
+              <h2 className="ml-2 text-lg font-bold">CONSULIFE</h2>
             </div>
             <p className="text-center lg:text-left">
               Phone Number: +62 0812345678
             </p>
             <p className="text-center lg:text-left">
-              Email: consulinid@office.id
+              Email: consulifeid@office.id
             </p>
           </div>
 
@@ -56,7 +56,7 @@ export default function Footer() {
           {/* Left side: Text */}
           <div className="mb-4 lg:mb-0 text-center lg:text-left">
             <p className="text-sm">
-              &copy; 2024 Consulin. All rights reserved.
+              &copy; 2024 Consulife. All rights reserved.
             </p>
           </div>
 

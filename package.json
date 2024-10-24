@@ -31,7 +31,7 @@
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "cmdk": "^1.0.0",
-    "command": "^0.0.5",
+    "command": "^0.0.1",
     "consulin-frontend-website": "file:",
     "date-fns": "^3.6.0",
     "hamburger-react": "^2.5.1",

@@ -1,7 +1,9 @@
 import { createToken } from "@/actions/chat-token";
 import { Card } from "@/components/ui/card";
 import App from "../../_components/layouts/chat";
-
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
+import Image from "next/image";
 export default function DetailAppointment() {
   const apiKey = process.env.API_KEY;
 
@@ -12,43 +14,50 @@ export default function DetailAppointment() {
     return <div>Error: API key not found.</div>;
   }
   return (
-    <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Detail Patient
-      </h2>
-      <p className="text-left text-[#1E034280] mb-8 mt-3">
-        View appointment details on this page and chat with psychologist
-      </p>
-
+    <> 
+    <div className="flex items-center mb-5 gap-3">
+      <Link href="/dashboard-patient">
+        <Button className="p-2 rounded-[100px] bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
+          <Image
+            src="/assets/icons/back.png"
+            alt="Back"
+            width={10}
+            height={10}
+          />
+        </Button>
+      </Link>
+      <div className="flex flex-col pl-3">
+        <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
+          Detail Appointment
+        </h2>
+        <p className="text-left text-[#1E034280] font-semibold mt-3">
+          View appointment details on this page and chat with psychologist
+        </p>
+      </div>
+    </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        {/* Left Column (Ongoing Card and AI Analysis Card) */}
         <div className="space-y-4 col-span-1">
-          {/* Ongoing Card */}
-          <div className="flex flex-col rounded-[30px] bg-white w-full">
-            <div className="w-full bg-[#28A745] rounded-t-[30px] text-white text-center py-2 font-bold">
-              Ongoing
-            </div>
-            <div className="flex flex-col p-4 space-y-3">
-              <p className="text-gray-900">Name: Maria Johnson</p>
-              <p className="text-gray-900">Gender: Woman</p>
-              <p className="text-gray-900">Email: marjo.@woho.id</p>
-              <p className="text-gray-900">Phone: 0812-3456-7890</p>
-              <p className="text-gray-900">Day & Time: 14 Oct 2024, 10:00</p>
-            </div>
+        <div className="flex flex-col rounded-[30px] bg-white w-full shadow-lg">
+          <div className="w-full bg-[#28A745] rounded-t-[30px] text-white text-center py-3 font-bold text-lg">
+            Ongoing
           </div>
-
-          {/* AI Analysis Results div */}
-          <div className="p-4 md:p-6 rounded-[30px]  bg-white w-full">
-            <h3 className="font-bold text-[#27374D] text-lg md:text-xl mb-4">
-              AI Analysis Results
-            </h3>
-            <p className="text-gray-700">Probability of Stress: 65%</p>
-            <p className="text-gray-700">Probability of Anxiety: 40%</p>
-            <p className="text-gray-700">Probability of Depression: 70%</p>
+          <div className="flex flex-col p-6 space-y-3">
+            <h3 className="font-bold text-[#1E0342] text-lg">Personal Information</h3>
+            <p className="text-[#1E0342]">Name: David Williams</p>
+            <p className="text-[#1E0342]">Gender: Male</p>
+            <p className="text-[#1E0342]">Email: marjo.@woho.id</p>
+            <p className="text-[#1E0342]">Specialization: Anxiety Disorders</p>
+            <p className="text-[#1E0342]">Experience: 4 years</p>
           </div>
         </div>
-
-        {/* Right Column (Chat Section) */}
+        <div className="flex flex-col p-6 rounded-[30px] bg-white w-full shadow-lg space-y-3">
+          <h3 className="font-bold text-[#1E0342] text-lg">Appointment Information</h3>
+          <p className="text-[#1E0342]">Date: 2024-10-15</p>
+          <p className="text-[#1E0342]">Time: 09 AM</p>
+          <p className="text-[#1E0342]">Status: Ongoing</p>
+          <p className="text-[#1E0342]">Duration: 1 Hour</p>
+        </div>
+      </div>
         <div className="lg:col-span-2">
           <div className="p-4 md:p-6 rounded-[30px]  bg-white w-full h-[530px]">
             <App
@@ -60,8 +69,8 @@ export default function DetailAppointment() {
               channelList={true}
               image={
                 "https://media.istockphoto.com/id/2155498773/id/foto/wanita-percaya-diri-berjalan-dengan-koper-merah-di-lingkungan-perkotaan-modern.jpg?s=2048x2048&w=is&k=20&c=v5ZXzWRBGbXJl2XnYAPSVYW3h9Fk4z-0Hy39GhZZIUg="
-              }
-            />
+              } 
+             />
           </div>
         </div>
       </div>

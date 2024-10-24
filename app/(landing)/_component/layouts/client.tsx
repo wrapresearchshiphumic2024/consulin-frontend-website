@@ -6,21 +6,21 @@ const testimonials = [
     name: "Raul S.",
     role: "Student in Telkom University",
     description:
-      "I didn't expect that online counseling could be this close to face-to-face counseling. Consulin helped me overcome anxiety with a very comfortable approach.",
+      "I didn't expect that online counseling could be this close to face-to-face counseling. Consulife helped me overcome anxiety with a very comfortable approach.",
   },
   {
     icon: "/assets/images/cowobiru.jpg",
     name: "Vincent",
     role: "Private Employee",
     description:
-      "Consulin has really helped me manage my work-related stress and anxiety. I can instantly connect with a psychologist and AI initial assessment is also very precise and useful!",
+      "Consulife has really helped me manage my work-related stress and anxiety. I can instantly connect with a psychologist and AI initial assessment is also very precise and useful!",
   },
   {
     icon: "/assets/images/cowohitam.jpg",
     name: "Dina K",
     role: "Housewife",
     description:
-      "The combination of AI and professional consultation at Consulin has really made it easier for me to maintain my mental health. I don't have to worry about finding the right psychologist anymore.",
+      "The combination of AI and professional consultation at Consulife has really made it easier for me to maintain my mental health. I don't have to worry about finding the right psychologist anymore.",
   },
 ];
 

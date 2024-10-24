@@ -21,9 +21,9 @@ export default function Main() {
               <p>Powered Mental Health Consultation</p>
             </div>
 
-            <div className="overflow-hidden w-[300px] lg:w-[400px]  ">
+            <div className="overflow-hidden w-[300px] lg:w-[400px] mt-[20px] mb-[20px] ">
               <Image
-                src="/assets/images/Consulin Dark.png"
+                src="/assets/images/ConsulifeLP1.png"
                 width="0"
                 height="0"
                 sizes="100vw"
@@ -43,9 +43,9 @@ export default function Main() {
             </div>
           </div>
           <div className="flex md:flex-1 justify-center items-center">
-            <div className="overflow-hidden w-[300px]  lg:w-[400px]  md:rounded-[100px] rounded-[50px] lg:p-0 p-10  ">
+            <div className="overflow-hidden w-[300px]  lg:w-[400px]  lg:p-0 p-10  ">
               <Image
-                src={"/assets/images/Psychologist Asset.png"}
+                src={"/assets/images/BG1.png"}
                 width="0"
                 height="0"
                 sizes="100vw"

@@ -51,7 +51,7 @@ export default async function Navbar() {
       <div className="flex items-center p-4 container mx-auto px-5 md:px-24 justify-between z-50">
         <div className="overflow-hidden w-[150px] md:w-[200px] z-50   ">
           <Image
-            src="/assets/images/logo-navbar.png"
+            src="/assets/images/ConsulifeSTLP.png"
             width="0"
             height="0"
             sizes="100vw"

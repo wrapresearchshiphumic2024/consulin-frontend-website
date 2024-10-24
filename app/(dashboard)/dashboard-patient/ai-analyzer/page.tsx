@@ -1,7 +1,8 @@
 import { FormAiAnalyzer } from "./_components/form-ai-analyzer";
 import { ChartAiAnalyzer } from "./_components/chart-ai-analyzer";
 import { Separator } from "@/components/ui/separator";
-
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 export default function AiAnalyzer() {
   return (
     <>
@@ -11,19 +12,29 @@ export default function AiAnalyzer() {
       <p className="mt-3 text-netral-primary font-medium">
         Share your concerns, AI will analyse your mental state
       </p>
-      <div className="flex gap-5 flex-col lg:flex-row mt-10">
+
+      <div className="flex justify-end mt-5">
+        <Link href="/dashboard-patient/analyzer-detail">
+          <Button 
+            className="text-white font-semibold bg-[#27374D] rounded-full">
+            Analyzer History
+          </Button>
+        </Link>
+      </div>
+
+      <div className="flex gap-5 flex-col lg:flex-row mt-5">
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>
             <h3 className="text-2xl font-semibold text-netral-primary">
               Health Mental Analyzer
             </h3>
           </center>
-          <div className="flex flex-col gap-2 mt-5 lg:h-96 ">
+          <div className="flex flex-col gap-2 mt-5 lg:h-96">
             <FormAiAnalyzer />
           </div>
         </div>
 
-        <div className="bg-secondary-custom_secondary p-5 rounded-2xl flex-1 w-full ">
+        <div className="bg-secondary-custom_secondary p-5 rounded-2xl flex-1 w-full">
           <center>
             <h3 className="text-2xl font-semibold text-netral-primary">
               Analysis Results

@@ -20,7 +20,7 @@ export default function How() {
               <div className="overflow-hidden w-[300px] lg:w-[400px] md:rounded-[100px] rounded-[50px]">
                 <div className="flex pt-[50px]">
                   <Image
-                    src="/assets/images/amicoheho.png"
+                    src="/assets/images/satu1.png"
                     sizes="100vw"
                     width={0}
                     height={0}
@@ -77,7 +77,7 @@ export default function How() {
                 <div className="overflow-hidden w-[300px] lg:w-[400px]">
                   <div className="flex pt-[50px]">
                     <Image
-                      src="/assets/images/Group 66.png"
+                      src="/assets/images/dua2.png"
                       sizes="100vw"
                       width={0}
                       height={0}
@@ -113,7 +113,7 @@ export default function How() {
                 <div className="overflow-hidden w-[300px] lg:w-[400px]">
                   <div className="flex pt-[50px]">
                     <Image
-                      src="/assets/images/rafiki.png"
+                      src="/assets/images/tiga3.png"
                       sizes="100vw"
                       width={0}
                       height={0}
@@ -176,7 +176,7 @@ export default function How() {
                 <div className="overflow-hidden w-[300px] lg:w-[400px]">
                   <div className="flex pt-[50px]">
                     <Image
-                      src="/assets/images/pana.png"
+                      src="/assets/images/empat4.png"
                       sizes="100vw"
                       width={0}
                       height={0}

@@ -22,7 +22,7 @@ export default function Consultation() {
           <div className="flex flex-1 justify-center items-center">
             <div className="overflow-hidden w-[200px]  md:w-[400px] mb-10 lg:mb-0">
               <Image
-                src={"/assets/images/Psychologist Assets.png"}
+                src={"/assets/images/Collage.png"}
                 width="0"
                 height="0"
                 sizes="100vw"

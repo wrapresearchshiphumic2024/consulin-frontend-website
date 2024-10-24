@@ -31,7 +31,7 @@ export default function Faq() {
             <div className="lg:flex lg:justify-start lg:items-center lg:text-start pt-[50px] md:ml-10 lg:ml-[-150px]">
               <div className="overflow-hidden w-[250px] sm:w-[300px] lg:w-[400px]">
                 <Image
-                  src="/assets/images/amicofaq.png"
+                  src="/assets/images/lima5.png"
                   sizes="100vw"
                   width={400}
                   height={400}
@@ -48,9 +48,9 @@ export default function Faq() {
               <Accordion type="single" collapsible>
                 <div className="bg-white rounded-[20px] shadow p-3 mb-5">
                   <AccordionItem value="item-1">
-                    <AccordionTrigger>What is Consulin?</AccordionTrigger>
+                    <AccordionTrigger>What is Consulife?</AccordionTrigger>
                     <AccordionContent>
-                      Consulin is a mental health platform that connects
+                      Consulife is a mental health platform that connects
                       patients with professional psychologists. We also use AI
                       technology to provide an initial assessment of your mental
                       health condition before connecting you with an expert.
@@ -72,10 +72,10 @@ export default function Faq() {
                 <div className="bg-white rounded-[20px] shadow p-3 mb-5">
                   <AccordionItem value="item-3">
                     <AccordionTrigger>
-                      Is there a consultation fee at Consulin?
+                      Is there a consultation fee at Consulife?
                     </AccordionTrigger>
                     <AccordionContent>
-                    No, all services on Consulin are free of charge. We aim to provide accessible mental health support to everyone.
+                    No, all services on Consulife are free of charge. We aim to provide accessible mental health support to everyone.
                     </AccordionContent>
                   </AccordionItem>
                 </div>
@@ -93,10 +93,10 @@ export default function Faq() {
                 <div className="bg-white rounded-[20px] shadow p-3 mb-5">
                   <AccordionItem value="item-5">
                     <AccordionTrigger>
-                      Is Consulin available 24/7?
+                      Is Consulife available 24/7?
                     </AccordionTrigger>
                     <AccordionContent>
-                    Yes, Consulin is available 24/7, especially for our AI Analyzer feature, which allows you to assess your mental health at any time. 
+                    Yes, Consulife is available 24/7, especially for our AI Analyzer feature, which allows you to assess your mental health at any time. 
                     However, please note that consultations with psychologists are scheduled according to their availability. 
                     You can book an appointment based on the times set by the psychologists on our platform.
                     </AccordionContent>
@@ -105,10 +105,10 @@ export default function Faq() {
                 <div className="bg-white rounded-[20px] shadow p-3 mb-5">
                   <AccordionItem value="item-6">
                     <AccordionTrigger>
-                      Can I use Consulin on a mobile device?
+                      Can I use Consulife on a mobile device?
                     </AccordionTrigger>
                     <AccordionContent>
-                    Yes, Consulin is available 24/7, allowing you to access mental health support and resources at any time that suits you.
+                    Yes, Consulife is available 24/7, allowing you to access mental health support and resources at any time that suits you.
                     </AccordionContent>
                   </AccordionItem>
                 </div>

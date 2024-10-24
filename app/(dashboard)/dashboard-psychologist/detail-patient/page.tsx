@@ -3,15 +3,33 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import ChatOne from "./_components/chat-one";
 
+import Image from "next/image";
+import ButtonDetailPatient from "./_components/button-detail-patient";
+
 export default function DetailSc() {
   return (
-    <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Patient Complaint
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        View patient complaint on this page
-      </p>
+    <div className="p-4 md:p-6 lg:p-8">
+      <div className="flex items-center mb-6">
+        <Link href="/dashboard-psychologist/Scheduled-Appointment">
+          <Button className="p-2 rounded-full bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
+            <Image
+              src="/assets/icons/back.png"
+              alt="Back"
+              width={10}
+              height={10}
+            />
+          </Button>
+        </Link>
+
+        <div>
+          <h1 className="text-xl md:text-2xl lg:text-5xl font-bold text-left mb-2 lg:mb-4 text-[#1E0342]">
+            Detail Patient
+          </h1>
+          <p className="text-left text-[#1E034280] font-semibold">
+            View patient details on this page
+          </p>
+        </div>
+      </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-5">
         <div className="space-y-4 col-span-1">
@@ -27,23 +45,25 @@ export default function DetailSc() {
               <p className="text-gray-900">Day & Time: 14 Oct 2024, 10:00</p>
 
               <div className="flex flex-row space-x-2 mt-4">
-                <Button className="bg-green-500 text-white py-3 rounded-lg w-full">
-                  Done
-                </Button>
-                <Button className="bg-red-500 text-white py-3 rounded-lg w-full">
-                  Reject
-                </Button>
+                <ButtonDetailPatient />
               </div>
             </div>
           </Card>
 
+          {/* AI Analysis Results Card */}
           <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full">
             <h3 className="font-bold text-[#27374D] text-lg md:text-xl mb-4">
               AI Analysis Results
             </h3>
-            <p className="text-gray-700">Probability of Stress: 65%</p>
-            <p className="text-gray-700">Probability of Anxiety: 40%</p>
-            <p className="text-gray-700">Probability of Depression: 70%</p>
+            <p className="text-[#1E0342] font-semibold">
+              Probability of Stress: 65%
+            </p>
+            <p className="text-[#1E0342] font-semibold">
+              Probability of Anxiety: 40%
+            </p>
+            <p className="text-[#1E0342] font-semibold">
+              Probability of Depression: 70%
+            </p>
           </Card>
 
           <div className="w-full">
@@ -55,13 +75,13 @@ export default function DetailSc() {
           </div>
         </div>
 
-        {/* Right Column: Chat Section */}
-        <div className="col-span-2">
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full  h-[530px]">
+        {/* Right Column (Chat Section) */}
+        <div className="flex flex-col space-y-6 w-full lg:w-2/3">
+          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white ">
             <ChatOne />
           </Card>
         </div>
       </div>
-    </>
+    </div>
   );
 }

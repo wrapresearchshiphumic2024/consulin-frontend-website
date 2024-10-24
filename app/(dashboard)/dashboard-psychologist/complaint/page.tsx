@@ -1,4 +1,7 @@
 import { Card } from "@/components/ui/card";
+import Link from "next/link";
+import Image from "next/image";
+import { Button } from "@/components/ui/button";
 
 export default function Complaint() {
   const complaints = [
@@ -25,15 +28,30 @@ export default function Complaint() {
   ];
 
   return (
-    <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Patient Complaint
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        View patient complaint on this page
+    <div className="p-6">
+      {/* Back Button and Heading Section */}
+      <div className="flex items-center mb-2">
+        <Link href="/dashboard-psychologist/detail-patient">
+          <Button className="p-2 rounded-full bg-white shadow-md h-[30px] w-[30px] flex items-center justify-center mr-4">
+            <Image
+              src="/assets/icons/back.png"
+              alt="Back"
+              width={10}
+              height={10}
+            />
+          </Button>
+        </Link>
+        <h1 className="text-3xl md:text-5xl font-bold text-[#1E0342]">
+          Patient Complaint
+        </h1>
+      </div>
+
+      {/* Subtitle under the heading */}
+      <p className="text-[#1E034280] font-semibold mb-6 ml-14 md:ml-[40px]">
+        View all patient complaint on this page
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {complaints.map((complaint, index) => (
           <Card key={index} className="p-6 rounded-[30px] shadow-md bg-white">
             <h2 className="text-[#27374D] font-semibold mb-2">
@@ -43,6 +61,6 @@ export default function Complaint() {
           </Card>
         ))}
       </div>
-    </>
+    </div>
   );
 }

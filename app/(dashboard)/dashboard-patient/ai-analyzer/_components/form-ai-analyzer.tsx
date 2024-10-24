@@ -57,7 +57,7 @@ export function FormAiAnalyzer() {
         >
           Analyze
         </Button>
-        <Button type="button" variant="destructive">
+        <Button type="button" disabled={!form.formState.isValid} variant="destructive">
           Cancel
         </Button>
       </form>

@@ -8,8 +8,8 @@ import ButtonDetailPatient from "./_components/button-detail-patient";
 
 export default function DetailSc() {
   return (
-    <div className="p-4 md:p-6 lg:p-8">
-      <div className="flex items-center mb-6">
+    <>
+      <div className="flex mb-6">
         <Link href="/dashboard-psychologist/Scheduled-Appointment">
           <Button className="p-2 rounded-full bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
             <Image
@@ -31,7 +31,7 @@ export default function DetailSc() {
         </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-5">
         <div className="space-y-4 col-span-1">
           <Card className="flex flex-col rounded-[30px] shadow-lg bg-white w-full">
             <div className="w-full bg-[#28A745] rounded-t-[30px] text-white text-center py-2 font-bold">
@@ -76,12 +76,12 @@ export default function DetailSc() {
         </div>
 
         {/* Right Column (Chat Section) */}
-        <div className="flex flex-col space-y-6 w-full lg:w-2/3">
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white ">
+        <div className="flex flex-col  w-full ">
+          <div className="p-4 md:p-6 rounded-[30px]  bg-white w-full h-[530px]">
             <ChatOne />
-          </Card>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

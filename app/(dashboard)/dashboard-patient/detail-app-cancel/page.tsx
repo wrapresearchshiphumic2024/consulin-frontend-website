@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function DetailCancel() {
   return (
-    <div className="p-8">
+    <>
       {/* Back Button and Title */}
-      <div className="flex items-center mb-5 gap-3">
+      <div className="flex  mb-5 gap-3">
         <Link href="/dashboard-patient">
           <button className="p-2 rounded-full bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
             <Image
@@ -33,7 +33,7 @@ export default function DetailCancel() {
           </div>
           <div className="flex flex-col items-center mt-4 ">
             <Image
-              src="/assets/images/satu.png" 
+              src="/assets/images/satu.png"
               alt="David Williams"
               width={150}
               height={150}
@@ -75,6 +75,6 @@ export default function DetailCancel() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

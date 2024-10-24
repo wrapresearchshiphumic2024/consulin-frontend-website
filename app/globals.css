@@ -232,6 +232,11 @@ main {
   --str-chat__border-radius-circle: 6px;
   --str-chat__avatar-border-radius: 50%;
 }
+.str-chat__channel-header-info{
+  color:white !important;
+
+
+}
 
 
 

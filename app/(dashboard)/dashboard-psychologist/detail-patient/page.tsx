@@ -5,12 +5,13 @@ import ChatOne from "./_components/chat-one";
 
 import Image from "next/image";
 import ButtonDetailPatient from "./_components/button-detail-patient";
+import IconMeet from "@/components/icons/icon-meet";
 
 export default function DetailSc() {
   return (
     <>
-      <div className="flex mb-6">
-        <Link href="/dashboard-psychologist/Scheduled-Appointment">
+      <div className="flex ">
+        <Link href="/dashboard-psychologist/scheduled-appointment">
           <Button className="p-2 rounded-full bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
             <Image
               src="/assets/icons/back.png"
@@ -20,15 +21,22 @@ export default function DetailSc() {
             />
           </Button>
         </Link>
-
         <div>
-          <h1 className="text-xl md:text-2xl lg:text-5xl font-bold text-left mb-2 lg:mb-4 text-[#1E0342]">
+          <h1 className="text-xl md:text-2xl lg:text-5xl font-bold text-left  lg:mb-4 text-[#1E0342]">
             Detail Patient
           </h1>
           <p className="text-left text-[#1E034280] font-semibold">
             View patient details on this page
           </p>
         </div>
+      </div>
+      <div className="flex justify-end">
+        <Link href={"/meet?room_id=raya-124"} target="_blank">
+          <Button className="bg-primary-custom_primary rounded-full">
+            Start a Meet
+            <IconMeet className="ml-2" />
+          </Button>
+        </Link>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-5">

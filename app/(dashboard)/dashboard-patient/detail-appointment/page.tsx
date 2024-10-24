@@ -4,6 +4,7 @@ import App from "../../_components/layouts/chat";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import IconMeet from "@/components/icons/icon-meet";
 export default function DetailAppointment() {
   const apiKey = process.env.API_KEY;
 
@@ -17,7 +18,7 @@ export default function DetailAppointment() {
     <>
       <div className="flex mb-5 gap-3">
         <Link href="/dashboard-patient">
-          <Button className="p-2 rounded-[100px] bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
+          <Button className="p-2 rounded-[100px] bg-secondary-custom_secondary shadow-md h-[35px] w-[35px] flex items-center justify-center">
             <Image
               src="/assets/icons/back.png"
               alt="Back"
@@ -35,9 +36,17 @@ export default function DetailAppointment() {
           </p>
         </div>
       </div>
+      <div className="flex items-center my-3 justify-end ">
+        <Link href={"/meet?room_id=raya-124"} target="_blank">
+          <Button className="bg-primary-custom_primary rounded-full">
+            Start a Meet
+            <IconMeet className="ml-2" />
+          </Button>
+        </Link>
+      </div>
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         <div className="space-y-4 col-span-1">
-          <div className="flex flex-col rounded-[30px] bg-white w-full shadow-lg">
+          <div className="flex flex-col rounded-[30px] bg-secondary-custom_secondary w-full shadow-lg">
             <div className="w-full bg-[#28A745] rounded-t-[30px] text-white text-center py-3 font-bold text-lg">
               Ongoing
             </div>

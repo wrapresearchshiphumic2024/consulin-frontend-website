@@ -1,6 +1,6 @@
 "use server";
 
-import { formSignUpSchema } from "@/helpers/validations/validation-auth";
+import { formRegisterSchema, formSignUpSchema } from "@/helpers/validations/validation-auth";
 
 export async function register(data: FormData) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -15,7 +15,6 @@ export async function register(data: FormData) {
     }
 
     const { confirm_password, ...dataToSend } = validatedFields.data;
-    console.log("Data yang dikirim:", dataToSend);
     const user = await fetch(`${process.env.API_URL}/api/register`, {
         method: "POST",
         headers: {
@@ -24,6 +23,31 @@ export async function register(data: FormData) {
         body: JSON.stringify(dataToSend),
     });
     const response = await user.json();
+    if (response.status === 'error') {
+        return {
+            errors: response.errors.email[0],
+        };
+    }
+    let status = response.status;
+    return { success: status};
+  
+}
+
+export async function registerPsycholog(data: FormData) {
+    await new Promise((resolve) => setTimeout(resolve, 1000));
+
+    const user = await fetch(`${process.env.API_URL}/api/register/psychologist`, {
+        method: "POST",
+        // Catatan: Jangan tentukan "Content-Type" untuk FormData. Browser akan mengaturnya secara otomatis.
+        headers: {
+            "Accept": "application/json",
+        },
+        body: data,
+    });
+
+    // Mendapatkan respons dalam bentuk JSON
+    const response = await user.json();
+    console.log("Response:", response);
     if (response.status === 'error') {
         return {
             errors: response.errors.email[0],

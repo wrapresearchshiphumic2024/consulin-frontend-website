@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area"; // Sesuaikan dengan pa
 import { Checkbox } from "@/components/ui/checkbox"; // Sesuaikan dengan path Checkbox kamu
 import {
   AlertDialog,
+  AlertDialogAction,
   AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
@@ -15,11 +16,14 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { useFormContext } from "react-hook-form";
+import { Loader2 } from "lucide-react";
 interface TermsOfServiceDialogProps {
   onSubmit: (values: any) => void;
+  pending: boolean;
 }
 export default function TermsOfServiceDialog({
   onSubmit,
+  pending,
 }: TermsOfServiceDialogProps) {
   const [isAgree, setAgree] = useState(false);
   const form = useFormContext();
@@ -32,13 +36,14 @@ export default function TermsOfServiceDialog({
       >
         <Button
           className="w-full bg-primary-custom_primary"
-          disabled={!form.formState.isValid}
+          disabled={!form.formState.isValid || pending}
           type="button"
         >
+          {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
           Submit
         </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="top-[50%]">
         <AlertDialogHeader>
           <AlertDialogTitle className="text-center">
             Terms Of Service
@@ -95,13 +100,16 @@ export default function TermsOfServiceDialog({
               </label>
             </div>
             <div className="flex gap-2 items-center">
-              <Button
+              <AlertDialogAction
                 type="submit"
+                onClick={() => {
+                  form.handleSubmit(onSubmit)();
+                  setAgree(false);
+                }}
                 disabled={!isAgree}
-                onClick={() => form.handleSubmit(onSubmit)()}
               >
                 Agree
-              </Button>
+              </AlertDialogAction>
 
               <AlertDialogCancel
                 className="m-0"

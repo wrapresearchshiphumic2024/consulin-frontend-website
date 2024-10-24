@@ -7,7 +7,7 @@ import { auth } from "@/auth";
 
 export default async function Dashboard() {
   const session = await auth();
-
+  console.log(session);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">

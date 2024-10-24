@@ -53,7 +53,7 @@ export default function DashboardLayoutTemplate({
             <Link href="/" className="font-semibold">
               <div className="overflow-hidden w-[140px] lg:w-[180px] z-50   ">
                 <Image
-                  src="/assets/images/logo-navbar.png"
+                  src="/assets/images/ConsulifeSTLP.png"
                   width="0"
                   height="0"
                   sizes="100vw"
@@ -102,7 +102,7 @@ export default function DashboardLayoutTemplate({
                 >
                   <div className="overflow-hidden w-[150px]  z-50   ">
                     <Image
-                      src="/assets/images/logo-navbar.png"
+                      src="/assets/images/ConsulifeSTLP.png"
                       width="0"
                       height="0"
                       sizes="100vw"

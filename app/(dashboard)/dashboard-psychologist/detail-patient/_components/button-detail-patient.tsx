@@ -1,3 +1,4 @@
+"use client";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import { Button } from "@/components/ui/button";

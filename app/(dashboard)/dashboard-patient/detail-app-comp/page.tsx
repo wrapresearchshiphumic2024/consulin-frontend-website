@@ -3,9 +3,9 @@ import Image from "next/image";
 
 export default function DetailComp() {
   return (
-    <div className="p-8">
+    <>
       {/* Back Button and Title */}
-      <div className="flex items-center mb-5 gap-3">
+      <div className="flex  mb-5 gap-3">
         <Link href="/dashboard-patient">
           <button className="p-2 rounded-full bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
             <Image
@@ -33,7 +33,7 @@ export default function DetailComp() {
           </div>
           <div className="flex flex-col items-center mt-4 ">
             <Image
-              src="/assets/images/satu.png" 
+              src="/assets/images/satu.png"
               alt="David Williams"
               width={150}
               height={150}
@@ -70,11 +70,12 @@ export default function DetailComp() {
           <div className="bg-white p-6 rounded-2xl shadow-lg font-semibold h-[220px]">
             <h3 className="font-bold text-lg text-[#1E0342]">Note</h3>
             <p className="mt-2 text-[#1E0342]">
-            You have successfully completed a consultation session with David Williams. This session is now considered complete.
+              You have successfully completed a consultation session with David
+              Williams. This session is now considered complete.
             </p>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

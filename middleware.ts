@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
-import { auth } from "./auth"; // Pastikan auth adalah fungsi yang mengembalikan session
+import { auth } from "./auth"; 
 
 export async function middleware(req: NextRequest) {
-    const session = await auth(); // Ambil session pengguna
+    const session = await auth(); 
     const { pathname } = req.nextUrl;
 
     // Halaman yang tidak perlu dicek untuk redirect (hindari loop)

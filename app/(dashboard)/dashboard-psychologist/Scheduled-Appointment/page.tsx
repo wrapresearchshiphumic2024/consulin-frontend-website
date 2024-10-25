@@ -75,7 +75,7 @@ export default function ScheduledApp() {
     },
   ];
 
-  const getRedirectUrl = (status) => {
+  const getRedirectUrl = (status: string) => {
     if (status === "Ongoing") return "/dashboard-psychologist/detail-patient";
     if (status === "Waiting")
       return "/dashboard-psychologist/detail-wait-patient";
@@ -119,7 +119,7 @@ export default function ScheduledApp() {
                   alt={psychologist.name}
                   width={80}
                   height={80}
-                  className="rounded-full mb-4"
+                  className="rounded-lg mb-4"
                 />
                 <h2 className="text-xl font-semibold text-center mb-2">
                   {psychologist.name}
@@ -159,11 +159,11 @@ export default function ScheduledApp() {
                             />
                           ))
                         }
-                        className="bg-[#28A745] text-white px-4 py-2 rounded-full"
+                        className="bg-[#28A745] text-white px-4 py-2 rounded-lg"
                       >
                         Confirm
                       </AlertDialogAction>
-                      <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-full">
+                      <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-lg">
                         Cancel
                       </AlertDialogCancel>
                     </AlertDialogFooter>
@@ -176,7 +176,7 @@ export default function ScheduledApp() {
                       Cancel
                     </Button>
                   </AlertDialogTrigger>
-                  <AlertDialogContent>
+                  <AlertDialogContent className="top-[70%]">
                     <AlertDialogHeader>
                       <AlertDialogTitle>Cancel Session</AlertDialogTitle>
                       <AlertDialogDescription>
@@ -197,11 +197,11 @@ export default function ScheduledApp() {
                             <ToastFailed label="Session Cancelled" t={t} />
                           ))
                         }
-                        className="bg-[#28A745] text-white px-4 py-2 rounded-full"
+                        className="bg-[#28A745] text-white px-4 py-2 rounded-lg"
                       >
                         Confirm
                       </AlertDialogAction>
-                      <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-full">
+                      <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-lg">
                         Cancel
                       </AlertDialogCancel>
                     </AlertDialogFooter>

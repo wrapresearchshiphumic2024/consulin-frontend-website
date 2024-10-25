@@ -1,8 +1,8 @@
-"use client"
+"use client";
 import { useState } from "react";
 import Image from "next/image";
-import { Toaster, toast } from "sonner";
-import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
+import { toast } from "sonner";
+import { ToastSuccess } from "@/components/ui/toast-custom";
 
 export default function Settings() {
   const [isEditing, setIsEditing] = useState(false);
@@ -25,20 +25,14 @@ export default function Settings() {
   const handleSaveChanges = () => {
     setIsEditing(false);
     toast.custom((t) => (
-      <ToastSuccess
-        label="Changes successfully saved"
-        t={t}
-      />
+      <ToastSuccess label="Changes successfully saved" t={t} />
     ));
   };
 
   const handleSavePhotoChanges = () => {
     setIsEditingPhoto(false);
     toast.custom((t) => (
-      <ToastSuccess
-        label="Photo successfully updated"
-        t={t}
-      />
+      <ToastSuccess label="Photo successfully updated" t={t} />
     ));
   };
 
@@ -55,7 +49,9 @@ export default function Settings() {
     <div className="p-8 min-h-screen">
       <div className="max-w-6xl mx-auto">
         <div className="mb-10">
-          <h2 className="text-3xl md:text-5xl font-bold text-[#1E0342] text-left">Setting</h2>
+          <h2 className="text-3xl md:text-5xl font-bold text-[#1E0342] text-left">
+            Setting
+          </h2>
           <p className="mt-3 text-[#1E034280] font-semibold text-left">
             Manage Your Profile and Preferences Easily
           </p>
@@ -81,9 +77,7 @@ export default function Settings() {
                 >
                   Save Changes
                 </button>
-                <button
-                  className="bg-[#FF4B4B] text-white font-semibold py-2 px-4 rounded-lg"
-                >
+                <button className="bg-[#FF4B4B] text-white font-semibold py-2 px-4 rounded-lg">
                   Cancel
                 </button>
               </div>
@@ -99,7 +93,9 @@ export default function Settings() {
 
           <div className="space-y-8">
             <div className="bg-white p-6 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-[#1E0342]">Personal Information</h3>
+              <h3 className="text-xl font-semibold text-[#1E0342]">
+                Personal Information
+              </h3>
 
               {isEditing ? (
                 <div className="mt-4 space-y-3">
@@ -153,9 +149,7 @@ export default function Settings() {
                     >
                       Save Changes
                     </button>
-                    <button
-                      className="bg-[#FF4B4B] text-white font-semibold py-2 px-6 rounded-lg"
-                    >
+                    <button className="bg-[#FF4B4B] text-white font-semibold py-2 px-6 rounded-lg">
                       Cancel
                     </button>
                   </div>
@@ -178,7 +172,9 @@ export default function Settings() {
             </div>
 
             <div className="bg-white p-6 rounded-xl shadow-md">
-              <h3 className="text-xl font-semibold text-[#1E0342]">Change Password</h3>
+              <h3 className="text-xl font-semibold text-[#1E0342]">
+                Change Password
+              </h3>
               <button
                 className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg"
                 onClick={handleSendResetLink}
@@ -188,8 +184,6 @@ export default function Settings() {
             </div>
           </div>
         </div>
-
-        <Toaster position="bottom-right" />
       </div>
     </div>
   );

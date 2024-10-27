@@ -82,7 +82,7 @@ export async function getDetailPsychologst(session: string, uuid: string): Promi
     }
 
     const item = json.data;
-
+  
     const psychologist: User = {
         id: item.user_id,
         firstname: item.user.firstname,
@@ -90,6 +90,8 @@ export async function getDetailPsychologst(session: string, uuid: string): Promi
         email: item.user.email,
         phone_number: item.user.phone_number,
         gender: item.user.gender,
+        is_verified: item.is_verified === 1,
+        is_rejected: item.is_verified === 1, 
         profile_picture: item.user.profile_picture,
         psychologist: {
             id: item.id,

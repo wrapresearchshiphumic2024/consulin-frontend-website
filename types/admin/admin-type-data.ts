@@ -11,6 +11,8 @@ export interface User {
     lastname: string;
     email?: string; 
     phone_number?: string;
+    is_verified?: boolean; 
+    is_rejected?: boolean; 
     gender?: string; 
     profile_picture: string | null;
     psychologist?: Psychologist;

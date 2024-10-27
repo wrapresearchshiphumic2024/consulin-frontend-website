@@ -1,6 +1,6 @@
 "use server";
 
-import { formRegisterSchema, formSignUpSchema } from "@/helpers/validations/validation-auth";
+import { formSignUpSchema } from "@/helpers/validations/validation-auth";
 
 export async function register(data: FormData) {
     await new Promise((resolve) => setTimeout(resolve, 1000));

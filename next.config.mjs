@@ -5,6 +5,15 @@ const nextConfig = {
     // your project has ESLint errors.
     ignoreDuringBuilds: true,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.pdf995.com",
+        port: "",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

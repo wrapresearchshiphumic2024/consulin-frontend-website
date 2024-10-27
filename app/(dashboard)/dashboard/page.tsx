@@ -4,10 +4,16 @@ import IconPatient from "@/components/icons/icon-patient";
 import IconConsultation from "@/components/icons/icon-consultation";
 import IconCompletion from "@/components/icons/icon-completion";
 import { auth } from "@/auth";
+import { getDashboardAdminData } from "@/services/admin/admin-service";
 
 export default async function Dashboard() {
   const session = await auth();
-  console.log(session);
+  const {
+    psychologists,
+    total_patient,
+    ongoing_appointments,
+    completed_appointments,
+  } = await getDashboardAdminData(session?.user.access_token);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -19,7 +25,7 @@ export default async function Dashboard() {
         <div className="order-1 lg:order-1">
           <CardDashboard
             label="Total Psychologists"
-            total="10.1k"
+            total={String(psychologists)}
             status="Psychologists"
             icon={<IconPsychology className=" md:w-16 md:h-16 w-12 h-12 " />}
           />
@@ -35,7 +41,7 @@ export default async function Dashboard() {
             <div className="flex flex-col gap-4 mt-5 fe">
               <CardDashboard
                 label="On-Going Consultation"
-                total="400"
+                total={String(ongoing_appointments)}
                 status="Psychologists"
                 background="bg-[#DDE7F9]"
                 icon={
@@ -47,7 +53,7 @@ export default async function Dashboard() {
               />
               <CardDashboard
                 label="Completed Consultation"
-                total="200.2k"
+                total={String(completed_appointments)}
                 status="Psychologists"
                 background="bg-[#DDE7F9]"
                 icon={<IconCompletion className="md:w-16 md:h-16 w-12 h-12" />}
@@ -62,7 +68,7 @@ export default async function Dashboard() {
         <div className="order-2 lg:order-3">
           <CardDashboard
             label="Total Patient"
-            total="120.1k"
+            total={String(total_patient)}
             status="Patient"
             icon={<IconPatient className=" md:w-16 md:h-16 w-12 h-12" />}
           />

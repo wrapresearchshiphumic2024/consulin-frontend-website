@@ -18,12 +18,10 @@ import FileUploadCustom from "@/components/ui/file-upload-custom";
 import { DropzoneOptions } from "react-dropzone";
 const dropzone_serticate = {
   accept: {
-    "image/*": [".jpg", ".jpeg", ".png"],
     "application/pdf": [".pdf"],
   },
   maxFiles: 5,
   maxSize: 4 * 1024 * 1024,
-  multiple: true,
 } satisfies DropzoneOptions;
 const language = [
   {
@@ -160,7 +158,7 @@ export default function StepTwo() {
                 onValueChange={field.onChange}
                 dropzoneOptions={dropzone_serticate}
                 placeholder="Upload certificate"
-                reSelect={false}
+                reSelect={true}
               />
 
               <FormMessage />

@@ -26,7 +26,6 @@ import {
 
 const dropzone = {
   accept: {
-    "image/*": [".jpg", ".jpeg", ".png"],
     "application/pdf": [".pdf"],
   },
   maxFiles: 1,

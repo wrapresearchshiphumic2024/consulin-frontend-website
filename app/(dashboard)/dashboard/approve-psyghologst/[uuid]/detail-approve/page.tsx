@@ -1,18 +1,5 @@
-import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-  AlertDialogCancel,
-} from "@/components/ui/alert-dialog";
 
-import Link from "next/link";
 import { auth } from "@/auth";
 import { getDetailPsychologst } from "@/services/admin/admin-service";
 import { notFound } from "next/navigation";
@@ -22,7 +9,9 @@ import {
   formatFullName,
   getInitials,
 } from "@/helpers/string-helpers";
-import ViewPdf from "../../_components/view-pdf";
+import ViewPdf from "../../_components/ui/view-pdf";
+
+import ManageButtonGroup from "../../_components/manage-button-group";
 
 export default async function DetailApp({
   params,
@@ -107,119 +96,11 @@ export default async function DetailApp({
             </div>
           </Card>
           <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full mb-[10px]">
-            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
-              {/* Accept Button */}
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button className="bg-green-500 text-white px-4 py-2 rounded-lg w-full sm:w-[200px]">
-                    Accept
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle className="text-[#27374D] font-semibold">
-                      Approve Confirmation
-                    </AlertDialogTitle>
-                    <AlertDialogDescription className="text-[#27374D]">
-                      Are you sure you want to approve this psychologist?
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <AlertDialog>
-                          <AlertDialogTrigger asChild>
-                            <Button className="bg-green-500 text-white px-6 py-2 rounded-lg">
-                              Confirm
-                            </Button>
-                          </AlertDialogTrigger>
-                          <AlertDialogContent>
-                            <AlertDialogHeader>
-                              <AlertDialogTitle className="text-[#27374D] font-semibold">
-                                Consulin Notification
-                              </AlertDialogTitle>
-                              <AlertDialogDescription className="text-[#27374D]">
-                                Psychologist successfully approved!
-                              </AlertDialogDescription>
-                            </AlertDialogHeader>
-                            <AlertDialogFooter>
-                              <Link href="/dashboard">
-                                <AlertDialogAction className="bg-[#1E0342]">
-                                  Close
-                                </AlertDialogAction>
-                              </Link>
-                            </AlertDialogFooter>
-                          </AlertDialogContent>
-                        </AlertDialog>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle className="text-[#27374D] font-semibold">
-                            Consulin Notification
-                          </AlertDialogTitle>
-                          <AlertDialogDescription className="text-[#27374D]">
-                            Psychologist successfully approved!
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <Link href="/dashboard">
-                            <AlertDialogAction className="bg-[#1E0342]">
-                              Close
-                            </AlertDialogAction>
-                          </Link>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                    <AlertDialogAction className="bg-white text-black px-6 py-2 rounded-lg">
-                      Cancel
-                    </AlertDialogAction>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
-              <AlertDialog>
-                <AlertDialogTrigger asChild>
-                  <Button className="bg-red-500 text-white px-4 py-2 rounded-lg w-full sm:w-[200px]">
-                    Reject
-                  </Button>
-                </AlertDialogTrigger>
-                <AlertDialogContent>
-                  <AlertDialogHeader>
-                    <AlertDialogTitle className="text-[#27374D] font-semibold">
-                      Reject Confirmation
-                    </AlertDialogTitle>
-                    <AlertDialogDescription className="text-[#27374D]">
-                      Are you sure you want to reject this psychologist?
-                    </AlertDialogDescription>
-                  </AlertDialogHeader>
-                  <AlertDialogFooter>
-                    <AlertDialog>
-                      <AlertDialogTrigger asChild>
-                        <Button className="bg-[#DC3545] rounded-lg">
-                          Confirm
-                        </Button>
-                      </AlertDialogTrigger>
-                      <AlertDialogContent>
-                        <AlertDialogHeader>
-                          <AlertDialogTitle className="text-[#27374D] font-semibold">
-                            Consulin Notification
-                          </AlertDialogTitle>
-                          <AlertDialogDescription className="text-[#27374D]">
-                            Psychologist successfully rejected!
-                          </AlertDialogDescription>
-                        </AlertDialogHeader>
-                        <AlertDialogFooter>
-                          <Link href="/dashboard">
-                            <AlertDialogAction className="bg-[#1E0342] rounded-lg">
-                              Close
-                            </AlertDialogAction>
-                          </Link>
-                        </AlertDialogFooter>
-                      </AlertDialogContent>
-                    </AlertDialog>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  </AlertDialogFooter>
-                </AlertDialogContent>
-              </AlertDialog>
+            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 ">
+              <ManageButtonGroup
+                id={detail_psychologst.id}
+                access_token={session?.user.access_token}
+              />
             </div>
           </Card>
         </div>

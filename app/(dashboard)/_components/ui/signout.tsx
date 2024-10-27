@@ -14,7 +14,9 @@ import {
 import { logout } from "@/actions/auth/logout";
 import { toast } from "sonner";
 import { ToastSuccess } from "@/components/ui/toast-custom";
+import { useRouter } from "next/navigation";
 export default function SignOut() {
+  const router = useRouter();
   return (
     <AlertDialog>
       <AlertDialogTrigger className="flex items-center gap-3  px-3 py-2 text-secondary-custom_secondary transition-all  hover:font-semibold  ">
@@ -36,6 +38,7 @@ export default function SignOut() {
               toast.custom((t) => (
                 <ToastSuccess label="Sign out successfully" t={t} />
               ));
+              router.replace("/");
             }}
           >
             <AlertDialogAction

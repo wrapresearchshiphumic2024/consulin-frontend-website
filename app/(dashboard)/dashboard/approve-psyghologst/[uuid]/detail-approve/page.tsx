@@ -24,7 +24,11 @@ export default async function DetailApp({
     params.uuid
   );
 
-  if (detail_psychologst == null) {
+  if (
+    detail_psychologst == null ||
+    detail_psychologst.is_verified ||
+    detail_psychologst.is_rejected
+  ) {
     return notFound();
   }
 

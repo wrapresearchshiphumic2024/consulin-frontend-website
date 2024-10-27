@@ -22,6 +22,7 @@ import { loginAction } from "@/actions/auth/login";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import { Loader2 } from "lucide-react";
+import LoadingPage from "@/components/ui/Loading";
 
 export default function FormSignIn() {
   const [pending, startTransaction] = useTransition();
@@ -61,6 +62,8 @@ export default function FormSignIn() {
 
   return (
     <>
+      {pending ? <LoadingPage /> : null}
+
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

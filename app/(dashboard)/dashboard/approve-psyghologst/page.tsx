@@ -35,15 +35,16 @@ export default async function ApprovePsychologist() {
               key={psychologist.id}
               user_psychologist={psychologist}
             >
-              <div className="flex justify-center gap-2 w-full px-4 flex-wrap mt-5 space-x-3">
+              <div className="flex justify-center gap-2 w-full px-4 flex-wrap mt-5 ">
                 <ManageButtonGroup
                   id={psychologist.id}
                   access_token={session?.user.access_token}
                 />
                 <Link
                   href={`/dashboard/approve-psyghologst/${psychologist.id}/detail-approve`}
+                  className="flex-1"
                 >
-                  <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg">
+                  <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg ">
                     Detail
                   </Button>
                 </Link>

@@ -5,8 +5,6 @@ import PsychologistCard from "../_components/ui/psychologist-card";
 import ManageButtonGroup from "./_components/manage-button-group";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import LoadingPage from "@/components/ui/Loading";
 
 export default async function ApprovePsychologist() {
   const session = await auth();
@@ -44,7 +42,7 @@ export default async function ApprovePsychologist() {
                   href={`/dashboard/approve-psyghologst/${psychologist.id}/detail-approve`}
                   className="flex-1"
                 >
-                  <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg ">
+                  <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg flex-1 w-full ">
                     Detail
                   </Button>
                 </Link>

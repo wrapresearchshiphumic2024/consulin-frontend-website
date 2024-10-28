@@ -7,7 +7,7 @@ export async function getProfilePatient(session: string): Promise<User> {
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 60,tags: ['psychologst-list'] }
+        next: { revalidate: 60,tags: ['profile-patient'] }
     });
     if (!res.ok) {
         throw new Error("Failed to fetch dashboard data");

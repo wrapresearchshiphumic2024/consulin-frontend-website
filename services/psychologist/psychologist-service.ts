@@ -13,6 +13,5 @@ export async function getConsultationDataPsychologist(session: string): Promise<
     }
 
     const json = await res.json();
-    console.log(json.data);
     return json.data as ConsultationDataPsychologist ;
 }

@@ -5,7 +5,8 @@ import {
   formatFullName,
   getInitials,
 } from "@/helpers/string-helpers";
-import { User } from "@/types/admin/admin-type-data";
+import { User } from "@/types/user/user-type-data";
+
 import React from "react";
 
 interface PsychologistCardProps {

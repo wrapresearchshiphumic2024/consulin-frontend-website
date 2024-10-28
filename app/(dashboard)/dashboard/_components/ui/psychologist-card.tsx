@@ -61,7 +61,6 @@ export default function PsychologistCard({
         </p>
       </div>
 
-      {/* Render children di sini */}
       {children}
     </Card>
   );

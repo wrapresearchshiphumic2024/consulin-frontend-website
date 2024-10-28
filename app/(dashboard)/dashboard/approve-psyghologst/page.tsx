@@ -5,8 +5,6 @@ import PsychologistCard from "../_components/ui/psychologist-card";
 import ManageButtonGroup from "./_components/manage-button-group";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Skeleton } from "@/components/ui/skeleton";
-import LoadingPage from "@/components/ui/Loading";
 
 export default async function ApprovePsychologist() {
   const session = await auth();

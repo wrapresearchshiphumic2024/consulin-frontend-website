@@ -5,7 +5,7 @@ import {
   rejectPsychologst,
 } from "@/actions/admin/manage-psychologst-status";
 import { toast } from "sonner";
-import { ToastSuccess } from "@/components/ui/toast-custom";
+import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import ManageButton from "./ui/manage-button";
 import { useRouter } from "next/navigation";
 
@@ -26,6 +26,10 @@ export default function ManageButtonGroup({
       toast.custom((t) => (
         <ToastSuccess t={t} label="Psychologist successfully approved" />
       ));
+    } else {
+      toast.custom((t) => (
+        <ToastFailed t={t} label="Psychologist failed to approve" />
+      ));
     }
     router.push("/dashboard/approve-psyghologst");
   };
@@ -36,6 +40,10 @@ export default function ManageButtonGroup({
     if (success === "success") {
       toast.custom((t) => (
         <ToastSuccess t={t} label="Psychologist successfully rejected" />
+      ));
+    } else {
+      toast.custom((t) => (
+        <ToastFailed t={t} label="Psychologist failed to reject" />
       ));
     }
     router.push("/dashboard/approve-psyghologst");

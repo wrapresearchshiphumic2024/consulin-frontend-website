@@ -63,7 +63,10 @@ export default function Settings() {
 
   const handleSendResetLink = () => {
     toast.custom((t) => (
-      <ToastSuccess label="Reset link has been sent to your Email. Check it now!" t={t} />
+      <ToastSuccess
+        label="Reset link has been sent to your Email. Check it now!"
+        t={t}
+      />
     ));
   };
 
@@ -82,7 +85,6 @@ export default function Settings() {
 
         {/* 2 Columns Layout */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          
           {/* Column 1: Profile Picture and Reset Password */}
           <div className="flex flex-col space-y-8">
             {/* Profile Picture Card with extended height */}
@@ -124,7 +126,9 @@ export default function Settings() {
 
             {/* Reset Password Card */}
             <div className="bg-white p-6 rounded-xl shadow-md flex flex-col justify-center items-center h-[200px]">
-              <h3 className="text-xl font-semibold text-[#1E0342]">Change Password</h3>
+              <h3 className="text-xl font-semibold text-[#1E0342]">
+                Change Password
+              </h3>
               <button
                 className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg"
                 onClick={handleSendResetLink}
@@ -187,7 +191,9 @@ export default function Settings() {
                     />
                   </div>
                   <div className="flex items-center">
-                    <label className="font-semibold w-1/3">Licence Number</label>
+                    <label className="font-semibold w-1/3">
+                      Licence Number
+                    </label>
                     <input
                       type="text"
                       name="licence"
@@ -269,7 +275,9 @@ export default function Settings() {
                     />
                   </div>
                   <div className="flex items-center">
-                    <label className="font-semibold w-1/3">Graduation Year</label>
+                    <label className="font-semibold w-1/3">
+                      Graduation Year
+                    </label>
                     <input
                       type="text"
                       name="graduationYear"
@@ -323,8 +331,6 @@ export default function Settings() {
             </div>
           </div>
         </div>
-
-        <Toaster position="bottom-right" />
       </div>
     </div>
   );

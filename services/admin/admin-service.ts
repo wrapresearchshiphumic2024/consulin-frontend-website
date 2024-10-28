@@ -1,4 +1,5 @@
-import { DashboardAdminData, User } from "@/types/admin/admin-type-data";
+import { DashboardAdminData } from "@/types/admin/admin-type-data";
+import { User } from "@/types/user/user-type-data";
 
 export async function getDashboardAdminData(session: string): Promise<DashboardAdminData > {
     const res = await fetch(`${process.env.API_URL}/api/admin/home`, {
@@ -73,6 +74,7 @@ export async function getDetailPsychologst(session: string, uuid: string): Promi
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
+        next: { revalidate: 60,tags: ['detail-psychologst'] }
     });
 
     const json = await res.json();

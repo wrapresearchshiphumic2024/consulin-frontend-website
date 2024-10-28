@@ -1,40 +1,21 @@
 import IconPsychology from "@/components/icons/icon-psychology";
 import CardDashboard from "../_components/ui/card-dashboard";
-
 import IconPatient from "@/components/icons/icon-patient";
 import NotificationCard from "./_components/notification";
 import IconConsultation from "@/components/icons/icon-consultation";
 import Link from "next/link";
+import { auth } from "@/auth";
+import { getConsultationDataPsychologist } from "@/services/psychologist/psychologist-service";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
-const notifications = [
-  {
-    name: "Maria Jhonson",
-    time: "12 Oct 2024, 10:00",
-    status: "On-going",
-  },
-  {
-    name: "John Doe",
-    time: "11 Oct 2024, 15:30",
-    status: "waiting",
-  },
-  {
-    name: "Alice Smith",
-    time: "10 Oct 2024, 09:15",
-    status: "waiting",
-  },
-  {
-    name: "Robert Brown",
-    time: "09 Oct 2024, 14:45",
-    status: "waiting",
-  },
-  {
-    name: "Emily Davis",
-    time: "08 Oct 2024, 11:20",
-    status: "waiting",
-  },
-];
-
-export default function DashboardPsychologist() {
+export default async function DashboardPsychologist() {
+  const session = await auth();
+  const {
+    consultations,
+    total_weekly_consultation,
+    total_consultation,
+    today_ongoing_consultation,
+  } = await getConsultationDataPsychologist(session?.user.access_token);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -46,7 +27,7 @@ export default function DashboardPsychologist() {
         <div className="order-1 lg:order-1">
           <CardDashboard
             label="Total Weekly Consultation"
-            total="10.1k"
+            total={String(total_weekly_consultation)}
             status="Consultation"
             icon={
               <IconPatient className="md:w-16 md:h-16 w-12 h-12 text-primary-custom_primary" />
@@ -62,17 +43,34 @@ export default function DashboardPsychologist() {
               </h3>
             </center>
             <div className="flex flex-col gap-4 mt-5">
-              {notifications.map(({ name, time, status }, index) => (
-                <Link href="/dashboard-psychologist/detail-patient">
-                  <NotificationCard
-                    key={index}
-                    name={name}
-                    time={time}
-                    status={status}
-                    background="bg-[#DDE7F9]"
-                  />
-                </Link>
-              ))}
+              {consultations.length === 0 ? (
+                <div className="flex items-center justify-center h-full p-6">
+                  <div className="w-full bg-[#DEE7F9] h-20 flex justify-center items-center rounded-2xl text-netral-primary p-3 text-center">
+                    your schedule will appear here
+                  </div>
+                </div>
+              ) : (
+                <ScrollArea className="w-full mt-10 h-[450px]">
+                  <div className="p-2">
+                    {consultations.map((schedule, index) => (
+                      <>
+                        <Link
+                          href="/dashboard-psychologist/detail-patient"
+                          key={index}
+                        >
+                          <NotificationCard
+                            name={"faridz"}
+                            time={"12 Oct 2024, 10:00"}
+                            status={"On-going"}
+                            background="bg-[#DDE7F9]"
+                          />
+                        </Link>
+                        <br />
+                      </>
+                    ))}
+                  </div>
+                </ScrollArea>
+              )}
             </div>
           </div>
         </div>
@@ -80,7 +78,7 @@ export default function DashboardPsychologist() {
         <div className="order-2 lg:order-3">
           <CardDashboard
             label="Total Consultation"
-            total="19.2k"
+            total={String(total_consultation)}
             status="Consultation"
             icon={<IconPsychology className="lg:w-16 lg:h-16 w-12 h-12 " />}
           />
@@ -88,7 +86,7 @@ export default function DashboardPsychologist() {
         <div className="order-3 lg:order-4">
           <CardDashboard
             label="Today On-Going Consultation"
-            total="400"
+            total={String(today_ongoing_consultation)}
             status="Consultation"
             icon={<IconConsultation className="md:w-16 md:h-16  w-12 h-12" />}
           />

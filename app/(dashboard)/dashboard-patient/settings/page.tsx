@@ -1,49 +1,52 @@
-"use client";
-import { useState } from "react";
+// "use client";
+// import { useState } from "react";
 import Image from "next/image";
-import { toast } from "sonner";
-import { ToastSuccess } from "@/components/ui/toast-custom";
 
-export default function Settings() {
-  const [isEditing, setIsEditing] = useState(false);
-  const [isEditingPhoto, setIsEditingPhoto] = useState(false);
-  const [personalInfo, setPersonalInfo] = useState({
-    name: "David Williams",
-    gender: "Male",
-    email: "david@woho.com",
-    phone: "08123431234",
-  });
+import { auth } from "@/auth";
+import { getProfilePatient } from "@/services/patient/patient-service";
+import { formatFullName } from "@/helpers/string-helpers";
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setPersonalInfo({
-      ...personalInfo,
-      [name]: value,
-    });
-  };
+export default async function Settings() {
+  // const [isEditing, setIsEditing] = useState(false);
+  // const [isEditingPhoto, setIsEditingPhoto] = useState(false);
+  // const [personalInfo, setPersonalInfo] = useState({
+  //   name: "David Williams",
+  //   gender: "Male",
+  //   email: "david@woho.com",
+  //   phone: "08123431234",
+  // });
+  const session = await auth();
+  const user = await getProfilePatient(session?.user.access_token);
+  // const handleInputChange = (e) => {
+  //   const { name, value } = e.target;
+  //   setPersonalInfo({
+  //     ...personalInfo,
+  //     [name]: value,
+  //   });
+  // };
 
-  const handleSaveChanges = () => {
-    setIsEditing(false);
-    toast.custom((t) => (
-      <ToastSuccess label="Changes successfully saved" t={t} />
-    ));
-  };
+  // const handleSaveChanges = () => {
+  //   setIsEditing(false);
+  //   toast.custom((t) => (
+  //     <ToastSuccess label="Changes successfully saved" t={t} />
+  //   ));
+  // };
 
-  const handleSavePhotoChanges = () => {
-    setIsEditingPhoto(false);
-    toast.custom((t) => (
-      <ToastSuccess label="Photo successfully updated" t={t} />
-    ));
-  };
+  // const handleSavePhotoChanges = () => {
+  //   setIsEditingPhoto(false);
+  //   toast.custom((t) => (
+  //     <ToastSuccess label="Photo successfully updated" t={t} />
+  //   ));
+  // };
 
-  const handleSendResetLink = () => {
-    toast.custom((t) => (
-      <ToastSuccess
-        label="Reset link has been sent to your Email. Check it now!"
-        t={t}
-      />
-    ));
-  };
+  // const handleSendResetLink = () => {
+  //   toast.custom((t) => (
+  //     <ToastSuccess
+  //       label="Reset link has been sent to your Email. Check it now!"
+  //       t={t}
+  //     />
+  //   ));
+  // };
 
   return (
     <>
@@ -64,7 +67,7 @@ export default function Settings() {
               className="rounded-full object-cover"
             />
           </div>
-
+          {/* 
           {isEditingPhoto ? (
             <div className="flex gap-4">
               <button
@@ -84,7 +87,10 @@ export default function Settings() {
             >
               Change Photo
             </button>
-          )}
+          )} */}
+          <button className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg">
+            Change Photo
+          </button>
         </div>
 
         <div className="space-y-8">
@@ -93,7 +99,7 @@ export default function Settings() {
               Personal Information
             </h3>
 
-            {isEditing ? (
+            {/* {isEditing ? (
               <div className="mt-4 space-y-3">
                 <div className="flex items-center">
                   <label className="font-semibold w-1/3">Name</label>
@@ -164,17 +170,24 @@ export default function Settings() {
                   Edit Information
                 </button>
               </div>
-            )}
+            )} */}
+            <div className="mt-4 text-[#1E0342] font-medium space-y-3">
+              <p>Name: {formatFullName(user.firstname, user.lastname)}</p>
+              <p className="capitalize">Gender: {user.gender}</p>
+              <p>Email: {user.email}</p>
+              <p>Phone: {user.phone_number}</p>
+
+              <button className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg">
+                Edit Information
+              </button>
+            </div>
           </div>
 
           <div className="bg-white p-6 rounded-xl shadow-md">
             <h3 className="text-xl font-semibold text-[#1E0342]">
               Change Password
             </h3>
-            <button
-              className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg"
-              onClick={handleSendResetLink}
-            >
+            <button className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg">
               Send Reset Link
             </button>
           </div>

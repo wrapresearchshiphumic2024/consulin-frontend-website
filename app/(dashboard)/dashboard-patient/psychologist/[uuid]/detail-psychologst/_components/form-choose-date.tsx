@@ -23,8 +23,9 @@ import { CalendarIcon } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import ScheduleComponentTime from "@/app/(dashboard)/_components/ui/schedule-component-time";
+import { Schedule } from "@/types/psychologist/psychologist-type-data";
 
-export default function FormChooseDate() {
+export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
   const form = useForm<z.infer<typeof formChooseDateSchema>>({
     mode: "all",
     resolver: zodResolver(formChooseDateSchema),

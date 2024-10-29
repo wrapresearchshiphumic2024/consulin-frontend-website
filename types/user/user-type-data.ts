@@ -1,3 +1,5 @@
+import { Schedule } from "../psychologist/psychologist-type-data";
+
 export interface User {
     id: string; 
     firstname: string;
@@ -6,7 +8,7 @@ export interface User {
     phone_number?: string;
     is_verified?: boolean; 
     is_rejected?: boolean; 
-    gender?: string; 
+    gender?: string | null; 
     profile_picture: string | null;
     psychologist?: Psychologist;
   }
@@ -24,4 +26,5 @@ export interface Psychologist {
     profesional_identification_number: string;
     cv?: string[]; 
     practice_license?: string[]; 
+    schedule?:Schedule;
 }

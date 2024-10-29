@@ -2,6 +2,7 @@
 
 import { formSignUpSchema } from "@/helpers/validations/validation-auth";
 
+
 export async function register(data: FormData) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const formData = Object.fromEntries(data.entries());
@@ -29,6 +30,8 @@ export async function register(data: FormData) {
         };
     }
     let status = response.status;
+
+    console.log("Response:", response);
     return { success: status};
   
 }

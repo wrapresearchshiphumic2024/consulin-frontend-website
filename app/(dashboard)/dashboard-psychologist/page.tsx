@@ -16,6 +16,7 @@ export default async function DashboardPsychologist() {
     total_consultation,
     today_ongoing_consultation,
   } = await getConsultationDataPsychologist(session?.user.access_token);
+  // await createUser( user.data.id, user.data.firstname + " " + user.data.lastname);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">

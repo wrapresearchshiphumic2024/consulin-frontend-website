@@ -29,7 +29,7 @@ export async function loginAction(data: FormData): Promise<LoginResult> {
     if (result?.error) {
       return { error: result.error };
     }
-
+    
     return { success: "Sign in successfully" };
   } catch (e) {
     if (e instanceof AuthError) {

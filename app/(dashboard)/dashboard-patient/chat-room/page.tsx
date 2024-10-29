@@ -1,11 +1,14 @@
-import { createToken } from "@/actions/chat-token";
 import App from "@/app/(dashboard)/_components/layouts/chat";
+import { auth } from "@/auth";
+import { getProfilePatient } from "@/services/patient/patient-service";
 
-export default function Home() {
+export default async function ChatRoomPatient() {
+  const session = await auth();
+  const user = await getProfilePatient(session?.user.access_token);
   const apiKey = process.env.API_KEY;
 
-  const userId = "Patient_17fd95c7-eb1b-4140-9dcf-4d52f0560ec9";
-  const userName = "Patient";
+  const userId = user.id;
+  const userName = user.firstname + " " + user.lastname;
 
   if (!apiKey) {
     return <div>Error: API key not found.</div>;
@@ -22,7 +25,6 @@ export default function Home() {
       <div className="flex h-[530px]  w-full p-5 bg-white rounded-3xl mt-5">
         <App
           apiKey={apiKey}
-          createToken={createToken}
           userId={userId}
           userName={userName}
           image={

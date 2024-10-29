@@ -1,6 +1,7 @@
 import Credentials from "next-auth/providers/credentials";
 import type { NextAuthConfig } from "next-auth";
 
+
 export default {
   providers: [
     Credentials({
@@ -34,6 +35,15 @@ export default {
 
           // Validasi sukses dari response
           if (user && user.status === "success") {
+            if( user.data.role !== "admin"){
+            await fetch(`${process.env.API_URL}/api/login`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+              });
+            }
             return user.data;
           }
           if(user.status === "error"){

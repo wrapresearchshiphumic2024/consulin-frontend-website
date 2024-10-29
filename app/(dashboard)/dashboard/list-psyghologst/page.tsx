@@ -1,10 +1,9 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-
 import { auth } from "@/auth";
-import { getPsychologstData } from "@/services/admin/admin-service";
+import { getPsychologstData } from "@/services/global-service";
+import PsychologistCard from "../../_components/ui/psychologist-card";
 
-import PsychologistCard from "../_components/ui/psychologist-card";
 export default async function List() {
   const session = await auth();
   const psychologists = await getPsychologstData(

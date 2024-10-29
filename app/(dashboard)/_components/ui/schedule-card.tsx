@@ -3,17 +3,23 @@ import { Button } from "@/components/ui/button";
 
 interface ScheduleCardProps {
   day: string;
-  status: string;
-  time: string;
+
+  time: Time;
+}
+interface Time {
+  start: string;
+  end: string;
 }
 
-export default function SheduleCard({ day, status, time }: ScheduleCardProps) {
+export default function SheduleCard({ day, time }: ScheduleCardProps) {
   return (
     <div className="w-full bg-primary-custom_primary text-secondary-custom_secondary p-8 flex justify-between flex-col gap-3 rounded-2xl">
-      <h3 className="text-xl font-semibold">{day}</h3>
+      <h3 className="text-xl font-semibold capitalize">{day}</h3>
       <div>
-        <p>Status: {status}</p>
-        <p>{time}</p>
+        <p>Status: Scheduled</p>
+        <p>
+          {time.start} - {time.end}
+        </p>
       </div>
       <div>
         <Button

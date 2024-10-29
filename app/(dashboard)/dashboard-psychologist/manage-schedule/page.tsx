@@ -1,17 +1,15 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import FormSchedule from "./_components/form-shedule";
 
+import { auth } from "@/auth";
+import { getSchedule } from "@/services/psychologist/psychologist-service";
 import ScheduleCard from "../../_components/ui/schedule-card";
-import { Switch } from "@/components/ui/switch";
-import { Label } from "@/components/ui/label";
-const schedules = [
-  { day: "Every Monday", status: "Scheduled", time: "09:00 - 12:00" },
-  { day: "Every Tuesday", status: "Scheduled", time: "10:00 - 11:00" },
-  { day: "Every Wednesday", status: "Available", time: "13:00 - 14:00" },
-  { day: "Every Thursday", status: "Scheduled", time: "15:00 - 16:00" },
-  { day: "Every Friday", status: "Available", time: "09:00 - 10:00" },
-];
-export default function ManageSchedulePsycholog() {
+import AppointmentSwitch from "./_components/appointment-switch";
+
+export default async function ManageSchedulePsycholog() {
+  const session = await auth();
+  const schedule = await getSchedule(session?.user.access_token);
+  console.log(schedule);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -22,8 +20,10 @@ export default function ManageSchedulePsycholog() {
       </p>
       <div className="flex items-center my-3 justify-end ">
         <div className="flex items-center bg-secondary-custom_secondary rounded-full p-3 gap-3 ">
-          <Label htmlFor="appointment">Open for Appointments</Label>
-          <Switch id="appointment" />
+          <AppointmentSwitch
+            appointmetStatus={schedule.status === "active"}
+            session={session?.user.access_token}
+          />
         </div>
       </div>
       <div className="flex gap-5 flex-col lg:flex-row ">
@@ -33,7 +33,7 @@ export default function ManageSchedulePsycholog() {
               Set Consultations Schedule
             </h3>
           </center>
-          <FormSchedule disabled={true} />
+          <FormSchedule disabled={true} schedule={schedule} />
         </div>
 
         <div className="bg-secondary-custom_secondary p-5 rounded-2xl flex-1 lg:flex-none w-full lg:w-1/3">
@@ -42,26 +42,23 @@ export default function ManageSchedulePsycholog() {
               Your Schedule
             </h3>
           </center>
-          {schedules.length === 0 ? (
+          {schedule.days.length === 0 ? (
             <div className="flex items-center justify-center h-full p-6">
               <div className="w-full bg-[#DEE7F9] h-20 flex justify-center items-center rounded-2xl text-netral-primary p-3 text-center">
-                your schedule will appear here
+                Your schedule will appear here
               </div>
             </div>
           ) : (
             <ScrollArea className="w-full mt-10 h-[450px]">
               <div className="p-2">
-                {schedules.map((schedule, index) => (
-                  <>
-                    <ScheduleCard
-                      key={index}
-                      day={schedule.day}
-                      status={schedule.status}
-                      time={schedule.time}
-                    />
-                    <br />
-                  </>
-                ))}
+                {schedule.days.map((day) =>
+                  day.times.map((time) => (
+                    <>
+                      <ScheduleCard key={day.id} day={day.day} time={time} />
+                      <br />
+                    </>
+                  ))
+                )}
               </div>
             </ScrollArea>
           )}

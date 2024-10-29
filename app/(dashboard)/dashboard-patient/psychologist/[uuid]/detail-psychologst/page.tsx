@@ -4,7 +4,25 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import FormChooseDate from "./_components/form-choose-date";
-export default function DetailPsycholog() {
+import { auth } from "@/auth";
+import { getDetailPsychologistPatient } from "@/services/patient/patient-service";
+import { formatCommaSeparated, formatFullName } from "@/helpers/string-helpers";
+import { notFound } from "next/navigation";
+import { Schedule } from "@/types/psychologist/psychologist-type-data";
+export default async function DetailPsycholog({
+  params,
+}: {
+  params: { uuid: string };
+}) {
+  const session = await auth();
+  const detail_psychologst = await getDetailPsychologistPatient(
+    session?.user.access_token,
+    params.uuid
+  );
+  if (detail_psychologst == null) {
+    return notFound();
+  }
+  console.log(detail_psychologst.psychologist?.schedule);
   return (
     <>
       <div className="flex mb-5 gap-3">
@@ -43,20 +61,34 @@ export default function DetailPsycholog() {
             className="rounded-full w-[200px] h-[200px] mb-4 mt-[50px] border-[10px] border-[#DDE7F9] shadow-md"
           />
           <h2 className="text-2xl font-semibold text-[#1E0342]">
-            David Williams
+            {formatFullName(
+              detail_psychologst.firstname,
+              detail_psychologst.lastname
+            )}
           </h2>
           <div className="p-6">
-            <p className="text-[#1E0342] mt-2">Gender : Male </p>
-            <p className="text-[#1E0342] mt-2">Email : marjo@gmail.com </p>
             <p className="text-[#1E0342] mt-2">
-              Specialization : Anxiety Disorders
+              Gender : {detail_psychologst.gender}{" "}
             </p>
-            <p className="text-[#1E0342] mt-2">Experience :4 Years </p>
+            <p className="text-[#1E0342] mt-2">
+              Email : {detail_psychologst.email}{" "}
+            </p>
+            <p className="text-[#1E0342] mt-2">
+              Specialization :{" "}
+              {formatCommaSeparated(
+                detail_psychologst.psychologist?.specialization || []
+              )}
+            </p>
+            <p className="text-[#1E0342] mt-2">
+              Experience : {detail_psychologst.psychologist?.work_experience}{" "}
+            </p>
           </div>
         </Card>
         <div className="flex flex-col space-y-6 w-full lg:w-2/3">
           <Card className="p-6 rounded-[30px] shadow-lg bg-white text-[#1E0342] space-y-[5px]">
-            <FormChooseDate />
+            <FormChooseDate
+              schedules={detail_psychologst.psychologist?.schedule as Schedule}
+            />
           </Card>
           <Card className="p-6 rounded-[30px] shadow-lg bg-white text-[#1E0342] space-y-[5px]">
             <h2 className="text-2xl font-semibold text-[#1E0342]">Note</h2>

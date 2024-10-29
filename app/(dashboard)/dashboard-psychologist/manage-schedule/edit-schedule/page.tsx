@@ -1,14 +1,11 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import FormSchedule from "../_components/form-shedule";
+import { auth } from "@/auth";
+import { getSchedule } from "@/services/psychologist/psychologist-service";
 
-const schedules = [
-  { day: "Every Monday", status: "Scheduled", time: "09:00 - 12:00" },
-  { day: "Every Tuesday", status: "Scheduled", time: "10:00 - 11:00" },
-  { day: "Every Wednesday", status: "Available", time: "13:00 - 14:00" },
-  { day: "Every Thursday", status: "Scheduled", time: "15:00 - 16:00" },
-  { day: "Every Friday", status: "Available", time: "09:00 - 10:00" },
-];
-export default function ManageSchedulePsycholog() {
+export default async function ManageSchedulePsycholog() {
+  const session = await auth();
+  const schedule = await getSchedule(session?.user.access_token);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -24,7 +21,7 @@ export default function ManageSchedulePsycholog() {
               Set Consultations Schedule
             </h3>
           </center>
-          <FormSchedule />
+          <FormSchedule schedule={schedule} />
         </div>
       </div>
     </>

@@ -19,19 +19,32 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { ToastSuccess } from "@/components/ui/toast-custom";
+import { Schedule } from "@/types/psychologist/psychologist-type-data";
 
 export default function FormSchedule({
   disabled = false,
+  schedule,
 }: {
   disabled?: boolean;
+  schedule: Schedule;
 }) {
   const router = useRouter();
+  const schedule_day =
+    schedule.days.map((day) => {
+      return day.day.charAt(0).toUpperCase() + day.day.slice(1);
+    }) || [];
+  const schedule_time =
+    schedule.days[0]?.times?.map((time) => ({
+      start: time.start,
+      end: time.end,
+    })) || []; // Mengembalikan array kosong jika tidak ada
+
   const form = useForm<z.infer<typeof formScheduleSchema>>({
     mode: "all",
     resolver: zodResolver(formScheduleSchema),
     defaultValues: {
-      schedule_day: [],
-      schedule_time: [],
+      schedule_day: schedule_day,
+      schedule_time: schedule_time,
     },
     shouldUnregister: false,
   });
@@ -41,7 +54,6 @@ export default function FormSchedule({
     toast.custom((t) => (
       <ToastSuccess label={"Schedule successfully update"} t={t} />
     ));
-    router.push("/dashboard-psychologist/manage-schedule");
   }
 
   return (

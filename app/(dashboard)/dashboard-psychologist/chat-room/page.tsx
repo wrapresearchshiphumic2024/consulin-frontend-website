@@ -1,11 +1,12 @@
 import { createToken } from "@/actions/chat-token";
 import App from "../../_components/layouts/chat";
+import { auth } from "@/auth";
+import { getProfilePsychologist } from "@/services/psychologist/psychologist-service";
 
-export default function Home() {
+export default async function ChatRoomPsychologist() {
+  const session = await auth();
+  const user = await getProfilePsychologist(session?.user.access_token);
   const apiKey = process.env.API_KEY;
-
-  const userId = "Psycholog_f989c982-fb97-4d63-939d-e445b81e9d66";
-  const userName = "Psycholog";
 
   if (!apiKey) {
     return <div>Error: API key not found.</div>;
@@ -23,8 +24,8 @@ export default function Home() {
         <App
           apiKey={apiKey}
           createToken={createToken}
-          userId={userId}
-          userName={userName}
+          userId={user.id}
+          userName={user.firstname + " " + user.lastname}
           image={"https://github.com/shadcn.png"}
         />
       </div>

@@ -4,12 +4,12 @@ import { cn } from "@/lib/utils";
 
 // Time slots dengan objek `start` dan `end`
 const days = [
-  { label: "09.00-10.00", value: { start: "09.00", end: "10.00" } },
-  { label: "11.00-12.00", value: { start: "11.00", end: "12.00" } },
-  { label: "13.00-14.00", value: { start: "13.00", end: "14.00" } },
-  { label: "14.00-15.00", value: { start: "14.00", end: "15.00" } },
-  { label: "15.00-16.00", value: { start: "15.00", end: "16.00" } },
-  { label: "16.00-17.00", value: { start: "16.00", end: "17.00" } },
+  { label: "09:00-10:00", value: { start: "09:00", end: "10:00" } },
+  { label: "11:00-12:00", value: { start: "11:00", end: "12:00" } },
+  { label: "13:00-14:00", value: { start: "13:00", end: "14:00" } },
+  { label: "14:00-15:00", value: { start: "14:00", end: "15:00" } },
+  { label: "15:00-16:00", value: { start: "15:00", end: "16:00" } },
+  { label: "16:00-17:00", value: { start: "16:00", end: "17:00" } },
 ];
 
 export default function ScheduleComponentTime({

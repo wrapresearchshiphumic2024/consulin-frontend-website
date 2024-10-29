@@ -24,8 +24,6 @@ interface ManageButtonProps {
   onApprove: (session: string, uuid: string) => void;
 }
 
-// Ganti dengan import yang sesuai
-
 export default function ManageButton({
   session,
   uuid,

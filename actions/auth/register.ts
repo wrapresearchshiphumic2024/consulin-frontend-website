@@ -1,7 +1,7 @@
 "use server";
 
 import { formSignUpSchema } from "@/helpers/validations/validation-auth";
-import { createUser } from "../chat-token";
+
 
 export async function register(data: FormData) {
     await new Promise((resolve) => setTimeout(resolve, 1000));

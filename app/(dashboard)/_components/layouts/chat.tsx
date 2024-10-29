@@ -15,11 +15,8 @@ import {
 
 import { ChannelSort } from "stream-chat";
 
-// import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-
 export default function App({
   apiKey,
-  createToken,
   userId,
   channelId,
   userName,
@@ -27,7 +24,6 @@ export default function App({
   image,
 }: {
   apiKey: string;
-  createToken: (userId: string) => Promise<string>;
   userId: string;
   channelId?: string;
   userName: string;
@@ -35,8 +31,19 @@ export default function App({
   image: string;
 }) {
   const tokenProvider = useCallback(async () => {
-    return await createToken(userId);
-  }, [createToken, userId]);
+    const response = await fetch("/api/chat-token", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ userId }),
+    });
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.error || "Failed to fetch token");
+    }
+    return data.token;
+  }, [userId]);
 
   const client = useCreateChatClient({
     apiKey,
@@ -64,7 +71,6 @@ export default function App({
     limit: 10,
   };
 
-  // Fungsi untuk membuat channel privat dengan 2 anggota
   const createPrivateChannel = async () => {
     const channel = client?.channel("messaging", {
       members: [

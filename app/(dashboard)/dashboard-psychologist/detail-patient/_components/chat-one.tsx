@@ -1,4 +1,3 @@
-import { createToken } from "@/actions/chat-token";
 import App from "@/app/(dashboard)/_components/layouts/chat";
 
 export default function ChatOne() {
@@ -12,7 +11,6 @@ export default function ChatOne() {
   return (
     <App
       apiKey={apiKey}
-      createToken={createToken}
       userId={userId}
       channelId="messaging:!members--4fb2ZwmLHa98rIcxEwXmqgYOdJcOrwQyKWEumQGy3E"
       userName={userName}

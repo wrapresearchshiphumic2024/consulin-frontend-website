@@ -1,4 +1,3 @@
-import { createToken } from "@/actions/chat-token";
 import App from "@/app/(dashboard)/_components/layouts/chat";
 import { auth } from "@/auth";
 import { getProfilePatient } from "@/services/patient/patient-service";
@@ -26,7 +25,6 @@ export default async function ChatRoomPatient() {
       <div className="flex h-[530px]  w-full p-5 bg-white rounded-3xl mt-5">
         <App
           apiKey={apiKey}
-          createToken={createToken}
           userId={userId}
           userName={userName}
           image={

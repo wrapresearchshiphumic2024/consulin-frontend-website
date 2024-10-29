@@ -1,5 +1,3 @@
-import { createToken } from "@/actions/chat-token";
-
 import App from "../../_components/layouts/chat";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
@@ -77,7 +75,6 @@ export default function DetailAppointment() {
           <div className="p-4 md:p-6 rounded-[30px]  bg-white w-full h-[530px]">
             <App
               apiKey={apiKey}
-              createToken={createToken}
               userId={userId}
               channelId="messaging:!members--4fb2ZwmLHa98rIcxEwXmqgYOdJcOrwQyKWEumQGy3E"
               userName={userName}

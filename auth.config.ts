@@ -1,6 +1,6 @@
 import Credentials from "next-auth/providers/credentials";
 import type { NextAuthConfig } from "next-auth";
-import { createUser } from "./actions/chat-token";
+
 
 export default {
   providers: [
@@ -36,7 +36,13 @@ export default {
           // Validasi sukses dari response
           if (user && user.status === "success") {
             if( user.data.role !== "admin"){
-              await createUser(user.data.user_id);
+            await fetch(`${process.env.API_URL}/api/login`, {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify({ email, password }),
+              });
             }
             return user.data;
           }

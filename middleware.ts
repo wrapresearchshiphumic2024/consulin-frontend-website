@@ -4,6 +4,7 @@ import { auth } from "./auth";
 
 export async function middleware(req: NextRequest) {
     const session = await auth();
+
     const { pathname } = req.nextUrl;
 
     // Halaman yang tidak perlu dicek untuk redirect (hindari loop)

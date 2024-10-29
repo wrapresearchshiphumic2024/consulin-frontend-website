@@ -67,6 +67,7 @@ export const config = {
         "/dashboard-psychologist/:path*"
     ],
     unstable_allowDynamic: [
-        '/node_modules/stream-chat/dist/browser.es.js'
+        '/node_modules/stream-chat/dist/browser.es.js',
+        '/node_modules/function-bind/**', // use a glob to allow anything in the function-bind 3rd party module
     ]
 };

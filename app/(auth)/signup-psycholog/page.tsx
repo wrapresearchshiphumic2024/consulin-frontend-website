@@ -11,7 +11,7 @@ const FormSignUpPsycholog = dynamic(
 export default function RegisterPsycholog() {
   return (
     <>
-      <TemplateAuth image="/assets/images/amico.png">
+      <TemplateAuth image="/assets/images/signuppsi.png">
         <center className="text-netral-primary ">
           <h2 className="font-bold text-3xl">Sign Up</h2>
           <p>Enter details to create your psycholog account</p>
@@ -20,9 +20,9 @@ export default function RegisterPsycholog() {
           <FormSignUpPsycholog />
           <center className="mt-2">
             <p className="text-netral-primary text-sm">
-              Are you a psychologist? Sign up as a Psychologist
-              <Link href={"/signup"}>
-                <span className="text-[#2785FF] font-bold"> Here</span>
+            Already have an account?
+              <Link href={"/signin"}>
+                <span className="text-[#2785FF] font-bold"> Sign in now</span>
               </Link>
             </p>
           </center>

@@ -5,7 +5,7 @@ import TemplateAuth from "../_components/template-auth";
 export default function SignUp() {
   return (
     <>
-      <TemplateAuth image="/assets/images/amico.png">
+      <TemplateAuth image="/assets/images/signup.png">
         <center className="text-netral-primary ">
           <h2 className="font-bold text-3xl">Sign Up</h2>
           <p>Enter details to create your account</p>

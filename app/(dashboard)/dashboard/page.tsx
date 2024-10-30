@@ -17,7 +17,7 @@ export default async function Dashboard() {
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Hello, Consulin Admins!
+        Hello, Consulife Admins!
       </h2>
       <p className="mt-3 text-netral-primary  font-medium ">Have a good day!</p>
 

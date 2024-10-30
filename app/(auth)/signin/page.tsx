@@ -5,7 +5,7 @@ import FormSignIn from "./_components/form-signin";
 
 export default function Login() {
   return (
-    <TemplateAuth image="/assets/images/amico2.png">
+    <TemplateAuth image="/assets/images/signin.png">
       <center className="text-netral-primary ">
         <h2 className="font-bold text-3xl">Sign In</h2>
         <p>Enter your details to sign in as a Psychologist or Patient</p>
@@ -19,7 +19,7 @@ export default function Login() {
               <span className="text-[#2785FF] font-bold"> Pyscholog </span>
             </Link>
             or
-            <Link href={"/register"}>
+            <Link href={"/signup"}>
               <span className="text-[#2785FF] font-bold"> Patient</span>
             </Link>
           </p>

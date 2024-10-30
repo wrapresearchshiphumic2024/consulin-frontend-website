@@ -6,7 +6,7 @@ export default function DetailAppointment() {
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Hello, Welcome To Consulin!
+        Hello, Welcome To Consulife!
       </h2>
       <p className="mt-3 text-netral-primary font-medium">Have a good day!</p>
       <div className="flex gap-5 flex-col lg:flex-row mt-10">

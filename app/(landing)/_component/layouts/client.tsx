@@ -16,7 +16,7 @@ const testimonials = [
       "Consulife has really helped me manage my work-related stress and anxiety. I can instantly connect with a psychologist and AI initial assessment is also very precise and useful!",
   },
   {
-    icon: "/assets/images/cowohitam.jpg",
+    icon: "/assets/images/cowobiru.jpg",
     name: "Dina K",
     role: "Housewife",
     description:
@@ -52,7 +52,7 @@ export default function Client() {
               className="bg-white shadow-lg rounded-lg p-6 text-center flex flex-col items-center text-[#1E0342] w-full lg:w-[300px] h-auto mb-6 lg:mb-0"
             >
               <div
-                className="w-[120px] h-[120px] sm:w-[150px] sm:h-[150px] overflow-hidden mb-4"
+                className="w-[120px] h-[200px] sm:w-[150px] sm:h-[150px] overflow-hidden mb-4"
                 style={{ borderRadius: "0px 100px 100px 100px" }}
               >
                 <Image

@@ -1,4 +1,3 @@
-import { ScrollArea } from "@/components/ui/scroll-area";
 import FormSchedule from "../_components/form-shedule";
 import { auth } from "@/auth";
 import { getSchedule } from "@/services/psychologist/psychologist-service";
@@ -21,7 +20,10 @@ export default async function ManageSchedulePsycholog() {
               Set Consultations Schedule
             </h3>
           </center>
-          <FormSchedule schedule={schedule} />
+          <FormSchedule
+            schedule={schedule}
+            session={session?.user.access_token}
+          />
         </div>
       </div>
     </>

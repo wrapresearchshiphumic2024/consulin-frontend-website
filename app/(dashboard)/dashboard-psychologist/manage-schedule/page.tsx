@@ -9,7 +9,6 @@ import AppointmentSwitch from "./_components/appointment-switch";
 export default async function ManageSchedulePsycholog() {
   const session = await auth();
   const schedule = await getSchedule(session?.user.access_token);
-  console.log(schedule);
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -23,6 +22,7 @@ export default async function ManageSchedulePsycholog() {
           <AppointmentSwitch
             appointmetStatus={schedule.status === "active"}
             session={session?.user.access_token}
+            empty={schedule.days.length === 0}
           />
         </div>
       </div>

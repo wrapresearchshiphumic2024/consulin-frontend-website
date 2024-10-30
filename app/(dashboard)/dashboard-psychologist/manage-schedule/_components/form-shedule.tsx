@@ -20,15 +20,21 @@ import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 import { ToastSuccess } from "@/components/ui/toast-custom";
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
+import { useTransition } from "react";
+import { updateSchedule } from "@/actions/psychologist/manage-schedule";
+import { Loader2 } from "lucide-react";
 
 export default function FormSchedule({
+  session,
   disabled = false,
   schedule,
 }: {
   disabled?: boolean;
+  session?: string;
   schedule: Schedule;
 }) {
   const router = useRouter();
+  const [pending, startTransaction] = useTransition();
   const schedule_day =
     schedule.days.map((day) => {
       return day.day.charAt(0).toUpperCase() + day.day.slice(1);
@@ -37,7 +43,7 @@ export default function FormSchedule({
     schedule.days[0]?.times?.map((time) => ({
       start: time.start,
       end: time.end,
-    })) || []; // Mengembalikan array kosong jika tidak ada
+    })) || [];
 
   const form = useForm<z.infer<typeof formScheduleSchema>>({
     mode: "all",
@@ -51,9 +57,25 @@ export default function FormSchedule({
 
   async function onSubmit(values: z.infer<typeof formScheduleSchema>) {
     console.log(values);
-    toast.custom((t) => (
-      <ToastSuccess label={"Schedule successfully update"} t={t} />
-    ));
+
+    const data = {
+      schedule_id: schedule.id,
+      days: values.schedule_day,
+      times: values.schedule_time,
+    };
+
+    startTransaction(async () => {
+      const response = await updateSchedule(session as string, data);
+      if (response?.success == "success") {
+        toast.custom((t) => (
+          <ToastSuccess
+            label="Schedule appointment successfully update"
+            t={t}
+          />
+        ));
+        router.push("/dashboard-psychologist/manage-schedule");
+      }
+    });
   }
 
   return (
@@ -114,12 +136,21 @@ export default function FormSchedule({
             </Link>
           ) : (
             <>
-              <Button type="submit" className=" bg-green-500 mr-3">
+              <Button
+                type="submit"
+                className=" bg-green-500 mr-3"
+                disabled={pending}
+              >
+                {pending ? (
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                ) : null}
                 Save
               </Button>
-              <Button type="button" variant={"destructive"} className=" mr-3">
-                Cancel
-              </Button>
+              <Link href={"/dashboard-psychologist/manage-schedule/"}>
+                <Button type="button" variant={"destructive"} className=" mr-3">
+                  Cancel
+                </Button>
+              </Link>
             </>
           )}
         </form>

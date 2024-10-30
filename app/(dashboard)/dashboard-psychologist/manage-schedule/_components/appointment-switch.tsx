@@ -12,9 +12,11 @@ import { ToastSuccess } from "@/components/ui/toast-custom";
 export default function AppointmentSwitch({
   session,
   appointmetStatus,
+  empty,
 }: {
   session: string;
   appointmetStatus: boolean;
+  empty: boolean;
 }) {
   const [isChecked, setChecked] = useState(appointmetStatus);
 
@@ -35,12 +37,16 @@ export default function AppointmentSwitch({
   };
   return (
     <>
-      <Label htmlFor="appointment">Open for Appointments</Label>
-      <Switch
-        id="appointment"
-        checked={isChecked}
-        onCheckedChange={handleOnChange}
-      />
+      {!empty ? (
+        <>
+          <Label htmlFor="appointment">Open for Appointments</Label>
+          <Switch
+            id="appointment"
+            checked={isChecked}
+            onCheckedChange={handleOnChange}
+          />
+        </>
+      ) : null}
     </>
   );
 }

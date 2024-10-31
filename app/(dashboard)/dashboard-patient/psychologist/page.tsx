@@ -1,8 +1,6 @@
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import Link from "next/link";
-import Image from "next/image";
-import { cn } from "@/lib/utils";
+
 import {
   Select,
   SelectContent,
@@ -23,7 +21,6 @@ export default async function Psychologist() {
     session?.user.access_token,
     "/api/patients/psychologists-list"
   );
-  console.log(psychologists);
 
   return (
     <>
@@ -53,26 +50,31 @@ export default async function Psychologist() {
           </SelectContent>
         </Select>
       </div>
-
-      <div className="grid sm:grid-cols-2  xl:grid-cols-3 gap-3 mt-3">
-        {psychologists.map((psychologist) => (
-          <PsychologistCard
-            key={psychologist.id}
-            user_psychologist={psychologist}
-            available
-          >
-            <div className="w-full px-4 mt-auto flex justify-center">
-              <Link
-                href={`/dashboard-patient/psychologist/${psychologist.id}/detail-psychologst`}
-              >
-                <Button className="bg-gray-700 justify-center text-white px-4 py-2 rounded-md w-[200px]">
-                  Detail
-                </Button>
-              </Link>
-            </div>
-          </PsychologistCard>
-        ))}
-      </div>
+      {psychologists.length === 0 ? (
+        <div className="mt-10 text-[#1E0342] font-semibold flex justify-center items-center">
+          Empty List Psychologist
+        </div>
+      ) : (
+        <div className="grid sm:grid-cols-2  xl:grid-cols-3 gap-3 mt-3">
+          {psychologists.map((psychologist) => (
+            <PsychologistCard
+              key={psychologist.id}
+              user_psychologist={psychologist}
+              available
+            >
+              <div className="w-full px-4 mt-auto flex justify-center">
+                <Link
+                  href={`/dashboard-patient/psychologist/${psychologist.id}/detail-psychologst`}
+                >
+                  <Button className="bg-gray-700 justify-center text-white px-4 py-2 rounded-md w-[200px]">
+                    Detail
+                  </Button>
+                </Link>
+              </div>
+            </PsychologistCard>
+          ))}
+        </div>
+      )}
     </>
   );
 }

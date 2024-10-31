@@ -14,7 +14,7 @@ interface Time {
 export default function SheduleCard({ day, time }: ScheduleCardProps) {
   return (
     <div className="w-full bg-primary-custom_primary text-secondary-custom_secondary p-8 flex justify-between flex-col gap-3 rounded-2xl">
-      <h3 className="text-xl font-semibold capitalize">{day}</h3>
+      <h3 className="text-xl font-semibold capitalize">Every {day}</h3>
       <div>
         <p>Status: Scheduled</p>
         <p>
@@ -22,12 +22,12 @@ export default function SheduleCard({ day, time }: ScheduleCardProps) {
         </p>
       </div>
       <div>
-        <Button
+        {/* <Button
           className="bg-secondary-custom_secondary text-primary-custom_primary"
           type="button"
         >
           Delete Schedule
-        </Button>
+        </Button> */}
       </div>
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { Time } from "@/types/psychologist/psychologist-type-data";
 
-// Time slots dengan objek `start` dan `end`
 const days = [
   { label: "09:00-10:00", value: { start: "09:00", end: "10:00" } },
   { label: "11:00-12:00", value: { start: "11:00", end: "12:00" } },
@@ -15,16 +15,18 @@ const days = [
 export default function ScheduleComponentTime({
   value = [],
   onChange,
+  times,
   isSingleSelect = false,
-  disabled = false, // Properti untuk menentukan apakah semua slot waktu dinonaktifkan
+  disabled = false,
 }: {
   value: { start: string; end: string }[];
   onChange: (days: { start: string; end: string }[]) => void;
+  times?: Time[];
   isSingleSelect?: boolean;
-  disabled?: boolean; // Menambahkan properti disabled
+  disabled?: boolean;
 }) {
   const handleSelectDay = (selectedDay: { start: string; end: string }) => {
-    if (disabled) return; // Cegah aksi jika disabled bernilai true
+    if (disabled) return;
 
     const selectedDays = Array.isArray(value) ? value : [];
 
@@ -34,9 +36,9 @@ export default function ScheduleComponentTime({
         selectedDays[0].start === selectedDay.start &&
         selectedDays[0].end === selectedDay.end
       ) {
-        onChange([]); // Batalkan jika waktu yang sama dipilih lagi
+        onChange([]);
       } else {
-        onChange([selectedDay]); // Ganti dengan waktu yang baru
+        onChange([selectedDay]);
       }
     } else {
       if (
@@ -68,21 +70,31 @@ export default function ScheduleComponentTime({
           );
   };
 
+  const filteredDays =
+    times && times.length > 0
+      ? days.filter((day) =>
+          times.some(
+            (time) =>
+              time.start === day.value.start && time.end === day.value.end
+          )
+        )
+      : days;
+
   return (
     <div>
       <h3>Set Available Time Slots:</h3>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:w-[450px] w-full mt-5">
-        {days.map((item) => (
+        {filteredDays.map((item) => (
           <div
             key={item.value.start}
             className={cn(
               isSelected(item.value)
                 ? "bg-[#27374D] text-white"
                 : "bg-[#27374D]/10 text-netral-primary",
-              disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer", // Indikasi visual jika disabled
+              disabled ? "cursor-not-allowed opacity-50" : "cursor-pointer",
               "w-full h-12 flex items-center justify-center rounded-xl shadow-md px-3 hover:border-netral-primary hover:border-2"
             )}
-            onClick={() => !disabled && handleSelectDay(item.value)} // Mencegah klik jika disabled
+            onClick={() => !disabled && handleSelectDay(item.value)}
           >
             <p>{item.label}</p>
           </div>

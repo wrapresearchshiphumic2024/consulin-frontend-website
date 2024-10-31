@@ -9,6 +9,7 @@ import { getDetailPsychologistPatient } from "@/services/patient/patient-service
 import { formatCommaSeparated, formatFullName } from "@/helpers/string-helpers";
 import { notFound } from "next/navigation";
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
+
 export default async function DetailPsycholog({
   params,
 }: {
@@ -19,10 +20,14 @@ export default async function DetailPsycholog({
     session?.user.access_token,
     params.uuid
   );
-  if (detail_psychologst == null) {
+
+  if (
+    detail_psychologst == null ||
+    detail_psychologst.psychologist?.schedule?.status === "inactive"
+  ) {
     return notFound();
   }
-  console.log(detail_psychologst.psychologist?.schedule);
+
   return (
     <>
       <div className="flex mb-5 gap-3">

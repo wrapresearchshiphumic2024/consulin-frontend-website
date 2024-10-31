@@ -2,6 +2,9 @@
 //     id: string;
 //     date: string;
 //     status: string;
+
+import { User } from "../user/user-type-data";
+
 // }
 export interface ConsultationDataPsychologist {
     consultations: any[];
@@ -36,4 +39,11 @@ export interface Time {
     status: string;
     created_at: string;
     updated_at: string;
+}
+export interface Appointment{
+    id:number;
+    date: string;
+    time: string;
+    status:string;
+    user:User;
 }

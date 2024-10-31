@@ -1,4 +1,4 @@
-import { ConsultationDataPsychologist, Schedule } from "@/types/psychologist/psychologist-type-data";
+import { Appointment, ConsultationDataPsychologist, Schedule } from "@/types/psychologist/psychologist-type-data";
 import { User } from "@/types/user/user-type-data";
 
 export async function getConsultationDataPsychologist(session: string): Promise<ConsultationDataPsychologist > {
@@ -75,12 +75,41 @@ export async function getSchedule(session: string): Promise<Schedule> {
     
     const json = await res.json();
     
-    const firstSchedule = json.data.length > 0 ? json.data[0] : null;
-    
-    if (!firstSchedule) {
-        throw new Error("No schedule data found");
-    }
-    
-    return firstSchedule as Schedule;
+  
+    return json.data as Schedule;
 
+}
+export async function getAppointmentHistory(session: string): Promise<Appointment[]> {
+    const res = await fetch(`${process.env.API_URL}/api/psychologist/appointment-history`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${session}`,
+            "Content-Type": "application/json",
+        },
+        next: { revalidate: 60, tags: ['appointment-history'] }
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch dashboard data");
+    }
+
+    const json = await res.json();
+
+    if (!json.data || json.data.length === 0) {
+        return []; 
+    }
+
+    const appointments: Appointment[] = json.data.map((item: any) => ({
+        id: item.id,
+        date: item.date,
+        time: item.time,
+        status: item.status,
+        user: {
+            id: item.patient.user.id,
+            firstname: item.patient.user.firstname,
+            lastname: item.patient.user.lastname,
+        }
+    }));
+
+    return appointments;
 }

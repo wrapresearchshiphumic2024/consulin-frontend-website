@@ -15,6 +15,7 @@ export async function openAppointment(session : string){
     const response = await appointment.json();
     let status = response.status;
     revalidateTag("psychologst-list");
+    revalidateTag("detail-psychologist");
     revalidateTag("schedule-psychologist");
     return { success: status as string};
 }
@@ -31,11 +32,12 @@ export async function closeAppointment(session : string){
     const response = await appointment.json();
     let status = response.status;
     revalidateTag("psychologst-list");
+    revalidateTag("detail-psychologist");
     revalidateTag("schedule-psychologist");
     return { success: status as string};
 }
 
-export async function updateSchedule(session: string,data: { schedule_id: number, days: string[], times: { start: string, end: string }[] }) {
+export async function updateSchedule(session: string,data: {  days: string[], times: { start: string, end: string }[] }) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const json_data = JSON.stringify(data)
     console.log(json_data);
@@ -67,6 +69,7 @@ export async function updateSchedule(session: string,data: { schedule_id: number
 
     let status = response.status;
     revalidateTag("psychologst-list");
+    revalidateTag("detail-psychologist");
     revalidateTag("schedule-psychologist");
     return { success: status };
 }

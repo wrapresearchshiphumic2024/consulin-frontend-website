@@ -30,7 +30,7 @@ export async function getDetailPsychologistPatient(session: string, uuid: string
     const json = await res.json();
 
     if (json.message === "Psychologist not found") {
-        return null; // Return null if the psychologist is not found
+        return null; 
     }
 
     const item = json.data;
@@ -43,7 +43,7 @@ export async function getDetailPsychologistPatient(session: string, uuid: string
         phone_number: item.user.phone_number,
         gender: item.user.gender || null,
         is_verified: item.is_verified === 1,
-        is_rejected: item.is_rejected === 1, // Use the correct field for rejection
+        is_rejected: item.is_rejected === 1,
         profile_picture: item.user.profile_picture || null,
         psychologist: {
             id: item.id,

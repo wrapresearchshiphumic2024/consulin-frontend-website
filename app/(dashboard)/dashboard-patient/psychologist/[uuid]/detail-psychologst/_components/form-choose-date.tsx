@@ -26,6 +26,29 @@ import ScheduleComponentTime from "@/app/(dashboard)/_components/ui/schedule-com
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
 
 export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
+  const activeDays = schedules.days
+    .filter((day) => day.status === "active")
+    .map((day) => {
+      switch (day.day.toLowerCase()) {
+        case "sunday":
+          return 0;
+        case "monday":
+          return 1;
+        case "tuesday":
+          return 2;
+        case "wednesday":
+          return 3;
+        case "thursday":
+          return 4;
+        case "friday":
+          return 5;
+        case "saturday":
+          return 6;
+        default:
+          return -1;
+      }
+    })
+    .filter((index) => index >= 0) as (0 | 1 | 2 | 3 | 4 | 5 | 6)[];
   const form = useForm<z.infer<typeof formChooseDateSchema>>({
     mode: "all",
     resolver: zodResolver(formChooseDateSchema),
@@ -81,13 +104,19 @@ export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
                           selected={field.value}
                           onSelect={field.onChange}
                           disabled={(date) => {
-                            const day = date.getDay();
+                            const day = date.getDay() as
+                              | 0
+                              | 1
+                              | 2
+                              | 3
+                              | 4
+                              | 5
+                              | 6;
                             const today = new Date();
                             const twoWeeksLater = new Date();
                             twoWeeksLater.setDate(today.getDate() + 14);
-
                             return (
-                              (day !== 1 && day !== 2) ||
+                              !activeDays.includes(day) ||
                               date < today ||
                               date > twoWeeksLater
                             );
@@ -115,6 +144,7 @@ export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
                       isSingleSelect
                       value={field.value}
                       onChange={field.onChange}
+                      times={schedules.days[0].times}
                     />
                   </FormControl>
 

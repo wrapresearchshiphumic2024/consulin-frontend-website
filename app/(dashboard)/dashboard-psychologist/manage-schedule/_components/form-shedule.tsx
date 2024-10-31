@@ -59,7 +59,6 @@ export default function FormSchedule({
     console.log(values);
 
     const data = {
-      schedule_id: schedule.id,
       days: values.schedule_day,
       times: values.schedule_time,
     };

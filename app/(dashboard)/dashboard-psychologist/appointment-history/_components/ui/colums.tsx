@@ -3,20 +3,15 @@
 import IconArrowDown from "@/components/icons/icon-arrow-down";
 import IconArrowUp from "@/components/icons/icon-arrow-up";
 import { Button } from "@/components/ui/button";
+import { formatFullName } from "@/helpers/string-helpers";
 import { cn } from "@/lib/utils";
+import { Appointment } from "@/types/psychologist/psychologist-type-data";
 import { ColumnDef } from "@tanstack/react-table";
-import { ArrowDown2, ArrowDown3, ArrowLeft2, ArrowLeft3 } from "iconsax-react";
-import { ArrowUpDown } from "lucide-react";
+
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
-export type Appointment_history = {
-  id: string;
-  patient_name: string;
-  date: string;
-  status: string;
-};
 
-export const columns: ColumnDef<Appointment_history>[] = [
+export const columns: ColumnDef<Appointment>[] = [
   {
     accessorKey: "id",
     header: () => {
@@ -37,6 +32,16 @@ export const columns: ColumnDef<Appointment_history>[] = [
           Patient Name
           {column.getIsSorted() === "asc" ? <IconArrowUp /> : <IconArrowDown />}
         </Button>
+      );
+    },
+    cell: ({ row }) => {
+      return (
+        <p>
+          {formatFullName(
+            row.original.user.firstname,
+            row.original.user.lastname
+          )}
+        </p>
       );
     },
   },

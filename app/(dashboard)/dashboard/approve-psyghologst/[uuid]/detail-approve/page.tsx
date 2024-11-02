@@ -23,7 +23,7 @@ export default async function DetailApp({
     session?.user.access_token,
     params.uuid
   );
-
+  console.log(detail_psychologst?.is_verified);
   if (
     detail_psychologst == null ||
     detail_psychologst.is_verified ||

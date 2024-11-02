@@ -22,7 +22,7 @@ export async function getDashboardAdminData(session: string): Promise<DashboardA
 
 
 export async function getDetailPsychologst(session: string, uuid: string): Promise<User | null> {
-    const res = await fetch(`${process.env.API_URL}/api/psychologists/${uuid}/detail`, {
+    const res = await fetch(`${process.env.API_URL}/api/admin/psychologists/${uuid}`, {
         method: "GET",
         headers: {
             Authorization: `Bearer ${session}`,
@@ -32,6 +32,7 @@ export async function getDetailPsychologst(session: string, uuid: string): Promi
     });
 
     const json = await res.json();
+    console.log(json);
 
     if (json.message === "Psychologist not found") {
         return null; // Return null if the psychologist is not found

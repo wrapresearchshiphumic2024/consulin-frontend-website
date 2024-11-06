@@ -16,7 +16,7 @@ export default async function DashboardPsychologist() {
     total_consultation,
     today_ongoing_consultation,
   } = await getConsultationDataPsychologist(session?.user.access_token);
-  // await createUser( user.data.id, user.data.firstname + " " + user.data.lastname);
+
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -47,7 +47,7 @@ export default async function DashboardPsychologist() {
               {consultations.length === 0 ? (
                 <div className="flex items-center justify-center h-full p-6">
                   <div className="w-full bg-[#DEE7F9] h-20 flex justify-center items-center rounded-2xl text-netral-primary p-3 text-center">
-                    your schedule will appear here
+                    Your schedule will appear here
                   </div>
                 </div>
               ) : (

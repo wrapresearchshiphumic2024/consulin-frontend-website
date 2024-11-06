@@ -7,7 +7,7 @@ import { User } from "../user/user-type-data";
 
 // }
 export interface ConsultationDataPsychologist {
-    consultations: any[];
+    consultations: Appointment[];
     total_weekly_consultation: number;
     total_consultation: number;
     today_ongoing_consultation: number;
@@ -16,8 +16,6 @@ export interface Schedule {
     id: number;
     psychologist_id: number;
     status: string;
-    created_at: string;
-    updated_at: string;
     days: Day[];
 }
 
@@ -26,8 +24,6 @@ export interface Day {
     schedule_id: number;
     day: string;
     status: string;
-    created_at: string;
-    updated_at: string;
     times: Time[];
 }
 
@@ -37,13 +33,15 @@ export interface Time {
     start: string;
     end: string;
     status: string;
-    created_at: string;
-    updated_at: string;
 }
 export interface Appointment{
     id:number;
+    channel_id?:string;
     date: string;
-    time: string;
+    start_time?: string;
+    end_time?: string;
+    duration?: string;
     status:string;
+    note?:string;
     user:User;
 }

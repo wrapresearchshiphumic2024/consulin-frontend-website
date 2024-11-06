@@ -14,6 +14,7 @@ import {
 } from "stream-chat-react";
 
 import { ChannelSort } from "stream-chat";
+import Loading from "@/components/ui/Loading";
 
 export default function App({
   apiKey,
@@ -71,19 +72,7 @@ export default function App({
     limit: 10,
   };
 
-  const createPrivateChannel = async () => {
-    const channel = client?.channel("messaging", {
-      members: [
-        "Psycholog_f989c982-fb97-4d63-939d-e445b81e9d66",
-        "patient2_0a8fce02-6442-4341-abbd-b51fe7d46519",
-      ],
-      created_by_id: userId,
-    });
-
-    await channel?.create();
-  };
-
-  if (!client) return <div>Setting up client & connection</div>;
+  if (!client) return <Loading />;
   return (
     <>
       <Chat

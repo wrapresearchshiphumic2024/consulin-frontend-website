@@ -3,6 +3,7 @@ import StatusBadge from "../../_components/ui/status-badge";
 
 export default function NotificationCard({
   name,
+  date,
   time,
   background,
   styleName,
@@ -10,13 +11,19 @@ export default function NotificationCard({
   status,
 }: {
   name: string;
+  date: string;
   time: string;
   background?: string;
-
   styleName?: string;
   styletime?: string;
   status: string;
 }) {
+  const dateFormat = new Date(date);
+  const convertedDate = new Intl.DateTimeFormat("id-ID", {
+    day: "2-digit",
+    month: "short",
+    year: "numeric",
+  }).format(dateFormat);
   return (
     <div
       className={cn(
@@ -31,7 +38,7 @@ export default function NotificationCard({
             styleName
           )}
         >
-          Name:{name}
+          Name: {name}
         </h3>
 
         <p
@@ -40,7 +47,7 @@ export default function NotificationCard({
             styletime
           )}
         >
-          Time:{time}
+          Time: {convertedDate}, {time}
         </p>
       </div>
       <div>

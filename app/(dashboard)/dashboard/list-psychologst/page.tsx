@@ -31,7 +31,7 @@ export default async function List() {
             >
               <div className="w-full px-4 mt-auto flex justify-center">
                 <Link
-                  href={`/dashboard/list-psyghologst/${psychologist.id}/detail`}
+                  href={`/dashboard/list-psychologst/${psychologist.id}/detail`}
                 >
                   <Button className="bg-gray-700 justify-center text-white px-4 py-2 rounded-md w-[200px]">
                     Detail

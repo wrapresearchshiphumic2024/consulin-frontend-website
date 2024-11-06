@@ -38,7 +38,7 @@ export default async function ApprovePsychologist() {
                   access_token={session?.user.access_token}
                 />
                 <Link
-                  href={`/dashboard/approve-psyghologst/${psychologist.id}/detail-approve`}
+                  href={`/dashboard/approve-psychologst/${psychologist.id}/detail-approve`}
                   className="flex-1"
                 >
                   <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg flex-1 w-full ">

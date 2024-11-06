@@ -40,7 +40,7 @@ export async function closeAppointment(session : string){
 export async function updateSchedule(session: string,data: {  days: string[], times: { start: string, end: string }[] }) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     const json_data = JSON.stringify(data)
-    console.log(json_data);
+
     const appointment = await fetch(`${process.env.API_URL}/api/psychologist/schedule/update`, {
         method: "PUT",
         headers: {
@@ -66,7 +66,7 @@ export async function updateSchedule(session: string,data: {  days: string[], ti
     }
 
     const response = await appointment.json();
-
+    console.log(response)
     let status = response.status;
     revalidateTag("psychologst-list");
     revalidateTag("detail-psychologist");

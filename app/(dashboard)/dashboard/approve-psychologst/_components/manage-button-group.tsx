@@ -34,7 +34,7 @@ export default function ManageButtonGroup({
           <ToastFailed t={t} label="Psychologist failed to approve" />
         ));
       }
-      router.push("/dashboard/approve-psyghologst");
+      router.push("/dashboard/approve-psychologst");
     });
   };
 
@@ -51,7 +51,7 @@ export default function ManageButtonGroup({
           <ToastFailed t={t} label="Psychologist failed to reject" />
         ));
       }
-      router.push("/dashboard/approve-psyghologst");
+      router.push("/dashboard/approve-psychologst");
     });
   };
 

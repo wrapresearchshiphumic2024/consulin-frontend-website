@@ -28,7 +28,8 @@ export default async function ChatRoomPatient() {
           userId={userId}
           userName={userName}
           image={
-            "https://media.istockphoto.com/id/2155498773/id/foto/wanita-percaya-diri-berjalan-dengan-koper-merah-di-lingkungan-perkotaan-modern.jpg?s=2048x2048&w=is&k=20&c=v5ZXzWRBGbXJl2XnYAPSVYW3h9Fk4z-0Hy39GhZZIUg="
+            user.profile_picture ||
+            `https://getstream.io/random_png/?name=${userName}`
           }
         />
       </div>

@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-
 import { auth } from "@/auth";
 import { getDetailPsychologst } from "@/services/admin/admin-service";
 import { notFound } from "next/navigation";
@@ -10,7 +9,6 @@ import {
   getInitials,
 } from "@/helpers/string-helpers";
 import ViewPdf from "../../_components/ui/view-pdf";
-
 import ManageButtonGroup from "../../_components/manage-button-group";
 
 export default async function DetailApp({
@@ -37,13 +35,13 @@ export default async function DetailApp({
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
         Detail Applicant Psychologist
       </h2>
-      <p className="mt-3 text-netral-primary  font-medium ">
+      <p className="mt-3 text-netral-primary font-medium">
         View applicant psychologist details on this page
       </p>
 
-      <div className="flex flex-col lg:flex-row lg:space-x-8 items-center lg:items-start lg:justify-center mt-10">
-        <div className="flex flex-col w-full lg:w-[500px] space-y-1 mb-10 lg:mb-0">
-          <Card className="flex flex-col items-center p-4 md:p-6 rounded-[30px] h-auto md:h-[400px] shadow-lg bg-white mb-6 w-full">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
+        <div className="flex flex-col w-full gap-3">
+          <Card className="flex flex-col items-center p-4 md:p-6 rounded-[30px] h-auto md:h-[400px] bg-white w-full">
             <Avatar className="rounded-full w-20 h-20 md:w-32 md:h-32 mb-4 border-4 border-white shadow-md">
               <AvatarImage
                 src={detail_psychologst.profile_picture || ""}
@@ -99,8 +97,8 @@ export default async function DetailApp({
               </div>
             </div>
           </Card>
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white w-full mb-[10px]">
-            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4 ">
+          <Card className="p-4 md:p-6 rounded-[30px] bg-white w-full">
+            <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
               <ManageButtonGroup
                 id={detail_psychologst.id}
                 access_token={session?.user.access_token}
@@ -108,8 +106,10 @@ export default async function DetailApp({
             </div>
           </Card>
         </div>
-        <div className="flex flex-col space-y-6 w-full lg:w-2/3">
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white">
+
+        {/* Right Section: Psychologist Information */}
+        <div className="flex flex-col gap-3 w-full">
+          <Card className="p-4 md:p-6 rounded-[30px] bg-white">
             <h3 className="text-md md:text-xl font-bold text-[#1E0342] mb-4">
               Psychologist Information Details
             </h3>
@@ -124,7 +124,8 @@ export default async function DetailApp({
             <p>Email: {detail_psychologst.email}</p>
             <p>Phone: {detail_psychologst.phone_number}</p>
           </Card>
-          <Card className="p-4 md:p-6 rounded-[30px] shadow-lg bg-white">
+
+          <Card className="p-4 md:p-6 rounded-[30px] bg-white">
             <h3 className="text-md md:text-xl font-bold text-[#1E0342] mb-4">
               Additional Information
             </h3>

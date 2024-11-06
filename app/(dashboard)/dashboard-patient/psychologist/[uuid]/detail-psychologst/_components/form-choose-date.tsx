@@ -19,15 +19,36 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Loader2 } from "lucide-react";
 import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import ScheduleComponentTime from "@/app/(dashboard)/_components/ui/schedule-component-time";
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
+import { addAppointment } from "@/actions/patient/add_appointment";
+import { Session } from "next-auth";
+import { useRouter } from "next/navigation";
+import { useTransition } from "react";
+import { toast } from "sonner";
+import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
+import { UpcomingSchedule } from "@/types/patient/patient-type-data";
 
-export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
+export default function FormChooseDate({
+  session,
+  patient_id,
+  psychologist_id,
+  schedules,
+  upcoming_schedules,
+}: {
+  session: Session;
+  patient_id: string;
+  psychologist_id: string;
+  schedules: Schedule;
+  upcoming_schedules?: UpcomingSchedule[];
+}) {
+  const router = useRouter();
+  const [pending, startTransaction] = useTransition();
   const activeDays = schedules.days
-    .filter((day) => day.status === "active")
+
     .map((day) => {
       switch (day.day.toLowerCase()) {
         case "sunday":
@@ -54,9 +75,90 @@ export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
     resolver: zodResolver(formChooseDateSchema),
     shouldUnregister: false,
   });
+  const isDateDisabled = (date: Date) => {
+    const day = date.getDay() as 0 | 1 | 2 | 3 | 4 | 5 | 6;
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const checkDate = new Date(date);
+    checkDate.setHours(0, 0, 0, 0);
+
+    const oneWeeksLater = new Date(today);
+    oneWeeksLater.setDate(today.getDate() + 7);
+
+    // Cek apakah tanggal yang diperiksa ada dalam upcoming_schedules
+    // const upcomingSchedule = upcoming_schedules?.find((schedule) => {
+    //   return schedule.date === checkDate.toISOString().split("T")[0]; // Format YYYY-MM-DD
+    // });
+
+    // Jika bukan hari aktif, di luar rentang, atau tidak ada jadwal terbooking, maka return true
+    if (
+      !activeDays.includes(day) ||
+      checkDate < today ||
+      checkDate > oneWeeksLater
+    ) {
+      return true; // Disable if it's not an active day or outside the range
+    }
+    return false;
+
+    // // Jika tidak ada upcoming schedule untuk tanggal tersebut
+    // if (!upcomingSchedule) {
+    //   return false; // Tidak disable jika tidak ada jadwal
+    // }
+
+    // // Ambil waktu yang terbooking
+    // const bookedTimes = upcomingSchedule.times;
+
+    // // Ambil waktu dari schedules.days[0].times
+    // const availableTimes = schedules.days[0].times;
+
+    // // Cek tumpang tindih
+    // const hasActiveBooking = bookedTimes.some(({ start, end }) => {
+    //   return availableTimes.some(
+    //     ({ start: availableStart, end: availableEnd }) => {
+    //       return (
+    //         (availableStart >= start && availableStart < end) || // Waktu mulai tumpang tindih
+    //         (availableEnd > start && availableEnd <= end) || // Waktu akhir tumpang tindih
+    //         (availableStart <= start && availableEnd >= end) // Waktu sepenuhnya mencakup waktu terbooking
+    //       );
+    //     }
+    //   );
+    // });
+
+    // // Jika ada booking aktif, return true (disable), jika tidak ada booking aktif, return false
+    // return hasActiveBooking; // Jika ada booking aktif, return true
+  };
 
   async function onSubmit(values: z.infer<typeof formChooseDateSchema>) {
-    console.log(values);
+    const formData = new FormData();
+    const dateStr = values.schedule_date;
+    const date = new Date(dateStr);
+    const formattedDate = date.toLocaleDateString("en-CA");
+    formData.append("date", formattedDate);
+    formData.append("start_time", values.schedule_time[0].start);
+    formData.append("end_time", values.schedule_time[0].end);
+
+    startTransaction(async () => {
+      const response_channel = await fetch("/api/create-channel", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ patient_id, psychologist_id }),
+      });
+      const channel = await response_channel.json();
+      console.log(channel);
+      formData.append("channel_id", channel.channel_id);
+      const response = await addAppointment(
+        session?.user.access_token,
+        psychologist_id,
+        formData
+      );
+      if (response?.status == "success") {
+        toast.custom((t) => <ToastSuccess label={"berhasil"} t={t} />);
+        router.push("/dashboard-patient/");
+      } else {
+        toast.custom((t) => <ToastFailed label={response.message} t={t} />);
+      }
+    });
   }
 
   return (
@@ -103,24 +205,7 @@ export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
                           mode="single"
                           selected={field.value}
                           onSelect={field.onChange}
-                          disabled={(date) => {
-                            const day = date.getDay() as
-                              | 0
-                              | 1
-                              | 2
-                              | 3
-                              | 4
-                              | 5
-                              | 6;
-                            const today = new Date();
-                            const twoWeeksLater = new Date();
-                            twoWeeksLater.setDate(today.getDate() + 14);
-                            return (
-                              !activeDays.includes(day) ||
-                              date < today ||
-                              date > twoWeeksLater
-                            );
-                          }}
+                          disabled={isDateDisabled}
                           initialFocus
                         />
                       </PopoverContent>
@@ -153,8 +238,12 @@ export default function FormChooseDate({ schedules }: { schedules: Schedule }) {
               )}
             />
           </div>
-
-          <Button type="submit" className=" bg-green-500 mr-3">
+          <Button
+            type="submit"
+            disabled={pending}
+            className=" bg-green-500 mr-3"
+          >
+            {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             Save
           </Button>
           <Button type="button" className=" bg-red-500">

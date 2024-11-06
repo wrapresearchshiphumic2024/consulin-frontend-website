@@ -23,28 +23,28 @@ export default function SidebarDesktop() {
         Home
       </Link>
       <Link
-        href="/dashboard/approve-psyghologst"
+        href="/dashboard/approve-psychologst"
         className={cn(
-          pathname === "/dashboard/approve-psyghologst"
+          pathname === "/dashboard/approve-psychologst"
             ? "bg-secondary-custom_secondary/[.08]"
             : "",
           "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all   hover:font-semibold"
         )}
       >
         <IconPsychology className="h-4 w-4" color="#F5F5F7" />
-        Approve Psyghologst
+        Approve Psychologst
       </Link>
       <Link
-        href="/dashboard/list-psyghologst"
+        href="/dashboard/list-psychologst"
         className={cn(
-          pathname === "/dashboard/list-psyghologst"
+          pathname === "/dashboard/list-psychologst"
             ? "bg-secondary-custom_secondary/[.08]"
             : "",
           "flex items-center gap-3 rounded-lg px-3 py-2   text-secondary-custom_secondary  transition-all  hover:font-semibold"
         )}
       >
         <IconList className="h-4 w-4" />
-        List Psyghologst
+        List Psychologst
       </Link>
     </>
   );

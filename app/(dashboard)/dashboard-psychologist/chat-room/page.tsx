@@ -6,7 +6,7 @@ export default async function ChatRoomPsychologist() {
   const session = await auth();
   const user = await getProfilePsychologist(session?.user.access_token);
   const apiKey = process.env.API_KEY;
-
+  const userName = user.firstname + " " + user.lastname;
   if (!apiKey) {
     return <div>Error: API key not found.</div>;
   }
@@ -23,8 +23,11 @@ export default async function ChatRoomPsychologist() {
         <App
           apiKey={apiKey}
           userId={user.id}
-          userName={user.firstname + " " + user.lastname}
-          image={"https://github.com/shadcn.png"}
+          userName={userName}
+          image={
+            user.profile_picture ||
+            `https://getstream.io/random_png/?name=${userName}`
+          }
         />
       </div>
     </>

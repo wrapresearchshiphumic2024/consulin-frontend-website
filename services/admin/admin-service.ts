@@ -32,7 +32,6 @@ export async function getDetailPsychologst(session: string, uuid: string): Promi
     });
 
     const json = await res.json();
-    console.log(json);
 
     if (json.message === "Psychologist not found") {
         return null; // Return null if the psychologist is not found

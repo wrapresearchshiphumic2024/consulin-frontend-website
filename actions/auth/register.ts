@@ -41,7 +41,6 @@ export async function registerPsycholog(data: FormData) {
 
     const user = await fetch(`${process.env.API_URL}/api/register/psychologist`, {
         method: "POST",
-        // Catatan: Jangan tentukan "Content-Type" untuk FormData. Browser akan mengaturnya secara otomatis.
         headers: {
             "Accept": "application/json",
         },

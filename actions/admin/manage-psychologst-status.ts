@@ -16,6 +16,7 @@ export async function approvePsychologst(session : string, uuid:string){
     console.log(response);
     let status = response.status;
     revalidateTag("psychologst-list");
+    revalidateTag("admin-data");
     return { success: status as string};
 }
 

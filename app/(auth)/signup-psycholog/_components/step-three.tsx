@@ -29,8 +29,9 @@ const dropzone = {
     "application/pdf": [".pdf"],
   },
   maxFiles: 1,
-  maxSize: 4 * 1024 * 1024,
+  maxSize: 2 * 1024 * 1024,
 } satisfies DropzoneOptions;
+
 const spesialization = [
   {
     name: "Clinical Psychology",

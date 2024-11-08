@@ -18,15 +18,13 @@ export default async function ManageSchedulePsycholog() {
       <p className="mt-3 text-netral-primary font-medium">
         Set your availability for patients to book appointments
       </p>
-      <div className="flex items-center my-3 justify-end ">
-        <div className="flex items-center bg-secondary-custom_secondary rounded-full p-3 gap-3 ">
-          <AppointmentSwitch
-            appointmetStatus={schedule.status === "active"}
-            session={session?.user.access_token}
-            empty={schedule.days.length === 0}
-          />
-        </div>
-      </div>
+
+      <AppointmentSwitch
+        appointmetStatus={schedule.status === "active"}
+        session={session?.user.access_token}
+        empty={schedule.days.length === 0}
+      />
+
       <div className="flex gap-5 flex-col lg:flex-row ">
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>

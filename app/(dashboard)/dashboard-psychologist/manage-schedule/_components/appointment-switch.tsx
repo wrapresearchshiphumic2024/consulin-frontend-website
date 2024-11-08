@@ -38,14 +38,16 @@ export default function AppointmentSwitch({
   return (
     <>
       {!empty ? (
-        <>
-          <Label htmlFor="appointment">Open for Appointments</Label>
-          <Switch
-            id="appointment"
-            checked={isChecked}
-            onCheckedChange={handleOnChange}
-          />
-        </>
+        <div className="flex items-center my-3 justify-end ">
+          <div className="flex items-center bg-secondary-custom_secondary rounded-full p-3 gap-3 ">
+            <Label htmlFor="appointment">Open for Appointments</Label>
+            <Switch
+              id="appointment"
+              checked={isChecked}
+              onCheckedChange={handleOnChange}
+            />
+          </div>
+        </div>
       ) : null}
     </>
   );

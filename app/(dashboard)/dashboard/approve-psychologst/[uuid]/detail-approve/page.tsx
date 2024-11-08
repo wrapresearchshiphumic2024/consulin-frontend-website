@@ -55,7 +55,7 @@ export default async function DetailApp({
               </AvatarFallback>
             </Avatar>
             <h2 className="text-lg md:text-2xl font-semibold text-[#1E0342]">
-              {getInitials(
+              {formatFullName(
                 detail_psychologst.firstname,
                 detail_psychologst.lastname
               )}

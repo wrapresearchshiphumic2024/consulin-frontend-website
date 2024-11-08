@@ -21,7 +21,7 @@ const dropzone_serticate = {
     "application/pdf": [".pdf"],
   },
   maxFiles: 5,
-  maxSize: 4 * 1024 * 1024,
+  maxSize: 10 * 1024 * 1024,
 } satisfies DropzoneOptions;
 const language = [
   {

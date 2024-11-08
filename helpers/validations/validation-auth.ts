@@ -11,7 +11,10 @@ export const formRegisterSchema = z.object({
   degree: z.string().min(2, { message: "Degree is required" }).max(50, { message: "Degree cannot exceed 50 characters" }),
   university: z.string().min(2, { message: "University is required" }).max(50, { message: "University name cannot exceed 50 characters" }),
   major: z.string().min(2, { message: "Major is required" }).max(50, { message: "Major cannot exceed 50 characters" }),
-  graduation_year: z.string().min(2, { message: "Graduation year is required" }).max(50, { message: "Graduation year cannot exceed 50 characters" }),
+  graduation_year: z
+  .string()
+  .regex(/^(19\d{2}|200\d|20[1-9]\d)$/, { message: "Graduation year must be between 1900 and the current year" })
+  .length(4, { message: "Graduation year must be 4 digits" }),
   language: z.array(z.string()).nonempty({ message: "Please select at least one language" }),
   certificate: z.array(z.any().refine((file) => file instanceof File && file.size < 4 * 1024 * 1024, { message: "File size must be less than 4MB" })).nonempty({ message: "Certificate is required" }),
   profesional_identification_number: z.string().min(2, { message: "Professional ID is required" }).max(50, { message: "Professional ID cannot exceed 50 characters" }),

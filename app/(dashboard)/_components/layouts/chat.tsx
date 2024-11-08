@@ -52,7 +52,7 @@ export default function App({
     userData: {
       id: userId,
       name: userName,
-      image: image,
+      image: image ,
     },
   });
 

@@ -1,6 +1,7 @@
 "use server";
 
 import { formSignUpSchema } from "@/helpers/validations/validation-auth";
+import { revalidateTag } from "next/cache";
 
 
 export async function register(data: FormData) {
@@ -56,6 +57,7 @@ export async function registerPsycholog(data: FormData) {
         };
     }
     let status = response.status;
+    revalidateTag("psychologst-list");
     return { success: status};
   
 }

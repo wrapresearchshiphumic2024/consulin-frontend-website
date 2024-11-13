@@ -3,6 +3,15 @@ import { ChartAiAnalyzer } from "./_components/chart-ai-analyzer";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+
 export default function AiAnalyzer() {
   return (
     <>
@@ -13,15 +22,34 @@ export default function AiAnalyzer() {
         Share your concerns, AI will analyse your mental state
       </p>
 
-      <div className="flex justify-end mt-5">
+      {/* Container for Filter and Analyzer History Button */}
+      <div className="flex justify-between items-center mt-5">
+        {/* Filter Dropdown */}
+        <Select>
+          <SelectTrigger className="w-[140px] bg-[#272C4D] text-secondary-custom_secondary justify-start gap-2 py-2 rounded-lg">
+            <SelectValue placeholder="Language" />
+          </SelectTrigger>
+          <SelectContent className="w-[180px]">
+            <SelectGroup className="text-center px-2">
+              <SelectItem value="re" className="border-b-2">
+                Indonesia
+              </SelectItem>
+              <SelectItem value="ma" className="border-b-2">
+                English
+              </SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
+
+        {/* Analyzer History Button */}
         <Link href="/dashboard-patient/analyzer-detail">
-          <Button 
-            className="text-white font-semibold bg-[#27374D] rounded-full">
+          <Button className="text-white font-semibold bg-[#27374D] rounded-full">
             Analyzer History
           </Button>
         </Link>
       </div>
 
+      {/* Main Content */}
       <div className="flex gap-5 flex-col lg:flex-row mt-5">
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">
           <center>

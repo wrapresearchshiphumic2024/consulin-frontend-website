@@ -65,9 +65,6 @@ export default function DetailWait() {
             <p className="text-[#1E0342] font-semibold">
               Probability of Depression: 70%
             </p>
-            <p className="text-[#1E0342] mt-[10px] text-[13px]">
-              last analyzed: 01 Oct, 2024
-            </p>
           </Card>
 
           <div className="w-full">

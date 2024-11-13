@@ -7,6 +7,7 @@ import { getPsychologstData } from "@/services/global-service";
 
 export default async function ApprovePsychologist() {
   const session = await auth();
+
   const psychologists = await getPsychologstData(
     session?.user.access_token,
     "/api/admin/psychologists-notverified"

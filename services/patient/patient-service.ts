@@ -4,6 +4,63 @@ import { Appointment } from "@/types/psychologist/psychologist-type-data";
 import { User } from "@/types/user/user-type-data";
 
 
+export async function getPsychologstData(session: string, name = "", gender = ""): Promise<{ patientHasAIAnalysis: boolean, psychologists: User[] }> {
+
+    const url = new URL(`${process.env.API_URL}/api/patients/psychologists-list`);
+    if (name) url.searchParams.append("name", name);
+    if (gender) url.searchParams.append("gender", gender);
+
+    const res = await fetch(url.toString(), {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${session}`,
+            "Content-Type": "application/json",
+        },
+        next: { revalidate: 60, tags: ['psychologist-list'] }
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch psychologist data");
+    }
+
+    const json = await res.json();
+
+    // Memeriksa apakah patientHasAIAnalysis tersedia di respons JSON
+    const patientHasAIAnalysis = json.patient_has_aianalysis ?? false;
+
+    // Memeriksa apakah json.data kosong
+    if (!json.data || json.data.length === 0) {
+        console.warn("No psychologists found.");
+        return { patientHasAIAnalysis, psychologists: [] };
+    }
+
+    console.log(json);
+
+    const psychologists: User[] = json.data.map((item: any) => ({
+        id: item.user_id,
+        firstname: item.firstname,
+        lastname: item.lastname,
+        profile_picture: item.profile_picture,
+        gender: item.gender,
+        psychologist: {
+            id: item.id,
+            user_id: item.user_id,
+            degree: item.degree,
+            major: "",
+            university: "",
+            graduation_year: "",
+            language: [],
+            certification: [],
+            specialization: JSON.parse(item.specialization),
+            work_experience: item.work_experience,
+            profesional_identification_number: item.profesional_identification_number,
+            cv: [],
+            practice_license: []
+        }
+    }));
+
+    return { patientHasAIAnalysis, psychologists };
+}
 
 export async function getProfilePatient(session: string): Promise<User> {
     const res = await fetch(`${process.env.API_URL}/api/profile`, {
@@ -19,6 +76,7 @@ export async function getProfilePatient(session: string): Promise<User> {
     }
     
     const json = await res.json();
+    
 
     return json.data as User;
 }
@@ -39,6 +97,7 @@ export async function getDetailPsychologistPatient(session: string, uuid: string
     }
 
     const item = json.data;
+    console.log(item)
   
     const psychologist: User = {
         id: item.user_id,
@@ -105,7 +164,6 @@ export async function getAppointmentPatient(session: string): Promise<Appointmen
 
     }));
     
-    // Map history appointments data (currently empty in your example)
     const history: Appointment[] = appointmentsResponse.history.map((item: any) => ({
         id: item.id,
         channel_id: item.channel_id,
@@ -120,7 +178,7 @@ export async function getAppointmentPatient(session: string): Promise<Appointmen
         },
     }));
     
-    // Combine both into AppointmentPatient interface
+
     const appointments: AppointmentPatient = {
         upcoming_appointments: upcoming_appointments,
         history: history,

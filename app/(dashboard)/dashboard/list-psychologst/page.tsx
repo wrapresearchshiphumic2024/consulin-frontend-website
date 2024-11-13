@@ -3,12 +3,21 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { getPsychologstData } from "@/services/global-service";
 import PsychologistCard from "../../_components/ui/psychologist-card";
+import SearchList from "../../_components/ui/search";
 
-export default async function List() {
+export default async function List(props: {
+  searchParams?: {
+    name?: string;
+    gender?: string;
+  };
+}) {
   const session = await auth();
+  const searchParams = props.searchParams;
+  const name = searchParams?.name || "";
   const psychologists = await getPsychologstData(
     session?.user.access_token,
-    "/api/admin/psychologists"
+    "/api/admin/psychologists",
+    name
   );
   return (
     <>
@@ -18,6 +27,9 @@ export default async function List() {
       <p className="mt-3 text-netral-primary  font-medium ">
         List of Active Psychologists in Consulin
       </p>
+      <div className="flex justify-end">
+        <SearchList placeholder="Search by name of psychologist" />
+      </div>
       {psychologists.length === 0 ? (
         <div className="mt-10 text-[#1E0342] font-semibold flex justify-center items-center">
           Empty List Psychologist

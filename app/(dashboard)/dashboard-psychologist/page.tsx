@@ -7,6 +7,7 @@ import Link from "next/link";
 import { auth } from "@/auth";
 import { getConsultationDataPsychologist } from "@/services/psychologist/psychologist-service";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { formatFullName } from "@/helpers/string-helpers";
 
 export default async function DashboardPsychologist() {
   const session = await auth();
@@ -54,20 +55,21 @@ export default async function DashboardPsychologist() {
                 <ScrollArea className="w-full mt-10 h-[450px]">
                   <div className="p-2">
                     {consultations.map((schedule, index) => (
-                      <>
-                        <Link
-                          href="/dashboard-psychologist/detail-patient"
-                          key={index}
-                        >
-                          <NotificationCard
-                            name={"faridz"}
-                            time={"12 Oct 2024, 10:00"}
-                            status={"On-going"}
-                            background="bg-[#DDE7F9]"
-                          />
-                        </Link>
-                        <br />
-                      </>
+                      // <div key={index}>
+                      //   <Link href="/dashboard-psychologist/detail-patient">
+                      //     <NotificationCard
+                      //       name={formatFullName(
+                      //         schedule.user.firstname,
+                      //         schedule.user.lastname
+                      //       )}
+                      //       time={"12 Oct 2024, 10:00"}
+                      //       status={"On-going"}
+                      //       background="bg-[#DDE7F9]"
+                      //     />
+                      //   </Link>
+                      //   <br />
+                      // </div>
+                      <br />
                     ))}
                   </div>
                 </ScrollArea>

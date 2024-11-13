@@ -31,7 +31,7 @@ export default function DetailAnalyzer() {
         <div className="bg-white p-6 rounded-xl shadow-md h-full w-full">
           <p className="text-lg text-[#1E0342] font-semibold">2024-10-01</p>
           <hr className="my-3 border-gray-300 w-[120px]" />
-          <p className="text-black font-semibold">
+          <p className="text-black ">
             I often feel overwhelmed with my daily tasks, and I struggle to find
             motivation. I have trouble sleeping and frequently feel anxious
             about upcoming deadlines. Additionally, I sometimes feel sad without
@@ -49,7 +49,7 @@ export default function DetailAnalyzer() {
         <div className="bg-white p-6 rounded-xl shadow-md h-full w-full">
           <p className="text-lg text-[#1E0342] font-semibold">2024-09-29</p>
           <hr className="my-3 border-gray-300 w-[120px]" />
-          <p className="text-black font-semibold">
+          <p className="text-black ">
             Over the past month, I’ve experienced significant mood swings. Some
             days I feel extremely sad without any particular reason, and I lose
             interest in things I usually enjoy. Other times, I’m irritable and
@@ -68,7 +68,7 @@ export default function DetailAnalyzer() {
         <div className="bg-white p-6 rounded-xl shadow-md h-full w-full">
           <p className="text-lg text-[#1E0342] font-semibold">2024-08-11</p>
           <hr className="my-3 border-gray-300 w-[120px]" />
-          <p className="text-black font-semibold">
+          <p className="text-black ">
             I have been feeling constantly anxious over the past few weeks.
             Small tasks seem overwhelming, and I often find myself worrying
             about things that haven’t even happened yet. My sleep patterns have
@@ -88,7 +88,7 @@ export default function DetailAnalyzer() {
         <div className="bg-white p-6 rounded-xl shadow-md h-full w-full">
           <p className="text-lg text-[#1E0342] font-semibold">2024-06-21</p>
           <hr className="my-3 border-gray-300 w-[120px]" />
-          <p className="text-black font-semibold">
+          <p className="text-black ">
             I’ve been under a lot of stress recently due to increased
             responsibilities at work. I feel like there’s no time to relax, and
             I’ve noticed that I’m becoming more forgetful and distracted. I

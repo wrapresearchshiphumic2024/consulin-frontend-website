@@ -79,7 +79,7 @@ export const columns: ColumnDef<Appointment>[] = [
             row.original.status === "cancelled"
               ? "text-red-500"
               : "text-netral-primary",
-            "font-semibold"
+            "font-semibold capitalize"
           )}
         >
           {row.original.status}

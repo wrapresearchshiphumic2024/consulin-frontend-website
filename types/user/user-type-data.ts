@@ -13,6 +13,7 @@ export interface User {
     gender?: string | null; 
     profile_picture?: string | null;
     psychologist?: Psychologist;
+
   
   }
 export interface Psychologist {

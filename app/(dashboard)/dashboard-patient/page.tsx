@@ -1,5 +1,5 @@
 import Link from "next/link";
-import NotificationCard from "./_components/notification";
+import NotificationCard from "../_components/ui/notification";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { auth } from "@/auth";
 import { getAppointmentPatient } from "@/services/patient/patient-service";

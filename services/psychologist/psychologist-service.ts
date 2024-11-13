@@ -1,23 +1,42 @@
 import { Appointment, ConsultationDataPsychologist, Schedule } from "@/types/psychologist/psychologist-type-data";
 import { User } from "@/types/user/user-type-data";
 
-export async function getConsultationDataPsychologist(session: string): Promise<ConsultationDataPsychologist > {
+export async function getConsultationDataPsychologist(session: string): Promise<ConsultationDataPsychologist> {
     const res = await fetch(`${process.env.API_URL}/api/psychologist/analitics`, {
-        method: "GET",
-        headers: {
-            Authorization: `Bearer ${session}`,
-            "Content-Type": "application/json",
-        },
-        next: { revalidate: 60,tags: ['consultation-data-psychologist'] }
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${session}`,
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 60, tags: ['consultation-data-psychologist'] },
     });
-
+  
     if (!res.ok) {
-        throw new Error("Failed to fetch dashboard data");
+      throw new Error("Failed to fetch dashboard data");
     }
-
+  
     const json = await res.json();
-    return json.data as ConsultationDataPsychologist ;
-}
+
+    console.log(json.data.consultations)
+    // Menyesuaikan untuk mendapatkan data yang diperlukan
+    return {
+        consultations: json.data.consultations.map((consultation: any) => ({
+          id: consultation.id,
+          date: consultation.date,
+          start_time: consultation.start_time,
+          end_time: consultation.end_time,
+          status: consultation.status,
+          user: {
+            firstname: consultation.firstname,
+            lastname: consultation.lastname,
+          },
+        })),
+        total_weekly_consultation: json.data.total_weekly_consultation,
+        total_consultation: json.data.total_consultation,
+        today_ongoing_consultation: json.data.today_ongoing_consultation,
+      };
+    
+  }
 
 export async function getProfilePsychologist(session: string): Promise<User> {
     const res = await fetch(`${process.env.API_URL}/api/profile`, {
@@ -108,6 +127,42 @@ export async function getAppointmentHistory(session: string): Promise<Appointmen
             id: item.patient.user.id,
             firstname: item.patient.user.firstname,
             lastname: item.patient.user.lastname,
+        }
+    }));
+
+    return appointments;
+}
+export async function getAppointmentSchedule(session: string): Promise<Appointment[]> {
+    const res = await fetch(`${process.env.API_URL}/api/psychologist/appointments-schedule`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${session}`,
+            "Content-Type": "application/json",
+        },
+        next: { revalidate: 60, tags: ['appointment-schedule'] }
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch dashboard data");
+    }
+
+    const json = await res.json();
+
+    if (!json.data || json.data.length === 0) {
+        return []; 
+    }
+
+    const appointments: Appointment[] = json.data.patients.map((item: any) => ({
+        id: item.id,
+        date: item.date,
+        start_time: item.start_time,
+        end_time: item.end_time,
+        status : item.status,
+        user: {
+            firstname: item.firstname,
+            phone_number : item.phone,
+            gender : item.gender,
+            lastname: item.lastname,
         }
     }));
 

@@ -3,6 +3,15 @@ import { ChartAiAnalyzer } from "./_components/chart-ai-analyzer";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
+import IconGender from "@/components/icons/icon-gender";
 export default function AiAnalyzer() {
   return (
     <>
@@ -13,10 +22,26 @@ export default function AiAnalyzer() {
         Share your concerns, AI will analyse your mental state
       </p>
 
-      <div className="flex justify-end mt-5">
+      <div className="flex justify-between mt-10">
+        <Select>
+          <SelectTrigger className="w-[140px] bg-[#272C4D] text-secondary-custom_secondary justify-start gap-2 py-5 rounded-lg">
+            <IconGender className="mr-2" />
+            <SelectValue placeholder="Language" />
+          </SelectTrigger>
+          <SelectContent className="w-[140px]">
+            <SelectGroup className="text-center px-2">
+              <SelectItem value="apple" className="border-b-2">
+                Language
+              </SelectItem>
+              <SelectItem value="banana" className="border-b-2">
+                Indonesian
+              </SelectItem>
+              <SelectItem value="blueberry">English</SelectItem>
+            </SelectGroup>
+          </SelectContent>
+        </Select>
         <Link href="/dashboard-patient/analyzer-detail">
-          <Button 
-            className="text-white font-semibold bg-[#27374D] rounded-full">
+          <Button className="text-white font-semibold bg-[#27374D] rounded-full">
             Analyzer History
           </Button>
         </Link>

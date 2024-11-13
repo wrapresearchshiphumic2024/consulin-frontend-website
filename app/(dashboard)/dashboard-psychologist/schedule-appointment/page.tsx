@@ -1,9 +1,8 @@
-"use client";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import Image from "next/image";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 import {
   AlertDialog,
   AlertDialogAction,
@@ -15,74 +14,14 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
+import { auth } from "@/auth";
+import { getAppointmentSchedule } from "@/services/psychologist/psychologist-service";
+import { formatFullName, getInitials } from "@/helpers/string-helpers";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 
-export default function ScheduledApp() {
-  const psychologists = [
-    {
-      id: 1,
-      name: "Maria Johnson",
-      status: "Ongoing",
-      gender: "Female",
-      phone: "0812-3456-7890",
-      dateTime: "12 Oct 2024, 10:00",
-      imageUrl: "/assets/images/satu.png",
-    },
-    {
-      id: 2,
-      name: "Michael Brown",
-      status: "Waiting",
-      gender: "Male",
-      phone: "0812-9876-5432",
-      dateTime: "12 Oct 2024, 13:00",
-      imageUrl: "/assets/images/dua.png",
-    },
-    {
-      id: 3,
-      name: "Anna Bella",
-      status: "Canceled",
-      gender: "Female",
-      phone: "0812-6543-2189",
-      dateTime: "13 Oct 2024, 08:00",
-      imageUrl: "/assets/images/tiga.png",
-    },
-    {
-      id: 4,
-      name: "Lisa Smith",
-      status: "Waiting",
-      gender: "Female",
-      phone: "0812-3450-1234",
-      dateTime: "14 Oct 2024, 10:00",
-      imageUrl: "/assets/images/empat.png",
-    },
-    {
-      id: 5,
-      name: "Sarah Lee",
-      status: "Waiting",
-      gender: "Female",
-      phone: "0812-3456-7890",
-      dateTime: "14 Oct 2024, 13:00",
-      imageUrl: "/assets/images/lima.png",
-    },
-    {
-      id: 6,
-      name: "Anna Williams",
-      status: "Waiting",
-      gender: "Female",
-      phone: "0812-3456-7890",
-      dateTime: "15 Oct 2024, 10:00",
-      imageUrl: "/assets/images/enam.png",
-    },
-  ];
-
-  const getRedirectUrl = (status: string) => {
-    if (status === "Ongoing") return "/dashboard-psychologist/detail-patient";
-    if (status === "Waiting")
-      return "/dashboard-psychologist/detail-wait-patient";
-    if (status === "Canceled")
-      return "/dashboard-psychologist/detail-cancel-patient";
-    return "/dashboard-psychologist/detail-patient";
-  };
+export default async function ScheduledApp() {
+  const session = await auth();
+  const appointments = await getAppointmentSchedule(session?.user.access_token);
 
   return (
     <>
@@ -95,39 +34,50 @@ export default function ScheduledApp() {
       </p>
 
       <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6 mt-10">
-        {psychologists.map((psychologist) => (
+        {appointments.map((appointment, index) => (
           <Card
-            key={psychologist.id}
+            key={index}
             className="rounded-[30px] shadow-lg bg-[#FCFCFC] w-full"
           >
             <div
-              className={`rounded-t-[20px] p-3 text-white text-center font-bold ${
-                psychologist.status === "Ongoing"
+              className={`rounded-t-[20px] p-3 text-white text-center font-bold capitalize ${
+                appointment.status === "ongoing"
                   ? "bg-[#28A745]"
-                  : psychologist.status === "Waiting"
+                  : appointment.status === "waiting"
                   ? "bg-[#272C4D]"
                   : "bg-[#DC3545]"
               }`}
             >
-              {psychologist.status}
+              {appointment.status}
             </div>
 
             <div className="p-5">
               <div className="flex flex-col items-center mt-4">
-                <Image
-                  src={psychologist.imageUrl}
-                  alt={psychologist.name}
-                  width={80}
-                  height={80}
-                  className="rounded-lg mb-4"
-                />
+                <Avatar className="rounded-full w-24 h-24 mb-4">
+                  <AvatarImage
+                    src={appointment.user.profile_picture || ""}
+                    alt={`${appointment.user.firstname} ${appointment.user.lastname}`}
+                  />
+                  <AvatarFallback>
+                    {getInitials(
+                      appointment.user.firstname,
+                      appointment.user.lastname
+                    )}
+                  </AvatarFallback>
+                </Avatar>
+
                 <h2 className="text-xl font-semibold text-center mb-2">
-                  {psychologist.name}
+                  {formatFullName(
+                    appointment.user.firstname,
+                    appointment.user.lastname
+                  )}
                 </h2>
                 <div className="text-left space-y-3">
-                  <p>Gender: {psychologist.gender}</p>
-                  <p>Phone number: {psychologist.phone}</p>
-                  <p>Day & Time: {psychologist.dateTime}</p>
+                  <p className="capitalize">
+                    Gender: {appointment.user.gender}
+                  </p>
+                  <p>Phone number: {appointment.user.phone_number}</p>
+                  <p>Day & Time: {appointment.date}</p>
                 </div>
               </div>
 
@@ -150,17 +100,7 @@ export default function ScheduledApp() {
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogAction
-                        onClick={() =>
-                          toast.custom((t) => (
-                            <ToastSuccess
-                              label="Schedule Successfully created"
-                              t={t}
-                            />
-                          ))
-                        }
-                        className="bg-[#28A745] text-white px-4 py-2 rounded-lg"
-                      >
+                      <AlertDialogAction className="bg-[#28A745] text-white px-4 py-2 rounded-lg">
                         Confirm
                       </AlertDialogAction>
                       <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-lg">
@@ -191,14 +131,7 @@ export default function ScheduledApp() {
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogAction
-                        onClick={() =>
-                          toast.custom((t) => (
-                            <ToastFailed label="Session Cancelled" t={t} />
-                          ))
-                        }
-                        className="bg-[#28A745] text-white px-4 py-2 rounded-lg"
-                      >
+                      <AlertDialogAction className="bg-[#28A745] text-white px-4 py-2 rounded-lg">
                         Confirm
                       </AlertDialogAction>
                       <AlertDialogCancel className="bg-[#DC3545] text-white px-4 py-2 rounded-lg">
@@ -208,11 +141,9 @@ export default function ScheduledApp() {
                   </AlertDialogContent>
                 </AlertDialog>
 
-                <Link href={getRedirectUrl(psychologist.status)}>
-                  <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg">
-                    Detail
-                  </Button>
-                </Link>
+                <Button className="bg-gray-700 text-white px-4 py-2 rounded-lg">
+                  Detail
+                </Button>
               </div>
             </div>
           </Card>

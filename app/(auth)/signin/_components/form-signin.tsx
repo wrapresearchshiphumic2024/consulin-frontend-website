@@ -16,15 +16,19 @@ import { PasswordInput } from "@/components/ui/password-input";
 import { formLoginSchema } from "@/helpers/validations/validation-auth";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
-import { useTransition } from "react";
+import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import { loginAction } from "@/actions/auth/login";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import { Loader2 } from "lucide-react";
+import { NotVerified } from "./not-verified";
+import { Rejected } from "./rejected";
 
 export default function FormSignIn() {
   const [pending, startTransaction] = useTransition();
+  const [notVerified, setNotVerified] = useState(false);
+  const [rejected, setRejected] = useState(false);
   const router = useRouter();
   const form = useForm<z.infer<typeof formLoginSchema>>({
     mode: "all",
@@ -45,9 +49,20 @@ export default function FormSignIn() {
       const result = await loginAction(formData);
 
       if ("error" in result) {
-        toast.custom((t) => (
-          <ToastFailed label={result.error as string} t={t} />
-        ));
+        if (
+          result.error ===
+          "Your account is currently in the verification process"
+        ) {
+          setNotVerified(true);
+        } else if (
+          result.error === "Your registration process has been rejected"
+        ) {
+          setRejected(true);
+        } else {
+          toast.custom((t) => (
+            <ToastFailed label={result.error as string} t={t} />
+          ));
+        }
       } else if ("errors" in result) {
         console.log(result.errors);
       } else if ("success" in result) {
@@ -61,6 +76,22 @@ export default function FormSignIn() {
 
   return (
     <>
+      {notVerified && (
+        <NotVerified
+          open={notVerified}
+          setNotVerified={() => {
+            setNotVerified(false);
+          }}
+        />
+      )}
+      {rejected && (
+        <Rejected
+          open={rejected}
+          setNotVerified={() => {
+            setRejected(false);
+          }}
+        />
+      )}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}

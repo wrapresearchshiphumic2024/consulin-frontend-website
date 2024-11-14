@@ -27,7 +27,7 @@ export default function NotificationCard({
   return (
     <div
       className={cn(
-        background ? background : "bg-secondary-custom_secondary ",
+        background ? background : "bg-primary-custom_primary",
         "rounded-3xl p-5  flex justify-between items-center flex-wrap  gap-2"
       )}
     >

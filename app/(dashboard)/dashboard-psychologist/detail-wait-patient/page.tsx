@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
-import ChatOne from "../detail-patient/_components/chat-one";
+import ChatOne from "../schedule-appointment/[uuid]/detail/_components/chat-one";
 import Image from "next/image";
 export default function DetailWait() {
   return (

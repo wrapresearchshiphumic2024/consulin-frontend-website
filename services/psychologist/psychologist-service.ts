@@ -168,3 +168,41 @@ export async function getAppointmentSchedule(session: string): Promise<Appointme
 
     return appointments;
 }
+
+export async function getAppointmentDetailPsychologst(session: string, uuid :string): Promise<Appointment | null> {
+    const res = await fetch(`${process.env.API_URL}/api/psychologist/appointment/detail/${uuid}`, {
+        method: "GET",
+        headers: {
+            Authorization: `Bearer ${session}`,
+            "Content-Type": "application/json",
+        },
+        next: { revalidate: 60, tags: ['detail-appointment-psychologst'] }
+    });
+
+    if (!res.ok) {
+        throw new Error("Failed to fetch dashboard data");
+    }
+
+    const json = await res.json();
+    const item = json.data;
+    const detail_appointment : Appointment = {
+        id: item.id,
+        channel_id: item.channel_id,
+        date: item.date,
+        start_time: item.start_time,
+        end_time: item.end_time,
+        duration: item.duration,
+        status: item.status,
+        user: {
+            id: item.id,
+            firstname: item.firstname,
+            lastname: item.lastname,
+            phone_number:item.phone,
+            email: item.email,
+            gender: item.gender,
+            
+        }
+    }
+
+    return detail_appointment;
+}

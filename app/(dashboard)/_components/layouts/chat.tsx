@@ -52,7 +52,7 @@ export default function App({
     userData: {
       id: userId,
       name: userName,
-      image: image ,
+      image: image,
     },
   });
 
@@ -81,12 +81,7 @@ export default function App({
           channelList: channelList ? "hidden" : "",
         }}
       >
-        <ChannelList
-          sort={sort}
-          options={options}
-          filters={filters}
-          showChannelSearch
-        />
+        <ChannelList sort={sort} options={options} filters={filters} />
 
         <Channel>
           <Window>

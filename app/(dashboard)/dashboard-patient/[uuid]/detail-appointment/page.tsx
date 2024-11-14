@@ -17,7 +17,11 @@ import {
 } from "@/helpers/string-helpers";
 import { cn } from "@/lib/utils";
 
-export default async function DetailAppointment({ params }) {
+export default async function DetailAppointment({
+  params,
+}: {
+  params: { uuid: string };
+}) {
   const session = await auth();
   const detailAppointmentPatient = await getAppointmentDetailPatient(
     session?.user.access_token,

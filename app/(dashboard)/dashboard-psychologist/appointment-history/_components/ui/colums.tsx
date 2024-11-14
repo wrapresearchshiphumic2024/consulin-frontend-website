@@ -7,6 +7,7 @@ import { formatFullName } from "@/helpers/string-helpers";
 import { cn } from "@/lib/utils";
 import { Appointment } from "@/types/psychologist/psychologist-type-data";
 import { ColumnDef } from "@tanstack/react-table";
+import Link from "next/link";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -76,7 +77,7 @@ export const columns: ColumnDef<Appointment>[] = [
       return (
         <p
           className={cn(
-            row.original.status === "cancelled"
+            row.original.status === "canceled"
               ? "text-red-500"
               : "text-netral-primary",
             "font-semibold capitalize"
@@ -93,7 +94,13 @@ export const columns: ColumnDef<Appointment>[] = [
       return <p className="text-netral-primary">Action</p>;
     },
     cell: ({ row }) => {
-      return <Button>Detail</Button>;
+      return (
+        <Link
+          href={`/dashboard-psychologist/schedule-appointment/${row.original.id}/detail`}
+        >
+          <Button>Detail</Button>
+        </Link>
+      );
     },
   },
 ];

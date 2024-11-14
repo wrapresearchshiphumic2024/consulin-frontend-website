@@ -5,13 +5,13 @@ export async function getPsychologstData(
   url: string, 
   name?: string
 ): Promise<User[]> {
-  // Jika ada parameter 'name', tambahkan ke URL
+
   const params = new URLSearchParams();
   if (name) {
     params.set("name", name);
   }
 
-  // Gabungkan URL dengan parameter query jika ada
+
   const requestUrl = params.toString() ? `${url}?${params.toString()}` : url;
 
   const res = await fetch(`${process.env.API_URL}${requestUrl}`, {
@@ -29,10 +29,10 @@ export async function getPsychologstData(
 
   const json = await res.json();
 
-  // Check if json.data is empty
+
   if (!json.data || json.data.length === 0) {
     console.warn("No psychologists found.");
-    return []; // return an empty array if no data is found
+    return []; 
   }
 
   console.log(json);

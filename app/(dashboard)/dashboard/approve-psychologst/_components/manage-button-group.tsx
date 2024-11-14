@@ -6,19 +6,21 @@ import {
 } from "@/actions/admin/manage-psychologst-status";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
-import ManageButton from "./ui/manage-button";
+import ManageButton from "../../../_components/ui/manage-button";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import LoadingPage from "@/components/ui/Loading";
 
 interface ManageButtonGroupProps {
   id: string;
+  detail?: boolean;
   access_token: string;
 }
 
 export default function ManageButtonGroup({
   id,
   access_token,
+  detail = false,
 }: ManageButtonGroupProps) {
   const router = useRouter();
   const [pending, startTransaction] = useTransition();
@@ -62,6 +64,7 @@ export default function ManageButtonGroup({
         uuid={id}
         label="Approve"
         title="Approve Confirmation"
+        detail={detail}
         description="Are you sure you want to approve this psychologist?"
         session={access_token}
         onApprove={handleApproveClick}
@@ -70,6 +73,7 @@ export default function ManageButtonGroup({
         uuid={id}
         label="Reject"
         title="Reject Confirmation"
+        detail={detail}
         description="Are you sure you want to reject this psychologist?"
         session={access_token}
         onApprove={handleRejectClick}

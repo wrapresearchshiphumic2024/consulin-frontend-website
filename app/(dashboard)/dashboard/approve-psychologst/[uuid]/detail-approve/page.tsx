@@ -101,6 +101,7 @@ export default async function DetailApp({
             <div className="flex flex-col sm:flex-row justify-center space-y-2 sm:space-y-0 sm:space-x-4">
               <ManageButtonGroup
                 id={detail_psychologst.id}
+                detail
                 access_token={session?.user.access_token}
               />
             </div>

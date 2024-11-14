@@ -36,7 +36,11 @@ export async function loginAction(data: FormData): Promise<LoginResult> {
       if (e.cause?.err?.message === "Email not found") {
         return { error: "Email not found" };
       } else if (e.cause?.err?.message === "Incorrect password") {
-        return { error: "Incorrect password" };
+        return { error: "Incorrect credentials" };
+      }else if(e.cause?.err?.message === "Your account is currently in the verification process"){
+        return { error: "Your account is currently in the verification process" };
+      }else if(e.cause?.err?.message === "Your registration process has been rejected"){
+        return { error: "Your registration process has been rejected" };
       }
     }
     return { error: "An unknown error occurred" };

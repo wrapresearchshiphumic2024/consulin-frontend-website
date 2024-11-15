@@ -136,7 +136,12 @@ export default async function DetailApp({
               Graduation Year:{" "}
               {detail_psychologst.psychologist?.graduation_year}
             </p>
-            <p>Language Major: {detail_psychologst.psychologist?.language}</p>
+            <p>
+              Language Major:{" "}
+              {formatCommaSeparated(
+                detail_psychologst.psychologist?.language || []
+              )}
+            </p>
             <p>
               Experience Year:{" "}
               {detail_psychologst.psychologist?.work_experience}

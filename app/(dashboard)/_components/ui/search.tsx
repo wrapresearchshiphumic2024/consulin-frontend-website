@@ -18,11 +18,11 @@ export default function SearchList({ placeholder }: { placeholder: string }) {
     replace(`${pathname}?${params.toString()}`);
   }
   return (
-    <div className="relative flex items-center ">
+    <div className="relative flex items-center w-5/12 ">
       <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500 z-10 w-5 h-5" />
       <Input
         placeholder={placeholder}
-        className=" pl-10 rounded-2xl w-full mr-2  border-black bg-secondary-custom_secondary "
+        className=" pl-10 rounded-2xl w-full mr-2   bg-secondary-custom_secondary "
         onChange={(e) => {
           handleSearch(e.target.value);
         }}

@@ -40,7 +40,7 @@ export default async function Psychologist(props: {
         <SearchList placeholder="Search psychologist by name" />
       </div>
 
-      {!patientHasAIAnalysis && <PatientHasAIAnalysis />}
+      {/* {!patientHasAIAnalysis && <PatientHasAIAnalysis />} */}
 
       {psychologists.length === 0 ? (
         <div className="mt-10 text-[#1E0342] font-semibold flex justify-center items-center">

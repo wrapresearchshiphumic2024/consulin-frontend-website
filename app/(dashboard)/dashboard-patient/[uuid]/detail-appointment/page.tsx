@@ -27,6 +27,7 @@ export default async function DetailAppointment({
     session?.user.access_token,
     params.uuid
   );
+  console.log(detailAppointmentPatient);
   const userProfile = await getProfilePatient(session?.user.access_token);
   const apiKey = process.env.API_KEY;
 
@@ -43,7 +44,7 @@ export default async function DetailAppointment({
 
   const { status, channel_id, user, date, start_time, end_time, duration } =
     detailAppointmentPatient;
-
+  console.log(status);
   return (
     <>
       {/* Header Section */}
@@ -93,9 +94,10 @@ export default async function DetailAppointment({
             <div
               className={cn(
                 status === "ongoing" && "bg-[#28A745]",
-                status === "complete" && "bg-[#1E0342]",
+                (status === "complete" || status == "waiting") &&
+                  "bg-primary-custom_primary",
                 status === "canceled" && "bg-[#DC3545]",
-                "w-full rounded-t-2xl text-white text-center py-3 font-bold text-lg capitalize bg-primary-custom_primary"
+                "w-full rounded-t-2xl text-white text-center py-3 font-bold text-lg capitalize "
               )}
             >
               {status}

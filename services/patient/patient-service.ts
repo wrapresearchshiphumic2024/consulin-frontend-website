@@ -16,7 +16,7 @@ export async function getPsychologstData(session: string, name = "", gender = ""
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 60, tags: ['psychologist-list'] }
+        next: { revalidate: 0, tags: ['psychologist-list'] }
     });
 
     if (!res.ok) {
@@ -139,7 +139,7 @@ export async function getAppointmentPatient(session: string): Promise<Appointmen
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 60, tags: ['appointment-patient'] }
+        next: { revalidate: 0, tags: ['appointment-patient'] }
     });
 
     if (!res.ok) {
@@ -193,7 +193,7 @@ export async function getAppointmentDetailPatient(session: string, uuid :string)
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 60, tags: ['detail-appointment-patient'] }
+        next: { revalidate: 0, tags: ['detail-appointment-patient'] }
     });
 
     if (!res.ok) {

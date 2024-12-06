@@ -86,7 +86,7 @@ export async function getSchedule(session: string): Promise<Schedule> {
             "Content-Type": "application/json",
         },
    
-        next: { revalidate: 60,tags: ['schedule-psychologist'] }
+        next: { revalidate: 0,tags: ['schedule-psychologist'] }
     });
     if (!res.ok) {
         throw new Error("Failed to fetch dashboard data");

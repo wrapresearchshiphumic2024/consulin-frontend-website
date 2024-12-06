@@ -23,7 +23,7 @@ export default function AppointmentSwitch({
   const handleOnChange = async () => {
     if (isChecked) {
       setChecked(false);
-      const { success } = await closeAppointment(session);
+      await closeAppointment(session);
       if (success === "success") {
         toast.custom((t) => <ToastSuccess label={"Appointment close"} t={t} />);
       }

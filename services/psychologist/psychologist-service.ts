@@ -21,7 +21,7 @@ export async function getConsultationDataPsychologist(session: string): Promise<
     // Menyesuaikan untuk mendapatkan data yang diperlukan
     return {
         consultations: json.data.consultations.map((consultation: any) => ({
-          id: consultation.id,
+          id: consultation.appointment_id,
           date: consultation.date,
           start_time: consultation.start_time,
           end_time: consultation.end_time,
@@ -124,9 +124,9 @@ export async function getAppointmentHistory(session: string): Promise<Appointmen
         time: item.time,
         status: item.status,
         user: {
-            id: item.patient.user.id,
-            firstname: item.patient.user.firstname,
-            lastname: item.patient.user.lastname,
+            id: item.patient.user_id,
+            firstname: item.patient.firstname,
+            lastname: item.patient.lastname,
         }
     }));
 

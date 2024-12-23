@@ -176,7 +176,7 @@ export async function getAppointmentDetailPsychologst(session: string, uuid :str
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 0, tags: ['detail-appointment-psychologst'] }
+        next: { revalidate: 0, }
     });
 
     if (!res.ok) {

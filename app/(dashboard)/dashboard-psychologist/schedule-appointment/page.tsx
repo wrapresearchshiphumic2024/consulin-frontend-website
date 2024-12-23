@@ -11,6 +11,7 @@ import ManageButtonGroup from "./_components/manage-button-group";
 export default async function ScheduledApp() {
   const session = await auth();
   const appointments = await getAppointmentSchedule(session?.user.access_token);
+  console.log(appointments);
 
   return (
     <>

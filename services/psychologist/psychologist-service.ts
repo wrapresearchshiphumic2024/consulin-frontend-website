@@ -17,7 +17,7 @@ export async function getConsultationDataPsychologist(session: string): Promise<
   
     const json = await res.json();
 
-    console.log(json.data.consultations)
+    console.log(json.data)
     // Menyesuaikan untuk mendapatkan data yang diperlukan
     return {
         consultations: json.data.consultations.map((consultation: any) => ({
@@ -85,8 +85,8 @@ export async function getSchedule(session: string): Promise<Schedule> {
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-   
-        next: { revalidate: 0,tags: ['schedule-psychologist'] }
+
+        next: { revalidate: 60,tags: ['schedule-psychologist'] }
     });
     if (!res.ok) {
         throw new Error("Failed to fetch dashboard data");

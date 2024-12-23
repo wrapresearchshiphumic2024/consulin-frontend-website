@@ -153,7 +153,9 @@ export default function FormChooseDate({
         formData
       );
       if (response?.status == "success") {
-        toast.custom((t) => <ToastSuccess label={"berhasil"} t={t} />);
+        toast.custom((t) => (
+          <ToastSuccess label={"Appointment successfully added"} t={t} />
+        ));
         router.push("/dashboard-patient/");
       } else {
         toast.custom((t) => <ToastFailed label={response.message} t={t} />);

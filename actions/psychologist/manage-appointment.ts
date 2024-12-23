@@ -15,7 +15,6 @@ export async function doneAppointment(session : string, uuid:string){
     let status = response.status;
     revalidateTag("appointment-schedule");
     revalidateTag("appointment-patient");
-    revalidateTag("detail-appointment-patient");
     return { success: status as string};
 }
 export async function cancelAppointment(session : string, uuid:string,data: FormData ){
@@ -35,6 +34,5 @@ export async function cancelAppointment(session : string, uuid:string,data: Form
     revalidateTag("appointment-schedule");
     revalidateTag("appointment-patient");
     revalidateTag("consultation-data-psychologist");
-    revalidateTag("detail-appointment-patient");
     return { success: status as string};
 }

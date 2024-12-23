@@ -57,7 +57,9 @@ export default async function DashboardPsychologist() {
                   <div className="p-2">
                     {consultations.map((schedule, index) => (
                       <div key={index}>
-                        <Link href="/dashboard-psychologist/detail-patient">
+                        <Link
+                          href={`/dashboard-psychologist/schedule-appointment/${schedule.id}/detail`}
+                        >
                           <NotificationCard
                             name={formatFullName(
                               schedule.user.firstname,

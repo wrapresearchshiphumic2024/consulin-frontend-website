@@ -5,7 +5,7 @@ import { auth } from "@/auth";
 import { getSchedule } from "@/services/psychologist/psychologist-service";
 import ScheduleCard from "../../_components/ui/schedule-card";
 import AppointmentSwitch from "./_components/appointment-switch";
-
+export const dynamic = "force-dynamic";
 export default async function ManageSchedulePsycholog() {
   const session = await auth();
   const schedule = await getSchedule(session?.user.access_token);

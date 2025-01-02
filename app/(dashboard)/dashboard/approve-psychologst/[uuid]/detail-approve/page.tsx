@@ -1,13 +1,13 @@
 import { Card } from "@/components/ui/card";
 import { auth } from "@/auth";
-import { getDetailPsychologst } from "@/services/admin/admin-service";
+import { getDetailPsychologst } from "@/lib/services/admin/admin-service";
 import { notFound } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   formatCommaSeparated,
   formatFullName,
   getInitials,
-} from "@/helpers/string-helpers";
+} from "@/lib/helpers/string-helpers";
 import ViewPdf from "../../_components/ui/view-pdf";
 import ManageButtonGroup from "../../_components/manage-button-group";
 

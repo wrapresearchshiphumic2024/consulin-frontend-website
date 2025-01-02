@@ -11,7 +11,7 @@ export async function doneAppointment(session : string, uuid:string){
         },
     });
     const response = await user.json();
-    console.log(response);
+ 
     let status = response.status;
     revalidateTag("appointment-schedule");
     revalidateTag("appointment-patient");
@@ -29,7 +29,7 @@ export async function cancelAppointment(session : string, uuid:string,data: Form
         body: data
     });
     const response = await user.json();
-    console.log(response);
+
     let status = response.status;
     revalidateTag("appointment-schedule");
     revalidateTag("appointment-patient");

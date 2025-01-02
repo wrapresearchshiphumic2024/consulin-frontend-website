@@ -1,11 +1,8 @@
-// interface Consultation {
-//     id: string;
-//     date: string;
-//     status: string;
+
 
 import { User } from "../user/user-type-data";
 
-// }
+
 export interface ConsultationDataPsychologist {
     consultations: Appointment[];
     total_weekly_consultation: number;

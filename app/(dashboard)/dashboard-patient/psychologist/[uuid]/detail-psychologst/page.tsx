@@ -4,12 +4,12 @@ import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import FormChooseDate from "./_components/form-choose-date";
 import { auth } from "@/auth";
-import { getDetailPsychologistPatient } from "@/services/patient/patient-service";
+import { getDetailPsychologistPatient } from "@/lib/services/patient/patient-service";
 import {
   formatCommaSeparated,
   formatFullName,
   getInitials,
-} from "@/helpers/string-helpers";
+} from "@/lib/helpers/string-helpers";
 import { notFound } from "next/navigation";
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
 import { Session } from "next-auth";

@@ -5,7 +5,7 @@ import { useState } from "react";
 import {
   closeAppointment,
   openAppointment,
-} from "@/actions/psychologist/manage-schedule";
+} from "@/lib/actions/psychologist/manage-schedule";
 import { toast } from "sonner";
 import { ToastSuccess } from "@/components/ui/toast-custom";
 

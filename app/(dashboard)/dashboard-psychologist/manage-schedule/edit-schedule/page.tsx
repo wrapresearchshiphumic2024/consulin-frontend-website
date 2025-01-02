@@ -1,6 +1,6 @@
 import FormSchedule from "../_components/form-shedule";
 import { auth } from "@/auth";
-import { getSchedule } from "@/services/psychologist/psychologist-service";
+import { getSchedule } from "@/lib/services/psychologist/psychologist-service";
 
 export default async function ManageSchedulePsycholog() {
   const session = await auth();

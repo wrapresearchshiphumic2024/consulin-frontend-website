@@ -11,7 +11,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
-import { logout } from "@/actions/auth/logout";
+import { logout } from "@/lib/actions/auth/logout";
 import { toast } from "sonner";
 import { ToastSuccess } from "@/components/ui/toast-custom";
 import { useRouter } from "next/navigation";

@@ -5,9 +5,9 @@ import IconPatient from "@/components/icons/icon-patient";
 import IconConsultation from "@/components/icons/icon-consultation";
 import Link from "next/link";
 import { auth } from "@/auth";
-import { getConsultationDataPsychologist } from "@/services/psychologist/psychologist-service";
+import { getConsultationDataPsychologist } from "@/lib/services/psychologist/psychologist-service";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { formatFullName } from "@/helpers/string-helpers";
+import { formatFullName } from "@/lib/helpers/string-helpers";
 import NotificationCard from "../_components/ui/notification";
 
 export default async function DashboardPsychologist() {

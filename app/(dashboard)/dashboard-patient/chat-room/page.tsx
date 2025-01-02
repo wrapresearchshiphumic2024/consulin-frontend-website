@@ -1,6 +1,7 @@
 import App from "@/app/(dashboard)/_components/layouts/chat";
 import { auth } from "@/auth";
-import { getProfilePatient } from "@/services/patient/patient-service";
+import { formatFullName } from "@/lib/helpers/string-helpers";
+import { getProfilePatient } from "@/lib/services/patient/patient-service";
 
 export default async function ChatRoomPatient() {
   const session = await auth();
@@ -8,7 +9,7 @@ export default async function ChatRoomPatient() {
   const apiKey = process.env.API_KEY;
 
   const userId = user.id;
-  const userName = user.firstname + " " + user.lastname;
+  const userName = formatFullName(user.firstname, user.lastname);
 
   if (!apiKey) {
     return <div>Error: API key not found.</div>;

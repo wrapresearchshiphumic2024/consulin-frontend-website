@@ -2,8 +2,8 @@ import Link from "next/link";
 import NotificationCard from "../_components/ui/notification";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { auth } from "@/auth";
-import { getAppointmentPatient } from "@/services/patient/patient-service";
-import { formatFullName } from "@/helpers/string-helpers";
+import { getAppointmentPatient } from "@/lib/services/patient/patient-service";
+import { formatFullName } from "@/lib/helpers/string-helpers";
 
 export default async function DetailAppointment() {
   const session = await auth();

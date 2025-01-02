@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { formScheduleSchema } from "@/helpers/validations/validation-shedule";
+import { formScheduleSchema } from "@/lib/helpers/validations/validation-shedule";
 import ScheduleComponentDay from "@/app/(dashboard)/_components/ui/schedule-component-day";
 import ScheduleComponentTime from "@/app/(dashboard)/_components/ui/schedule-component-time";
 import Link from "next/link";
@@ -21,7 +21,7 @@ import { toast } from "sonner";
 import { ToastSuccess } from "@/components/ui/toast-custom";
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
 import { useTransition } from "react";
-import { updateSchedule } from "@/actions/psychologist/manage-schedule";
+import { updateSchedule } from "@/lib/actions/psychologist/manage-schedule";
 import { Loader2 } from "lucide-react";
 
 export default function FormSchedule({

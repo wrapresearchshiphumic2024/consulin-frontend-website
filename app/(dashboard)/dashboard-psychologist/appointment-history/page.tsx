@@ -1,6 +1,6 @@
 import { auth } from "@/auth";
 import TableAppointmentHistory from "./_components/ui/table-appointment-history";
-import { getAppointmentHistory } from "@/services/psychologist/psychologist-service";
+import { getAppointmentHistory } from "@/lib/services/psychologist/psychologist-service";
 
 export default async function AppointmentHistory() {
   const session = await auth();

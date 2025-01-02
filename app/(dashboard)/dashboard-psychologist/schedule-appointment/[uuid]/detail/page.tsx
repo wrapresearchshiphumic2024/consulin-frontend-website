@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import Link from "next/link";
-import ChatOne from "./_components/chat-one";
+import ChatOne from "../../../../_components/layouts/chat-one";
 
 import Image from "next/image";
 import ButtonDetailPatient from "./_components/button-detail-patient";
@@ -10,9 +10,10 @@ import { auth } from "@/auth";
 import {
   getAppointmentDetailPsychologst,
   getProfilePsychologist,
-} from "@/services/psychologist/psychologist-service";
-import { formatFullName } from "@/helpers/string-helpers";
+} from "@/lib/services/psychologist/psychologist-service";
+import { formatFullName } from "@/lib/helpers/string-helpers";
 import { cn } from "@/lib/utils";
+import { notFound } from "next/navigation";
 
 export default async function DetailP({
   params,
@@ -25,7 +26,11 @@ export default async function DetailP({
     params.uuid
   );
   const user = await getProfilePsychologist(session?.user.access_token);
-  console.log(detailAppointmentPsychologt);
+  const userName = formatFullName(user.firstname, user.lastname);
+
+  if (!detailAppointmentPsychologt) {
+    return notFound();
+  }
 
   return (
     <>
@@ -140,7 +145,7 @@ export default async function DetailP({
         <div className="flex flex-col  w-full ">
           <div className="relative p-4 md:p-6 rounded-[30px]  bg-white w-full h-[530px]">
             <ChatOne
-              userName={user.firstname + user.lastname}
+              userName={userName}
               userId={user.id}
               channelId={detailAppointmentPsychologt?.channel_id as string}
             />

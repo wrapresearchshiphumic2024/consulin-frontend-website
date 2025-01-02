@@ -12,7 +12,7 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 
-import { formChooseDateSchema } from "@/helpers/validations/validation-shedule";
+import { formChooseDateSchema } from "@/lib/helpers/validations/validation-shedule";
 import {
   Popover,
   PopoverContent,
@@ -24,7 +24,7 @@ import { Calendar } from "@/components/ui/calendar";
 import { format } from "date-fns";
 import ScheduleComponentTime from "@/app/(dashboard)/_components/ui/schedule-component-time";
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
-import { addAppointment } from "@/actions/patient/add_appointment";
+import { addAppointment } from "@/lib/actions/patient/add_appointment";
 import { Session } from "next-auth";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
@@ -145,7 +145,6 @@ export default function FormChooseDate({
         body: JSON.stringify({ patient_id, psychologist_id }),
       });
       const channel = await response_channel.json();
-      console.log(channel);
       formData.append("channel_id", channel.channel_id);
       const response = await addAppointment(
         session?.user.access_token,

@@ -1,4 +1,4 @@
-
+import { Analyzer } from "@/types/ai-analyzer";
 import { AppointmentPatient } from "@/types/patient/patient-type-data";
 import { Appointment } from "@/types/psychologist/psychologist-type-data";
 import { User } from "@/types/user/user-type-data";
@@ -25,7 +25,6 @@ export async function getPsychologstData(session: string, name = "", gender = ""
 
     const json = await res.json();
 
-    // Memeriksa apakah patientHasAIAnalysis tersedia di respons JSON
     const patientHasAIAnalysis = json.patient_has_aianalysis ?? false;
 
     // Memeriksa apakah json.data kosong
@@ -33,8 +32,6 @@ export async function getPsychologstData(session: string, name = "", gender = ""
         console.warn("No psychologists found.");
         return { patientHasAIAnalysis, psychologists: [] };
     }
-
-    console.log(json);
 
     const psychologists: User[] = json.data.map((item: any) => ({
         id: item.user_id,
@@ -226,3 +223,79 @@ export async function getAppointmentDetailPatient(session: string, uuid :string)
 
     return detail_appointment;
 }
+
+export async function latestHistoryAiAnalyzer(
+    session: string
+  ): Promise<Analyzer | null> {
+    const res = await fetch(`${process.env.API_URL}/api/patients/ai-analysis-history`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${session}`,
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 60, tags: ['latest-history-ai-analyzer'] },
+    });
+  
+    if (!res.ok) {
+      throw new Error("Failed to fetch AI analysis history");
+    }
+  
+    const json = await res.json();
+  
+    if (!json.data || json.data.length === 0) {
+      return null;
+    }
+  
+    const latestData = json.data[0];
+  
+
+    const latestAnalyzer: Analyzer = {
+      id: latestData.id,
+      complaint: latestData.complaint,
+      stress: latestData.stress,
+      anxiety: latestData.anxiety,
+      depression: latestData.depression,
+      createdAt: latestData.created_at,
+      updatedAt: latestData.updated_at,
+      patientId: latestData.patient_id,
+    };
+  
+    return latestAnalyzer;
+}
+
+export async function historyAiAnalyzer(
+    session: string
+  ): Promise<Analyzer[] | null> {
+    const res = await fetch(`${process.env.API_URL}/api/patients/ai-analysis-history`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${session}`,
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 60, tags: ['all-history-ai-analyzer'] },
+    });
+  
+    if (!res.ok) {
+      throw new Error("Failed to fetch AI analysis history");
+    }
+  
+    const json = await res.json();
+  
+    if (!json.data || json.data.length === 0) {
+      return null;
+    }
+  
+  
+    const analyzers: Analyzer[] = json.data.map((item: any) => ({
+      id: item.id,
+      complaint: item.complaint,
+      stress: item.stress,
+      anxiety: item.anxiety,
+      depression: item.depression,
+      createdAt: item.created_at,
+      updatedAt: item.updated_at,
+      patientId: item.patient_id,
+    }));
+  
+    return analyzers;
+  }

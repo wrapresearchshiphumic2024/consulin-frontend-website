@@ -3,7 +3,7 @@ import PsychologistCard from "../../_components/ui/psychologist-card";
 import ManageButtonGroup from "./_components/manage-button-group";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { getPsychologstData } from "@/services/global-service";
+import { getPsychologstData } from "@/lib/services/global-service";
 
 export default async function ApprovePsychologist() {
   const session = await auth();

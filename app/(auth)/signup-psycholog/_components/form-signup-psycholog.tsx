@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 
 import { useEffect, useState, useTransition } from "react";
 
-import { formRegisterSchema } from "@/helpers/validations/validation-auth";
+import { formRegisterSchema } from "@/lib/helpers/validations/validation-auth";
 
 import { Form } from "@/components/ui/form";
 import StepOne from "./step-one";
@@ -14,7 +14,7 @@ import StepTwo from "./step-two";
 import StepThree from "./step-three";
 import StepNavigation from "./step-navigation";
 import TermsOfServiceDialog from "./ui/term-of-service-dialog";
-import { registerPsycholog } from "@/actions/auth/register";
+import { registerPsycholog } from "@/lib/actions/auth/register";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import { useRouter } from "next/navigation";

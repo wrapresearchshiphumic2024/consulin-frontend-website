@@ -18,3 +18,14 @@ export function formatCommaSeparated(items: string[]): string {
 
     return `${items.slice(0, -1).join(", ")} and ${items[items.length - 1]}`;
 }
+export function formatHumanReadableDate(isoDate: string): string {
+    const date = new Date(isoDate);
+
+    const options: Intl.DateTimeFormatOptions = {
+        day: '2-digit',
+        month: 'short',
+        year: 'numeric',
+    };
+
+    return date.toLocaleDateString('id-ID', options).replace('.', '');
+}

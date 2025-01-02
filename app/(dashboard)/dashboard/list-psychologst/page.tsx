@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { auth } from "@/auth";
-import { getPsychologstData } from "@/services/global-service";
+import { getPsychologstData } from "@/lib/services/global-service";
 import PsychologistCard from "../../_components/ui/psychologist-card";
 import SearchList from "../../_components/ui/search";
 

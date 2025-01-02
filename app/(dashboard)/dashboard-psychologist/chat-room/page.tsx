@@ -1,12 +1,13 @@
 import App from "../../_components/layouts/chat";
 import { auth } from "@/auth";
-import { getProfilePsychologist } from "@/services/psychologist/psychologist-service";
+import { formatFullName } from "@/lib/helpers/string-helpers";
+import { getProfilePsychologist } from "@/lib/services/psychologist/psychologist-service";
 
 export default async function ChatRoomPsychologist() {
   const session = await auth();
   const user = await getProfilePsychologist(session?.user.access_token);
   const apiKey = process.env.API_KEY;
-  const userName = user.firstname + " " + user.lastname;
+  const userName = formatFullName(user.firstname, user.lastname);
   if (!apiKey) {
     return <div>Error: API key not found.</div>;
   }

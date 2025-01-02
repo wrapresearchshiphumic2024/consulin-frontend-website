@@ -22,7 +22,7 @@ import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import { useRouter } from "next/navigation";
 import { useTransition } from "react";
 import LoadingPage from "@/components/ui/Loading";
-import { cancelAppointment } from "@/actions/psychologist/manage-appointment";
+import { cancelAppointment } from "@/lib/actions/psychologist/manage-appointment";
 
 const FormSchema = z.object({
   note: z.string().min(1, {
@@ -51,7 +51,7 @@ export function CancelAppointment({
       const { success } = await cancelAppointment(session, uuid, formData);
       if (success === "success") {
         toast.custom((t) => (
-          <ToastSuccess t={t} label="Psychologist successfully approved" />
+          <ToastSuccess t={t} label="Schedule appoint successfully cancel" />
         ));
       } else {
         toast.custom((t) => (

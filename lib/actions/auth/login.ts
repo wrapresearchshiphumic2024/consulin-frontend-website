@@ -1,6 +1,6 @@
 'use server'
 import { signIn } from "@/auth";
-import { formLoginSchema } from "@/helpers/validations/validation-auth";
+import { formLoginSchema } from "@/lib/helpers/validations/validation-auth";
 import { AuthError } from "next-auth";
 
 type LoginResult = 

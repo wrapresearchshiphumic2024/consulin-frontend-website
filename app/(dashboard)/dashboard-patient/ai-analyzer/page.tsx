@@ -3,15 +3,6 @@ import { ChartAiAnalyzer } from "./_components/chart-ai-analyzer";
 import { Separator } from "@/components/ui/separator";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import IconGender from "@/components/icons/icon-gender";
 import { auth } from "@/auth";
 import { latestHistoryAiAnalyzer } from "@/lib/services/patient/patient-service";
 

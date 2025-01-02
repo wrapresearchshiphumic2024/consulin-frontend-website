@@ -17,6 +17,7 @@ import {
 } from "@/lib/helpers/string-helpers";
 import { cn } from "@/lib/utils";
 import ChatOne from "@/app/(dashboard)/_components/layouts/chat-one";
+import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
 
 export default async function DetailAppointment({
   params,
@@ -30,7 +31,6 @@ export default async function DetailAppointment({
   );
   const userProfile = await getProfilePatient(session?.user.access_token);
 
-  const userId = userProfile.id;
   const userName = formatFullName(userProfile.firstname, userProfile.lastname);
 
   if (!detailAppointmentPatient) {
@@ -44,16 +44,7 @@ export default async function DetailAppointment({
     <>
       {/* Header Section */}
       <div className="grid grid-cols-[auto_1fr] gap-3 mb-5">
-        <Link href="/dashboard-patient">
-          <Button className="p-2 rounded-full bg-secondary-custom_secondary hover:bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
-            <Image
-              src="/assets/icons/back.png"
-              alt="Back"
-              width={10}
-              height={10}
-            />
-          </Button>
-        </Link>
+        <ButtonBack />
         <div className="pl-3">
           <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
             Detail Appointment

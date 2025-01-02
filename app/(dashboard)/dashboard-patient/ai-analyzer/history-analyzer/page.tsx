@@ -4,6 +4,7 @@ import Image from "next/image";
 import { auth } from "@/auth";
 import { historyAiAnalyzer } from "@/lib/services/patient/patient-service";
 import { formatHumanReadableDate } from "@/lib/helpers/string-helpers";
+import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
 
 export default async function HistoryAnalyzer() {
   const session = await auth();
@@ -13,16 +14,7 @@ export default async function HistoryAnalyzer() {
   return (
     <>
       <div className="flex mb-5 gap-3">
-        <Link href="/dashboard-patient/ai-analyzer">
-          <Button className="p-2 rounded-[100px] bg-white shadow-md h-[35px] w-[35px] flex items-center justify-center">
-            <Image
-              src="/assets/icons/back.png"
-              alt="Back"
-              width={10}
-              height={10}
-            />
-          </Button>
-        </Link>
+        <ButtonBack />
 
         <div className="pl-3">
           <h1 className="text-5xl font-bold text-netral-primary">

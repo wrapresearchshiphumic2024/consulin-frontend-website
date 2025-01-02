@@ -2,7 +2,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import FormSchedule from "./_components/form-shedule";
 
 import { auth } from "@/auth";
-import { getSchedule } from "@/services/psychologist/psychologist-service";
+import { getSchedule } from "@/lib/services/psychologist/psychologist-service";
 import ScheduleCard from "../../_components/ui/schedule-card";
 import AppointmentSwitch from "./_components/appointment-switch";
 export const dynamic = "force-dynamic";

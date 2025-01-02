@@ -1,9 +1,6 @@
 "use client";
 
-import {
-  approvePsychologst,
-  rejectPsychologst,
-} from "@/actions/admin/manage-psychologst-status";
+import { approvePsychologst } from "@/lib/actions/admin/manage-psychologst-status";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 
@@ -41,23 +38,6 @@ export default function ManageButtonGroup({
     });
   };
 
-  // Fungsi untuk menangani klik penolakan
-  const handleCancelClick = (session: string, uuid: string) => {
-    // startTransaction(async () => {
-    //   const { success } = await rejectPsychologst(session, uuid);
-    //   if (success === "success") {
-    //     toast.custom((t) => (
-    //       <ToastSuccess t={t} label="Psychologist successfully rejected" />
-    //     ));
-    //   } else {
-    //     toast.custom((t) => (
-    //       <ToastFailed t={t} label="Psychologist failed to reject" />
-    //     ));
-    //   }
-    //   router.push("/dashboard/approve-psychologst");
-    // });
-  };
-
   return (
     <>
       {pending && <LoadingPage />}
@@ -79,7 +59,6 @@ Once the session is completed, you cannot change or cancel this action."
         title="Cancel Session"
         description={`Are you sure you want to cancel this session?\nPlease provide the reason for cancellation below:`}
         session={access_token}
-        onApprove={handleCancelClick}
         danger
       />
     </>

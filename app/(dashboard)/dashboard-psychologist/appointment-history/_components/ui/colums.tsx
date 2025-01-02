@@ -3,7 +3,7 @@
 import IconArrowDown from "@/components/icons/icon-arrow-down";
 import IconArrowUp from "@/components/icons/icon-arrow-up";
 import { Button } from "@/components/ui/button";
-import { formatFullName } from "@/helpers/string-helpers";
+import { formatFullName } from "@/lib/helpers/string-helpers";
 import { cn } from "@/lib/utils";
 import { Appointment } from "@/types/psychologist/psychologist-type-data";
 import { ColumnDef } from "@tanstack/react-table";

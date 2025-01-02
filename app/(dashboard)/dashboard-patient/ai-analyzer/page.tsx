@@ -12,7 +12,29 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import IconGender from "@/components/icons/icon-gender";
-export default function AiAnalyzer() {
+import { auth } from "@/auth";
+import { latestHistoryAiAnalyzer } from "@/lib/services/patient/patient-service";
+
+export default async function AiAnalyzer() {
+  const session = await auth();
+  const ai_analyzer = await latestHistoryAiAnalyzer(session?.user.access_token);
+
+  const chartData = ai_analyzer
+    ? [
+        { category: "Stress", percentage: ai_analyzer.stress, fill: "#DC3545" },
+        {
+          category: "Anxiety",
+          percentage: ai_analyzer.anxiety,
+          fill: "#4C9AFF",
+        },
+        {
+          category: "Depression",
+          percentage: ai_analyzer.depression,
+          fill: "#F28D35",
+        },
+      ]
+    : [];
+
   return (
     <>
       <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
@@ -23,7 +45,8 @@ export default function AiAnalyzer() {
       </p>
 
       <div className="flex justify-between mt-10">
-        <Link href="/dashboard-patient/analyzer-detail">
+        <Link href="/dashboard-patient/ai-analyzer/history-analyzer">
+
           <Button className="text-white font-semibold bg-[#27374D] rounded-full">
             Analyzer History
           </Button>
@@ -38,7 +61,7 @@ export default function AiAnalyzer() {
             </h3>
           </center>
           <div className="flex flex-col gap-2 mt-5 lg:h-96">
-            <FormAiAnalyzer />
+            <FormAiAnalyzer session={session?.user.access_token} />
           </div>
         </div>
 
@@ -48,15 +71,23 @@ export default function AiAnalyzer() {
               Analysis Results
             </h3>
           </center>
-          <div className="flex flex-col flex-1 p-3 md:p-10">
-            <div className="text-netral-primary">
-              <p>Probability of Stress: 65%</p>
-              <p>Probability of Anxiety: 40%</p>
-              <p>Probability of Depression: 70%</p>
+          {ai_analyzer ? (
+            <div className="flex flex-col flex-1 p-3 md:p-10">
+              <div className="text-netral-primary">
+                <p>Probability of Stress: {ai_analyzer.stress}%</p>
+                <p>Probability of Anxiety: {ai_analyzer.anxiety}%</p>
+                <p>Probability of Depression: {ai_analyzer.depression}%</p>
+              </div>
+              <Separator className="mt-10 border-2" />
+              <ChartAiAnalyzer data={chartData} />
             </div>
-            <Separator className="mt-10 border-2" />
-            <ChartAiAnalyzer />
-          </div>
+          ) : (
+            <center>
+              <p className="text-netral-primary">
+                No AI analysis data available
+              </p>
+            </center>
+          )}
         </div>
       </div>
     </>

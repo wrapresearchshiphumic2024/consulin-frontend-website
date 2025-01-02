@@ -13,12 +13,12 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
-import { formLoginSchema } from "@/helpers/validations/validation-auth";
+import { formLoginSchema } from "@/lib/helpers/validations/validation-auth";
 import { Checkbox } from "@/components/ui/checkbox";
 import Link from "next/link";
 import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
-import { loginAction } from "@/actions/auth/login";
+import { loginAction } from "@/lib/actions/auth/login";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import { Loader2 } from "lucide-react";

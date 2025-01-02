@@ -1,12 +1,12 @@
 import { auth } from "@/auth";
 import { Card } from "@/components/ui/card";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { getDetailPsychologst } from "@/services/admin/admin-service";
+import { getDetailPsychologst } from "@/lib/services/admin/admin-service";
 import {
   formatCommaSeparated,
   formatFullName,
   getInitials,
-} from "@/helpers/string-helpers";
+} from "@/lib/helpers/string-helpers";
 import { notFound } from "next/navigation";
 
 export default async function DetailList({

@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 
-import { formForgotPasswordSchema } from "@/helpers/validations/validation-auth";
+import { formForgotPasswordSchema } from "@/lib/helpers/validations/validation-auth";
 
 export default function FormForgotPassword() {
   const form = useForm<z.infer<typeof formForgotPasswordSchema>>({

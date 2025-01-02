@@ -4,7 +4,7 @@ import {
   formatCommaSeparated,
   formatFullName,
   getInitials,
-} from "@/helpers/string-helpers";
+} from "@/lib/helpers/string-helpers";
 import { cn } from "@/lib/utils";
 import { User } from "@/types/user/user-type-data";
 

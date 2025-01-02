@@ -3,8 +3,8 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 
 import { auth } from "@/auth";
-import { getAppointmentSchedule } from "@/services/psychologist/psychologist-service";
-import { formatFullName, getInitials } from "@/helpers/string-helpers";
+import { getAppointmentSchedule } from "@/lib/services/psychologist/psychologist-service";
+import { formatFullName, getInitials } from "@/lib/helpers/string-helpers";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ManageButtonGroup from "./_components/manage-button-group";
 

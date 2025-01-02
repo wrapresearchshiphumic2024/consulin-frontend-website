@@ -7,15 +7,16 @@ import { auth } from "@/auth";
 import {
   getAppointmentDetailPatient,
   getProfilePatient,
-} from "@/services/patient/patient-service";
+} from "@/lib/services/patient/patient-service";
 import { notFound } from "next/navigation";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   formatCommaSeparated,
   formatFullName,
   getInitials,
-} from "@/helpers/string-helpers";
+} from "@/lib/helpers/string-helpers";
 import { cn } from "@/lib/utils";
+import ChatOne from "@/app/(dashboard)/_components/layouts/chat-one";
 
 export default async function DetailAppointment({
   params,
@@ -27,16 +28,10 @@ export default async function DetailAppointment({
     session?.user.access_token,
     params.uuid
   );
-  console.log(detailAppointmentPatient);
   const userProfile = await getProfilePatient(session?.user.access_token);
-  const apiKey = process.env.API_KEY;
 
   const userId = userProfile.id;
-  const userName = userProfile.firstname + " " + userProfile.lastname;
-
-  if (!apiKey) {
-    return <div>Error: API key not found.</div>;
-  }
+  const userName = formatFullName(userProfile.firstname, userProfile.lastname);
 
   if (!detailAppointmentPatient) {
     return notFound();
@@ -44,7 +39,7 @@ export default async function DetailAppointment({
 
   const { status, channel_id, user, date, start_time, end_time, duration } =
     detailAppointmentPatient;
-  console.log(status);
+
   return (
     <>
       {/* Header Section */}
@@ -163,16 +158,10 @@ export default async function DetailAppointment({
         {status === "ongoing" ? (
           <div className="lg:col-span-2">
             <div className="p-4 md:p-6 rounded-2xl bg-white h-[530px]">
-              <App
-                apiKey={apiKey}
-                userId={userId}
-                channelId={channel_id}
+              <ChatOne
                 userName={userName}
-                channelList
-                image={
-                  user.profile_picture ||
-                  `https://getstream.io/random_png/?name=${userName}`
-                }
+                userId={user.id}
+                channelId={channel_id as string}
               />
             </div>
           </div>

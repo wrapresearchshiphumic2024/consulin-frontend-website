@@ -1,29 +1,14 @@
 "use client";
 
-import { Cell, Pie, PieChart } from "recharts";
+import { Bar, BarChart, LabelList, XAxis, YAxis } from "recharts";
 
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import {
   ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
 } from "@/components/ui/chart";
-
-export const description = "A pie chart with a label list";
-
-const chartData = [
-  { category: "Stress", percentage: 40, fill: "#DC3545" },
-  { category: "Anxiety", percentage: 20, fill: "#4C9AFF" },
-  { category: "Depression", percentage: 40, fill: "#F28D35" },
-];
 
 const chartConfig = {
   Percentage: {
@@ -43,41 +28,36 @@ const chartConfig = {
     color: "hsl(var(--chart-2))",
   },
 } satisfies ChartConfig;
-const RADIAN = Math.PI / 180;
-const renderCustomizedLabel = ({
-  cx,
-  cy,
-  midAngle,
-  innerRadius,
-  outerRadius,
-  percent,
-}) => {
-  const radius = innerRadius + (outerRadius - innerRadius) * 0.5;
-  const x = cx + radius * Math.cos(-midAngle * RADIAN);
-  const y = cy + radius * Math.sin(-midAngle * RADIAN);
 
-  return (
-    <text
-      x={x}
-      y={y}
-      fill="white"
-      textAnchor={x > cx ? "start" : "end"}
-      dominantBaseline="central"
-    >
-      {`${(percent * 100).toFixed(0)}%`}
-    </text>
-  );
-};
-
-export function ChartAiAnalyzer() {
+export function ChartAiAnalyzer({
+  data,
+}: {
+  data: { category: string; percentage: number; fill: string }[];
+}) {
   return (
     <Card className="flex flex-col bg-secondary-custom_secondary shadow-none border-0">
-      <CardContent className="flex-1 pb-0">
-        <ChartContainer
-          config={chartConfig}
-          className="mx-auto aspect-square max-h-[250px]"
-        >
-          <PieChart>
+      <CardContent className="flex-1 p-0">
+        <ChartContainer config={chartConfig}>
+          <BarChart
+            accessibilityLayer
+            data={data}
+            layout="vertical"
+            margin={{
+              right: 40,
+            }}
+          >
+            <XAxis dataKey="percentage" type="number" hide />
+            <YAxis
+              dataKey="category"
+              type="category"
+              tickLine={false}
+              tickMargin={10}
+              axisLine={false}
+              tickFormatter={(value) =>
+                chartConfig[value as keyof typeof chartConfig]?.label
+              }
+              hide
+            />
             <ChartTooltip
               content={
                 <ChartTooltipContent
@@ -87,22 +67,17 @@ export function ChartAiAnalyzer() {
                 />
               }
             />
-            <Pie
-              data={chartData}
-              dataKey="percentage"
-              nameKey="category"
-              fill="fill"
-              cx="50%"
-              cy="50%"
-              labelLine={false}
-              label={renderCustomizedLabel}
-              outerRadius={80}
-            >
-              {chartData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.fill} />
-              ))}
-            </Pie>
-          </PieChart>
+            <Bar dataKey="percentage" layout="vertical" radius={4}>
+              <LabelList
+                dataKey="percentage"
+                position="right"
+                offset={8}
+                className="fill-foreground"
+                fontSize={12}
+                formatter={(value: number) => `${value}%`}
+              />
+            </Bar>
+          </BarChart>
         </ChartContainer>
       </CardContent>
       <CardFooter className=" flex justify-center gap-3   text-sm flex-wrap">

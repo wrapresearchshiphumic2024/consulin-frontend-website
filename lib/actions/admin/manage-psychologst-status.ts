@@ -10,7 +10,6 @@ export async function approvePsychologst(session : string, uuid:string){
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-
     });
     const response = await user.json();
     console.log(response);

@@ -3,7 +3,7 @@
 import {
   approvePsychologst,
   rejectPsychologst,
-} from "@/actions/admin/manage-psychologst-status";
+} from "@/lib/actions/admin/manage-psychologst-status";
 import { toast } from "sonner";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import ManageButton from "../../../_components/ui/manage-button";

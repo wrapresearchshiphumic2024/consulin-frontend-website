@@ -1,6 +1,6 @@
 "use server";
 
-import { formSignUpSchema } from "@/helpers/validations/validation-auth";
+import { formSignUpSchema } from "@/lib/helpers/validations/validation-auth";
 import { revalidateTag } from "next/cache";
 
 

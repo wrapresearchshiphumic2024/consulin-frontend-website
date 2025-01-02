@@ -4,7 +4,7 @@ import IconPatient from "@/components/icons/icon-patient";
 import IconConsultation from "@/components/icons/icon-consultation";
 import IconCompletion from "@/components/icons/icon-completion";
 import { auth } from "@/auth";
-import { getDashboardAdminData } from "@/services/admin/admin-service";
+import { getDashboardAdminData } from "@/lib/services/admin/admin-service";
 import { MultipleChart } from "./_components/ui/multiple-chart";
 import { SingleChart } from "./_components/ui/single-chart";
 

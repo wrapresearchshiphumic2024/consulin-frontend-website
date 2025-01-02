@@ -20,10 +20,10 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { PasswordInput } from "@/components/ui/password-input";
-import { formSignUpSchema } from "@/helpers/validations/validation-auth";
+import { formSignUpSchema } from "@/lib/helpers/validations/validation-auth";
 import { useTransition } from "react";
 import { ArrowDown2 } from "iconsax-react";
-import { register } from "@/actions/auth/register";
+import { register } from "@/lib/actions/auth/register";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
 import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";

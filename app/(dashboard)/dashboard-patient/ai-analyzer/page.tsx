@@ -46,7 +46,6 @@ export default async function AiAnalyzer() {
 
       <div className="flex justify-between mt-10">
         <Link href="/dashboard-patient/ai-analyzer/history-analyzer">
-
           <Button className="text-white font-semibold bg-[#27374D] rounded-full">
             Analyzer History
           </Button>

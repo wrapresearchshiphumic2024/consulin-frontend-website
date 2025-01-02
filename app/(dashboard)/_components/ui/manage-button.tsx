@@ -23,7 +23,7 @@ interface ManageButtonProps {
   description: string;
   danger?: boolean;
   detail?: boolean;
-  onApprove: (session: string, uuid: string) => void;
+  onApprove?: (session: string, uuid: string) => void;
 }
 
 export default function ManageButton({
@@ -68,7 +68,7 @@ export default function ManageButton({
                 " text-white px-4 py-2 rounded-lg"
               )}
               type="button"
-              onClick={() => onApprove(session, uuid)} // Memanggil fungsi saat tombol diklik
+              onClick={() => onApprove && onApprove(session, uuid)} // Memanggil fungsi saat tombol diklik
             >
               Confirm
             </AlertDialogAction>

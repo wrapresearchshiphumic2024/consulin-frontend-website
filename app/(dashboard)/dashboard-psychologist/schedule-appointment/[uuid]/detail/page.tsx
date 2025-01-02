@@ -11,9 +11,13 @@ import {
   getAppointmentDetailPsychologst,
   getProfilePsychologist,
 } from "@/lib/services/psychologist/psychologist-service";
-import { formatFullName } from "@/lib/helpers/string-helpers";
+import {
+  formatFullName,
+  formatHumanReadableDate,
+} from "@/lib/helpers/string-helpers";
 import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
+import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
 
 export default async function DetailP({
   params,
@@ -21,30 +25,21 @@ export default async function DetailP({
   params: { uuid: string };
 }) {
   const session = await auth();
-  const detailAppointmentPsychologt = await getAppointmentDetailPsychologst(
+  const { appointment, analyzer } = await getAppointmentDetailPsychologst(
     session?.user.access_token,
     params.uuid
   );
   const user = await getProfilePsychologist(session?.user.access_token);
   const userName = formatFullName(user.firstname, user.lastname);
 
-  if (!detailAppointmentPsychologt) {
+  if (!appointment) {
     return notFound();
   }
 
   return (
     <>
       <div className="flex ">
-        <Link href="/dashboard-psychologist/schedule-appointment">
-          <Button className="p-2 rounded-full bg-secondary-custom_secondary hover:bg-white shadow-md h-[40px] w-[40px] flex items-center justify-center mr-4 mb-7">
-            <Image
-              src="/assets/icons/back.png"
-              alt="Back"
-              width={10}
-              height={10}
-            />
-          </Button>
-        </Link>
+        <ButtonBack />
         <div>
           <h1 className="text-xl md:text-2xl lg:text-5xl font-bold text-left  lg:mb-4 text-[#1E0342]">
             Detail Patient
@@ -54,7 +49,7 @@ export default async function DetailP({
           </p>
         </div>
       </div>
-      {detailAppointmentPsychologt?.status === "ongoing" && (
+      {appointment?.status === "ongoing" && (
         <div className="flex justify-end">
           <Link href={"/meet?room_id=raya-124"} target="_blank">
             <Button className="bg-primary-custom_primary rounded-full">
@@ -70,42 +65,39 @@ export default async function DetailP({
           <Card className="flex flex-col rounded-[30px] shadow-lg bg-white w-full">
             <div
               className={cn(
-                detailAppointmentPsychologt?.status === "ongoing" &&
-                  "bg-[#28A745]",
-                detailAppointmentPsychologt?.status === "completed" ||
-                  detailAppointmentPsychologt?.status === "waiting"
+                appointment?.status === "ongoing" && "bg-[#28A745]",
+                appointment?.status === "completed" ||
+                  appointment?.status === "waiting"
                   ? "bg-netral-primary"
                   : "",
-                detailAppointmentPsychologt?.status === "canceled" &&
-                  "bg-red-500",
+                appointment?.status === "canceled" && "bg-red-500",
                 "w-full  rounded-t-[30px] text-white text-center py-2 font-bold capitalize"
               )}
             >
-              {detailAppointmentPsychologt?.status}
+              {appointment?.status}
             </div>
             <div className="flex flex-col p-4 space-y-3">
               <p className="text-netral-primary  font-medium">
                 Name:{" "}
                 {formatFullName(
-                  detailAppointmentPsychologt?.user.firstname as string,
-                  detailAppointmentPsychologt?.user.lastname as string
+                  appointment?.user.firstname as string,
+                  appointment?.user.lastname as string
                 )}
               </p>
-              <p className="text-netral-primary  font-medium">
-                Gender: {detailAppointmentPsychologt?.user.gender}
+              <p className="text-netral-primary  font-medium capitalize">
+                Gender: {appointment?.user.gender}
+              </p>
+              <p className="text-netral-primary  font-medium ">
+                Email: {appointment?.user.email}
               </p>
               <p className="text-netral-primary  font-medium">
-                Email: {detailAppointmentPsychologt?.user.email}
+                Phone: {appointment?.user.phone_number}
               </p>
               <p className="text-netral-primary  font-medium">
-                Phone: {detailAppointmentPsychologt?.user.phone_number}
+                Day & Time: {formatHumanReadableDate(appointment?.date)},{" "}
+                {appointment?.start_time} -{appointment?.end_time}
               </p>
-              <p className="text-netral-primary  font-medium">
-                Day & Time: {detailAppointmentPsychologt?.date},{" "}
-                {detailAppointmentPsychologt?.start_time} -
-                {detailAppointmentPsychologt?.end_time}
-              </p>
-              {detailAppointmentPsychologt?.status === "ongoing" && (
+              {appointment?.status === "ongoing" && (
                 <div className="flex flex-row space-x-2 mt-4">
                   <ButtonDetailPatient />
                 </div>
@@ -119,21 +111,24 @@ export default async function DetailP({
               AI Analysis Results
             </h3>
             <p className="text-netral-primary font-medium">
-              Probability of Stress: 65%
+              Probability of Stress: {analyzer?.stress}%
             </p>
             <p className="text-netral-primary  font-medium">
-              Probability of Anxiety: 40%
+              Probability of Anxiety: {analyzer?.anxiety}%
             </p>
             <p className="text-netral-primary  font-medium">
-              Probability of Depression: 70%
+              Probability of Depression: {analyzer?.depression}%
             </p>
             <p className="text-netral-primary  font-medium">
-              last analyzed: 01 Oct, 2024
+              last analyzed:{" "}
+              {formatHumanReadableDate(analyzer?.createdAt as string)}
             </p>
           </Card>
 
           <div className="w-full">
-            <Link href="/dashboard-psychologist/complaint">
+            <Link
+              href={`/dashboard-psychologist/complaint/${appointment.user.id}`}
+            >
               <Button className="bg-[#27374D] text-white px-4 py-3 rounded-full w-full">
                 See Patient Complaint
               </Button>
@@ -147,9 +142,9 @@ export default async function DetailP({
             <ChatOne
               userName={userName}
               userId={user.id}
-              channelId={detailAppointmentPsychologt?.channel_id as string}
+              channelId={appointment?.channel_id as string}
             />
-            {detailAppointmentPsychologt?.status !== "ongoing" && (
+            {appointment?.status !== "ongoing" && (
               <div className="absolute bg-primary-custom_primary text-white bottom-0 left-0 right-0 p-5 rounded-b-[30px] text-center">
                 Cant sent messsage not in appointment schedule
               </div>

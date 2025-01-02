@@ -4,7 +4,11 @@ import Link from "next/link";
 
 import { auth } from "@/auth";
 import { getAppointmentSchedule } from "@/lib/services/psychologist/psychologist-service";
-import { formatFullName, getInitials } from "@/lib/helpers/string-helpers";
+import {
+  formatFullName,
+  formatHumanReadableDate,
+  getInitials,
+} from "@/lib/helpers/string-helpers";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ManageButtonGroup from "./_components/manage-button-group";
 
@@ -72,7 +76,10 @@ export default async function ScheduledApp() {
                       Gender: {appointment.user.gender}
                     </p>
                     <p>Phone number: {appointment.user.phone_number}</p>
-                    <p>Day & Time: {appointment.date}</p>
+                    <p>
+                      Day & Time: {formatHumanReadableDate(appointment.date)},{" "}
+                      {appointment.start_time} - {appointment.end_time}
+                    </p>
                   </div>
                 </div>
 

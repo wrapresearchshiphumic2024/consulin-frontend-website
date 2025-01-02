@@ -76,13 +76,6 @@ export function FormAiAnalyzer({ session }: { session: string }) {
             {pending ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : null}
             Analyze
           </Button>
-          <Button
-            type="button"
-            disabled={!form.formState.isValid}
-            variant="destructive"
-          >
-            Cancel
-          </Button>
         </form>
       </Form>
     </>

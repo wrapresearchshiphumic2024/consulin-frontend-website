@@ -1,3 +1,4 @@
+import { Analyzer } from "@/types/ai-analyzer";
 import { Appointment, ConsultationDataPsychologist, Schedule } from "@/types/psychologist/psychologist-type-data";
 import { User } from "@/types/user/user-type-data";
 
@@ -169,7 +170,10 @@ export async function getAppointmentSchedule(session: string): Promise<Appointme
     return appointments;
 }
 
-export async function getAppointmentDetailPsychologst(session: string, uuid :string): Promise<Appointment | null> {
+export async function getAppointmentDetailPsychologst(
+    session: string, 
+    uuid: string
+): Promise<{ appointment?: Appointment; analyzer?: Analyzer; error?: string }> {
     const res = await fetch(`${process.env.API_URL}/api/psychologist/appointment/detail/${uuid}`, {
         method: "GET",
         headers: {
@@ -179,13 +183,15 @@ export async function getAppointmentDetailPsychologst(session: string, uuid :str
         next: { revalidate: 0, tags: ['detail-appointment-psychologst'] }
     });
 
-    if (!res.ok) {
-        throw new Error("Failed to fetch dashboard data");
+    const json = await res.json();
+
+    if (!res.ok || json.status === "error") {
+        return { error: json.message || "Failed to fetch appointment details" };
     }
 
-    const json = await res.json();
     const item = json.data;
-    const detail_appointment : Appointment = {
+
+    const detail_appointment: Appointment = {
         id: item.id,
         channel_id: item.channel_id,
         date: item.date,
@@ -194,15 +200,61 @@ export async function getAppointmentDetailPsychologst(session: string, uuid :str
         duration: item.duration,
         status: item.status,
         user: {
-            id: item.id,
+            id: item.patient_id,
             firstname: item.firstname,
             lastname: item.lastname,
-            phone_number:item.phone,
+            phone_number: item.phone,
             email: item.email,
             gender: item.gender,
-            
-        }
-    }
+        },
+    };
 
-    return detail_appointment;
+    const analyzer: Analyzer | undefined = item.ai_analyzer
+        ? {
+            complaint: item.ai_analyzer.complaint,
+            stress: item.ai_analyzer.stress,
+            anxiety: item.ai_analyzer.anxiety,
+            depression: item.ai_analyzer.depression,
+            createdAt: item.ai_analyzer.created_at,
+        }
+        : undefined;
+
+    return { appointment: detail_appointment, analyzer };
 }
+
+export async function historyAiPatientAnalyzer(
+    session: string, uuid: string
+  ): Promise<Analyzer[] | null> {
+    const res = await fetch(`${process.env.API_URL}/api/psychologist/patients/${uuid}/ai-analysis`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${session}`,
+        "Content-Type": "application/json",
+      },
+      next: { revalidate: 60, tags: ['all-history-ai-patient-analyzer'] },
+    });
+  
+    if (!res.ok) {
+      throw new Error("Failed to fetch AI analysis history");
+    }
+  
+    const json = await res.json();
+  
+    if (!json.data || json.data.length === 0) {
+      return null;
+    }
+  
+  
+    const analyzers: Analyzer[] = json.data.analysis.map((item: any) => ({
+      id: item.id,
+      complaint: item.complaint,
+      stress: item.stress,
+      anxiety: item.anxiety,
+      depression: item.depression,
+      createdAt: item.created_at,
+      updatedAt: item.updated_at,
+      patientId: item.patient_id,
+    }));
+  
+    return analyzers;
+  }

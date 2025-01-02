@@ -1,10 +1,10 @@
 export interface Analyzer {
-    id: number;
+    id?: number;
     complaint: string;
     stress: number;
     anxiety: number;
     depression: number;
     createdAt: string;
-    updatedAt: string;
-    patientId: number;
+    updatedAt?: string;
+    patientId?: number;
 }

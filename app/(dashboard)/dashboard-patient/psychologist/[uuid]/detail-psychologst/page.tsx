@@ -14,6 +14,7 @@ import { notFound } from "next/navigation";
 import { Schedule } from "@/types/psychologist/psychologist-type-data";
 import { Session } from "next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
 
 export default async function DetailPsycholog({
   params,
@@ -36,16 +37,7 @@ export default async function DetailPsycholog({
   return (
     <>
       <div className="flex mb-5 gap-3">
-        <Link href="/dashboard-patient/psychologist">
-          <Button className="p-2 rounded-[100px] bg-secondary-custom_secondary hover:bg-secondary-custom_secondary h-[35px] w-[35px] flex items-center justify-center">
-            <Image
-              src="/assets/icons/back.png"
-              alt="Back"
-              width={10}
-              height={10}
-            />
-          </Button>
-        </Link>
+        <ButtonBack />
         <div>
           <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
             Detail Psikologist

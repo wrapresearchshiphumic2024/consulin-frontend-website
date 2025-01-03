@@ -2,6 +2,7 @@ import App from "../../_components/layouts/chat";
 import { auth } from "@/auth";
 import { formatFullName } from "@/lib/helpers/string-helpers";
 import { getProfilePsychologist } from "@/lib/services/psychologist/psychologist-service";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function ChatRoomPsychologist() {
   const session = await auth();
@@ -14,12 +15,10 @@ export default async function ChatRoomPsychologist() {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Chatroom
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        Chat with patients during appointments
-      </p>
+      <TextSection
+        title="Chatroom"
+        subtitle="Chat with patients during appointments"
+      />
       <div className="flex  h-[530px] flex-col md:flex-row bg-white w-full p-5  rounded-3xl mt-5">
         <App
           apiKey={apiKey}

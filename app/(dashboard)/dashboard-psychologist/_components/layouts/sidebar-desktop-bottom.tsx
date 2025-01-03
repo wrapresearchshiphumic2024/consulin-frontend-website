@@ -19,7 +19,7 @@ export default function SidebarDesktopPsychologistBottom() {
         )}
       >
         <IconSetting className="h-4 w-4" />
-        Setting
+        Settings
       </Link>
       <SignOut />
     </>

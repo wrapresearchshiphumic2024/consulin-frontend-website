@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { auth } from "@/auth";
 import { latestHistoryAiAnalyzer } from "@/lib/services/patient/patient-service";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function AiAnalyzer() {
   const session = await auth();
@@ -28,12 +29,10 @@ export default async function AiAnalyzer() {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        AI Analyzer
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        Share your concerns, AI will analyse your mental state
-      </p>
+      <TextSection
+        title="AI Analyzer"
+        subtitle="Share your concerns, AI will analyse your mental state"
+      />
 
       <div className="flex justify-between mt-10">
         <Link href="/dashboard-patient/ai-analyzer/history-analyzer">
@@ -51,7 +50,10 @@ export default async function AiAnalyzer() {
             </h3>
           </center>
           <div className="flex flex-col gap-2 mt-5 lg:h-96">
-            <FormAiAnalyzer session={session?.user.access_token} />
+            <FormAiAnalyzer
+              session={session?.user.access_token}
+              ai_analyzer={ai_analyzer?.complaint}
+            />
           </div>
         </div>
 

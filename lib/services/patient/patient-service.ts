@@ -233,7 +233,7 @@ export async function latestHistoryAiAnalyzer(
         Authorization: `Bearer ${session}`,
         "Content-Type": "application/json",
       },
-      next: { revalidate: 60, tags: ['latest-history-ai-analyzer'] },
+      next: { revalidate: 0, tags: ['latest-history-ai-analyzer'] },
     });
   
     if (!res.ok) {
@@ -272,7 +272,7 @@ export async function historyAiAnalyzer(
         Authorization: `Bearer ${session}`,
         "Content-Type": "application/json",
       },
-      next: { revalidate: 60, tags: ['all-history-ai-analyzer'] },
+      next: { revalidate: 0, tags: ['all-history-ai-analyzer'] },
     });
   
     if (!res.ok) {

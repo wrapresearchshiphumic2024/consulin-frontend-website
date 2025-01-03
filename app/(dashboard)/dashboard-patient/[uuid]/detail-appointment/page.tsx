@@ -18,6 +18,7 @@ import {
 import { cn } from "@/lib/utils";
 import ChatOne from "@/app/(dashboard)/_components/layouts/chat-one";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
+import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
 export default async function DetailAppointment({
   params,
@@ -46,12 +47,10 @@ export default async function DetailAppointment({
       <div className="grid grid-cols-[auto_1fr] gap-3 mb-5">
         <ButtonBack />
         <div className="pl-3">
-          <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-            Detail Appointment
-          </h2>
-          <p className="mt-1 text-[#1E034280] font-semibold">
-            View appointment details on this page and chat with psychologist
-          </p>
+          <TextSection
+            title="Detail Appointment"
+            subtitle="View appointment details on this page and chat with psychologist"
+          />
         </div>
       </div>
 

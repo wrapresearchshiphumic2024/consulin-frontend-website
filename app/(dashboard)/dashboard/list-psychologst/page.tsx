@@ -4,6 +4,7 @@ import { auth } from "@/auth";
 import { getPsychologstData } from "@/lib/services/global-service";
 import PsychologistCard from "../../_components/ui/psychologist-card";
 import SearchList from "../../_components/ui/search";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function List(props: {
   searchParams?: {
@@ -21,12 +22,10 @@ export default async function List(props: {
   );
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        List Psychologist
-      </h2>
-      <p className="mt-3 text-netral-primary  font-medium ">
-        List of Active Psychologists in Consulin
-      </p>
+      <TextSection
+        title="List Psychologist"
+        subtitle="List of Active Psychologists in Consulin"
+      />
       <div className="flex justify-end">
         <SearchList placeholder="Search by name of psychologist" />
       </div>

@@ -9,6 +9,7 @@ import { getConsultationDataPsychologist } from "@/lib/services/psychologist/psy
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { formatFullName } from "@/lib/helpers/string-helpers";
 import NotificationCard from "../_components/ui/notification";
+import TextSection from "../_components/ui/text-section";
 
 export default async function DashboardPsychologist() {
   const session = await auth();
@@ -21,10 +22,10 @@ export default async function DashboardPsychologist() {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Hello, Consulife Psikologist!
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">Have a good day!</p>
+      <TextSection
+        title="Hello, Consulife Psikologist!"
+        subtitle="Have a good day!"
+      />
 
       <div className="grid md:grid-cols-2 grid-rows-3 gap-4 mt-10">
         <div className="order-1 lg:order-1">

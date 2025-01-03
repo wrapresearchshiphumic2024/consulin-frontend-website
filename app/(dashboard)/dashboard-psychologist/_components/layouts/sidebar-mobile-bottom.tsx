@@ -23,7 +23,7 @@ export default function SidebarMobilePsychologistBottom() {
           )}
         >
           <IconSetting className="h-5 w-5" />
-          Setting
+          Settings
         </Link>
       </SheetClose>
       <SignOutMobile />

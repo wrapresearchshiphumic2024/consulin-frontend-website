@@ -3,6 +3,7 @@ import Image from "next/image";
 import { auth } from "@/auth";
 import { getProfilePatient } from "@/lib/services/patient/patient-service";
 import { formatFullName } from "@/lib/helpers/string-helpers";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function Settings() {
   const session = await auth();
@@ -10,12 +11,10 @@ export default async function Settings() {
 
   return (
     <>
-      <h2 className="text-3xl md:text-5xl font-bold text-[#1E0342] text-left">
-        Setting
-      </h2>
-      <p className="mt-3 text-[#1E034280] font-semibold text-left">
-        Manage Your Profile and Preferences Easily
-      </p>
+      <TextSection
+        title="Settings"
+        subtitle="Manage Your Profile and Preferences Easily"
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         <div className="flex flex-col items-center bg-white p-6 rounded-xl shadow-md">
           <div className="w-100 h-100 mb-[50px]">
@@ -27,10 +26,10 @@ export default async function Settings() {
               className="rounded-full object-cover"
             />
           </div>
-
+          {/* 
           <button className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg">
             Change Photo
-          </button>
+          </button> */}
         </div>
 
         <div className="space-y-8">
@@ -47,14 +46,14 @@ export default async function Settings() {
             </div>
           </div>
 
-          <div className="bg-white p-6 rounded-xl shadow-md">
+          {/* <div className="bg-white p-6 rounded-xl shadow-md">
             <h3 className="text-xl font-semibold text-[#1E0342]">
               Change Password
             </h3>
             <button className="mt-4 bg-[#1E0342] text-white font-semibold py-2 px-4 rounded-lg">
               Send Reset Link
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

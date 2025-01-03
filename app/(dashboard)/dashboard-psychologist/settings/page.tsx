@@ -5,19 +5,17 @@ import {
 } from "@/lib/helpers/string-helpers";
 import { getProfilePsychologist } from "@/lib/services/psychologist/psychologist-service";
 import Image from "next/image";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function Settings() {
   const session = await auth();
   const user = await getProfilePsychologist(session?.user.access_token);
   return (
     <>
-      <h2 className="text-3xl md:text-5xl font-bold text-[#1E0342] text-left">
-        Settings
-      </h2>
-      <p className="mt-3 text-[#1E034280] font-semibold text-left">
-        Manage Your Profile and Preferences Easily
-      </p>
-
+      <TextSection
+        title="Settings"
+        subtitle="Manage Your Profile and Preferences Easily"
+      />
       {/* 2 Columns Layout */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
         {/* Column 1: Profile Picture and Reset Password */}

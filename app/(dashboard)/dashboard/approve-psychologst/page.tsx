@@ -4,6 +4,7 @@ import ManageButtonGroup from "./_components/manage-button-group";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { getPsychologstData } from "@/lib/services/global-service";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function ApprovePsychologist() {
   const session = await auth();
@@ -15,12 +16,10 @@ export default async function ApprovePsychologist() {
 
   return (
     <>
-      <h2 className="text-[#1E0342] text-3xl md:text-5xl  font-bold mb-3">
-        Approve Psychologist
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        Review and manage psychologist who just registered
-      </p>
+      <TextSection
+        title="Approve Psychologist"
+        subtitle="Review and manage psychologist who just registered"
+      />
 
       {psychologists.length === 0 ? (
         <div className="mt-10 text-[#1E0342] font-semibold flex justify-center items-center">

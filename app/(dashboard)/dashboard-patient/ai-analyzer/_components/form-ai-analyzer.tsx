@@ -21,13 +21,19 @@ import { ToastFailed, ToastSuccess } from "@/components/ui/toast-custom";
 import { Loader2 } from "lucide-react";
 import LoadingPage from "@/components/ui/Loading";
 
-export function FormAiAnalyzer({ session }: { session: string }) {
+export function FormAiAnalyzer({
+  session,
+  ai_analyzer,
+}: {
+  session: string;
+  ai_analyzer: string | undefined;
+}) {
   const [pending, startTransaction] = useTransition();
   const form = useForm<z.infer<typeof FormAiAnalyzerSchema>>({
     mode: "all",
     resolver: zodResolver(FormAiAnalyzerSchema),
     defaultValues: {
-      ai_analyzer: "",
+      ai_analyzer: ai_analyzer || "",
     },
   });
 

@@ -19,6 +19,7 @@ import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
 import TextSection from "@/app/(dashboard)/_components/ui/text-section";
+import ManageButtonGroup from "../../_components/manage-button-group";
 
 export default async function DetailP({
   params,
@@ -98,7 +99,12 @@ export default async function DetailP({
               </p>
               {appointment?.status === "ongoing" && (
                 <div className="flex flex-row space-x-2 mt-4">
-                  <ButtonDetailPatient />
+                  <ManageButtonGroup
+                    id={appointment.id.toString()}
+                    access_token={session?.user.access_token}
+                    status={appointment.status}
+                    detail
+                  />
                 </div>
               )}
             </div>

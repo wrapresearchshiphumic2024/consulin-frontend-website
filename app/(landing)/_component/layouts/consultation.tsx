@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Consultation() {
   return (
@@ -15,9 +16,11 @@ export default function Consultation() {
               health consultation services. We work with professionals who are
               experienced in providing mental health consultation services.
             </p>
-            <Button className="bg-secondary-custom_secondary text-primary-custom_primary rounded-3xl mt-4">
-              Consultation Now
-            </Button>
+            <Link href={"/signin"}>
+              <Button className="bg-secondary-custom_secondary text-primary-custom_primary rounded-3xl mt-4">
+                Consultation Now
+              </Button>
+            </Link>
           </div>
           <div className="flex flex-1 justify-center items-center">
             <div className="overflow-hidden w-[200px]  md:w-[400px] mb-10 lg:mb-0">

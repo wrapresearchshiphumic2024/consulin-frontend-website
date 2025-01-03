@@ -13,12 +13,14 @@ interface ManageButtonGroupProps {
   id: string;
   access_token: string;
   status: string;
+  detail?: boolean;
 }
 
 export default function ManageButtonGroup({
   id,
   access_token,
   status,
+  detail = false,
 }: ManageButtonGroupProps) {
   const router = useRouter();
   const [pending, startTransaction] = useTransition();
@@ -41,26 +43,55 @@ export default function ManageButtonGroup({
   return (
     <>
       {pending && <LoadingPage />}
-      {status === "ongoing" && (
-        <ManageButton
-          uuid={id}
-          label="Done"
-          title="Confirmation of Consultation Session"
-          description="Are you sure you want to complete this session?
+      {detail ? (
+        <>
+          {status === "ongoing" && (
+            <ManageButton
+              uuid={id}
+              label="Done"
+              title="Confirmation of Consultation Session"
+              description="Are you sure you want to complete this session?
 Once the session is completed, you cannot change or cancel this action."
-          session={access_token}
-          onApprove={handleDoneClick}
-        />
+              session={access_token}
+              onApprove={handleDoneClick}
+              full={false}
+            />
+          )}
+          <ManageButton
+            uuid={id}
+            label="Cancel"
+            title="Cancel Session"
+            description={`Are you sure you want to cancel this session?\nPlease provide the reason for cancellation below:`}
+            session={access_token}
+            danger
+            full
+          />
+        </>
+      ) : (
+        <>
+          {status === "ongoing" && (
+            <ManageButton
+              uuid={id}
+              label="Done"
+              title="Confirmation of Consultation Session"
+              description="Are you sure you want to complete this session?
+Once the session is completed, you cannot change or cancel this action."
+              session={access_token}
+              onApprove={handleDoneClick}
+              full
+            />
+          )}
+          <ManageButton
+            uuid={id}
+            label="Cancel"
+            title="Cancel Session"
+            description={`Are you sure you want to cancel this session?\nPlease provide the reason for cancellation below:`}
+            session={access_token}
+            danger
+            full
+          />
+        </>
       )}
-
-      <ManageButton
-        uuid={id}
-        label="Cancel"
-        title="Cancel Session"
-        description={`Are you sure you want to cancel this session?\nPlease provide the reason for cancellation below:`}
-        session={access_token}
-        danger
-      />
     </>
   );
 }

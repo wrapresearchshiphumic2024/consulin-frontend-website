@@ -5,7 +5,7 @@ import { revalidateTag } from "next/cache";
 export async function aiAnalyzer(session: string, data: FormData) {
     await new Promise((resolve) => setTimeout(resolve, 1000));
     
-    const appointment = await fetch(`${process.env.API_URL}/api/patients/ai-analyze-model-svm`, {
+    const appointment = await fetch(`${process.env.API_URL}/api/patients/ai-analyze`, {
         method: "POST",
         headers: {
             Authorization: `Bearer ${session}`,
@@ -15,7 +15,6 @@ export async function aiAnalyzer(session: string, data: FormData) {
     });
 
     const response = await appointment.json();
-    console.log(response);
 
     if (response.success === true) {
         revalidateTag("latest-history-ai-analyzer");

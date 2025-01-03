@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
+import Link from "next/link";
 export default function Main() {
   return (
     <div>
@@ -37,9 +38,11 @@ export default function Main() {
               anxiety, and depression.
             </p>
             <div>
-              <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
-                Free Consultation
-              </Button>
+              <Link href={"/signin"}>
+                <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
+                  Free Consultation
+                </Button>
+              </Link>
             </div>
           </div>
           <div className="flex md:flex-1 justify-center items-center">

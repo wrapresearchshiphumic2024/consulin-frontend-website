@@ -16,7 +16,6 @@ export default async function HistoryAnalyzer() {
     <>
       <div className="flex ">
         <ButtonBack />
-
         <div>
           <TextSection
             title="AI Analyzer History"

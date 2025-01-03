@@ -24,6 +24,7 @@ interface ManageButtonProps {
   danger?: boolean;
   detail?: boolean;
   onApprove?: (session: string, uuid: string) => void;
+  full?: boolean;
 }
 
 export default function ManageButton({
@@ -35,6 +36,7 @@ export default function ManageButton({
   onApprove,
   danger = false,
   detail = false,
+  full = false,
 }: ManageButtonProps) {
   return (
     <AlertDialog>
@@ -43,7 +45,8 @@ export default function ManageButton({
           className={cn(
             danger ? "bg-red-500" : "bg-green-500",
             detail && "flex-1",
-            " text-white px-4 py-2 rounded-lg  "
+            full && "w-full",
+            " text-white px-4 py-2 rounded-lg   "
           )}
         >
           {label} {/* Menggunakan label sebagai teks tombol */}

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import CardFeature, { CardFeatureProps } from "../ui/card-feature";
 import { Button } from "@/components/ui/button";
 
@@ -50,9 +51,11 @@ export default function Feature() {
               real-time and AI-based assistance to help maintain your mental
               health.
             </p>
-            <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
-              Discover Features
-            </Button>
+            <Link href={"/signin"}>
+              <Button className="text-secondary-custom_secondary bg-primary-custom_primary rounded-3xl mt-4">
+                Discover Features
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

@@ -44,9 +44,9 @@ export default async function DetailAppointment({
   return (
     <>
       {/* Header Section */}
-      <div className="grid grid-cols-[auto_1fr] gap-3 mb-5">
+      <div className="flex">
         <ButtonBack />
-        <div className="pl-3">
+        <div>
           <TextSection
             title="Detail Appointment"
             subtitle="View appointment details on this page and chat with psychologist"
@@ -128,7 +128,7 @@ export default async function DetailAppointment({
 
           {/* Appointment Information for Ongoing Status */}
           {status === "ongoing" && (
-            <div className="flex flex-col p-6 bg-secondary-custom_secondary rounded-2xl space-y-3">
+            <div className="flex flex-col p-6 bg-secondary-custom_secondary rounded-2xl space-y-3 mt-4">
               <h3 className="font-bold text-lg text-[#1E0342]">
                 Appointment Information
               </h3>

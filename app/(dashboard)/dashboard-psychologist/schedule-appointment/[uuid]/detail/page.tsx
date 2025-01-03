@@ -32,7 +32,7 @@ export default async function DetailP({
   );
   const user = await getProfilePsychologist(session?.user.access_token);
   const userName = formatFullName(user.firstname, user.lastname);
-
+  console.log(user);
   if (!appointment) {
     return notFound();
   }
@@ -50,7 +50,7 @@ export default async function DetailP({
       </div>
       {appointment?.status === "ongoing" && (
         <div className="flex justify-end">
-          <Link href={"/meet?room_id=raya-124"} target="_blank">
+          <Link href={`/meet?room_id=${user.id}`} target="_blank">
             <Button className="bg-primary-custom_primary rounded-full">
               Start a Meet
               <IconMeet className="ml-2" />

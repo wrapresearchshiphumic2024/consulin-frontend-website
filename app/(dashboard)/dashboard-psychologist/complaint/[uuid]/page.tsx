@@ -5,6 +5,7 @@ import { historyAiPatientAnalyzer } from "@/lib/services/psychologist/psychologi
 
 import { formatHumanReadableDate } from "@/lib/helpers/string-helpers";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
+import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
 export default async function Complaint({
   params,
@@ -18,19 +19,16 @@ export default async function Complaint({
   );
 
   return (
-    <div className="p-6">
-      {/* Back Button and Heading Section */}
-      <div className="flex items-center mb-2">
+    <>
+      <div className="flex ">
         <ButtonBack />
-        <h1 className="text-3xl md:text-5xl font-bold text-[#1E0342]">
-          Patient Complaint
-        </h1>
+        <div>
+          <TextSection
+            title="Patient Complaint"
+            subtitle="View all patient complaint on this page"
+          />
+        </div>
       </div>
-
-      {/* Subtitle under the heading */}
-      <p className="text-[#1E034280] font-semibold mb-6 ml-14 md:ml-[40px]">
-        View all patient complaint on this page
-      </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {complaints &&
@@ -50,6 +48,6 @@ export default async function Complaint({
             </Card>
           ))}
       </div>
-    </div>
+    </>
   );
 }

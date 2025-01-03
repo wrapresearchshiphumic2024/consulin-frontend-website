@@ -10,6 +10,7 @@ import {
 } from "@/lib/helpers/string-helpers";
 import ViewPdf from "../../_components/ui/view-pdf";
 import ManageButtonGroup from "../../_components/manage-button-group";
+import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
 export default async function DetailApp({
   params,
@@ -32,12 +33,10 @@ export default async function DetailApp({
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Detail Applicant Psychologist
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        View applicant psychologist details on this page
-      </p>
+      <TextSection
+        title="Detail Applicant Psychologist"
+        subtitle="View applicant psychologist details on this page"
+      />
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
         <div className="flex flex-col w-full gap-3">

@@ -8,6 +8,7 @@ import {
   getInitials,
 } from "@/lib/helpers/string-helpers";
 import { notFound } from "next/navigation";
+import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
 export default async function DetailList({
   params,
@@ -26,12 +27,10 @@ export default async function DetailList({
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Detail Psikologist
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        View psychologist details on this page
-      </p>
+      <TextSection
+        title="Detail Psikologist"
+        subtitle="View psychologist details on this page"
+      />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mt-10">
         <Card className="flex flex-col items-center p-6 rounded-[30px] bg-[#E0E9F9] h-[500px] border-[10px] border-white">
           <Avatar className="rounded-full w-24 h-24 mb-4">

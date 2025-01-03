@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import { historyAiAnalyzer } from "@/lib/services/patient/patient-service";
 import { formatHumanReadableDate } from "@/lib/helpers/string-helpers";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
+import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
 export default async function HistoryAnalyzer() {
   const session = await auth();
@@ -13,16 +14,14 @@ export default async function HistoryAnalyzer() {
   );
   return (
     <>
-      <div className="flex mb-5 gap-3">
+      <div className="flex ">
         <ButtonBack />
 
-        <div className="pl-3">
-          <h1 className="text-5xl font-bold text-netral-primary">
-            AI Analyzer History
-          </h1>
-          <p className="mt-3 text-[#1E034280] font-semibold">
-            View your AI analyzer history on this page
-          </p>
+        <div>
+          <TextSection
+            title="AI Analyzer History"
+            subtitle="View your AI analyzer history on this page"
+          />
         </div>
       </div>
 

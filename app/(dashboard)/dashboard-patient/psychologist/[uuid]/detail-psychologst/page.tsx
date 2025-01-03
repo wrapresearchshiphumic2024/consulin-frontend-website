@@ -15,6 +15,7 @@ import { Schedule } from "@/types/psychologist/psychologist-type-data";
 import { Session } from "next-auth";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
+import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
 export default async function DetailPsycholog({
   params,
@@ -39,12 +40,10 @@ export default async function DetailPsycholog({
       <div className="flex mb-5 gap-3">
         <ButtonBack />
         <div>
-          <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-            Detail Psikologist
-          </h2>
-          <p className="text-left text-[#1E034280] mb-8 mt-3">
-            View psychologist details on this page
-          </p>
+          <TextSection
+            title="Detail Psikologist"
+            subtitle="View psychologist details on this page"
+          />
         </div>
       </div>
 

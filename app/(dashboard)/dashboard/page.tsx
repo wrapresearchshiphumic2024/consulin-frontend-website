@@ -7,6 +7,7 @@ import { auth } from "@/auth";
 import { getDashboardAdminData } from "@/lib/services/admin/admin-service";
 import { MultipleChart } from "./_components/ui/multiple-chart";
 import { SingleChart } from "./_components/ui/single-chart";
+import TextSection from "../_components/ui/text-section";
 
 export default async function Dashboard() {
   const session = await auth();
@@ -21,11 +22,10 @@ export default async function Dashboard() {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Hello, Consulife Admins!
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">Have a good day!</p>
-
+      <TextSection
+        title=" Hello, Consulife Admins!"
+        subtitle="Have a good day!"
+      />
       <div className=" flex flex-col md:grid  md:grid-cols-2 gap-4 mt-10">
         {/* Grafik Data Bulanan */}
         <div className="order-1 lg:order-1 w-full">

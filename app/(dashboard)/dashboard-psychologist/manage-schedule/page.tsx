@@ -5,6 +5,7 @@ import { auth } from "@/auth";
 import { getSchedule } from "@/lib/services/psychologist/psychologist-service";
 import ScheduleCard from "../../_components/ui/schedule-card";
 import AppointmentSwitch from "./_components/appointment-switch";
+import TextSection from "../../_components/ui/text-section";
 export const dynamic = "force-dynamic";
 export default async function ManageSchedulePsycholog() {
   const session = await auth();
@@ -12,13 +13,10 @@ export default async function ManageSchedulePsycholog() {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Manage Schedule
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        Set your availability for patients to book appointments
-      </p>
-
+      <TextSection
+        title="Manage Schedule"
+        subtitle="Set your availability for patients to book appointments"
+      />
       <AppointmentSwitch
         appointmetStatus={schedule.status === "active"}
         session={session?.user.access_token}

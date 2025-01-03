@@ -18,6 +18,7 @@ import {
 import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
+import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
 export default async function DetailP({
   params,
@@ -41,12 +42,10 @@ export default async function DetailP({
       <div className="flex ">
         <ButtonBack />
         <div>
-          <h1 className="text-xl md:text-2xl lg:text-5xl font-bold text-left  lg:mb-4 text-[#1E0342]">
-            Detail Patient
-          </h1>
-          <p className="text-left text-[#1E034280] font-semibold">
-            View patient details on this page
-          </p>
+          <TextSection
+            title="Detail Patient"
+            subtitle="View patient details on this page"
+          />
         </div>
       </div>
       {appointment?.status === "ongoing" && (

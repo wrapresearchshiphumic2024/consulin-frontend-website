@@ -11,6 +11,7 @@ import {
 } from "@/lib/helpers/string-helpers";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import ManageButtonGroup from "./_components/manage-button-group";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function ScheduledApp() {
   const session = await auth();
@@ -19,13 +20,11 @@ export default async function ScheduledApp() {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold mb-[10px]">
-        Scheduled Appointment
-      </h2>
-      <p className="text-[#1E034280] font-semibold">
-        Manage patient appointments, complete or decline consultations, and view
-        patient details.
-      </p>
+      <TextSection
+        title="Scheduled Appointment"
+        subtitle="Manage patient appointments, complete or decline consultations, and view
+        patient details."
+      />
 
       {appointments.length === 0 ? (
         <div className="mt-10 text-[#1E0342] font-semibold flex justify-center items-center">

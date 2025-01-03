@@ -8,6 +8,7 @@ import { getPsychologstData } from "@/lib/services/patient/patient-service";
 import { PatientHasAIAnalysis } from "./_components/has-ai-analysis";
 import SearchList from "../../_components/ui/search";
 import Gender from "./_components/gender";
+import TextSection from "../../_components/ui/text-section";
 
 export default async function Psychologist(props: {
   searchParams?: {
@@ -28,13 +29,10 @@ export default async function Psychologist(props: {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Psychologist
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">
-        Explore and book an appointment with a psychologist to get the support
-        you need.
-      </p>
+      <TextSection
+        title="Psychologist"
+        subtitle="Explore and book an appointment with a psychologist to get the support you need."
+      />
       <div className="mt-10 flex justify-between">
         <Gender />
         <SearchList placeholder="Search psychologist by name" />

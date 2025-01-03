@@ -4,6 +4,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { auth } from "@/auth";
 import { getAppointmentPatient } from "@/lib/services/patient/patient-service";
 import { formatFullName } from "@/lib/helpers/string-helpers";
+import TextSection from "../_components/ui/text-section";
 
 export default async function DetailAppointment() {
   const session = await auth();
@@ -13,10 +14,11 @@ export default async function DetailAppointment() {
 
   return (
     <>
-      <h2 className="text-netral-primary text-3xl md:text-5xl font-bold">
-        Hello, Welcome To Consulife!
-      </h2>
-      <p className="mt-3 text-netral-primary font-medium">Have a good day!</p>
+      <TextSection
+        title="Hello, Welcome To Consulife!"
+        subtitle="Have a good day!"
+      />
+
       <div className="flex gap-5 flex-col lg:flex-row mt-10">
         {/* Upcoming Appointments Section */}
         <div className="bg-secondary-custom_secondary p-5 flex-1 rounded-3xl">

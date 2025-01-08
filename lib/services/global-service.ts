@@ -20,7 +20,7 @@ export async function getPsychologstData(
       Authorization: `Bearer ${session}`,
       "Content-Type": "application/json",
     },
-    next: { revalidate: 60, tags: ['psychologst-list'] },
+    next: { revalidate: 0, tags: ['psychologst-list'] },
   });
 
   if (!res.ok) {

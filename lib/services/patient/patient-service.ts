@@ -84,7 +84,7 @@ export async function getDetailPsychologistPatient(session: string, uuid: string
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 60, tags: ['detail-psychologist'] },
+        next: { revalidate: 0, tags: ['detail-psychologist'] },
     });
 
     const json = await res.json();

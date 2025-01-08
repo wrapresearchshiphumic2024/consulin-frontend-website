@@ -8,7 +8,7 @@ export async function getDashboardAdminData(session: string): Promise<DashboardA
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 60,tags: ['admin-data'] }
+        next: { revalidate: 0,tags: ['admin-data'] }
     });
 
     if (!res.ok) {
@@ -28,7 +28,7 @@ export async function getDetailPsychologst(session: string, uuid: string): Promi
             Authorization: `Bearer ${session}`,
             "Content-Type": "application/json",
         },
-        next: { revalidate: 60,tags: ['detail-psychologst'] }
+        next: { revalidate: 0,tags: ['detail-psychologst'] }
     });
 
     const json = await res.json();

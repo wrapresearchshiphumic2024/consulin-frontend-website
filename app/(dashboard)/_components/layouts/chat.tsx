@@ -35,7 +35,7 @@ export default function App({
     const response = await fetch("/api/chat-token", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId }),
+      body: JSON.stringify({ userId, userName }),
     });
 
     const data = await response.json();

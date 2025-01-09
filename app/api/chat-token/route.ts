@@ -13,7 +13,7 @@ function getServerClient(): StreamChat {
 }
 
 export async function POST(request: Request) {
-    const { userId } = await request.json();
+    const { userId, name } = await request.json();
 
     if (!userId) {
         return NextResponse.json({ error: "User ID is required" }, { status: 400 });
@@ -22,7 +22,7 @@ export async function POST(request: Request) {
     try {
         const serverClient = getServerClient();
         const token = serverClient.createToken(userId);
-        await serverClient.upsertUser({ id: userId });
+        await serverClient.upsertUser({ id: userId,name :name });
 
         return NextResponse.json({ token });
     } catch (error: any) {

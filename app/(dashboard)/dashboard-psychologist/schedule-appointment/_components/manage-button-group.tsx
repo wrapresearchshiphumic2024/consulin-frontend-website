@@ -64,7 +64,7 @@ Once the session is completed, you cannot change or cancel this action."
             description={`Are you sure you want to cancel this session?\nPlease provide the reason for cancellation below:`}
             session={access_token}
             danger
-            full
+            full={false}
           />
         </>
       ) : (

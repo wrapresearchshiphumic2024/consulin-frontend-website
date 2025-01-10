@@ -3,7 +3,10 @@ import { Card } from "@/components/ui/card";
 import { auth } from "@/auth";
 import { historyAiPatientAnalyzer } from "@/lib/services/psychologist/psychologist-service";
 
-import { formatHumanReadableDate } from "@/lib/helpers/string-helpers";
+import {
+  formatHumanReadableDate,
+  formatHumanReadableDateWithHour,
+} from "@/lib/helpers/string-helpers";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
 import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
@@ -35,10 +38,12 @@ export default async function Complaint({
           complaints.map((complaint, index) => (
             <Card key={index} className="p-6 rounded-[30px] shadow-md bg-white">
               <h2 className="text-[#27374D] font-semibold mb-2">
-                {formatHumanReadableDate(complaint.createdAt)}
+                {formatHumanReadableDateWithHour(complaint.createdAt)}
               </h2>
               <hr className="my-3 border-gray-300 w-[120px]" />
-              <p className="text-gray-700">{complaint.complaint}</p>
+              <p className="text-gray-700 text-justify">
+                {complaint.complaint}
+              </p>
               <hr className="my-3 border-gray-300 w-[120px]" />
               <div className="font-semibold">
                 <p>Probability of Stress: {complaint.stress}%</p>

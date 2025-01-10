@@ -103,7 +103,7 @@ export default async function DetailP({
                     id={appointment.id.toString()}
                     access_token={session?.user.access_token}
                     status={appointment.status}
-                    detail
+                    detail={false}
                   />
                 </div>
               )}

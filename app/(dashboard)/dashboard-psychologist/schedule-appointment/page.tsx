@@ -87,7 +87,7 @@ export default async function ScheduledApp() {
                     id={appointment.id.toString()}
                     access_token={session?.user.access_token}
                     status={appointment.status}
-                    detail={false}
+                    detail={true}
                   />
                   <Link
                     href={`/dashboard-psychologist/schedule-appointment/${appointment.id}/detail`}

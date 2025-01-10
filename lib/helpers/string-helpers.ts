@@ -29,3 +29,18 @@ export function formatHumanReadableDate(isoDate: string): string {
 
     return date.toLocaleDateString('id-ID', options).replace('.', '');
 }
+export function formatHumanReadableDateWithHour(isoDate: string): string {
+    const date = new Date(isoDate);
+
+    const options: Intl.DateTimeFormatOptions = {
+        day: '2-digit',
+        month: 'short',  // Bulan dalam format singkat (misal: Jan, Feb, Mar, dst)
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false, // Menggunakan format 24 jam
+    };
+
+    // Format tanggal dan waktu dalam bahasa Indonesia
+    return date.toLocaleString('id-ID', options);  // Menghapus koma
+}

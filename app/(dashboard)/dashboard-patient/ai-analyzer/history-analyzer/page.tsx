@@ -3,7 +3,10 @@ import Link from "next/link";
 import Image from "next/image";
 import { auth } from "@/auth";
 import { historyAiAnalyzer } from "@/lib/services/patient/patient-service";
-import { formatHumanReadableDate } from "@/lib/helpers/string-helpers";
+import {
+  formatHumanReadableDate,
+  formatHumanReadableDateWithHour,
+} from "@/lib/helpers/string-helpers";
 import ButtonBack from "@/app/(dashboard)/_components/ui/button-back";
 import TextSection from "@/app/(dashboard)/_components/ui/text-section";
 
@@ -32,10 +35,12 @@ export default async function HistoryAnalyzer() {
               className="bg-white p-6 rounded-xl shadow-md h-full w-full"
             >
               <p className="text-lg text-[#1E0342] font-semibold">
-                {formatHumanReadableDate(data.createdAt)}
+                {formatHumanReadableDateWithHour(data.createdAt)}
               </p>
               <hr className="my-3 border-gray-300 w-[120px]" />
-              <p className="text-black font-semibold">{data.complaint}</p>
+              <p className="text-black font-semibold text-justify">
+                {data.complaint}
+              </p>
               <hr className="my-3 border-gray-300 w-[120px]" />
               <div className="font-semibold">
                 <p>Probability of Stress: {data.stress}%</p>

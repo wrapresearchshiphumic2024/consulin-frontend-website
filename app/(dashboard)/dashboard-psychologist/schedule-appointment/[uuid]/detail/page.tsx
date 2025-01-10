@@ -3,8 +3,6 @@ import { Card } from "@/components/ui/card";
 import Link from "next/link";
 import ChatOne from "../../../../_components/layouts/chat-one";
 
-import Image from "next/image";
-import ButtonDetailPatient from "./_components/button-detail-patient";
 import IconMeet from "@/components/icons/icon-meet";
 import { auth } from "@/auth";
 import {
@@ -14,6 +12,7 @@ import {
 import {
   formatFullName,
   formatHumanReadableDate,
+  formatHumanReadableDateWithHour,
 } from "@/lib/helpers/string-helpers";
 import { cn } from "@/lib/utils";
 import { notFound } from "next/navigation";
@@ -33,7 +32,7 @@ export default async function DetailP({
   );
   const user = await getProfilePsychologist(session?.user.access_token);
   const userName = formatFullName(user.firstname, user.lastname);
-  console.log(user);
+  console.log(analyzer?.createdAt);
   if (!appointment) {
     return notFound();
   }
@@ -49,7 +48,8 @@ export default async function DetailP({
           />
         </div>
       </div>
-      {appointment?.status === "ongoing" && (
+      {(appointment?.status === "ongoing" ||
+        appointment?.status === "waiting") && (
         <div className="flex justify-end">
           <Link href={`/meet?room_id=${user.id}`} target="_blank">
             <Button className="bg-primary-custom_primary rounded-full">
@@ -97,7 +97,8 @@ export default async function DetailP({
                 Day & Time: {formatHumanReadableDate(appointment?.date)},{" "}
                 {appointment?.start_time} -{appointment?.end_time}
               </p>
-              {appointment?.status === "ongoing" && (
+              {(appointment?.status === "ongoing" ||
+                appointment?.status === "waiting") && (
                 <div className="flex flex-row space-x-2 mt-4">
                   <ManageButtonGroup
                     id={appointment.id.toString()}
@@ -115,6 +116,9 @@ export default async function DetailP({
             <h3 className="font-bold text-netral-primary text-lg md:text-xl mb-4">
               AI Analysis Results
             </h3>
+            <hr className="my-3 border-gray-300 w-[120px]" />
+            <p className="text-justify">{analyzer?.complaint}</p>
+            <hr className="my-3 border-gray-300 w-[120px]" />
             <p className="text-netral-primary font-medium">
               Probability of Stress: {analyzer?.stress}%
             </p>
@@ -126,7 +130,7 @@ export default async function DetailP({
             </p>
             <p className="text-netral-primary  font-medium">
               last analyzed:{" "}
-              {formatHumanReadableDate(analyzer?.createdAt as string)}
+              {formatHumanReadableDateWithHour(analyzer?.createdAt as string)}
             </p>
           </Card>
 
@@ -149,11 +153,12 @@ export default async function DetailP({
               userId={user.id}
               channelId={appointment?.channel_id as string}
             />
-            {appointment?.status !== "ongoing" && (
+            {appointment?.status !== "ongoing" &&
+            appointment?.status !== "waiting" ? (
               <div className="absolute bg-primary-custom_primary text-white bottom-0 left-0 right-0 p-5 rounded-b-[30px] text-center">
-                Cant sent messsage not in appointment schedule
+                Cannot send message: Not in appointment schedule
               </div>
-            )}
+            ) : null}
           </div>
         </div>
       </div>

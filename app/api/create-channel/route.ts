@@ -27,7 +27,7 @@ export async function POST(request: Request) {
               patient_id,
               psychologist_id
             ],
-            created_by_id: psychologist_id,
+            created_by_id: "muhammad63",
           });
 
         await channel.create();
